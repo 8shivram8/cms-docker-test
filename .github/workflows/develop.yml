@@ -27,13 +27,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-            npm install --global yarn
-            npm cache verify
-            yarn install
+            npm install
              
     - name: Build React app
       run: |
-            npx nx build admin-web-app
+            npm run build
       env:
         CI: false
        
