@@ -1,25 +1,29 @@
 import React from 'react';
 import { Box, Typography, Button, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
 import digisign from '../assets/digisign.jpg'
-import workflow from '../assets/newworkflow.jpg'
+// import workflow from '../assets/newworkflow.jpg'
+import workflow from '../assets/workflow.jpg'
+import dailydiary from '../assets/diary.jpg'
+// import dailydiary from '../assets/diary1.jpg'
 function Features() {
     const features = [
         {
             title: "Workflow",
-            description: "Streamline your processes and increase productivity by creating customized workflows that adapt to your needs.",
-            image: `${workflow}`, // replace with actual path to the image
+            description: "Boost productivity by creating custom workflows that automate tasks, set priorities, and improve team collaboration. Track project stages and streamline processes for efficient completion.",
+            image: `${workflow}`,
         },
         {
             title: "Digital Signature",
-            description: "Secure and verify documents with our integrated digital signature feature, ensuring trust and reliability.",
-            image: `${digisign}`, // replace with actual path to the image
+            description: "Sign, share, and authenticate documents securely with legally binding digital signatures. Ensure trust and compliance with multi-layer security for remote approvals.",
+            image: `${digisign}`,
         },
         {
             title: "Daily Diary",
-            description: "Keep a daily log of activities, track progress, and ensure accountability with our Daily Diary feature.",
-            image: "/path-to-your-image/daily-diary.png", // replace with actual path to the image
+            description: "Organize and track daily activities to enhance accountability. Perfect for managers and teams, this feature logs progress and highlights key actions to ensure continuous improvement.",
+            image: `${dailydiary}`,
         },
     ];
+    
 
     return (
         <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 5, mb: 8 }}>
@@ -36,7 +40,7 @@ function Features() {
                     mb: 4
                 }}
             >
-               Features 
+                Features
             </Button>
 
             {/* Features List Container with Border, White Background, and Increased Width */}
@@ -47,8 +51,6 @@ function Features() {
                     borderRadius: 2,
                     p: 4, // Adding padding inside the Box
                     boxShadow: 3,
-                    // width: '100%', // Make the box full-width within the container
-                    // maxWidth:"md", // Set a max width to keep content manageable
                     mx: 'auto' // Center the box within the container
                 }}
             >
@@ -75,7 +77,21 @@ function Features() {
 
                         {/* Content Section */}
                         <Grid item xs={12} md={6}>
-                            <CardContent sx={{ textAlign: index % 2 === 0 ? 'left' : 'right' }}>
+                            <CardContent sx={{ textAlign: 'left' }}>
+                                <Button
+                                    variant="outlined"
+                                    sx={{
+                                        borderRadius: '20px',
+                                        borderColor: '#1F75FE',
+                                        color: '#1F75FE',
+                                        textTransform: 'none',
+                                        padding: '3px 7px',
+                                        fontSize: '0.8rem',
+                                        mb: 2
+                                    }}
+                                >
+                                    How It Work
+                                </Button>
                                 <Typography
                                     variant="h5"
                                     component="div"
