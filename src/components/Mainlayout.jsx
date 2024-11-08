@@ -5,6 +5,9 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import GroupIcon from '@mui/icons-material/Group';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Features from './Features';
+import Internationalization from './Internationalization';
+import PricingSection from './PricingSection';
+import Faqs from './Faqs';
 
 function Mainlayout() {
     const features = [
@@ -126,6 +129,9 @@ function Mainlayout() {
                 
             </Container>
             <Features/>
+            <Internationalization/>
+            <PricingSection/>
+            <Faqs/>
         </Box>
     );
 }
