@@ -29,11 +29,11 @@ function Mainlayout() {
     ];
 
     return (
-        <Box 
-            display="flex" 
-            flexDirection="column" 
-            minHeight="100vh" 
-            alignItems="center" 
+        <Box
+            display="flex"
+            flexDirection="column"
+            minHeight="100vh"
+            alignItems="center"
             justifyContent="center"
         >
             <Container maxWidth="md">
@@ -45,33 +45,33 @@ function Mainlayout() {
                         paddingX: { xs: '20px', sm: '30px', md: '40px' },
                     }}
                 >
-                    <Typography 
-                        variant="h5" 
-                        gutterBottom 
-                        sx={{ 
-                            fontWeight: 400, 
-                            color: 'black', 
-                            fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' } 
+                    <Typography
+                        variant="h5"
+                        gutterBottom
+                        sx={{
+                            fontWeight: 400,
+                            color: 'black',
+                            fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' }
                         }}
                     >
                         Why Choose Us?{' '}
-                        <Typography component="span"  sx={{ 
-                            fontWeight: 400, 
-                            color: '#1F75FE', 
-                            fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' } ,
+                        <Typography component="span" sx={{
+                            fontWeight: 400,
+                            color: '#1F75FE',
+                            fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' },
                         }}>
                             Discover the Advantages
                         </Typography>{' '}
                         with Colitionify
                     </Typography>
-                    <Typography 
-                        variant="h6" 
-                        paragraph 
-                        sx={{ 
-                            color: 'black', 
-                            margin: '0 auto', 
-                            fontWeight: 200, 
-                            fontSize: { xs: '1rem', sm: '1rem', md: '1.2rem' } 
+                    <Typography
+                        variant="h6"
+                        paragraph
+                        sx={{
+                            color: 'black',
+                            margin: '0 auto',
+                            fontWeight: 200,
+                            fontSize: { xs: '1rem', sm: '1rem', md: '1.2rem' }
                         }}
                     >
                         At Colitionify, we empower you to design, align, and execute seamless workflows with ease.
@@ -83,39 +83,39 @@ function Mainlayout() {
                     {features.map((feature, index) => (
                         <Grid item xs={12} sm={6} md={4} key={index}>
                             <Grow in timeout={500 + index * 300}>
-                                <Card 
-                                    sx={{ 
-                                        height: 300, 
-                                        maxWidth: 360, 
-                                        margin: 'auto', 
-                                        textAlign: 'center', 
-                                        boxShadow: 3, 
+                                <Card
+                                    sx={{
+                                        height: 300,
+                                        maxWidth: 360,
+                                        margin: 'auto',
+                                        textAlign: 'center',
+                                        boxShadow: 3,
                                         borderRadius: 2,
                                         bgcolor: '#b3e5fc',
                                         padding: 2,
                                         transition: 'transform 0.4s ease, box-shadow 0.4s ease',
                                         '&:hover': {
-                                            transform: 'translateY(-10px) scale(1.05)', 
+                                            transform: 'translateY(-10px) scale(1.05)',
                                             boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
                                         },
                                     }}
                                 >
                                     <CardContent>
                                         {feature.icon}
-                                        <Typography 
-                                            variant="h6" 
-                                            component="div" 
-                                            sx={{ 
-                                                fontWeight: 'bold', 
-                                                marginTop: 2, 
-                                                color: 'black' 
+                                        <Typography
+                                            variant="h6"
+                                            component="div"
+                                            sx={{
+                                                fontWeight: 'bold',
+                                                marginTop: 2,
+                                                color: 'black'
                                             }}
                                         >
                                             {feature.title}
                                         </Typography>
-                                        <Typography 
-                                            variant="body2" 
-                                            color="text.secondary" 
+                                        <Typography
+                                            variant="body2"
+                                            color="text.secondary"
                                             sx={{ marginTop: 1, paddingX: 1 }}
                                         >
                                             {feature.description}
@@ -126,12 +126,16 @@ function Mainlayout() {
                         </Grid>
                     ))}
                 </Grid>
-                
+
             </Container>
-            <Features/>
-            <Internationalization/>
-            <PricingSection/>
-            <Faqs/>
+            <Box id="features">
+                <Features />
+            </Box>
+            <Internationalization />
+            <Box id="pricing">
+                <PricingSection />
+            </Box>
+            <Faqs />
         </Box>
     );
 }
