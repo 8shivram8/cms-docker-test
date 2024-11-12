@@ -65,12 +65,12 @@ function Features() {
                     >
                         {/* Image Section */}
                         <Grid item xs={12} md={6}>
-                            <Card sx={{ borderRadius: 2 }}>
+                            <Card>
                                 <CardMedia
                                     component="img"
                                     image={feature.image}
                                     alt={feature.title}
-                                    sx={{ height: 300, objectFit: 'cover' }}
+                                    sx={{ height: 300, objectFit: 'cover',border:'none' }}
                                 />
                             </Card>
                         </Grid>
