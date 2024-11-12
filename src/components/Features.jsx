@@ -23,7 +23,7 @@ function Features() {
             image: `${dailydiary}`,
         },
     ];
-    
+
 
     return (
         <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 5, mb: 8 }}>
@@ -70,7 +70,12 @@ function Features() {
                                     component="img"
                                     image={feature.image}
                                     alt={feature.title}
-                                    sx={{ height: 300, objectFit: 'cover',border:'none' }}
+                                    sx={{
+                                        width: '100%',
+                                        height: { xs: 200, sm: 250, md: 300, lg: 350 }, // Adjust height for different breakpoints
+                                        objectFit: 'cover',
+                                        border: 'none',
+                                    }}
                                 />
                             </Card>
                         </Grid>
