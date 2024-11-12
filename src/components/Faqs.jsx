@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Typography, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Faqs() {
+    const [expanded, setExpanded] = useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
+
     const faqs = [
         {
             question: "What is the purpose of this application?",
@@ -27,7 +34,7 @@ function Faqs() {
     ];
 
     return (
-        <Box component="section" sx={{ paddingY: 6, marginTop: 5, bgcolor: '#f3f4f6' }}>
+        <Box component="section" sx={{ paddingY: 6, marginTop: 5, bgcolor: '#fff' }}>
             <Container maxWidth="lg">
                 <Box textAlign="center" sx={{ marginBottom: 4 }}>
                     <Button
@@ -53,10 +60,10 @@ function Faqs() {
                             justifyContent: 'center',
                             alignItems: 'center',
                             textAlign: 'center',
-                            minWidth: '300px', // Adjust minimum width for better responsiveness
-                            maxWidth:'700px',
-                            mx: 'auto', // Centers the Box horizontally
-                            paddingX: 2, // Adds some padding for smaller screens
+                            minWidth: '300px',
+                            maxWidth: '700px',
+                            mx: 'auto',
+                            paddingX: 2,
                         }}
                     >
                         <Typography
@@ -73,20 +80,36 @@ function Faqs() {
                             Explore answers to common queries about Colitionify and our services. If you have any further questions, feel free to reach out to our team for assistance.
                         </Typography>
                     </Box>
-
-
-
                 </Box>
 
                 <Box sx={{ marginTop: 4 }}>
                     {faqs.map((faq, index) => (
-                        <Accordion key={index} sx={{ marginBottom: 2 }}>
+                        <Accordion
+                            key={index}
+                            expanded={expanded === index}
+                            onChange={handleChange(index)}
+                            sx={{
+                                marginBottom: 2,
+                                borderRadius: '8px',
+                                border: '1px solid rgba(0, 0, 0, 0.2)', // Faint black border
+                                boxShadow: 'none',
+                                '&:before': {
+                                    display: 'none', // Removes the default divider line
+                                },
+                            }}
+                        >
                             <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
+                                expandIcon={
+                                    expanded === index ? (
+                                        <CloseIcon sx={{ color: '#1F75FE' }} />
+                                    ) : (
+                                        <AddIcon sx={{ color: '#1F75FE' }} />
+                                    )
+                                }
                                 aria-controls={`panel${index}a-content`}
                                 id={`panel${index}a-header`}
                             >
-                                <Typography variant="h7" sx={{ fontWeight: 'bold'}} >
+                                <Typography variant="h7" sx={{ fontWeight: 'bold' }}>
                                     {faq.question}
                                 </Typography>
                             </AccordionSummary>
@@ -98,7 +121,6 @@ function Faqs() {
                         </Accordion>
                     ))}
                 </Box>
-
             </Container>
         </Box>
     );

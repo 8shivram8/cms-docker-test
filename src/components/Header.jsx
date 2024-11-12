@@ -11,6 +11,7 @@ import { Container, IconButton, Drawer, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
+import { Link } from 'react-scroll';
 
 function Header() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -30,15 +31,15 @@ function Header() {
             gap={2}
             // sx={{ background: 'linear-gradient(to bottom right, #ccccff, #99ccff)' }}
             sx={{
-                backgroundImage: `url(${backgroundImg})`, 
-                backgroundSize: 'cover', 
-                backgroundPosition: 'center', 
-                backgroundRepeat: 'no-repeat', 
+                backgroundImage: `url(${backgroundImg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
                 borderBottomLeftRadius: 9,
-                borderBottomRightRadius: 9, 
+                borderBottomRightRadius: 9,
             }}
         >
-            
+
             <Box
                 position="sticky"
 
@@ -63,20 +64,30 @@ function Header() {
                         <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} />
                     </Grid>
 
-                   
+
                     {!isMobile && (
                         <Grid item md={6} display="flex" justifyContent="center">
                             <Stack direction="row" spacing={3}>
-                                <Button color="inherit">Home</Button>
-                                <Button color="inherit">About Us</Button>
-                                <Button color="inherit">Features</Button>
-                                <Button color="inherit">Pricing</Button>
-                                <Button color="inherit">Contact Us</Button>
+                                <Link to="home" smooth={true} duration={500}>
+                                    <Button color="inherit">Home</Button>
+                                </Link>
+                                <Link to="about" smooth={true} duration={500}>
+                                    <Button color="inherit">About Us</Button>
+                                </Link>
+                                <Link to="features" smooth={true} duration={300}>
+                                    <Button color="inherit">Features</Button>
+                                </Link>
+                                <Link to="pricing" smooth={true} duration={300}>
+                                    <Button color="inherit">Pricing</Button>
+                                </Link>
+                                <Link to="contact" smooth={true} duration={500}>
+                                    <Button color="inherit">Contact Us</Button>
+                                </Link>
                             </Stack>
                         </Grid>
                     )}
 
-                    
+
                     <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
                         <Button
                             variant="outlined"
@@ -100,13 +111,24 @@ function Header() {
             {/* Drawer for Mobile/Tablet View */}
             <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
                 <Stack direction="column" spacing={2} sx={{ padding: 2 }}>
-                    <Button color="inherit" onClick={handleDrawerToggle}>Home</Button>
-                    <Button color="inherit" onClick={handleDrawerToggle}>About Us</Button>
-                    <Button color="inherit" onClick={handleDrawerToggle}>Features</Button>
-                    <Button color="inherit" onClick={handleDrawerToggle}>Pricing</Button>
-                    <Button color="inherit" onClick={handleDrawerToggle}>Contact Us</Button>
+                    <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button color="inherit">Home</Button>
+                    </Link>
+                    <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button color="inherit">About Us</Button>
+                    </Link>
+                    <Link to="features" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button color="inherit">Features</Button>
+                    </Link>
+                    <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button color="inherit">Pricing</Button>
+                    </Link>
+                    <Link to="contact" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button color="inherit">Contact Us</Button>
+                    </Link>
                 </Stack>
             </Drawer>
+
 
             <Container maxWidth="md">
                 <Stack
