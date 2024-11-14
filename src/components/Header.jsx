@@ -6,12 +6,18 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/logo.png';
 import centerimg from '../assets/centerimg.png';
-import backgroundImg from '../assets/bgimage.jpg';
+// import backgroundImg from '../assets/bgimage.jpg';
+import backgroundImg from '../assets/bgimage1.png';
 import { Container, IconButton, Drawer, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { Link } from 'react-scroll';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import StarIcon from '@mui/icons-material/Star';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 function Header() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -29,17 +35,28 @@ function Header() {
             justifyContent="center"
             alignItems="center"
             gap={2}
-            // sx={{ background: 'linear-gradient(to bottom right, #ccccff, #99ccff)' }}
             sx={{
-                backgroundImage: `url(${backgroundImg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                borderBottomLeftRadius: 9,
-                borderBottomRightRadius: 9,
+                position: 'relative',
+                overflow: 'hidden', // This will clip the inner content
+                width: '100%',
+                height: '100%',
+                borderRadius: !isMobile ? 9 : 'none', // Border radius on the outer container
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundImage: `url(${backgroundImg})`,
+                    backgroundSize: !isMobile ? 'calc(100% - 80px) calc(100% - 100px)' : 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    borderRadius: !isMobile ? 9 : 'none', // Border radius on background image
+                    zIndex: -1,
+                },
             }}
         >
-
             <Box
                 position="sticky"
 
@@ -47,10 +64,10 @@ function Header() {
                     backgroundColor: 'white',
                     padding: '10px 0',
                     borderRadius: '15px',
-                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+                    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.3)',
                     margin: '15px',
                     width: '100%',
-                    maxWidth: '1200px',
+                    maxWidth: '1100px',
                 }}
             >
                 <Grid container alignItems="center" justifyContent="space-between" sx={{ paddingX: 2 }}>
@@ -69,19 +86,19 @@ function Header() {
                         <Grid item md={6} display="flex" justifyContent="center">
                             <Stack direction="row" spacing={3}>
                                 <Link to="home" smooth={true} duration={500}>
-                                    <Button color="inherit">Home</Button>
+                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Home</Button>
                                 </Link>
                                 <Link to="about" smooth={true} duration={500}>
-                                    <Button color="inherit">About Us</Button>
+                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>About Us</Button>
                                 </Link>
                                 <Link to="features" smooth={true} duration={300}>
-                                    <Button color="inherit">Features</Button>
+                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Features</Button>
                                 </Link>
                                 <Link to="pricing" smooth={true} duration={300}>
-                                    <Button color="inherit">Pricing</Button>
+                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
                                 </Link>
                                 <Link to="contact" smooth={true} duration={500}>
-                                    <Button color="inherit">Contact Us</Button>
+                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Contact Us</Button>
                                 </Link>
                             </Stack>
                         </Grid>
@@ -109,22 +126,55 @@ function Header() {
             </Box>
 
             {/* Drawer for Mobile/Tablet View */}
-            <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
-                <Stack direction="column" spacing={2} sx={{ padding: 2 }}>
+            <Drawer
+                anchor="top"
+                open={drawerOpen}
+                onClose={handleDrawerToggle}
+                sx={{
+                    '& .MuiDrawer-paper': {
+                        backgroundColor: 'white',
+                        color: 'black',
+                        paddingTop: 2,
+                        paddingBottom: 2,
+                        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                    },
+                }}
+            >
+                <Stack
+                    direction="column"
+                    spacing={2}
+                    sx={{
+                        padding: 2,
+                        alignItems: 'center',
+                        '& .MuiButton-root': {
+                            color: 'black',
+                            textTransform: 'none',
+                            fontSize: '1rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1, 
+                            transition: '0.3s ease',
+                            '&:hover': {
+                                color: 'primary.main',
+                                backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            },
+                        },
+                    }}
+                >
                     <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button color="inherit">Home</Button>
+                        <Button startIcon={<HomeIcon sx={{ color: '#1F75FE' }} />}>Home</Button>
                     </Link>
                     <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button color="inherit">About Us</Button>
+                        <Button startIcon={<InfoIcon sx={{ color: '#1F75FE' }} />}>About Us</Button>
                     </Link>
                     <Link to="features" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button color="inherit">Features</Button>
+                        <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Features</Button>
                     </Link>
                     <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button color="inherit">Pricing</Button>
+                        <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>Pricing</Button>
                     </Link>
                     <Link to="contact" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button color="inherit">Contact Us</Button>
+                        <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Contact Us</Button>
                     </Link>
                 </Stack>
             </Drawer>
