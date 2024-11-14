@@ -1,4 +1,3 @@
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -6,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/logo.png';
 import centerimg from '../assets/centerimg.png';
-// import backgroundImg from '../assets/bgimage.jpg';
+import signatureImg from '../assets/digisign.jpg'; // Add your signature image here
 import backgroundImg from '../assets/bgimage1.png';
 import { Container, IconButton, Drawer, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,6 +17,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import '@fontsource/dancing-script';
 
 function Header() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -27,7 +27,7 @@ function Header() {
     const handleDrawerToggle = () => {
         setDrawerOpen(!drawerOpen);
     };
-
+    
     return (
         <Box
             display="flex"
@@ -37,10 +37,10 @@ function Header() {
             gap={2}
             sx={{
                 position: 'relative',
-                overflow: 'hidden', // This will clip the inner content
+                overflow: 'hidden',
                 width: '100%',
                 height: '100%',
-                borderRadius: !isMobile ? 9 : 'none', // Border radius on the outer container
+                borderRadius: !isMobile ? 9 : 'none',
                 '&::before': {
                     content: '""',
                     position: 'absolute',
@@ -52,14 +52,13 @@ function Header() {
                     backgroundSize: !isMobile ? 'calc(100% - 80px) calc(100% - 100px)' : 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    borderRadius: !isMobile ? 9 : 'none', // Border radius on background image
+                    borderRadius: !isMobile ? 9 : 'none',
                     zIndex: -1,
                 },
             }}
         >
             <Box
                 position="sticky"
-
                 sx={{
                     backgroundColor: 'white',
                     padding: '10px 0',
@@ -71,7 +70,6 @@ function Header() {
                 }}
             >
                 <Grid container alignItems="center" justifyContent="space-between" sx={{ paddingX: 2 }}>
-                    {/* Left Logo and Drawer Icon for Mobile */}
                     <Grid item xs={6} md={3} display="flex" alignItems="center">
                         {isMobile && (
                             <IconButton onClick={handleDrawerToggle} sx={{ marginRight: '10px' }}>
@@ -80,8 +78,6 @@ function Header() {
                         )}
                         <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} />
                     </Grid>
-
-
                     {!isMobile && (
                         <Grid item md={6} display="flex" justifyContent="center">
                             <Stack direction="row" spacing={3}>
@@ -103,8 +99,6 @@ function Header() {
                             </Stack>
                         </Grid>
                     )}
-
-
                     <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
                         <Button
                             variant="outlined"
@@ -125,7 +119,6 @@ function Header() {
                 </Grid>
             </Box>
 
-            {/* Drawer for Mobile/Tablet View */}
             <Drawer
                 anchor="top"
                 open={drawerOpen}
@@ -152,7 +145,7 @@ function Header() {
                             fontSize: '1rem',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: 1, 
+                            gap: 1,
                             transition: '0.3s ease',
                             '&:hover': {
                                 color: 'primary.main',
@@ -179,7 +172,6 @@ function Header() {
                 </Stack>
             </Drawer>
 
-
             <Container maxWidth="md">
                 <Stack
                     textAlign="center"
@@ -194,7 +186,7 @@ function Header() {
                     <Typography variant="h6" paragraph sx={{ color: 'black', margin: '0 auto', fontWeight: 300, fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }}>
                         Create forms and manage workflows effortlessly. Colitionify centralizes collaboration with digital signatures and real-time updates.
                     </Typography>
-                    <Grid item xs={6} md={3} display="flex" justifyContent='center' mt={3}>
+                    <Grid item xs={6} md={3} display="flex" flexDirection="column" alignItems="center" mt={3}>
                         <Button
                             variant="outlined"
                             sx={{
@@ -210,9 +202,23 @@ function Header() {
                         >
                             Get Started
                         </Button>
+                        {/* Signature Section */}
+                        <Box mt={2} display="flex" flexDirection="column" alignItems="center" textAlign="center">
+                            <img src={signatureImg} alt="Digital Signature" style={{ width: '120px', opacity: 0.8, marginBottom: '5px' }} />
+                            <Typography variant="h6" paragraph sx={{ color: 'black', margin: '0 auto', fontWeight: 300 }}>
+                                Empowering your projects with secure,{' '}
+                                <span style={{
+                                    fontFamily: 'Dancing Script, cursive', // Font style for signature effect
+                                    fontSize: '1.6rem',
+                                    fontWeight: 'bold',
+                                    color: '#1F75FE',
+                                }}>
+                                    digital  signatures
+                                </span>.
+                            </Typography>
+                        </Box>
                     </Grid>
                 </Stack>
-
             </Container>
 
             <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
@@ -231,5 +237,4 @@ function Header() {
         </Box>
     );
 }
-
 export default Header;
