@@ -81,19 +81,19 @@ function Header() {
                     {!isMobile && (
                         <Grid item md={6} display="flex" justifyContent="center">
                             <Stack direction="row" spacing={3}>
-                                <Link to="home" smooth={true} duration={500}>
+                                <Link to="home" smooth={false} duration={500}>
                                     <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Home</Button>
                                 </Link>
-                                <Link to="about" smooth={true} duration={500}>
+                                <Link to="about" smooth={false} duration={500}>
                                     <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>About Us</Button>
                                 </Link>
-                                <Link to="features" smooth={true} duration={300}>
+                                <Link to="features" smooth={false} duration={300}>
                                     <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Features</Button>
                                 </Link>
-                                <Link to="pricing" smooth={true} duration={300}>
+                                <Link to="pricing" smooth={false} duration={300}>
                                     <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
                                 </Link>
-                                <Link to="contact" smooth={true} duration={500}>
+                                <Link to="contact" smooth={false} duration={500}>
                                     <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Contact Us</Button>
                                 </Link>
                             </Stack>
@@ -154,19 +154,19 @@ function Header() {
                         },
                     }}
                 >
-                    <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                    <Link to="home" smooth={false} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<HomeIcon sx={{ color: '#1F75FE' }} />}>Home</Button>
                     </Link>
-                    <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                    <Link to="about" smooth={false} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<InfoIcon sx={{ color: '#1F75FE' }} />}>About Us</Button>
                     </Link>
-                    <Link to="features" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                    <Link to="features" smooth={false} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Features</Button>
                     </Link>
-                    <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                    <Link to="pricing" smooth={false} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>Pricing</Button>
                     </Link>
-                    <Link to="contact" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                    <Link to="contact" smooth={false} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Contact Us</Button>
                     </Link>
                 </Stack>
@@ -203,7 +203,7 @@ function Header() {
                             Get Started
                         </Button>
                         {/* Signature Section */}
-                        <Box mt={2} display="flex" flexDirection="column" alignItems="center" textAlign="center">
+                        {/* <Box mt={2} display="flex" flexDirection="column" alignItems="center" textAlign="center">
                             <img src={signatureImg} alt="Digital Signature" style={{ width: '120px', opacity: 0.8, marginBottom: '5px' }} />
                             <Typography variant="h6" paragraph sx={{ color: 'black', margin: '0 auto', fontWeight: 300 }}>
                                 Empowering your projects with secure,{' '}
@@ -216,7 +216,7 @@ function Header() {
                                     digital  signatures
                                 </span>.
                             </Typography>
-                        </Box>
+                        </Box> */}
                     </Grid>
                 </Stack>
             </Container>
