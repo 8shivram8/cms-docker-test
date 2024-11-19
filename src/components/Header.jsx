@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/logo.png';
 import centerimg from '../assets/centerimg.png';
+// import centerVideo from '../assets/home.mp4'
+import centerVideo from '../assets/home1.mp4'
 import signatureImg from '../assets/digisign.jpg'; // Add your signature image here
 import backgroundImg from '../assets/bgimage1.png';
 import { Container, IconButton, Drawer, useMediaQuery } from '@mui/material';
@@ -27,7 +29,7 @@ function Header() {
     const handleDrawerToggle = () => {
         setDrawerOpen(!drawerOpen);
     };
-    
+
     return (
         <Box
             display="flex"
@@ -222,17 +224,22 @@ function Header() {
             </Container>
 
             <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
-                <img
-                    src={centerimg}
-                    alt="Demo Display Image"
+                <video
+                    src={centerVideo}  // Make sure 'centerVideo' is the path to your video file
+                    alt="Demo Display Video"
                     style={{
                         borderRadius: '10px',
                         width: '100%',
                         height: 'auto',
                     }}
+                    autoPlay  // Optional: if you want the video to autoplay
+                    loop    // Optional: if you want the video to loop
+                    muted   // Optional: if you want the video to be muted
+                    // controls  // Optional: if you want video controls (play, pause, volume, etc.)
                     sizes="(max-width: 400px) 100vw, (max-width: 800px) 80vw, 500px"
                 />
             </Box>
+
 
         </Box>
     );
