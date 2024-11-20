@@ -1,6 +1,5 @@
 import { Box, Grid, Stack, Typography, Button, Container } from '@mui/material';
 import centerimg from '../assets/centerimg.png';
-import backgroundImg from '../assets/bgimage1.png';
 
 function HeaderContent() {
     return (
@@ -16,19 +15,9 @@ function HeaderContent() {
                 width: '100%',
                 height: '100%',
                 borderRadius: 9,
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundImage: `url(${backgroundImg})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    zIndex: -1,
-                },
+                // Add gradient background instead of the image
+                // background: 'linear-gradient(to right, #00c6ff, #0072ff)', // You can adjust these colors
+                // zIndex: -1,
             }}
         >
             <Container maxWidth="md">
