@@ -19,14 +19,13 @@ import StarIcon from '@mui/icons-material/Star';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 
+import HeaderContent from './HeaderContent';
+import HeaderNav from './HeaderNav';
+
+
 function Header() {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-    const handleDrawerToggle = () => {
-        setDrawerOpen(!drawerOpen);
-    };
 
     return (
         <Box
@@ -35,199 +34,10 @@ function Header() {
             justifyContent="center"
             alignItems="center"
             gap={2}
-            sx={{
-                position: 'relative',
-                overflow: 'hidden', // This will clip the inner content
-                width: '100%',
-                height: '100%',
-                borderRadius: !isMobile ? 9 : 'none', // Border radius on the outer container
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundImage: `url(${backgroundImg})`,
-                    backgroundSize: !isMobile ? 'calc(100% - 80px) calc(100% - 100px)' : 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    borderRadius: !isMobile ? 9 : 'none', // Border radius on background image
-                    zIndex: -1,
-                },
-            }}
+
         >
-            <Box
-                position="sticky"
-
-                sx={{
-                    backgroundColor: 'white',
-                    padding: '10px 0',
-                    borderRadius: '15px',
-                    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.3)',
-                    margin: '15px',
-                    width: '100%',
-                    maxWidth: '1100px',
-                }}
-            >
-                <Grid container alignItems="center" justifyContent="space-between" sx={{ paddingX: 2 }}>
-                    {/* Left Logo and Drawer Icon for Mobile */}
-                    <Grid item xs={6} md={3} display="flex" alignItems="center">
-                        {isMobile && (
-                            <IconButton onClick={handleDrawerToggle} sx={{ marginRight: '10px' }}>
-                                <MenuIcon />
-                            </IconButton>
-                        )}
-                        <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} />
-                    </Grid>
-
-
-                    {!isMobile && (
-                        <Grid item md={6} display="flex" justifyContent="center">
-                            <Stack direction="row" spacing={3}>
-                                <Link to="home" smooth={true} duration={500}>
-                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Home</Button>
-                                </Link>
-                                <Link to="about" smooth={true} duration={500}>
-                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>About Us</Button>
-                                </Link>
-                                <Link to="features" smooth={true} duration={300}>
-                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Features</Button>
-                                </Link>
-                                <Link to="pricing" smooth={true} duration={300}>
-                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
-                                </Link>
-                                <Link to="contact" smooth={true} duration={500}>
-                                    <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Contact Us</Button>
-                                </Link>
-                            </Stack>
-                        </Grid>
-                    )}
-
-
-                    <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                borderRadius: '20px',
-                                backgroundColor: 'black',
-                                color: 'white',
-                                textTransform: 'none',
-                                '&:hover': {
-                                    backgroundColor: 'white',
-                                    color: '#007BFF',
-                                },
-                            }}
-                        >
-                            Login
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Box>
-
-            {/* Drawer for Mobile/Tablet View */}
-            <Drawer
-                anchor="top"
-                open={drawerOpen}
-                onClose={handleDrawerToggle}
-                sx={{
-                    '& .MuiDrawer-paper': {
-                        backgroundColor: 'white',
-                        color: 'black',
-                        paddingTop: 2,
-                        paddingBottom: 2,
-                        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                    },
-                }}
-            >
-                <Stack
-                    direction="column"
-                    spacing={2}
-                    sx={{
-                        padding: 2,
-                        alignItems: 'center',
-                        '& .MuiButton-root': {
-                            color: 'black',
-                            textTransform: 'none',
-                            fontSize: '1rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 1, 
-                            transition: '0.3s ease',
-                            '&:hover': {
-                                color: 'primary.main',
-                                backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                            },
-                        },
-                    }}
-                >
-                    <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<HomeIcon sx={{ color: '#1F75FE' }} />}>Home</Button>
-                    </Link>
-                    <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<InfoIcon sx={{ color: '#1F75FE' }} />}>About Us</Button>
-                    </Link>
-                    <Link to="features" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Features</Button>
-                    </Link>
-                    <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>Pricing</Button>
-                    </Link>
-                    <Link to="contact" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Contact Us</Button>
-                    </Link>
-                </Stack>
-            </Drawer>
-
-
-            <Container maxWidth="md">
-                <Stack
-                    textAlign="center"
-                    sx={{
-                        color: '#fff',
-                        padding: { xs: '40px 10px', sm: '50px 15px', md: '60px 20px' },
-                    }}
-                >
-                    <Typography variant="h3" gutterBottom sx={{ fontWeight: 500, color: 'black', fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
-                        Streamline Your Projects Efficiently with Colitionify
-                    </Typography>
-                    <Typography variant="h6" paragraph sx={{ color: 'black', margin: '0 auto', fontWeight: 300, fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }}>
-                        Create forms and manage workflows effortlessly. Colitionify centralizes collaboration with digital signatures and real-time updates.
-                    </Typography>
-                    <Grid item xs={6} md={3} display="flex" justifyContent='center' mt={3}>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                borderRadius: '20px',
-                                backgroundColor: 'black',
-                                color: 'white',
-                                textTransform: 'none',
-                                '&:hover': {
-                                    backgroundColor: 'white',
-                                    color: '#007BFF',
-                                },
-                            }}
-                        >
-                            Get Started
-                        </Button>
-                    </Grid>
-                </Stack>
-
-            </Container>
-
-            <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
-                <img
-                    src={centerimg}
-                    alt="Demo Display Image"
-                    style={{
-                        borderRadius: '10px',
-                        width: '100%',
-                        height: 'auto',
-                    }}
-                    sizes="(max-width: 400px) 100vw, (max-width: 800px) 80vw, 500px"
-                />
-            </Box>
-
+        <HeaderNav/>
+        <HeaderContent/>
         </Box>
     );
 }
