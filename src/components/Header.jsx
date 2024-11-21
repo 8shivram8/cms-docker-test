@@ -1,4 +1,3 @@
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -6,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Logo from '../assets/logo.png';
 import centerimg from '../assets/centerimg.png';
-// import backgroundImg from '../assets/bgimage.jpg';
+import signatureImg from '../assets/digisign.jpg'; // Add your signature image here
 import backgroundImg from '../assets/bgimage1.png';
 import { Container, IconButton, Drawer, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,6 +17,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import '@fontsource/dancing-script';
 
 import HeaderContent from './HeaderContent';
 import HeaderNav from './HeaderNav';
@@ -41,5 +41,4 @@ function Header() {
         </Box>
     );
 }
-
 export default Header;
