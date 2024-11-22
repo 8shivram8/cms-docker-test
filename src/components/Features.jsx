@@ -1,119 +1,199 @@
-import React from 'react';
-import { Box, Typography, Button, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
-import digisign from '../assets/digisign.jpg'
-// import workflow from '../assets/newworkflow.jpg'
-import workflow from '../assets/workflow.jpg'
-import dailydiary from '../assets/diary.jpg'
-// import dailydiary from '../assets/diary1.jpg'
-function Features() {
-    const features = [
-        {
-            title: "Workflow",
-            description: "Boost productivity by creating custom workflows that automate tasks, set priorities, and improve team collaboration. Track project stages and streamline processes for efficient completion.",
-            image: `${workflow}`,
-        },
-        {
-            title: "Digital Signature",
-            description: "Sign, share, and authenticate documents securely with legally binding digital signatures. Ensure trust and compliance with multi-layer security for remote approvals.",
-            image: `${digisign}`,
-        },
-        {
-            title: "Daily Diary",
-            description: "Organize and track daily activities to enhance accountability. Perfect for managers and teams, this feature logs progress and highlights key actions to ensure continuous improvement.",
-            image: `${dailydiary}`,
-        },
-    ];
+import React, { useRef } from 'react';
+import {
+  ReactFlow,
+  Background,
+  ReactFlowProvider,
+  MiniMap,
+  Controls,
+  Handle,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+import { Box, Typography, Card, CardContent, CardMedia, Button } from '@mui/material';
 
+const CustomNode = ({ data }) => {
+  return (
+    <Box ref={data.nodeRef}>
+      <Card
+        sx={{
+          width: 400,
+          height: 400,
+          padding: 2,
+          boxShadow: 3,
+          borderRadius: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Handle
+          type="target"
+          position="top"
+          id="target"
+          style={{ background: '#555' }}
+        />
+        <CardMedia
+          component="img"
+          height="140"
+          image={data.image || 'https://via.placeholder.com/150'}
+          alt="Image"
+          sx={{
+            borderRadius: 2,
+            objectFit: 'cover',
+          }}
+        />
+        <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            {data.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mt: 1, flexGrow: 1 }}
+          >
+            {data.description}
+          </Typography>
+        </CardContent>
+        <Button
+          variant="contained"
+          sx={{
+            alignSelf: 'flex-end',
+            backgroundColor: 'hsl(333, 100%, 50%)',
+            color: '#fff',
+            borderRadius: 5,
+            paddingX: 3,
+            paddingY: 1,
+            boxShadow: 2,
+            ':hover': {
+              backgroundColor: 'hsl(333, 90%, 45%)',
+            },
+          }}
+          onClick={data.onClickNext}
+        >
+          {data.buttonText || 'Next'}
+        </Button>
+        <Handle
+          type="source"
+          position="bottom"
+          id="source"
+          style={{ background: '#555' }}
+        />
+      </Card>
+    </Box>
+  );
+};
 
-    return (
-        <Container maxWidth="lg" sx={{ textAlign: 'center', mt: 5, mb: 8 }}>
-            {/* Centered Button with Border */}
-            <Button
-                variant="outlined"
-                sx={{
-                    borderRadius: '20px',
-                    borderColor: '#1F75FE',
-                    color: '#1F75FE',
-                    textTransform: 'none',
-                    padding: '5px 10px',
-                    fontSize: '1rem',
-                    mb: 4
-                }}
-            >
-                Features
-            </Button>
+const Features = () => {
+  // Generate unique refs for each node
+  const nodeRefs = useRef({});
 
-            {/* Features List Container with Border, White Background, and Increased Width */}
-            <Box
-                sx={{
-                    border: '1px solid #e0e0e0', // Adding border to parent Box
-                    bgcolor: 'white', // Setting background color to white
-                    borderRadius: 2,
-                    p: 4, // Adding padding inside the Box
-                    boxShadow: 3,
-                    mx: 'auto' // Center the box within the container
-                }}
-            >
-                {features.map((feature, index) => (
-                    <Grid
-                        container
-                        spacing={3}
-                        key={index}
-                        direction={index % 2 === 0 ? "row" : "row-reverse"}
-                        alignItems="center"
-                        sx={{ mb: 5 }}
-                    >
-                        {/* Image Section */}
-                        <Grid item xs={12} md={6}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    image={feature.image}
-                                    alt={feature.title}
-                                    sx={{
-                                        width: '100%',
-                                        height: { xs: 200, sm: 250, md: 300, lg: 350 }, // Adjust height for different breakpoints
-                                        objectFit: 'cover',
-                                        border: 'none',
-                                    }}
-                                />
-                            </Card>
-                        </Grid>
+  // Initialize nodes with refs
+  const nodes = [
+    {
+      id: '1',
+      data: {
+        title: 'Node 1',
+        description: 'This is the first node.',
+        image: 'https://via.placeholder.com/150',
+        buttonText: 'Next',
+        onClickNext: () => scrollToNode('2'),
+        nodeRef: (nodeRefs.current['1'] = React.createRef()),
+      },
+      position: { x: 500, y: 0 },
+      type: 'custom',
+    },
+    {
+      id: '2',
+      data: {
+        title: 'Node 2',
+        description: 'This is the second node.',
+        image: 'https://via.placeholder.com/150',
+        buttonText: 'Next',
+        onClickNext: () => scrollToNode('3'),
+        nodeRef: (nodeRefs.current['2'] = React.createRef()),
+      },
+      position: { x: 500, y: 600 },
+      type: 'custom',
+    },
+    {
+      id: '3',
+      data: {
+        title: 'Node 3',
+        description: 'This is the third node.',
+        image: 'https://via.placeholder.com/150',
+        buttonText: 'Finish',
+        onClickNext: () => alert('End of flow!'),
+        nodeRef: (nodeRefs.current['3'] = React.createRef()),
+      },
+      position: { x: 500, y: 1200 },
+      type: 'custom',
+    },
+  ];
 
-                        {/* Content Section */}
-                        <Grid item xs={12} md={6}>
-                            <CardContent sx={{ textAlign: 'left' }}>
-                                <Button
-                                    variant="outlined"
-                                    sx={{
-                                        borderRadius: '20px',
-                                        borderColor: '#1F75FE',
-                                        color: '#1F75FE',
-                                        textTransform: 'none',
-                                        padding: '3px 7px',
-                                        fontSize: '0.8rem',
-                                        mb: 2
-                                    }}
-                                >
-                                    How It Work
-                                </Button>
-                                <Typography
-                                    variant="h5"
-                                    component="div"
-                                    sx={{ fontWeight: 'bold', color: 'black', mb: 2 }}
-                                >
-                                    {feature.title}
-                                </Typography>
-                                <Typography variant="body1" color="text.secondary">
-                                    {feature.description}
-                                </Typography>
-                            </CardContent>
-                        </Grid>
-                    </Grid>
-                ))}
-            </Box>
-        </Container>
-    );
-}
+  const edges = [
+    {
+      id: 'e1-2',
+      source: '1',
+      sourceHandle: 'source',
+      target: '2',
+      targetHandle: 'target',
+      animated: false,
+      style: { stroke: 'gray', strokeWidth: 1 },
+    },
+    {
+      id: 'e2-3',
+      source: '2',
+      sourceHandle: 'source',
+      target: '3',
+      targetHandle: 'target',
+      animated: false,
+      style: { stroke: 'gray', strokeWidth: 1 },
+    },
+  ];
 
-export default Features;
+  const scrollToNode = (targetNodeId) => {
+    const targetRef = nodeRefs.current[targetNodeId];
+    if (targetRef?.current) {
+      targetRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
+  return (
+      <Box
+        sx={{
+          height: '210vh', //add more height accordingly
+          width: '100%',
+          overflow: 'auto', // Enable scrolling
+          position: 'relative',
+          // bgcolor:'red'
+        }}
+      >
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={{ custom: CustomNode }}
+        fitView={false}
+        style={{ height: '100%' }}
+      >
+        <Background />
+        <MiniMap />
+        <Controls />
+      </ReactFlow>
+    </Box>
+  );
+};
+
+const FlowWithProvider = () => {
+  return (
+    <ReactFlowProvider>
+      <Box sx={{ width: '100%', p: 2 }}>
+        <Features />
+      </Box>
+    </ReactFlowProvider>
+  );
+};
+
+export default FlowWithProvider;

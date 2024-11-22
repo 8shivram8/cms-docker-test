@@ -1,10 +1,10 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Header from "./components/Header";
 import Mainlayout from "./components/Mainlayout";
 import Footer from "./components/Footer";
 import HeaderNav from "./components/HeaderNav";
 import HeaderContent from "./components/HeaderContent";
+import FlowWithProvider from "./components/Features";
 
 function App() {
   const theme = useTheme();
@@ -35,6 +35,7 @@ function App() {
       {/* Header Components */}
       <HeaderNav />
       <HeaderContent />
+      <FlowWithProvider/>
 
       {/* Main content layout */}
       <Box
