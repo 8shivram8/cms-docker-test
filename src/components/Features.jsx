@@ -1,165 +1,195 @@
-import React, { useState } from 'react';
-import { ReactFlow, Background, ReactFlowProvider, MiniMap, Controls, useReactFlow } from '@xyflow/react';
+import React, { useRef } from 'react';
+import {
+  ReactFlow,
+  Background,
+  ReactFlowProvider,
+  MiniMap,
+  Controls,
+  Handle,
+} from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Box, Typography, Card, CardContent, CardMedia, Button } from '@mui/material';
 
-// Custom node component that receives `data` as a prop
 const CustomNode = ({ data }) => {
   return (
-    <Card sx={{ width: 400, height: 400, padding: 2, boxShadow: 3 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={data.image || "https://via.placeholder.com/150"} // Default image if not provided
-        alt="Image"
-      />
-      <CardContent>
-        <Typography variant="h6">{data.title}</Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-          {data.description}
-        </Typography>
+    <Box ref={data.nodeRef}>
+      <Card
+        sx={{
+          width: 400,
+          height: 400,
+          padding: 2,
+          boxShadow: 3,
+          borderRadius: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Handle
+          type="target"
+          position="top"
+          id="target"
+          style={{ background: '#555' }}
+        />
+        <CardMedia
+          component="img"
+          height="140"
+          image={data.image || 'https://via.placeholder.com/150'}
+          alt="Image"
+          sx={{
+            borderRadius: 2,
+            objectFit: 'cover',
+          }}
+        />
+        <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            {data.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mt: 1, flexGrow: 1 }}
+          >
+            {data.description}
+          </Typography>
+        </CardContent>
         <Button
           variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
-          onClick={data.onClickNext} // Trigger the next action
+          sx={{
+            alignSelf: 'flex-end',
+            backgroundColor: 'hsl(333, 100%, 50%)',
+            color: '#fff',
+            borderRadius: 5,
+            paddingX: 3,
+            paddingY: 1,
+            boxShadow: 2,
+            ':hover': {
+              backgroundColor: 'hsl(333, 90%, 45%)',
+            },
+          }}
+          onClick={data.onClickNext}
         >
           {data.buttonText || 'Next'}
         </Button>
-      </CardContent>
-    </Card>
+        <Handle
+          type="source"
+          position="bottom"
+          id="source"
+          style={{ background: '#555' }}
+        />
+      </Card>
+    </Box>
   );
 };
 
 const Features = () => {
-  const { setViewport, viewport } = useReactFlow();
-  const [scrolling, setScrolling] = useState(false);  // Prevent simultaneous scrolls
+  // Generate unique refs for each node
+  const nodeRefs = useRef({});
 
-  // Define the positions for each node (fixed positions)
-  const nodePositions = {
-    '1': { x: 500, y: 0 },
-    '2': { x: 500, y: 600 },
-    '3': { x: 500, y: 1200 },
-  };
-
-  // Function to smoothly scroll to the next node
-  const smoothScrollToNode = (targetNodeId) => {
-    if (scrolling) return;  // Prevent multiple scrolls happening at once
-
-    setScrolling(true);
-    const targetPosition = nodePositions[targetNodeId];
-    const startPosition = { ...viewport }; // Current viewport position
-    const target = { x: targetPosition.x, y: targetPosition.y }; // Target position for the viewport
-
-    const duration = 1000; // Scroll duration in ms
-    const startTime = performance.now();
-
-    // Animate the viewport scroll to the target node
-    const animateScroll = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const currentX = startPosition.x + (target.x - startPosition.x) * progress;
-      const currentY = startPosition.y + (target.y - startPosition.y) * progress;
-
-      // Set the new viewport position
-      setViewport({ x: currentX, y: currentY, zoom: 1.2 });
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll); // Continue the scroll animation
-      } else {
-        setScrolling(false); // Scroll animation finished
-      }
-    };
-
-    requestAnimationFrame(animateScroll); // Start the scroll animation
-  };
-
-  // Nodes setup with custom data for styling and content
+  // Initialize nodes with refs
   const nodes = [
     {
       id: '1',
       data: {
-        label: 'Hello',
         title: 'Node 1',
         description: 'This is the first node.',
         image: 'https://via.placeholder.com/150',
         buttonText: 'Next',
-        onClickNext: () => smoothScrollToNode('2'), // Focus on Node 2
+        onClickNext: () => scrollToNode('2'),
+        nodeRef: (nodeRefs.current['1'] = React.createRef()),
       },
       position: { x: 500, y: 0 },
       type: 'custom',
-      sourcePosition: 'bottom', // Connect edges to the bottom of this node
-      targetPosition: 'top', // Allow edges to connect from the top
     },
     {
       id: '2',
       data: {
-        label: 'World',
         title: 'Node 2',
         description: 'This is the second node.',
         image: 'https://via.placeholder.com/150',
         buttonText: 'Next',
-        onClickNext: () => smoothScrollToNode('3'), // Focus on Node 3
+        onClickNext: () => scrollToNode('3'),
+        nodeRef: (nodeRefs.current['2'] = React.createRef()),
       },
       position: { x: 500, y: 600 },
       type: 'custom',
-      sourcePosition: 'bottom',
-      targetPosition: 'top',
     },
     {
       id: '3',
       data: {
-        label: 'Welcome',
         title: 'Node 3',
         description: 'This is the third node.',
         image: 'https://via.placeholder.com/150',
         buttonText: 'Finish',
-        onClickNext: () => alert('End of flow!'), // Handle the last node
+        onClickNext: () => alert('End of flow!'),
+        nodeRef: (nodeRefs.current['3'] = React.createRef()),
       },
       position: { x: 500, y: 1200 },
       type: 'custom',
-      sourcePosition: 'bottom',
-      targetPosition: 'top',
     },
   ];
 
-  // Edges setup
   const edges = [
-    { id: 'e1-2', source: '1', target: '2', animated: true },
-    { id: 'e2-3', source: '2', target: '3', animated: true },
+    {
+      id: 'e1-2',
+      source: '1',
+      sourceHandle: 'source',
+      target: '2',
+      targetHandle: 'target',
+      animated: false,
+      style: { stroke: 'gray', strokeWidth: 1 },
+    },
+    {
+      id: 'e2-3',
+      source: '2',
+      sourceHandle: 'source',
+      target: '3',
+      targetHandle: 'target',
+      animated: false,
+      style: { stroke: 'gray', strokeWidth: 1 },
+    },
   ];
 
+  const scrollToNode = (targetNodeId) => {
+    const targetRef = nodeRefs.current[targetNodeId];
+    if (targetRef?.current) {
+      targetRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      nodeTypes={{ custom: CustomNode }} // Register the custom node type
-      fitView={false} // Disable auto fit for better control over positioning
-      style={{ height: '100%', minHeight: '1000px' }}
-    >
-      <Background />
-      <MiniMap />
-      <Controls />
-    </ReactFlow>
+      <Box
+        sx={{
+          height: '210vh', //add more height accordingly
+          width: '100%',
+          overflow: 'auto', // Enable scrolling
+          position: 'relative',
+          // bgcolor:'red'
+        }}
+      >
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={{ custom: CustomNode }}
+        fitView={false}
+        style={{ height: '100%' }}
+      >
+        <Background />
+        <MiniMap />
+        <Controls />
+      </ReactFlow>
+    </Box>
   );
 };
 
 const FlowWithProvider = () => {
   return (
     <ReactFlowProvider>
-      <Box
-        sx={{
-          width: '100%',
-          minHeight: '100vh',
-          height: 'auto',
-          overflow: 'hidden',
-          p: 2,
-        }}
-      >
-        <Typography variant="h6" sx={{ mb: 2, textAlign: 'center' }}>
-          Features Flow
-        </Typography>
+      <Box sx={{ width: '100%', p: 2 }}>
         <Features />
       </Box>
     </ReactFlowProvider>

@@ -6,6 +6,7 @@ import FlowWithProvider from './Features';
 function HeaderContent() {
     return (
         <Box
+            id="home"
             display="flex"
             flexDirection="column"
             justifyContent="center"
@@ -15,7 +16,7 @@ function HeaderContent() {
                 position: 'relative',
                 overflow: 'hidden',
                 width: '100%',
-                height: '100%',
+                height: 'auto',
                 borderRadius: 9,
                 // Add gradient background instead of the image
                 // background: 'linear-gradient(to right, #00c6ff, #0072ff)', // You can adjust these colors
@@ -56,7 +57,7 @@ function HeaderContent() {
                 </Stack>
             </Container>
             {/* <Features/> */}
-            <FlowWithProvider/>
+            {/* <FlowWithProvider/> */}
             {/* <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
                 <img
                     src={centerimg}
