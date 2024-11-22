@@ -1,5 +1,7 @@
 import { Box, Grid, Stack, Typography, Button, Container } from '@mui/material';
 import centerimg from '../assets/centerimg.png';
+import Features from './Features';
+import FlowWithProvider from './Features';
 
 function HeaderContent() {
     return (
@@ -53,8 +55,9 @@ function HeaderContent() {
                     </Grid>
                 </Stack>
             </Container>
-
-            <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
+            {/* <Features/> */}
+            <FlowWithProvider/>
+            {/* <Box display="flex" justifyContent="center" alignItems="center" maxWidth={600} mt={0}>
                 <img
                     src={centerimg}
                     alt="Demo Display Image"
@@ -65,7 +68,7 @@ function HeaderContent() {
                     }}
                     sizes="(max-width: 400px) 100vw, (max-width: 800px) 80vw, 500px"
                 />
-            </Box>
+            </Box> */}
         </Box>
     );
 }
