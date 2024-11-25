@@ -203,7 +203,7 @@ const Features = () => {
 const FlowWithProvider = () => {
   return (
     <ReactFlowProvider>
-      <Box sx={{ width: '100%', p: 2 }}>
+      <Box sx={{ width: '100%'}}>
         <Features />
       </Box>
     </ReactFlowProvider>
