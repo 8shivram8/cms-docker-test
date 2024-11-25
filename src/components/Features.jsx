@@ -178,7 +178,7 @@ const Features = () => {
   return (
     <Box
       sx={{
-        height: '210vh', //add more height accordingly
+        height: '230vh', //add more height accordingly
         width: '100%',
         overflow: 'auto', // Enable scrolling
         position: 'relative',
