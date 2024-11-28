@@ -4,13 +4,16 @@ import {
   Background,
   ReactFlowProvider,
   Handle,
+  useReactFlow
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Box, Typography, Card, CardContent, Button } from '@mui/material';
 
 const CustomNode = ({ data }) => {
+  const { onClickNext, onClickDetails, title, description, buttonText, detailsText, nodeRef } = data;
+  
   return (
-    <Box ref={data.nodeRef}>
+    <Box ref={nodeRef}>
       <Card
         sx={{
           width: { xs: '100%', sm: 400 },
@@ -43,7 +46,7 @@ const CustomNode = ({ data }) => {
               color: 'black',
             }}
           >
-            {data.title || 'Default Title'}
+            {title || 'Default Title'}
           </Typography>
           <Typography
             variant="body1"
@@ -56,13 +59,13 @@ const CustomNode = ({ data }) => {
               flexGrow: 1,
             }}
           >
-            {data.description ||
+            {description ||
               'This is a placeholder description. Add engaging content here to captivate your audience and deliver clear, concise information.'}
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
           {
-            data.buttonText && (
+            buttonText && (
               <Button
                 variant="contained"
                 sx={{
@@ -80,14 +83,14 @@ const CustomNode = ({ data }) => {
                     transform: 'scale(1.05)',
                   },
                 }}
-                onClick={data.onClickNext}
+                onClick={onClickNext}
               >
-                {data.buttonText}
+                {buttonText}
               </Button>
             )
           }
           {
-            data.detailsText && (
+            detailsText && (
               <Button
                 variant="outlined"
                 sx={{
@@ -104,14 +107,12 @@ const CustomNode = ({ data }) => {
                     transform: 'scale(1.05)',
                   },
                 }}
-                onClick={data.onClickDetails}
+                onClick={onClickDetails}
               >
-                {data.detailsText}
+                {detailsText}
               </Button>
             )
           }
-          
-
         </Box>
         <Handle
           type="source"
@@ -126,13 +127,15 @@ const CustomNode = ({ data }) => {
 
 const Features = () => {
   const nodeRefs = useRef({});
+  const { setCenter, zoomTo } = useReactFlow();  // Using ReactFlow instance methods
   const [isTransitioning, setIsTransitioning] = useState(true);
+  
   const nodes = [
     {
       id: '1',
       data: {
         title: 'Digital Signature',
-        description: 'Sign, share, and authenticate documents securely with legally binding digital signatures. Ensure trust and compliance with multi-layer security for remote approvals.',
+        description: 'Sign, share, and authenticate documents securely with legally binding digital signatures...',
         buttonText: 'Next',
         onClickNext: () => scrollToNode('2'),
         detailsText: 'Details',
@@ -146,7 +149,7 @@ const Features = () => {
       id: '2',
       data: {
         title: 'Workflow',
-        description: 'Boost productivity by creating custom workflows that automate tasks, set priorities, and improve team collaboration. Track project stages and streamline processes for efficient completion.',
+        description: 'Boost productivity by creating custom workflows that automate tasks...',
         buttonText: 'Next',
         onClickNext: () => scrollToNode('3'),
         detailsText: 'Details',
@@ -160,8 +163,7 @@ const Features = () => {
       id: '3',
       data: {
         title: 'Daily Diary',
-        description: 'Organize and track daily activities to enhance accountability. Perfect for managers and teams, this feature logs progress and highlights key actions to ensure continuous improvement.',
-        // buttonText: 'Finish',
+        description: 'Organize and track daily activities to enhance accountability...',
         detailsText: 'Details',
         onClickDetails: () => scrollToNode('6'),
         nodeRef: (nodeRefs.current['3'] = React.createRef()),
@@ -173,38 +175,35 @@ const Features = () => {
       id: '4',
       data: {
         title: 'Analytics',
-        description: 'Gain actionable insights through detailed analytics. Measure performance, identify trends, and make informed decisions to achieve strategic goals.',
-        // buttonText: 'Next',
+        description: 'Gain actionable insights through detailed analytics...',
         detailsText: 'Details',
         onClickNext: () => scrollToNode('5'),
         nodeRef: (nodeRefs.current['4'] = React.createRef()),
       },
-      position: { x: 1200, y: 500 },
+      position: { x: 1200, y: 0 },
       type: 'custom',
     },
     {
       id: '5',
       data: {
         title: 'Custom Integrations',
-        description: 'Seamlessly integrate with third-party applications and services. Customize your workflows to connect tools you use daily, ensuring smooth operations.',
-        // buttonText: 'Next',
+        description: 'Seamlessly integrate with third-party applications...',
         detailsText: 'Details',
         onClickNext: () => scrollToNode('6'),
         nodeRef: (nodeRefs.current['5'] = React.createRef()),
       },
-      position: { x: 1200, y: 1100 },
+      position: { x: 1200, y: 600 },
       type: 'custom',
     },
     {
       id: '6',
       data: {
         title: 'Team Collaboration',
-        description: 'Enhance team collaboration with real-time communication and project management tools. Keep everyone aligned and on track towards achieving shared goals.',
-        // buttonText: 'Finish',
+        description: 'Enhance team collaboration with real-time communication...',
         detailsText: 'Details',
         nodeRef: (nodeRefs.current['6'] = React.createRef()),
       },
-      position: { x: 1200, y: 1700 },
+      position: { x: 1200, y: 1200 },
       type: 'custom',
     },
   ];
@@ -217,16 +216,22 @@ const Features = () => {
     { id: 'e3-6', source: '3', target: '6', animated: true },
   ];
 
+  // Scroll to and center a node using React Flow's setCenter method
   const scrollToNode = (targetNodeId) => {
     const targetRef = nodeRefs.current[targetNodeId];
+  
     if (targetRef?.current) {
-      targetRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
+      // Get the bounding rectangle of the node
+      
+        targetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  // Center vertically
+          inline: 'center', // Center horizontally
+        });
+        
     }
   };
+  
 
   useEffect(() => {
     scrollToNode("6");
@@ -237,23 +242,20 @@ const Features = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <Box
-      sx={{
-        height: '320vh',
-        width: '100%',
-        overflow: 'auto',
-        position: 'relative',
-        
-      }}
-    >
+    <Box sx={{ height: '320vh', width: '100%', overflow: 'auto', position: 'relative' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={{ custom: CustomNode }}
         fitView={false}
-        style={{ height: '100%', width: '100%',opacity: isTransitioning ? 0 : 1,
-        transition: "opacity 0.3s ease-in-out"}}
+        style={{
+          height: '100%',
+          width: '100%',
+          opacity: isTransitioning ? 0 : 1,
+          transition: 'opacity 0.3s ease-in-out',
+        }}
       >
         <Background />
       </ReactFlow>
