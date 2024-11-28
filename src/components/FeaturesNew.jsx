@@ -10,10 +10,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import '@xyflow/react/dist/style.css';
 import { Box, Typography, Card, CardContent, Button } from '@mui/material';
 import CustomButton from './CustomButton';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 
 
 const CustomNode = ({ data }) => {
     const { onClickNext, onClickDetails, title, description, buttonText, detailsText, nodeRef } = data;
+    console.log("11111",data)
 
     return (
         <Box ref={nodeRef}>
@@ -97,7 +100,7 @@ const CustomNode = ({ data }) => {
                     )}
                 </CardContent>
 
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2, }}>
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end',gap:2, mt: 2, }}>
                     {
                         buttonText && (
                             <Button
@@ -119,7 +122,7 @@ const CustomNode = ({ data }) => {
                                 }}
                                 onClick={onClickNext}
                             >
-                                {buttonText}
+                             {buttonText}
                             </Button>
                         )
                     }
@@ -183,6 +186,8 @@ const Features = () => {
             id: '0',
             data: {
                 title: 'What are our user buildings?',
+                buttonText: <ArrowDownwardIcon />,
+                onClickNext: () => scrollToNode('1'),
                 nodeRef: (nodeRefs.current['0'] = React.createRef()),
             },
             position: { x: 500, y: 0 }, // Position at the top
@@ -192,7 +197,7 @@ const Features = () => {
             id: '1',
             data: {
                 title: 'Digital Signature',
-                description: 'Sign, share, and authenticate documents securely with legally binding digital signatures...',
+                description: 'Sign, share, and authenticate documents securely with legally binding digital signatures, ensuring privacy and compliance across various industries.',
                 buttonText: 'Next',
                 onClickNext: () => scrollToNode('2'),
                 detailsText: 'Details',
@@ -206,7 +211,7 @@ const Features = () => {
             id: '2',
             data: {
                 title: 'Workflow',
-                description: 'Boost productivity by creating custom workflows that automate tasks...',
+                description: 'Boost productivity by creating custom workflows that automate repetitive tasks, streamline processes, and ensure smoother project management from start to finish.',
                 buttonText: 'Next',
                 onClickNext: () => scrollToNode('3'),
                 detailsText: 'Details',
@@ -220,7 +225,7 @@ const Features = () => {
             id: '3',
             data: {
                 title: 'Daily Diary',
-                description: 'Organize and track daily activities to enhance accountability...',
+                description: 'Organize and track daily activities, set goals, and reflect on progress to enhance personal accountability, team productivity, and continuous improvement.',
                 detailsText: 'Details',
                 onClickDetails: () => scrollToNode('6'),
                 nodeRef: (nodeRefs.current['3'] = React.createRef()),
@@ -232,7 +237,7 @@ const Features = () => {
             id: '4',
             data: {
                 title: 'Analytics',
-                description: 'Gain actionable insights through detailed analytics...',
+                description: 'Gain actionable insights through detailed analytics, including trends, patterns, and performance metrics that help make data-driven decisions for business growth.',
                 detailsText: 'Details',
                 onClickNext: () => scrollToNode('5'),
                 nodeRef: (nodeRefs.current['4'] = React.createRef()),
@@ -244,7 +249,7 @@ const Features = () => {
             id: '5',
             data: {
                 title: 'Custom Integrations',
-                description: 'Seamlessly integrate with third-party applications...',
+                description: 'Seamlessly integrate with third-party applications, enhancing your system’s flexibility, automating data exchange, and improving efficiency across tools and platforms.',
                 detailsText: 'Details',
                 onClickNext: () => scrollToNode('6'),
                 nodeRef: (nodeRefs.current['5'] = React.createRef()),
@@ -256,7 +261,7 @@ const Features = () => {
             id: '6',
             data: {
                 title: 'Team Collaboration',
-                description: 'Enhance team collaboration with real-time communication...',
+                description: 'Enhance team collaboration with real-time communication, file sharing, task management, and seamless collaboration tools that drive alignment and teamwork.',
                 detailsText: 'Details',
                 nodeRef: (nodeRefs.current['6'] = React.createRef()),
             },
@@ -264,6 +269,7 @@ const Features = () => {
             type: 'custom',
         },
     ];
+    
 
 
 
@@ -306,12 +312,12 @@ const Features = () => {
     useEffect(() => {
         scrollToNode("6");
         const timer = setTimeout(() => {
-            scrollToNode("0");
-            setIsTransitioning(false);
+          scrollToNode("0");
+          setIsTransitioning(false);
         }, 800);
-
+    
         return () => clearTimeout(timer);
-    }, []);
+      }, []);    
 
     return (
         <Box sx={{ height: '320vh', width: '100%', overflow: 'auto', position: 'relative' }}>

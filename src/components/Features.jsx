@@ -135,7 +135,7 @@ const Features = () => {
       id: '1',
       data: {
         title: 'Digital Signature',
-        description: 'Sign, share, and authenticate documents securely with legally binding digital signatures...',
+        description: 'Digital signatures are a secure and legally binding way to sign and authenticate documents. They provide a high level of security by using encryption techniques to ensure that the signed document has not been tampered with. This technology is widely used in various industries such as finance, healthcare, and government to enhance the authenticity and integrity of electronic documents.',
         buttonText: 'Next',
         onClickNext: () => scrollToNode('2'),
         detailsText: 'Details',
@@ -149,7 +149,7 @@ const Features = () => {
       id: '2',
       data: {
         title: 'Workflow',
-        description: 'Boost productivity by creating custom workflows that automate tasks...',
+        description: 'Workflows are processes that define a series of tasks and their sequence in order to automate business operations. They help streamline processes, reduce manual intervention, and improve productivity by ensuring tasks are completed in a structured and efficient manner. By designing custom workflows, businesses can automate routine tasks, improve collaboration between teams, and reduce the time required to complete complex operations.',
         buttonText: 'Next',
         onClickNext: () => scrollToNode('3'),
         detailsText: 'Details',
@@ -163,7 +163,7 @@ const Features = () => {
       id: '3',
       data: {
         title: 'Daily Diary',
-        description: 'Organize and track daily activities to enhance accountability...',
+        description: 'A daily diary helps individuals and teams track their daily activities, set goals, and reflect on their progress. It is a valuable tool for improving accountability and productivity by providing a detailed log of what has been accomplished each day. Whether for personal use or as part of a team, maintaining a daily diary can help identify patterns, improve time management, and ensure that important tasks are completed on time.',
         detailsText: 'Details',
         onClickDetails: () => scrollToNode('6'),
         nodeRef: (nodeRefs.current['3'] = React.createRef()),
@@ -175,7 +175,7 @@ const Features = () => {
       id: '4',
       data: {
         title: 'Analytics',
-        description: 'Gain actionable insights through detailed analytics...',
+        description: 'Analytics involves the systematic use of data to uncover insights, identify trends, and make data-driven decisions. By analyzing key metrics, organizations can improve performance, optimize strategies, and identify opportunities for growth. Analytics tools can process large amounts of data and visualize it in meaningful ways, enabling better forecasting, improved customer experiences, and operational efficiency.',
         detailsText: 'Details',
         onClickNext: () => scrollToNode('5'),
         nodeRef: (nodeRefs.current['4'] = React.createRef()),
@@ -187,7 +187,7 @@ const Features = () => {
       id: '5',
       data: {
         title: 'Custom Integrations',
-        description: 'Seamlessly integrate with third-party applications...',
+        description: 'Custom integrations allow businesses to connect their existing systems with third-party applications, providing a seamless flow of data and enabling automated processes. By integrating with external software and platforms, companies can improve their workflows, enhance functionality, and create more personalized solutions tailored to their needs. Whether integrating with CRMs, ERPs, or other business tools, custom integrations help optimize operations and reduce inefficiencies.',
         detailsText: 'Details',
         onClickNext: () => scrollToNode('6'),
         nodeRef: (nodeRefs.current['5'] = React.createRef()),
@@ -199,7 +199,7 @@ const Features = () => {
       id: '6',
       data: {
         title: 'Team Collaboration',
-        description: 'Enhance team collaboration with real-time communication...',
+        description: 'Team collaboration tools enable seamless communication and coordination among team members, regardless of their physical location. These tools offer features like real-time messaging, video conferencing, file sharing, and task management, helping teams work together more effectively. Enhanced collaboration promotes innovation, boosts morale, and leads to better outcomes, particularly in remote work environments where teams are spread across different locations.',
         detailsText: 'Details',
         nodeRef: (nodeRefs.current['6'] = React.createRef()),
       },
@@ -207,7 +207,7 @@ const Features = () => {
       type: 'custom',
     },
   ];
-
+  
   const edges = [
     { id: 'e1-2', source: '1', target: '2', animated: false },
     { id: 'e2-3', source: '2', target: '3', animated: false },
