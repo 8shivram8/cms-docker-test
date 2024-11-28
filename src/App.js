@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import HeaderNav from "./components/HeaderNav";
 import HeaderContent from "./components/HeaderContent";
 import FlowWithProvider from "./components/Features";
+import FlowWithProviderNew from "./components/FeaturesNew";
 
 function App() {
   const theme = useTheme();
@@ -28,14 +29,15 @@ function App() {
           zIndex: -1, // Behind the content
           background: "linear-gradient(to right, #1F75FE, #42A5F5, #A7C7E7)", //bluish
           borderRadius: isMobile ? "0px" : isTablet ? "15px" : "25px", // Rounded borders
-          height: isMobile ? "600px" : isTablet ? "650px" : "800px", // Adjust height based on screen size
+          height: isMobile ? "600px" : isTablet ? "550px" : "650px", // Adjust height based on screen size
         }}
       />
 
       {/* Header Components */}
       <HeaderNav />
       <HeaderContent />
-      <FlowWithProvider/>
+      {/* <FlowWithProvider/> */}
+       <FlowWithProviderNew/>
 
       {/* Main content layout */}
       <Box

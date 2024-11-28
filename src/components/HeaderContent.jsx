@@ -37,7 +37,7 @@ function HeaderContent() {
                     <Typography variant="h6" paragraph sx={{ color: 'black', margin: '0 auto', fontWeight: 300, fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }}>
                         Create forms and manage workflows effortlessly. Colitionify centralizes collaboration with digital signatures and real-time updates.
                     </Typography>
-                    <Grid item xs={6} md={3} display="flex" justifyContent='center' mt={3}>
+                    {/* <Grid item xs={6} md={3} display="flex" justifyContent='center' mt={3}>
                         <Button
                             variant="outlined"
                             sx={{
@@ -53,7 +53,7 @@ function HeaderContent() {
                         >
                             Get Started
                         </Button>
-                    </Grid>
+                    </Grid> */}
                 </Stack>
             </Container>
             {/* <Features/> */}
