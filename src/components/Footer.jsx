@@ -41,16 +41,16 @@ function Footer() {
               Uniting Ideas, Delivering Results
             </Typography>
             <Box mt={2} display="flex" gap={1} justifyContent={isMobile ? 'center' : 'flex-start'}>
-              <IconButton sx={{ color: '#1F75FE' }} component="a" href="https://facebook.com" target='_blank'>
+              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://facebook.com" target='_blank'>
                 <FacebookIcon />
               </IconButton>
-              <IconButton sx={{ color: '#1F75FE' }} component="a" href="https://twitter.com" target='_blank'>
+              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://twitter.com" target='_blank'>
                 <TwitterIcon />
               </IconButton>
-              <IconButton sx={{ color: '#1F75FE' }} component="a" href="https://instagram.com" target='_blank'>
+              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://instagram.com" target='_blank'>
                 <InstagramIcon />
               </IconButton>
-              <IconButton sx={{ color: '#1F75FE' }} component="a" href="https://github.com" target='_blank'>
+              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://github.com" target='_blank'>
                 <GitHubIcon />
               </IconButton>
             </Box>

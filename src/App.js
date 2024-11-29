@@ -2,10 +2,9 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Mainlayout from "./components/Mainlayout";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 import HeaderNav from "./components/HeaderNav";
-import HeaderContent from "./components/HeaderContent";
-import FlowWithProvider from "./components/Features";
-import FlowWithProviderNew from "./components/FeaturesNew";
+
 
 function App() {
   const theme = useTheme();
@@ -17,29 +16,9 @@ function App() {
       display="flex"
       flexDirection="column"
       minHeight="100vh"
-      position="relative" // Required for absolute positioning of the gradient
     >
-      {/* Gradient Background */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: isMobile ? 0 : isTablet ? 40 : 50, // Adjust top space
-          left: isMobile ? 0 : isTablet ? 20 : 40, // Adjust left space
-          right: isMobile ? 0 : isTablet ? 20 : 40, // Adjust right space
-          zIndex: -1, // Behind the content
-          background: "linear-gradient(to right, #1F75FE, #42A5F5, #A7C7E7)", //bluish
-          borderRadius: isMobile ? "0px" : isTablet ? "15px" : "25px", // Rounded borders
-          height: isMobile ? "600px" : isTablet ? "550px" : "650px", // Adjust height based on screen size
-        }}
-      />
-
-      {/* Header Components */}
-      <HeaderNav />
-      <HeaderContent />
-      {/* <FlowWithProvider/> */}
-       <FlowWithProviderNew/>
-
-      {/* Main content layout */}
+    <HeaderNav/>
+      {/* <Header /> */}
       <Box
         component="main"
         flexGrow={1} // Ensures the main content takes up remaining space
@@ -51,7 +30,6 @@ function App() {
         <Mainlayout />
       </Box>
 
-      {/* Footer */}
       <Footer />
     </Box>
   );

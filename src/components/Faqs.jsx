@@ -41,8 +41,8 @@ function Faqs() {
                         variant="outlined"
                         sx={{
                             borderRadius: '20px',
-                            borderColor: '#1F75FE',
-                            color: '#1F75FE',
+                            borderColor: 'primary.main',
+                            color: 'primary.main',
                             textTransform: 'none',
                             padding: '3px 7px',
                             fontSize: '0.8rem',
@@ -51,7 +51,7 @@ function Faqs() {
                     >
                         FAQ
                     </Button>
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#1F75FE' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'primary.main' }}>
                         Frequently Asked Questions
                     </Typography>
                     <Box
