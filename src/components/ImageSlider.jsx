@@ -1,0 +1,92 @@
+import React, { useState } from "react";
+import { Box, Button } from "@mui/material";
+
+const ImageSlider = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        width: "60%",
+        height:"90%"
+      }}
+    >
+      <Button
+        onClick={goToPrevious}
+        sx={{
+          position: "absolute",
+          left: "10px",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          minWidth: "40px",
+          minHeight: "40px",
+          borderRadius: "50%",
+          fontSize: "18px",
+          "&:hover": {
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
+      >
+        &#8249;
+      </Button>
+
+      <Box
+        sx={{
+          flex: 1,
+          textAlign: "center",
+          overflow: "hidden",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <img
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex}`}
+          style={{
+            width: "100%",
+            maxHeight: "100%", 
+            objectFit: "cover",
+          }}
+        />
+      </Box>
+
+     
+      <Button
+        onClick={goToNext}
+        sx={{
+          position: "absolute",
+          right: "10px",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          minWidth: "40px",
+          minHeight: "40px",
+          borderRadius: "50%",
+          fontSize: "18px",
+          "&:hover": {
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
+      >
+        &#8250;
+      </Button>
+    </Box>
+  );
+};
+
+export default ImageSlider;

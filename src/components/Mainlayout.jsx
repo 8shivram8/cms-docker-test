@@ -8,9 +8,6 @@ import Internationalization from './Internationalization';
 import PricingSection from './PricingSection';
 import Faqs from './Faqs';
 
-
-
-
 function Mainlayout() {
     const features = [
         {
@@ -38,6 +35,7 @@ function Mainlayout() {
             alignItems="center"
             justifyContent="center"
         >
+         
             <Box id="pricing">
                 <PricingSection />
             </Box>
