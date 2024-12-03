@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Container } from '@mui/material';
+import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography } from '@mui/material';
 import { Link } from 'react-scroll';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
-import { Height } from '@mui/icons-material';
+
 
 function HeaderNav() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -28,9 +28,8 @@ function HeaderNav() {
             zIndex={1000}
             width="100%"
             sx={{
-                bgcolor:'white',
+                bgcolor: 'white',
                 padding: '6px 0',
-                borderBottom: '1px solid #ddd',
             }}
         >
             <Grid container alignItems="center" justifyContent="space-between" sx={{ paddingX: 2 }}>
@@ -41,7 +40,18 @@ function HeaderNav() {
                             <MenuIcon />
                         </IconButton>
                     )}
-                    <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} />
+                    {/* <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} /> */}
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            fontSize: '1.5rem',
+                            fontWeight: 400,
+                            lineHeight: 1.3,
+                            // marginBottom: 1,
+                        }}
+                    >
+                        Coalitionify
+                    </Typography>
                 </Grid>
 
                 {/* Navbar Links for Desktop */}
@@ -69,20 +79,25 @@ function HeaderNav() {
 
                 {/* Login Button */}
                 <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
-                    <Button
-                        color="inherit"
-                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
+                    {
+                        !isMobile && (
+                            <Button
+                                color="inherit"
+                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
 
-                        href="#signin"
+                                href="#signin"
 
-                    >
-                        Contact us
-                    </Button>
+                            >
+                                Contact us
+                            </Button>
+                        )
+                    }
                     <Button
                         color="primary"
                         sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
                         variant="contained"
-                        href="#signin"
+                        target='_blank'
+                        href="https://app.coalitionify.com/login"
 
                     >
                         Sign In

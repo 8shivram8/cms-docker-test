@@ -1,12 +1,9 @@
-
-
 import { createTheme } from '@mui/material/styles';
-
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#9c27b0',  
+      main: '#8200FF',  
     },
     secondary: {
       main: '#ff4081',  
@@ -20,7 +17,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif", 
+    fontFamily: "'Poppins', sans-serif", // Only Poppins font
     h1: {
       fontSize: '2.25rem',
       fontWeight: 600,
@@ -31,7 +28,6 @@ const theme = createTheme({
       fontWeight: 500,
       color: '#9c27b0',
     },
-    
   },
 });
 
