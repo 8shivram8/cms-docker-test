@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Container } from '@mui/material';
+import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography } from '@mui/material';
 import { Link } from 'react-scroll';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -9,6 +9,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+
 
 function HeaderNav() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -21,18 +22,14 @@ function HeaderNav() {
 
     return (
         <Box
-            alignSelf={'center'}
+            alignSelf="center"
             position="sticky"
             top={0}
             zIndex={1000}
-            width="100%" // Set the width to 100% to make it responsive
-            maxWidth="1100px" // Optionally set a max width for larger screens
+            width="100%"
             sx={{
-                backgroundColor: 'white',
-                padding: '10px 0',
-                boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.3)',
-                borderRadius: '15px',
-                margin: '15px auto', // Automatically center and add margin for spacing
+                bgcolor: 'white',
+                padding: '6px 0',
             }}
         >
             <Grid container alignItems="center" justifyContent="space-between" sx={{ paddingX: 2 }}>
@@ -43,27 +40,38 @@ function HeaderNav() {
                             <MenuIcon />
                         </IconButton>
                     )}
-                    <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} />
+                    {/* <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} /> */}
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            fontSize: '1.5rem',
+                            fontWeight: 400,
+                            lineHeight: 1.3,
+                            // marginBottom: 1,
+                        }}
+                    >
+                        Coalitionify
+                    </Typography>
                 </Grid>
 
                 {/* Navbar Links for Desktop */}
                 {!isMobile && (
                     <Grid item md={6} display="flex" justifyContent="center">
-                        <Stack direction="row" spacing={3}>
+                        <Stack direction="row" gap={4}>
                             <Link to="home" smooth={true} duration={500}>
                                 <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Home</Button>
                             </Link>
                             <Link to="about" smooth={true} duration={500}>
                                 <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>About Us</Button>
                             </Link>
-                            <Link to="features" smooth={true} duration={300}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Features</Button>
+                            <Link to="Products" smooth={true} duration={300}>
+                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Products</Button>
                             </Link>
                             <Link to="pricing" smooth={true} duration={300}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
+                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Resources</Button>
                             </Link>
-                            <Link to="contact" smooth={true} duration={500}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Contact Us</Button>
+                            <Link to="pricing" smooth={true} duration={500}>
+                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
                             </Link>
                         </Stack>
                     </Grid>
@@ -71,20 +79,28 @@ function HeaderNav() {
 
                 {/* Login Button */}
                 <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
+                    {
+                        !isMobile && (
+                            <Button
+                                color="inherit"
+                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
+
+                                href="#signin"
+
+                            >
+                                Contact us
+                            </Button>
+                        )
+                    }
                     <Button
-                        variant="outlined"
-                        sx={{
-                            borderRadius: '20px',
-                            backgroundColor: 'black',
-                            color: 'white',
-                            textTransform: 'none',
-                            '&:hover': {
-                                backgroundColor: 'white',
-                                color: '#007BFF',
-                            },
-                        }}
+                        color="primary"
+                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
+                        variant="contained"
+                        target='_blank'
+                        href="https://app.coalitionify.com/login"
+
                     >
-                        Login
+                        Sign In
                     </Button>
                 </Grid>
             </Grid>
@@ -125,20 +141,21 @@ function HeaderNav() {
                         },
                     }}
                 >
+
                     <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<HomeIcon sx={{ color: '#1F75FE' }} />}>Home</Button>
                     </Link>
                     <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
                         <Button startIcon={<InfoIcon sx={{ color: '#1F75FE' }} />}>About Us</Button>
                     </Link>
-                    <Link to="features" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Features</Button>
+                    <Link to="Products" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Products</Button>
+                    </Link>
+                    <Link to="Resources" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                        <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Resources</Button>
                     </Link>
                     <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>Pricing</Button>
-                    </Link>
-                    <Link to="contact" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Contact Us</Button>
+                        <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>pricing</Button>
                     </Link>
                 </Stack>
             </Drawer>

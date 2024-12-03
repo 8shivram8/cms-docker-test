@@ -70,7 +70,7 @@ function PricingSection() {
                                     boxShadow: 3,
                                     borderRadius: 2,
                                     bgcolor: plan.isPopular ? '#e8f5fe' : '#fff',
-                                    border: plan.isPopular ? '2px solid #1F75FE' : 'none',
+                                    border: plan.isPopular ? '2px solid Purple' : 'none',
                                     transition: 'transform 0.3s ease',
                                     '&:hover': {
                                         transform: 'scale(1.05)',
@@ -96,7 +96,7 @@ function PricingSection() {
                                             <Typography 
                                                 variant="subtitle2" 
                                                 sx={{ 
-                                                    bgcolor: '#1F75FE', 
+                                                    bgcolor: theme => theme.palette.primary.main, 
                                                     color: '#fff', 
                                                     padding: '4px 8px', 
                                                     borderRadius: 1, 
@@ -125,7 +125,7 @@ function PricingSection() {
                                             variant="h4" 
                                             sx={{ 
                                                 fontWeight: 'bold', 
-                                                color: '#1F75FE', 
+                                                color: "primary.main", 
                                                 marginBottom: 1 
                                             }}
                                         >
@@ -154,7 +154,7 @@ function PricingSection() {
                                                     justifyContent="center"
                                                 >
                                                     <CheckCircleIcon 
-                                                        sx={{ color: '#1F75FE', marginRight: 1 }} 
+                                                        sx={{ color: "primary.main", marginRight: 1 }} 
                                                     />
                                                     <Typography variant="body2" color="text.secondary">
                                                         {feature}

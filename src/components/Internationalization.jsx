@@ -30,7 +30,7 @@ function Internationalization() {
                 >
                     {/* Centered Icon */}
                     <Box display="flex" justifyContent="center">
-                        <LanguageIcon sx={{ fontSize: 50, color: '#1F75FE' }} />
+                        <LanguageIcon sx={{ fontSize: 50, color: 'primary.main' }} />
                     </Box>
                     
                     <Typography 
@@ -79,7 +79,7 @@ function Internationalization() {
                                     >
                                         <Avatar 
                                             sx={{ 
-                                                bgcolor: '#1F75FE', 
+                                                bgcolor: 'primary.main', 
                                                 width: 32, 
                                                 height: 32,
                                                 fontSize: '0.9rem',
