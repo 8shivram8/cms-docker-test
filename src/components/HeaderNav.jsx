@@ -83,8 +83,7 @@ function HeaderNav() {
                         !isMobile && (
                             <Button
                                 color="inherit"
-                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
-
+                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} 
                                 href="#signin"
 
                             >
@@ -94,7 +93,7 @@ function HeaderNav() {
                     }
                     <Button
                         color="primary"
-                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} // Add space between logo and button
+                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} 
                         variant="contained"
                         target='_blank'
                         href="https://app.coalitionify.com/login"
@@ -107,7 +106,7 @@ function HeaderNav() {
 
             {/* Drawer for Mobile/Tablet View */}
             <Drawer
-                anchor="top"
+                anchor="left"
                 open={drawerOpen}
                 onClose={handleDrawerToggle}
                 sx={{
@@ -125,7 +124,7 @@ function HeaderNav() {
                     spacing={2}
                     sx={{
                         padding: 2,
-                        alignItems: 'center',
+                        alignItems: 'left',
                         '& .MuiButton-root': {
                             color: 'black',
                             textTransform: 'none',
