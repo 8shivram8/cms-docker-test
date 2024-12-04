@@ -63,7 +63,6 @@ function Faqs() {
                             minWidth: '300px',
                             maxWidth: '700px',
                             mx: 'auto',
-                            paddingX: 2,
                         }}
                     >
                         <Typography

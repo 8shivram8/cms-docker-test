@@ -39,7 +39,7 @@ function Mainlayout() {
             <Box id="pricing">
                 <PricingSection />
             </Box>
-            <Internationalization />
+            {/* <Internationalization /> */}
             <Faqs />
         </Box>
     );

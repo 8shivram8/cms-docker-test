@@ -1,19 +1,23 @@
 import React from 'react'
 import intro from '../assets/sliderImages/introVideo.mp4'
-import { Box, Button } from "@mui/material";
+import { Box, Button,useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+
 const DigisignVideo = () => {
+
+  const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
   return (
     <Box
       sx={{
-        width: '40%', 
-        height: '498px', 
-        margin: '0 auto',
+        width: isMobile ? '100%' : '40%',
       }}
     >
       <video
         style={{
           width: '100%',
-          height: '100%',
+          height: '100%',  
           objectFit: 'cover', 
         }}
         autoPlay
@@ -21,7 +25,6 @@ const DigisignVideo = () => {
         loop 
       >
         <source src={intro} type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
     </Box>
   )

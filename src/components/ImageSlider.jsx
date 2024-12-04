@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button,useMediaQuery} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -24,8 +26,8 @@ const ImageSlider = ({ images }) => {
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        width: "60%",
-        height:"90%"
+        width: isMobile ? "100%" : "60%",
+        height:"100%"
       }}
     >
       <Button
