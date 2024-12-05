@@ -23,8 +23,6 @@ function Footer() {
       sx={{
         backgroundColor: 'black',
         color: 'white',
-        borderRadius: 3,
-        margin: isMobile ? '10px 5px' : isTablet ? '20px' : '40px 80px',
         padding: isMobile ? '20px' : isTablet ? '30px' : '40px',
         boxShadow: 3,
       }}
