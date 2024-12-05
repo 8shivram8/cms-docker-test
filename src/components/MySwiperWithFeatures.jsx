@@ -25,7 +25,7 @@ const MySwiper = () => {
                 <DigisignVideo />
             </Box>
 
-            <Box sx={{ textAlign: 'center', marginTop: 4 }}>
+            {/* <Box sx={{ textAlign: 'center', marginTop: 4 }}>
                 <Typography variant="h6">
                     Free every month - Try Now
                 </Typography>
@@ -48,7 +48,7 @@ const MySwiper = () => {
                 >
                     Free trial
                 </Button>
-            </Box>
+            </Box> */}
 
         </Box>
     );
