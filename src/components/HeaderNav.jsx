@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography } from '@mui/material';
+import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography, Divider } from '@mui/material';
 import { Link } from 'react-scroll';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -83,7 +83,7 @@ function HeaderNav() {
                         !isMobile && (
                             <Button
                                 color="inherit"
-                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} 
+                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
                                 href="#signin"
 
                             >
@@ -93,7 +93,7 @@ function HeaderNav() {
                     }
                     <Button
                         color="primary"
-                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }} 
+                        sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
                         variant="contained"
                         target='_blank'
                         href="https://app.coalitionify.com/login"
@@ -116,48 +116,96 @@ function HeaderNav() {
                         paddingTop: 2,
                         paddingBottom: 2,
                         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                     },
                 }}
             >
-                <Stack
-                    direction="column"
-                    spacing={2}
+                <Box>
+                    {/* Logo Section */}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            paddingBottom: 1,
+                        }}
+                    >
+                        <img
+                            src={Logo}
+                            alt="Company Logo"
+                            style={{
+                                width: '125px',
+                                height: 'auto',
+                                cursor: 'pointer',
+                            }}
+                            onClick={() => {
+                                handleDrawerToggle();
+                            }}
+                        />
+                    </Box>
+                    <Divider />
+
+                    <Stack
+                        direction="column"
+                        spacing={2}
+                        sx={{
+                            padding: 2,
+                            alignItems: 'left',
+                            '& .MuiButton-root': {
+                                color: 'black',
+                                textTransform: 'none',
+                                fontSize: '1rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 1,
+                                transition: '0.3s ease',
+                                '&:hover': {
+                                    color: 'primary.main',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                                },
+                            },
+                        }}
+                    >
+                        <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                            <Button startIcon={<HomeIcon sx={{ color: 'primary.main' }} />}>Home</Button>
+                        </Link>
+                        <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                            <Button startIcon={<InfoIcon sx={{ color: 'primary.main' }} />}>About Us</Button>
+                        </Link>
+                        <Link to="Products" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                            <Button startIcon={<StarIcon sx={{ color: 'primary.main' }} />}>Products</Button>
+                        </Link>
+                        <Link to="Resources" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                            <Button startIcon={<ContactMailIcon sx={{ color: 'primary.main' }} />}>Resources</Button>
+                        </Link>
+                        <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
+                            <Button startIcon={<MonetizationOnIcon sx={{ color: 'primary.main' }} />}>Pricing</Button>
+                        </Link>
+                    </Stack>
+                </Box>
+
+                {/* Contact Us Button */}
+                <Box
                     sx={{
                         padding: 2,
-                        alignItems: 'left',
-                        '& .MuiButton-root': {
-                            color: 'black',
-                            textTransform: 'none',
-                            fontSize: '1rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 1,
-                            transition: '0.3s ease',
-                            '&:hover': {
-                                color: 'primary.main',
-                                backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                            },
-                        },
+                        marginBottom:2,
+                        display: 'flex',
+                        justifyContent: 'center',
                     }}
                 >
-
-                    <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<HomeIcon sx={{ color: '#1F75FE' }} />}>Home</Button>
-                    </Link>
-                    <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<InfoIcon sx={{ color: '#1F75FE' }} />}>About Us</Button>
-                    </Link>
-                    <Link to="Products" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<StarIcon sx={{ color: '#1F75FE' }} />}>Products</Button>
-                    </Link>
-                    <Link to="Resources" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<ContactMailIcon sx={{ color: '#1F75FE' }} />}>Resources</Button>
-                    </Link>
-                    <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                        <Button startIcon={<MonetizationOnIcon sx={{ color: '#1F75FE' }} />}>pricing</Button>
-                    </Link>
-                </Stack>
+                    <Button
+                        color="primary"
+                        sx={{textTransform: 'none' }}
+                        variant="contained"
+                    >
+                        Contact Us
+                    </Button>
+                </Box>
             </Drawer>
+
+
         </Box>
     );
 }
