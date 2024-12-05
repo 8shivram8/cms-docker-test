@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import HeaderNav from "./components/HeaderNav";
 import MySwiperWithFeatures from "./components/MySwiperWithFeatures";
 import ImageSlider from "./components/ImageSlider";
+import Features from "./components/Features";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     >
     <HeaderNav/>
     <MySwiperWithFeatures/>
+    <Features/>
       <Box
         component="main"
         flexGrow={1}
