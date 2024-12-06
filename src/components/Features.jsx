@@ -3,28 +3,50 @@ import { Box, Typography, Button, Container, Grid, Card, CardContent, CardMedia 
 import digisign from '../assets/digisign.jpg';
 import workflow from '../assets/workflow.jpg';
 import dailydiary from '../assets/diary.jpg';
+import EastIcon from '@mui/icons-material/East';
 
 function Features() {
     const features = [
         {
-            title: "Tailored Workflows for Every Need",
-            description: "Design and automate workflows effortlessly! Create custom forms tailored to your requirements, enable multi-user access in a sequential manner, and seamlessly integrate collected data into your system. Simplify data collection and management like never before.",
-            image: `${workflow}`,
-            button: "Explore Templates"
-        },
-        {
-            title: "Effortless Digital Signing",
-            description: "Send, track, and sign documents digitally with ease. Automate workflows, save time, and ensure secure, legally-binding signatures—perfect for contracts, agreements, or approvals.",
+            title: "E-sign Workflow For Business",
+            description: [
+                "Digital Signatures Made Easy: Send, track, and sign documents effortlessly.",
+                "Automated Workflows: Save time by streamlining your document processes.",
+                "Secure and Legally Binding: Ensure every signature meets compliance standards.",
+                "Perfect for Every Need: Ideal for contracts, agreements, and approvals."
+            ],
             image: `${digisign}`,
-            button: "Start Signing Now"
+            button: "Explore More",
+            link: "/esign-workflow"  // Sample route
         },
         {
-            title: "Smart Daily Diary: Simplify Your Routine",
-            description: "Effortlessly track recurring data with our Daily Diary. Designed for scenarios like medical records, it integrates seamlessly with iWatch and Siri to provide reminders and hands-free input. Stay organized, save time, and ensure consistency with easy-to-use, voice-enabled updates.",
+            title: "Business Workflow Automation",
+            description: [
+                "Effortless Workflow Design: Create custom forms tailored to your unique requirements with ease.",
+                "Multi-User Access: Enable sequential access for multiple users to collaborate seamlessly.",
+                "Data Integration: Automatically integrate collected data into your system for efficient management.",
+                "Simplified Management: Streamline your data collection and workflows like never before."
+            ],
+            image: `${workflow}`,
+            button: "Explore More",
+            link: "/business-workflow"  // Sample route
+        },
+        {
+            title: "Daily Diary",
+            description: [
+                "Stay Consistent: Effortlessly track recurring data like medical records with ease.",
+                "Smart Integration: Seamlessly connect with iWatch and Siri for reminders and updates.",
+                "Hands-Free Convenience: Use voice-enabled input to save time and stay organized.",
+                "Time-Saving Solution: Designed for hassle-free, consistent data management."
+            ],
             image: `${dailydiary}`,
-            button: "Start Your Diary"
+            button: "Explore More",
+            link: "/daily-diary"  // Sample route
         },
     ];
+
+
+
 
     return (
         <Box
@@ -38,24 +60,21 @@ function Features() {
                     display: 'flex',        // Make the parent a flex container
                     justifyContent: 'center', // Center horizontally
                     alignItems: 'center',    // Center vertically
-                    // Full height of the viewport (optional, for vertical centering)
                 }}
             >
-                <Button
+                <Typography
                     variant="outlined"
                     sx={{
-                        borderRadius: '20px',
-                        borderColor: 'primary.main',
                         color: 'primary.main',
                         textTransform: 'none',
                         padding: '3px 7px',
-                        fontSize: '1.7rem',
+                        fontSize: '2.5rem',
                         mt: 1,
                         mb: 2
                     }}
                 >
                     Solutions
-                </Button>
+                </Typography>
             </Box>
 
             {features.map((feature, index) => (
@@ -64,7 +83,7 @@ function Features() {
                     spacing={3}
                     key={index}
                     direction={index % 2 === 0 ? "row" : "row-reverse"}
-                    alignItems="center"
+                    // alignItems="center"
                     sx={{ mb: 5, p: 2 }}
                 >
                     <Grid item xs={12} md={6}>
@@ -82,10 +101,8 @@ function Features() {
                         </Card>
                     </Grid>
 
-                    {/* Content Section */}
-                    <Grid item xs={12} md={6}>
-                        <CardContent sx={{ textAlign: 'left' }}>
-
+                    <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
+                        <CardContent sx={{ textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
                             <Typography
                                 variant="h5"
                                 component="div"
@@ -93,29 +110,46 @@ function Features() {
                             >
                                 {feature.title}
                             </Typography>
-                            <Typography
-                                variant="body1"
-                                color="text.secondary"
-                            >
-                                {feature.description}
-                            </Typography>
 
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    borderRadius: '20px',
-                                    borderColor: 'primary.main',
-                                    color: 'primary.main',
-                                    textTransform: 'none',
-                                    padding: '3px 7px',
-                                    fontSize: '1rem',
-                                    mt: 2
-                                }}
+                            <Typography variant="body1" color="text.secondary" component="ul" sx={{ paddingLeft: 2, listStyleType: "none", padding: 0, mt: 2 }}>
+                                {feature.description.map((point, index) => (
+                                    <li key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '15px', flexWrap: 'wrap' }}>
+                                        <EastIcon sx={{ marginRight: 1, minWidth: '24px' }} /> {/* Icon for bullet */}
+                                        <span style={{ flex: 1 }}>{point}</span> {/* Ensure point text stays aligned next to the icon */}
+                                    </li>
+                                ))}
+                            </Typography>
+                        </CardContent>
+
+                        {/* Positioned button at the bottom right */}
+                        <Button
+                            variant="outlined"
+                            endIcon={<EastIcon />}
+                            sx={{
+                                position: 'absolute',
+                                bottom: 10,
+                                right: 10,
+                                borderColor: 'primary.main',
+                                color: 'primary.main',
+                                textTransform: 'none',
+                                padding: '3px 7px',
+                                fontSize: '1rem',
+                            }}
+                        >
+                            <a
+                                href={feature.link} // React Router paths like /esign-workflow
+                                target="_blank" // Opens in a new tab
+                                rel="noopener noreferrer" // Security best practice
+                                style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 {feature.button}
-                            </Button>
-                        </CardContent>
+                            </a>
+                        </Button>
+
+
                     </Grid>
+
+
                 </Grid>
             ))}
         </Box>
