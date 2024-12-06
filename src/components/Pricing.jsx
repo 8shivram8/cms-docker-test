@@ -10,18 +10,18 @@ const Pricing = () => {
                 backgroundColor: '#E5E5E5',
             }}
         >
-            <Grid 
-                container 
-                spacing={2} 
-                alignItems="center" 
+            <Grid
+                container
+                spacing={2}
+                // alignItems="center"
                 justifyContent="center"
             >
-                <Grid 
-                    item 
-                    xs={12} 
-                    md={8} 
-                    sx={{ 
-                        textAlign: { xs: 'center', md: 'left' }, 
+                <Grid
+                    item
+                    xs={12}
+                    md={8}
+                    sx={{
+                        textAlign: { xs: 'center', md: 'left' },
                     }}
                 >
                     <Typography
@@ -47,16 +47,16 @@ const Pricing = () => {
                     </Typography>
                 </Grid>
 
-                <Grid 
-                    item 
-                    xs={12} 
-                    md={4} 
-                    sx={{ 
-                        display: 'flex', 
-                        justifyContent: 'center' 
+                <Grid
+                    item
+                    xs={12}
+                    md={4}
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center'
                     }}
                 >
-                    <Button
+                    {/* <Button
                         href="https://app.coalitionify.com/login"
                         target="_blank"
                         variant="contained"
@@ -72,7 +72,31 @@ const Pricing = () => {
                         }}
                     >
                         Start your free trial
-                    </Button>
+                    </Button> */}
+                    <Box sx={{ textAlign: 'center' }}>
+                        <Typography variant="h6">
+                            Free every month - Try Now
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                            Pay as you go. No credit card required.
+                        </Typography>
+                        <Button
+                            href='https://app.coalitionify.com/login'
+                            target='_blank'
+                            variant="contained"
+                            color="primary"
+                            endIcon=<EastIcon />
+                            sx={{
+                                maxWidth: '220px',
+                                mt: 2,
+                                fontSize: '1rem',
+                                fontWeight: 600,
+                                textTransform: 'capitalize',
+                            }}
+                        >
+                             Start your free trial
+                        </Button>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
