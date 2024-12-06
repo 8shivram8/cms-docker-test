@@ -10,10 +10,10 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/esign-workflow" element={<ESignWorkflow />} />
-            <Route path="/business-workflow" element={<BusinessWorkflow />} />
-            <Route path="/daily-diary" element={<DailyDiary />} />
-            <Route path="/IGBC-Certification" element={<Certification />} />
+            <Route path="/esignWorkflow" element={<ESignWorkflow />} />
+            <Route path="/businessWorkflow" element={<BusinessWorkflow />} />
+            <Route path="/dailyDiary" element={<DailyDiary />} />
+            <Route path="/IGBCCertification" element={<Certification />} />
         </Routes>
     )
 }

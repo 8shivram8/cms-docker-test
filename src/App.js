@@ -1,11 +1,5 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Mainlayout from "./components/Mainlayout";
-import Footer from "./components/Footer";
-import HeaderNav from "./components/HeaderNav";
-import MySwiperWithFeatures from "./components/MySwiperWithFeatures";
-import ImageSlider from "./components/ImageSlider";
-import Features from "./components/Features";
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from "./components/AppRoutes";
 

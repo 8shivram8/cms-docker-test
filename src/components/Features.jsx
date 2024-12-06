@@ -17,7 +17,7 @@ function Features() {
             ],
             image: `${digisign}`,
             button: "Explore More",
-            link: "/esign-workflow"  // Sample route
+            link: "/esignWorkflow"  // Sample route
         },
         {
             title: "Business Workflow Automation",
@@ -29,7 +29,7 @@ function Features() {
             ],
             image: `${workflow}`,
             button: "Explore More",
-            link: "/business-workflow"  // Sample route
+            link: "/businessWorkflow"  // Sample route
         },
         {
             title: "Daily Diary",
@@ -41,7 +41,7 @@ function Features() {
             ],
             image: `${dailydiary}`,
             button: "Explore More",
-            link: "/daily-diary"  // Sample route
+            link: "/dailyDiary"  // Sample route
         },
     ];
 
