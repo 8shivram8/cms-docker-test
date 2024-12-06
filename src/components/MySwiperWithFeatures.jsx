@@ -29,7 +29,7 @@ const MySwiper = () => {
                 sx={{
                     padding: 3,
                     mt:3,
-                    backgroundColor: '#E5E5E5',
+                    backgroundColor: '#f3f4f6',
                 }}
             >
                 <Grid
@@ -80,7 +80,7 @@ const MySwiper = () => {
                     >
                         <Box sx={{ textAlign: 'center' }}>
                             <Button
-                                href='/IGBC-Certification'
+                                href='/IGBCCertification'
                                 target='_blank'
                                 variant="contained"
                                 color="primary"

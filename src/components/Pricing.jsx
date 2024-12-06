@@ -7,7 +7,7 @@ const Pricing = () => {
         <Box
             sx={{
                 padding: 3,
-                backgroundColor: '#E5E5E5',
+                backgroundColor: '#f3f4f6',
             }}
         >
             <Grid
