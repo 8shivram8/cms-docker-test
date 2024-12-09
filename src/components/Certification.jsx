@@ -1,8 +1,14 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import logo1 from '../assets/logo1.png'; // Ensure this path is correct
+import ResponsiveFormDialog from './ResponsiveFormDialog';
 
 const Certification = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleDialogOpen = () => setOpen(true);
+  const handleDialogClose = () => setOpen(false);
+
   return (
     <Box
       sx={{
@@ -24,8 +30,8 @@ const Certification = () => {
           borderLeft: '3px solid #ccc',
           borderRight: '3px solid #ccc',
           boxShadow: 3,
-          position: 'relative', // For positioning the watermark
-          overflow: 'hidden', // Ensures the watermark does not overflow the box
+          position: 'relative', // For watermark positioning
+          overflow: 'hidden',
         }}
       >
         {/* Watermark image */}
@@ -38,11 +44,11 @@ const Certification = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '300px', // Adjust size as needed
+            width: '300px',
             height: 'auto',
-            opacity: 0.3, // Set opacity only for the watermark image
-            pointerEvents: 'none', // Ensures the watermark does not interfere with content interaction
-            zIndex: 0, // Ensures it stays behind the text
+            opacity: 0.3,
+            pointerEvents: 'none',
+            zIndex: 0,
           }}
         />
 
@@ -51,8 +57,7 @@ const Certification = () => {
           <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
             How Our Solutions Help Achieve IGBC Certification
           </Typography>
-
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3}}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Paperless Operations at the Core
             </Typography>
@@ -65,7 +70,7 @@ const Certification = () => {
           </Box>
 
           {/* Other sections */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               End-to-End Automation
             </Typography>
@@ -76,7 +81,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Enhanced Digital Signatures
             </Typography>
@@ -87,7 +92,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Eco-Friendly Data Management
             </Typography>
@@ -98,7 +103,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Contribution to Green Building Standards
             </Typography>
@@ -109,7 +114,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Real-Time Tracking and Insights
             </Typography>
@@ -120,7 +125,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap:1,mt:3 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Customized Solutions for Your Industry
             </Typography>
@@ -131,7 +136,7 @@ const Certification = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
               Positive Impact on Employee and Customer Engagement
             </Typography>
@@ -141,10 +146,22 @@ const Certification = () => {
               a brand that cares about the environment.
             </Typography>
           </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              mt: 4, 
+            }}
+          >
+            <Button variant="contained" color="primary" onClick={handleDialogOpen}>
+              contact
+            </Button>
+          </Box>
         </Box>
+          <ResponsiveFormDialog open={open} handleDialogClose={handleDialogClose}/>
       </Box>
-    </Box>
-  );
+      </Box>
+      );
 };
 
-export default Certification;
+      export default Certification;
