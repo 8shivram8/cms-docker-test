@@ -1,23 +1,28 @@
-import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography, Divider } from '@mui/material';
-import { Link } from 'react-scroll';
+import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography, Divider, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
-import Logo from '../assets/logo.png';
-import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
-import StarIcon from '@mui/icons-material/Star';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
+import { Link as RouterLink } from 'react-router-dom';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import MyDrawer from './MyDrawer';
 
 
 function HeaderNav() {
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleDrawerToggle = () => {
         setDrawerOpen(!drawerOpen);
+    };
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
     };
 
     return (
@@ -58,21 +63,85 @@ function HeaderNav() {
                 {!isMobile && (
                     <Grid item md={6} display="flex" justifyContent="center">
                         <Stack direction="row" gap={4}>
-                            <Link to="home" smooth={true} duration={500}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Home</Button>
-                            </Link>
-                            <Link to="about" smooth={true} duration={500}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>About Us</Button>
-                            </Link>
-                            <Link to="Products" smooth={true} duration={300}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Products</Button>
-                            </Link>
-                            <Link to="pricing" smooth={true} duration={300}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Resources</Button>
-                            </Link>
-                            <Link to="pricing" smooth={true} duration={500}>
-                                <Button color="inherit" sx={{ textTransform: 'none', fontSize: '1rem' }}>Pricing</Button>
-                            </Link>
+                            <Button
+                                component={RouterLink}
+                                to="/"
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            >
+                                Home
+                            </Button>
+                            <Button
+                                component={RouterLink}
+                                to="/about"
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            >
+                                About Us
+                            </Button>
+                            {/* <Button
+                                component={RouterLink}
+                                to="/products"
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            >
+                                Products
+                            </Button> */}
+                            <Button
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                                onClick={handleClick}
+                                endIcon={<KeyboardArrowDownIcon />}
+                            >
+                                Products
+                            </Button>
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                    'aria-labelledby': 'products-menu-button',
+                                }}
+                            >
+                                <MenuItem
+                                    component={RouterLink}
+                                    to="/esignWorkflow"
+                                    onClick={handleClose}
+                                >
+                                    eSign Workflow
+                                </MenuItem>
+                                <MenuItem
+                                    component={RouterLink}
+                                    to="/businessWorkflow"
+                                    onClick={handleClose}
+                                >
+                                    Business Workflow
+                                </MenuItem>
+                                <MenuItem
+                                    component={RouterLink}
+                                    to="/dailyDiary"
+                                    onClick={handleClose}
+                                >
+                                    Daily Diary
+                                </MenuItem>
+                            </Menu>
+
+                            <Button
+                                component={RouterLink}
+                                to="/resources"
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            >
+                                Resources
+                            </Button>
+                            <Button
+                                component={RouterLink}
+                                to="/pricing"
+                                color="inherit"
+                                sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            >
+                                Pricing
+                            </Button>
                         </Stack>
                     </Grid>
                 )}
@@ -104,8 +173,7 @@ function HeaderNav() {
                 </Grid>
             </Grid>
 
-            {/* Drawer for Mobile/Tablet View */}
-            <Drawer
+            {/* <Drawer
                 anchor="left"
                 open={drawerOpen}
                 onClose={handleDrawerToggle}
@@ -123,7 +191,7 @@ function HeaderNav() {
                 }}
             >
                 <Box>
-                    {/* Logo Section */}
+                    
                     <Box
                         sx={{
                             display: 'flex',
@@ -158,7 +226,7 @@ function HeaderNav() {
                                 textTransform: 'none',
                                 fontSize: '1rem',
                                 display: 'flex',
-                                alignItems: 'center',
+                                alignItems: 'left',
                                 gap: 1,
                                 transition: '0.3s ease',
                                 '&:hover': {
@@ -168,42 +236,34 @@ function HeaderNav() {
                             },
                         }}
                     >
-                        <Link to="home" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                            <Button startIcon={<HomeIcon sx={{ color: 'primary.main' }} />}>Home</Button>
-                        </Link>
-                        <Link to="about" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                            <Button startIcon={<InfoIcon sx={{ color: 'primary.main' }} />}>About Us</Button>
-                        </Link>
-                        <Link to="Products" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                            <Button startIcon={<StarIcon sx={{ color: 'primary.main' }} />}>Products</Button>
-                        </Link>
-                        <Link to="Resources" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                            <Button startIcon={<ContactMailIcon sx={{ color: 'primary.main' }} />}>Resources</Button>
-                        </Link>
-                        <Link to="pricing" smooth={true} duration={500} onClick={handleDrawerToggle}>
-                            <Button startIcon={<MonetizationOnIcon sx={{ color: 'primary.main' }} />}>Pricing</Button>
-                        </Link>
+
+                        <Button component={RouterLink} to="/" startIcon={<HomeIcon sx={{ color: 'primary.main' }} />}>Home</Button>
+                        <Button component={RouterLink} to="/about" startIcon={<InfoIcon sx={{ color: 'primary.main' }} />}>About Us</Button>
+                        <Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} startIcon={<StarIcon sx={{ color: 'primary.main' }} />}>Products</Button>
+                        <Button component={RouterLink} to="/resources" startIcon={<ContactMailIcon sx={{ color: 'primary.main' }} />}>Resources</Button>
+                        <Button component={RouterLink} to="/pricing" startIcon={<MonetizationOnIcon sx={{ color: 'primary.main' }} />}>Pricing</Button>
                     </Stack>
                 </Box>
 
-                {/* Contact Us Button */}
+               
                 <Box
                     sx={{
                         padding: 2,
-                        marginBottom:2,
+                        marginBottom: 2,
                         display: 'flex',
                         justifyContent: 'center',
                     }}
                 >
                     <Button
                         color="primary"
-                        sx={{textTransform: 'none' }}
+                        sx={{ textTransform: 'none' }}
                         variant="contained"
                     >
                         Contact Us
                     </Button>
                 </Box>
-            </Drawer>
+            </Drawer> */}
+            <MyDrawer drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle}/>
 
 
         </Box>

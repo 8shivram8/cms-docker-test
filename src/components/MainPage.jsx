@@ -18,7 +18,7 @@ const MainPage = () => {
             flexDirection="column"
             minHeight="100vh"
         >
-            <HeaderNav />
+            {/* <HeaderNav /> */}
             <MySwiper />
             <Features />
             <Box
@@ -32,7 +32,7 @@ const MainPage = () => {
                 <Mainlayout />
             </Box>
 
-            <Footer />
+            {/* <Footer /> */}
         </Box>
     )
 }
