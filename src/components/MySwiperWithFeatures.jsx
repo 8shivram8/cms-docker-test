@@ -81,7 +81,7 @@ const MySwiper = () => {
                         <Box sx={{ textAlign: 'center' }}>
                             <Button
                                 href='/IGBCCertification'
-                                target='_blank'
+                                // target='_blank'
                                 variant="contained"
                                 color="primary"
                                 endIcon=<EastIcon />

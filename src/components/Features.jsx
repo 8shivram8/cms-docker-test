@@ -139,9 +139,8 @@ function Features() {
                             }}
                         >
                             <a
-                                href={feature.link} // React Router paths like /esign-workflow
-                                target="_blank" // Opens in a new tab
-                                rel="noopener noreferrer" // Security best practice
+                                href={feature.link} 
+                                rel="noopener noreferrer"
                                 style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 {feature.button}
