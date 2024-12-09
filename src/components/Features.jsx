@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Typography, Button, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import { Box, Typography, Button, Container, Grid, Card, CardContent, CardMedia, useMediaQuery } from '@mui/material';
 import digisign from '../assets/digisign.jpg';
 import workflow from '../assets/workflow.jpg';
 import dailydiary from '../assets/diary.jpg';
 import EastIcon from '@mui/icons-material/East';
+import { useTheme } from '@emotion/react';
 
 function Features() {
     const features = [
@@ -29,7 +30,7 @@ function Features() {
             ],
             image: `${workflow}`,
             button: "Explore More",
-            link: "/businessWorkflow"  // Sample route
+            link: "/businessWorkflow"
         },
         {
             title: "Daily Diary",
@@ -41,10 +42,11 @@ function Features() {
             ],
             image: `${dailydiary}`,
             button: "Explore More",
-            link: "/dailyDiary"  // Sample route
+            link: "/dailyDiary"
         },
     ];
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
 
 
@@ -127,7 +129,7 @@ function Features() {
                             endIcon={<EastIcon />}
                             sx={{
                                 position: 'absolute',
-                                bottom: 10,
+                                bottom: isMobile ? 0 : 10,
                                 right: 10,
                                 borderColor: 'primary.main',
                                 color: 'primary.main',
