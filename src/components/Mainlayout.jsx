@@ -36,10 +36,10 @@ function Mainlayout() {
             alignItems="center"
             justifyContent="center"
         >
-            <Box id="pricing">
+            {/* <Box id="pricing">
                 <PricingSection />
             </Box>
-            <Internationalization />
+            <Internationalization /> */}
             <Faqs />
         </Box>
     );
