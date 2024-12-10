@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import sign from '../../assets/digisign.jpg'
+import FlowWithProviderNew from './FeaturesNew';
 
 const ESignWorkflow = () => {
   const [toggleValue, setToggleValue] = useState('features');
@@ -169,6 +170,7 @@ const ESignWorkflow = () => {
                     <Box sx={{ flex: 1, textAlign: 'left' }}>
                       <Typography variant="body1">{feature.graphDescription}</Typography>
                     </Box>
+                    {/* <FlowWithProviderNew/> */}
                   </Box>
                 </AccordionDetails>
               </Accordion>
