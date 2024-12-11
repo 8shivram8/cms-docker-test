@@ -4,15 +4,12 @@ import logo1 from '../assets/logo1.png'; // Ensure this path is correct
 import ResponsiveFormDialog from './ResponsiveFormDialog';
 
 const Certification = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleDialogOpen = () => setOpen(true);
-  const handleDialogClose = () => setOpen(false);
 
   return (
     <Box
       sx={{
         display: 'flex',
+        // flexDirection:'column',
         justifyContent: 'center',
         minHeight: '100vh',
         bgcolor: 'grey.100',
@@ -35,6 +32,10 @@ const Certification = () => {
         }}
       >
         {/* Watermark image */}
+        
+
+        {/* Content */}
+        <Box sx={{ position: 'relative', zIndex: 1 }}>
         <Box
           component="img"
           src={logo1}
@@ -51,9 +52,6 @@ const Certification = () => {
             zIndex: 0,
           }}
         />
-
-        {/* Content */}
-        <Box sx={{ position: 'relative', zIndex: 1 }}>
           <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
             How Our Solutions Help Achieve IGBC Certification
           </Typography>
@@ -146,22 +144,14 @@ const Certification = () => {
               a brand that cares about the environment.
             </Typography>
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              mt: 4, 
-            }}
-          >
-            <Button variant="contained" color="primary" onClick={handleDialogOpen}>
-              contact
-            </Button>
-          </Box>
         </Box>
-          <ResponsiveFormDialog open={open} handleDialogClose={handleDialogClose}/>
+        <Box>
+          <ResponsiveFormDialog />
+        </Box>
       </Box>
-      </Box>
-      );
+
+    </Box>
+  );
 };
 
-      export default Certification;
+export default Certification;

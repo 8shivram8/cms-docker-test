@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import {
-  Dialog,
-  DialogContent,
   Typography,
   Grid,
   TextField,
   FormHelperText,
   Box,
   Button,
+  Snackbar,
   IconButton
 } from '@mui/material';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CloseIcon from '@mui/icons-material/Close';
 
-const ResponsiveFormDialog = ({ open, handleDialogClose }) => {
+const ResponsiveForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +23,8 @@ const ResponsiveFormDialog = ({ open, handleDialogClose }) => {
     email: '',
     description: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,92 +74,80 @@ const ResponsiveFormDialog = ({ open, handleDialogClose }) => {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      setIsSubmitted(true);
+      setIsSnackbarOpen(true);
+      setShowSuccessMessage(true);
       resetForm();
     }
   };
 
-  const handleCancel = () => {
-    resetForm();
-    setIsSubmitted(false);
-    handleDialogClose();
+  const handleCloseSnackbar = () => {
+    setIsSnackbarOpen(false);
+    setShowSuccessMessage(false);
   };
 
   return (
-    <Dialog open={open} onClose={handleCancel} fullWidth maxWidth="sm">
-      <Box display="flex" justifyContent="space-between" alignItems="center" p={1}>
-        <Typography variant="h6" sx={{ ml: 1 }}>
-          {isSubmitted ? '' : 'Fill out the form'}
-        </Typography>
-        <IconButton onClick={handleCancel}>
-          <CloseIcon />
-        </IconButton>
-      </Box>
-      <DialogContent>
-        {isSubmitted ? (
-          <Box textAlign="center">
-            <CheckCircleRoundedIcon color="success" sx={{ fontSize: 45, mb: 1 }} />
-            <Typography variant="h6">Our team will contact you soon</Typography>
-          </Box>
-        ) : (
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Name"
-                variant="outlined"
-                required
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                error={Boolean(errors.name)}
-              />
-              {errors.name && <FormHelperText error>{errors.name}</FormHelperText>}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Email"
-                type="email"
-                variant="outlined"
-                required
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                error={Boolean(errors.email)}
-              />
-              {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Description"
-                multiline
-                rows={4}
-                variant="outlined"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} container justifyContent="flex-end">
-              <Button onClick={handleCancel} color="primary" variant="outlined">
-                Cancel
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                onClick={handleSubmit}
-                sx={{ ml: 2 }}
-              >
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        )}
-      </DialogContent>
-    </Dialog>
+    <Box sx={{ maxWidth: 900, mx: 'auto', p: 3, mt: 2 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Typography variant="h5" gutterBottom>
+            Fill out the form
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            fullWidth
+            label="Name"
+            variant="outlined"
+            required
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            error={Boolean(errors.name)}
+          />
+          {errors.name && <FormHelperText error>{errors.name}</FormHelperText>}
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            fullWidth
+            label="Email"
+            type="email"
+            variant="outlined"
+            required
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={Boolean(errors.email)}
+          />
+          {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Description"
+            multiline
+            rows={4}
+            variant="outlined"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+          {showSuccessMessage && (
+            <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+              <CheckCircleRoundedIcon color="success" sx={{ mr: 1 }} />
+              <Typography variant="body1" color="textSecondary">
+                Our team will contact you soon
+              </Typography>
+            </Box>
+          )}
+        </Grid>
+        <Grid item xs={12} container justifyContent="flex-end">
+          <Button color="primary" variant="contained" onClick={handleSubmit} sx={{minWidth:'166px'}}>
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
-export default ResponsiveFormDialog;
+export default ResponsiveForm;
