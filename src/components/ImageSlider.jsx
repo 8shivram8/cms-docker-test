@@ -1,12 +1,22 @@
-import React, { useState } from "react";
-import { Box, Button,useMediaQuery} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 1500);
+
+    return () => clearInterval(intervalId);
+  }, [images.length]);
+
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -27,7 +37,7 @@ const ImageSlider = ({ images }) => {
         justifyContent: "center",
         position: "relative",
         width: isMobile ? "100%" : "60%",
-        height:"100%"
+        height: "100%",
       }}
     >
       <Button
@@ -62,13 +72,12 @@ const ImageSlider = ({ images }) => {
           alt={`Slide ${currentIndex}`}
           style={{
             width: "100%",
-            maxHeight: "100%", 
+            maxHeight: "100%",
             objectFit: "cover",
           }}
         />
       </Box>
 
-     
       <Button
         onClick={goToNext}
         sx={{
