@@ -151,12 +151,12 @@ function HeaderNav() {
                     {
                         !isMobile && (
                             <Button
-                                color="inherit"
+                                color="primary"
                                 sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
-                                href="#signin"
+                                href="#contact"
 
                             >
-                                Contact us
+                                Book Demo
                             </Button>
                         )
                     }
@@ -166,7 +166,6 @@ function HeaderNav() {
                         variant="contained"
                         target='_blank'
                         href="https://app.coalitionify.com/login"
-
                     >
                         Sign In
                     </Button>

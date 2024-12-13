@@ -133,7 +133,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                     sx={{ textTransform: 'none' }}
                     variant="contained"
                 >
-                    Contact Us
+                    Book Demo
                 </Button>
             </Box>
         </Drawer>
