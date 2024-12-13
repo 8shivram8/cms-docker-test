@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MyDrawer from './MyDrawer';
+import { Link } from 'react-scroll';
 
 
 function HeaderNav() {
@@ -52,7 +53,7 @@ function HeaderNav() {
                         to="/"
                         color='black'
                         sx={{
-                            textDecoration:'none',
+                            textDecoration: 'none',
                             fontSize: '1.5rem',
                             fontWeight: 400,
                             lineHeight: 1.3,
@@ -154,15 +155,26 @@ function HeaderNav() {
                 <Grid item xs={6} md={3} display="flex" justifyContent="flex-end">
                     {
                         !isMobile && (
-                            <Button
-                                variant='outlined'
-                                color="primary"
-                                sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
-                                href="#contact"
-
+                            <Link
+                                to="contact"  
+                                smooth={true}  
+                                duration={500} 
+                                spy={true}     
+                                easing="easeInOutQuart"
                             >
-                                Book Demo
-                            </Button>
+                                <Button
+                                    variant="outlined"
+                                    color="primary"
+                                    sx={{
+                                        marginLeft: 2,
+                                        textTransform: 'none',
+                                        fontSize: '1rem',
+                                    }}
+                                >
+                                    Book Demo
+                                </Button>
+                            </Link>
+
                         )
                     }
                     <Button
