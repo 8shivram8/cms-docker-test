@@ -9,6 +9,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import logo from '../assets/logo.png';
+import { Link } from 'react-scroll';
 
 const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
     const [isProductsOpen, setProductsOpen] = useState(false);
@@ -24,7 +25,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
             onClose={handleDrawerToggle}
             sx={{
                 '& .MuiDrawer-paper': {
-                    width: 240, 
+                    width: 240,
                     backgroundColor: 'white',
                     color: 'black',
                     paddingTop: 2,
@@ -37,7 +38,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
             }}
         >
             <Box>
-               
+
                 <Box
                     sx={{
                         display: 'flex',
@@ -64,10 +65,10 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                     spacing={2}
                     sx={{
                         padding: 2,
-                        alignItems: 'flex-start', 
+                        alignItems: 'flex-start',
                         '& .MuiButton-root': {
-                            width: '100%', 
-                            justifyContent: 'flex-start', 
+                            width: '100%',
+                            justifyContent: 'flex-start',
                             color: 'black',
                             textTransform: 'none',
                             fontSize: '1rem',
@@ -83,7 +84,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                     <Button component={RouterLink} to="/" startIcon={<HomeIcon sx={{ color: 'primary.main' }} />}>Home</Button>
                     <Button component={RouterLink} to="/about" startIcon={<InfoIcon sx={{ color: 'primary.main' }} />}>About Us</Button>
 
-                    
+
                     <Button
                         onClick={handleProductsToggle}
                         endIcon={isProductsOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -95,10 +96,10 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                         <Stack
                             spacing={1}
                             sx={{
-                                pl: 4, 
+                                pl: 4,
                                 '& .MuiButton-root': {
-                                    width: 'auto', 
-                                    justifyContent: 'flex-start', 
+                                    width: 'auto',
+                                    justifyContent: 'flex-start',
                                 },
                             }}
                         >
@@ -128,13 +129,21 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                     justifyContent: 'center',
                 }}
             >
-                <Button
-                    color="primary"
-                    sx={{ textTransform: 'none' }}
-                    variant="contained"
+                <Link
+                    to="contact"
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    easing="easeInOutQuart"
                 >
-                    Book Demo
-                </Button>
+                    <Button
+                        color="primary"
+                        sx={{ textTransform: 'none' }}
+                        variant="contained"
+                    >
+                        Book Demo
+                    </Button>
+                </Link>
             </Box>
         </Drawer>
     );

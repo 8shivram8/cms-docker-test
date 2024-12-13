@@ -105,7 +105,7 @@ const ContactForm = () => {
     };
 
     return (
-        <Box
+        <Box 
             sx={{
                 display: 'flex',
                 flexDirection: isSmallScreen ? 'column' : 'row',
