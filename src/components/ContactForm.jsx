@@ -6,13 +6,15 @@ import {
     FormHelperText,
     Box,
     Button,
-    Snackbar,
+    useMediaQuery,
     IconButton
 } from '@mui/material';
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import CloseIcon from '@mui/icons-material/Close';
+import EastIcon from '@mui/icons-material/East';
+import { useTheme } from '@emotion/react';
 
 const ContactForm = () => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [formData, setFormData] = useState({
         name: '',
         organization: '',
@@ -25,7 +27,6 @@ const ContactForm = () => {
         email: '',
         useCase: ''
     });
-    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const handleChange = (e) => {
@@ -82,7 +83,6 @@ const ContactForm = () => {
 
     const handleSubmit = async () => {
         if (validateForm()) {
-            // Call API on submit
             try {
                 const response = await fetch('https://your-api-endpoint.com/submit', {
                     method: 'POST',
@@ -93,7 +93,6 @@ const ContactForm = () => {
                 });
 
                 if (response.ok) {
-                    setIsSnackbarOpen(true);
                     setShowSuccessMessage(true);
                     resetForm();
                 } else {
@@ -105,104 +104,104 @@ const ContactForm = () => {
         }
     };
 
-    const handleCloseSnackbar = () => {
-        setIsSnackbarOpen(false);
-        setShowSuccessMessage(false);
-    };
-
     return (
-        <Box sx={{ maxWidth: 900, mx: 'auto', p: 3, mt: 2 }}>
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <Typography
-                        variant="h5"
-                        gutterBottom
-                        sx={{ textAlign: 'center', color: 'primary.main' }}
-                    >
-                        Book a demo
-                    </Typography>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: isSmallScreen ? 'column' : 'row',
+                width: '100%',
+                gap: 2,
+                mb: 5,
+                mt: 3,
+                backgroundColor: '#f3f4f6',
+            }}
+        >
+            {/* Left Box */}
+            <Box
+                sx={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'left',
+                    ml: !isSmallScreen ? 5 : 2,
 
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <TextField
-                        fullWidth
-                        label="Your Name"
-                        variant="outlined"
-                        required
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        error={Boolean(errors.name)}
-                    />
-                    {errors.name && <FormHelperText error>{errors.name}</FormHelperText>}
-                </Grid>
+                }}
+            >
+                {/* <Button variant='outlined' color="primary" size="medium" sx={{ textTransform: 'none', fontSize: '1rem', alignSelf: 'flex-end', borderRadius: 10 }} endIcon=<EastIcon />>
+                    Book a Demo
+                </Button> */}
+                <Typography
+                    sx={{
+                        fontSize: !isSmallScreen ? '3rem' : '2rem',
+                        fontWeight: 700,
+                        color: 'primary.main',
+                    }}
+                >
+                    Let's see if we are <br /> a good fit
+                </Typography>
+                <Typography
+                    sx={{
+                        // mt: 2,
+                        fontSize: !isSmallScreen ? '3rem' : '2rem',
+                        fontWeight: 700,
+                        color: 'black',
+                    }}
+                >
+                    Schedule a call <br /> with our team
+                </Typography>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        mt: 6,
+                        fontSize: !isSmallScreen ? '1rem' : '0.8rem',
+                    }}
+                >
+                    We are excited to see if we are a good fit. Expect a response within 24 hours.
+                </Typography>
+            </Box>
 
-                <Grid item xs={12} md={6}>
+            {/* Right Box */}
+            <Box
+                sx={{
+                   
+                    flex: 1,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+
+                }}
+            >
+                <Box
+                    component="form"
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 2,
+                        width: '100%',
+                        maxWidth: 500,
+                        m: 3,
+
+                    }}
+                >
+                    <TextField onChange={handleChange} label="Name" variant="outlined" fullWidth />
+                    <TextField onChange={handleChange} label="Email" variant="outlined" type="email" fullWidth />
+                    <TextField onChange={handleChange} label="Organization Name" variant="outlined" fullWidth />
                     <TextField
-                        fullWidth
-                        label="Email Id"
-                        type="email"
-                        variant="outlined"
-                        required
-                        name="email"
-                        value={formData.email}
                         onChange={handleChange}
-                        error={Boolean(errors.email)}
-                    />
-                    {errors.email && <FormHelperText error>{errors.email}</FormHelperText>}
-                </Grid>
-                <Grid item xs={12} md={12}>
-                    <TextField
-                        fullWidth
-                        label="Organization Name"
+                        label="Use Cases"
                         variant="outlined"
-                        name="organization"
-                        value={formData.organization}
-                        onChange={handleChange}
-                        error={Boolean(errors.organization)}
-                    />
-                    {errors.organization && <FormHelperText error>{errors.organization}</FormHelperText>}
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        label="Your Use Case"
                         multiline
                         rows={4}
-                        variant="outlined"
-                        required
-                        name="useCase"
-                        value={formData.useCase}
-                        onChange={handleChange}
-                        error={Boolean(errors.useCase)}
+                        fullWidth
                     />
-                    {errors.useCase && <FormHelperText error>{errors.useCase}</FormHelperText>}
-                </Grid>
-                <Grid item xs={12} container justifyContent="flex-end">
-                    <Button color="primary" variant="contained" onClick={handleSubmit} sx={{ minWidth: '166px' }}>
-                        Submit
+                    <Button variant="contained" color="primary" size="large" sx={{ textTransform: 'none', fontSize: '1rem' }} onClick={handleSubmit}>
+                        Book Demo
                     </Button>
-                </Grid>
-            </Grid>
-
-            {/* Success Snackbar */}
-            <Snackbar
-                open={isSnackbarOpen}
-                autoHideDuration={6000}
-                onClose={handleCloseSnackbar}
-                message="Form submitted successfully"
-                action={
-                    <IconButton
-                        size="small"
-                        aria-label="close"
-                        color="inherit"
-                        onClick={handleCloseSnackbar}
-                    >
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                }
-            />
+                </Box>
+            </Box>
         </Box>
+
     );
 };
 

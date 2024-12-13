@@ -24,10 +24,9 @@ const MainPage = () => {
             <Box
                 component="main"
                 flexGrow={1}
-                mt={2}
-                sx={{
-                    padding: isMobile ? "10px 5px" : isTablet ? "20px 10px" : "40px 20px",
-                }}
+                // sx={{
+                //     padding: isMobile ? "10px 5px" : isTablet ? "20px 10px" : "40px 20px",
+                // }}
             >
                 <Mainlayout />
             </Box>
