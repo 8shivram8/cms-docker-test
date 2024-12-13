@@ -48,7 +48,11 @@ function HeaderNav() {
                     {/* <img src={Logo} alt="Colitionify Logo" height={40} style={{ marginRight: '10px' }} /> */}
                     <Typography
                         variant="h5"
+                        component={RouterLink}
+                        to="/"
+                        color='black'
                         sx={{
+                            textDecoration:'none',
                             fontSize: '1.5rem',
                             fontWeight: 400,
                             lineHeight: 1.3,
@@ -151,7 +155,7 @@ function HeaderNav() {
                     {
                         !isMobile && (
                             <Button
-                            variant='outlined'
+                                variant='outlined'
                                 color="primary"
                                 sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
                                 href="#contact"
@@ -263,7 +267,7 @@ function HeaderNav() {
                     </Button>
                 </Box>
             </Drawer> */}
-            <MyDrawer drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle}/>
+            <MyDrawer drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} />
 
 
         </Box>
