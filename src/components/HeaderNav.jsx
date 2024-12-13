@@ -151,6 +151,7 @@ function HeaderNav() {
                     {
                         !isMobile && (
                             <Button
+                            variant='outlined'
                                 color="primary"
                                 sx={{ marginLeft: 2, textTransform: 'none', fontSize: '1rem', }}
                                 href="#contact"
