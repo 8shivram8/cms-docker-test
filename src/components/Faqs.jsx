@@ -34,7 +34,7 @@ function Faqs() {
     ];
 
     return (
-        <Box component="section" sx={{ paddingY: 6, marginTop: 5, bgcolor: '#fff' }}>
+        <Box component="section" sx={{ paddingY: 6, bgcolor: '#fff' }}>
             <Container maxWidth="lg">
                 <Box textAlign="center" sx={{ marginBottom: 4 }}>
                     <Button
