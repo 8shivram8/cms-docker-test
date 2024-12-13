@@ -8,6 +8,7 @@ import Internationalization from './Internationalization';
 import PricingSection from './PricingSection';
 import Faqs from './Faqs';
 import Features from './Features';
+import ContactForm from './ContactForm';
 
 function Mainlayout() {
     const features = [
@@ -32,7 +33,7 @@ function Mainlayout() {
         <Box
             display="flex"
             flexDirection="column"
-            minHeight="100vh"
+            // minHeight="100vh"
             alignItems="center"
             justifyContent="center"
         >
@@ -41,6 +42,7 @@ function Mainlayout() {
             </Box>
             <Internationalization /> */}
             <Faqs />
+            <ContactForm/>
         </Box>
     );
 }
