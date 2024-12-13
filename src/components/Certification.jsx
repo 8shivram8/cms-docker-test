@@ -9,7 +9,6 @@ const Certification = () => {
     <Box
       sx={{
         display: 'flex',
-        // flexDirection:'column',
         justifyContent: 'center',
         minHeight: '100vh',
         bgcolor: 'grey.100',
@@ -144,7 +143,7 @@ const Certification = () => {
               a brand that cares about the environment.
             </Typography>
           </Box>
-        </Box>
+        </Box>  
         <Box>
           <ResponsiveFormDialog />
         </Box>
