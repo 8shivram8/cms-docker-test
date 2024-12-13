@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import sign from '../../assets/digisign.jpg'
 import FlowWithProviderNew from './FeaturesNew';
 
+
 const ESignWorkflow = () => {
   const [toggleValue, setToggleValue] = useState('features');
 
@@ -20,6 +21,13 @@ const ESignWorkflow = () => {
       setToggleValue(newValue);
     }
   };
+  const [expanded, setExpanded] = useState(false);  // Track which accordion is expanded
+
+  // Handle accordion expansion
+  const handleAccordionChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const ESignFeatures = [
     {
       title: "Sign Sequence",
@@ -141,40 +149,43 @@ const ESignWorkflow = () => {
             boxShadow: 2, p: 3, bgcolor: '#f3f4f6'
           }}>
 
-            {ESignFeatures.map((feature, index) => (
-              <Accordion key={index}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  sx={{
-                    alignItems: 'flex-start',
-                    '& .MuiAccordionSummary-expandIconWrapper': {
-                      alignItems: 'flex-start',
-                      marginTop: '12px',
-                    },
-                  }}
+            {ESignFeatures.map((feature, index) => {
+              const panelId = `panel-${index}`;
+
+              return (
+                <Accordion
+                  key={index}
+                  expanded={expanded === panelId}  // Expand the corresponding accordion
+                  onChange={handleAccordionChange(panelId)}  // Handle accordion expansion
                 >
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'left' }}>
-                      {feature.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ textAlign: 'left' }}>
-                      {feature.description}
-                    </Typography>
-                  </Box>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', width: '100%' }}>
-                    <Box sx={{ flex: 1 }}>
-                      <img src={feature.image} alt={feature.title} style={{ width: '100%', borderRadius: 8 }} />
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    sx={{
+                      alignItems: 'flex-start',
+                      '& .MuiAccordionSummary-expandIconWrapper': {
+                        alignItems: 'flex-start',
+                        marginTop: '12px',
+                      },
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'left' }}>
+                        {feature.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ textAlign: 'left' }}>
+                        {feature.description}
+                      </Typography>
                     </Box>
-                    <Box sx={{ flex: 1, textAlign: 'left' }}>
-                      <Typography variant="body1">{feature.graphDescription}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', width: '100%' }}>
+                      {/* Conditionally render FlowWithProviderNew when accordion is expanded */}
+                      {expanded === panelId && <FlowWithProviderNew />}
                     </Box>
-                    {/* <FlowWithProviderNew/> */}
-                  </Box>
-                </AccordionDetails>
-              </Accordion>
-            ))}
+                  </AccordionDetails>
+                </Accordion>
+              );
+            })}
 
           </Box>
 
