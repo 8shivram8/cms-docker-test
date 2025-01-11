@@ -1,7 +1,7 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from "./components/AppRoutes";
+import AppRoutesNew from "./new components/AppRoutesNew";
 
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
 
   return (
     <Router>
-      <AppRoutes />
+      {/* <AppRoutes /> */}
+      <AppRoutesNew/>
     </Router>
   );
 }

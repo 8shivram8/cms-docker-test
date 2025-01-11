@@ -3,13 +3,16 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#8200FF',  
+      main: '#21BDD5',  
     },
     secondary: {
-      main: '#ff4081',  
+      main: '#031E50',  
     },
     background: {
-      default: '#f4f4f9',  
+      gradient: 'linear-gradient(to bottom right, #1677F7, #FFFFFF)', 
+    },
+    linearColor: {
+      gradient: 'linear-gradient(to right, #000000, #010306, #1677F7, #FFFFFF)',
     },
     text: {
       primary: '#333',  
@@ -17,7 +20,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Poppins', sans-serif", // Only Poppins font
+    fontFamily: "'Poppins'", // Only Poppins font
     h1: {
       fontSize: '2.25rem',
       fontWeight: 600,
