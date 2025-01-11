@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import Footer from './Footer';
 import MainScreen from './MainScreen';
 import CenterScreen from './CenterScreen';
+import Hosting from './Hosting';
 
 
 const LayoutNew = () => {
@@ -16,10 +17,12 @@ const LayoutNew = () => {
             <Box
                 display="flex"
                 flexDirection="column"
+                flex={1}
             >
                <CenterScreen/>
+               <Hosting/>
             </Box>
-            {/* <Footer /> */}
+            <Footer />
         </Box>
     );
 }

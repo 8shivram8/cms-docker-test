@@ -11,8 +11,9 @@ const theme = createTheme({
     background: {
       gradient: 'linear-gradient(to bottom right, #1677F7, #FFFFFF)', 
     },
+    
     linearColor: {
-      gradient: 'linear-gradient(to right, #000000, #010306, #1677F7, #FFFFFF)',
+      gradient: 'linear-gradient(89.96deg, #000000 43.62%, #010306 49.9%, #1677F7 90.42%, #FFFFFF 106.14%);',
     },
     text: {
       primary: '#333',  
