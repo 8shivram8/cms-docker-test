@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Divider, Typography, Box } from '@mui/material';
+import { Container, Divider, Typography, Box, useTheme } from '@mui/material';
 
 const Saas = () => {
+    const theme = useTheme();
     return (
         <Box width={'100%'}
             sx={{ bgcolor: '#f3f4f6', mt: 5 }}
@@ -10,7 +11,16 @@ const Saas = () => {
                 <Typography variant="h4" align="center" sx={{ mb: 2, color: 'primary.main' }}>
                     Software as a Service
                 </Typography>
-                <Typography variant="h6" align="center" sx={{ mb: 3 }}>
+                <Typography
+                    variant="h6"
+                    align="center"
+                    sx={{
+                        mb: 3,
+                        background: theme.palette.linearColor.gradient, // Apply the gradient to background
+                        WebkitBackgroundClip: 'text', // Clip the background to the text
+                        color: 'transparent', // Make text color transparent to show the gradient
+                    }}
+                >
                     A modern, cloud-based approach to delivering software.
                 </Typography>
                 <Typography variant="body1" align="left" sx={{ color: '#333', lineHeight: 1.8 }}>
@@ -27,7 +37,7 @@ const Saas = () => {
                 <Typography variant="h4" align="center" sx={{ mb: 2, color: 'primary.main' }}>
                     Enterprise On Premise
                 </Typography>
-                <Typography variant="h6" align="center" sx={{ mb: 3}}>
+                <Typography variant="h6" align="center" sx={{ mb: 3 }}>
                     Traditional deployment for businesses needing full control.
                 </Typography>
                 <Typography variant="body1" align="left" sx={{ color: '#333', lineHeight: 1.8 }}>
