@@ -29,6 +29,8 @@ const MainScreen = () => {
                     </Typography>
                     <Button
                         variant="outlined"
+                        target='_blank'
+                        href="https://app.coalitionify.com/signIn"
                         sx={{
                             bgcolor: 'black',
                             color: 'white',
