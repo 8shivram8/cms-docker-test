@@ -5,6 +5,7 @@ import Free from '../Custom Icons/Free';
 import Standered from '../Custom Icons/Standered';
 import Proffesional from '../Custom Icons/Proffesional';
 import Enterprice from './Enterprice';
+import PricingTable from './PricingTable';
 
 const Plans = () => {
     const theme = useTheme();
@@ -226,7 +227,7 @@ const Plans = () => {
                     </Grid>
                 ))}
             </Grid>
-
+            <PricingTable/>
             <Enterprice/>
         </Grid>
     );

@@ -11,10 +11,10 @@ const boxesData = [
         iconImage: cloudImage,
         onClick: () => alert('Box 1 clicked'),
         data: [
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
-            { subtitle: 'Subtitle 2', text: 'Sed do eiusmod tempor incididunt.' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
+            { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
         ],
     },
     {
@@ -79,7 +79,6 @@ const Hosting = () => {
                                     transform: 'scale(1.05)',
                                 },
                             }}
-                            onClick={box.onClick}
                         >
 
                             <Typography
@@ -114,12 +113,13 @@ const Hosting = () => {
                                                 sx={{
                                                     fontWeight: 500,
                                                     fontSize: '0.875rem',
+                                                    textAlign: 'left',
                                                     whiteSpace: 'normal', // Allow wrapping
                                                     overflowWrap: 'break-word', // Wrap long text
                                                     wordBreak: 'break-word', // Break text if necessary
                                                     display: 'inline', // Ensure inline display of subtitle and text
                                                     minWidth: 0, // Prevent the text from overflowing and ensure wrapping
-                                                    flexGrow: 1, // Allow text to take up available space without breaking the layout
+                                                    // flexGrow: 1, // Allow text to take up available space without breaking the layout
                                                     color: index === 1 ? 'white' : 'black',  // Set text color to white for index 1
                                                 }}
                                             >
