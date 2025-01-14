@@ -22,10 +22,10 @@ const boxesData = [
         iconImage: cloudImage,
         onClick: () => alert('Box 2 clicked'),
         data: [
-            { subtitle: 'Subtitle 1', text: 'Ut enim ad minim veniam.' },
-            { subtitle: 'Subtitle 2', text: 'Quis nostrud exercitation ullamco laboris.' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
+            { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
         ],
     },
 ]
