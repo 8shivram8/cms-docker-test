@@ -227,7 +227,7 @@ const Plans = () => {
                     </Grid>
                 ))}
             </Grid>
-            <PricingTable/>
+            {/* <PricingTable/> */}
             <Enterprice/>
         </Grid>
     );
