@@ -43,7 +43,7 @@ const Hosting = () => {
             padding: 2,
             background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)',
         }}>
-            <Grid spacing={4} container justifyContent="center" sx={{ maxWidth: '800px' }}>
+            <Grid spacing={4} container justifyContent="center" sx={{ maxWidth: '800px' }} mb={8}>
                 {/* Title */}
                 <Grid item xs={12}>
                     <Typography

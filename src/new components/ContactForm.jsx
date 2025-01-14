@@ -3,29 +3,27 @@ import {
     Typography,
     Grid,
     TextField,
-    FormHelperText,
     Box,
     Button,
     useMediaQuery,
-    IconButton,
     useTheme
 } from '@mui/material';
-import EastIcon from '@mui/icons-material/East';
+import { red } from '@mui/material/colors';
 
 const ContactForm = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [formData, setFormData] = useState({
         name: '',
-        organization: '',
         email: '',
-        useCase: ''
+        phone: '',
+        message: ''
     });
     const [errors, setErrors] = useState({
         name: '',
-        organization: '',
         email: '',
-        useCase: ''
+        phone: '',
+        message: ''
     });
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -37,9 +35,6 @@ const ContactForm = () => {
         if (name === 'name' && value.trim() === '') {
             error = 'Name is required';
         }
-        if (name === 'organization' && value.trim() === '') {
-            error = 'Organization name is required';
-        }
         if (name === 'email') {
             if (value.trim() === '') {
                 error = 'Email is required';
@@ -47,20 +42,32 @@ const ContactForm = () => {
                 error = 'Invalid email format';
             }
         }
+        if (name === 'phone' && value.trim() !== '') { // Phone is optional
+            if (!/^\+?[1-9]\d{1,14}$/.test(value.trim())) {
+                error = 'Invalid phone number format';
+            }
+        }
+        if (name === 'message' && value.trim() === '') {
+            error = 'Message is required';
+        }
+
         setErrors({ ...errors, [name]: error });
     };
 
     const validateForm = () => {
         const newErrors = {
             name: formData.name.trim() === '' ? 'Name is required' : '',
-            organization: formData.organization.trim() === '' ? 'Organization name is required' : '',
             email:
                 formData.email.trim() === ''
                     ? 'Email is required'
                     : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
-                        ? 'Invalid email format'
-                        : '',
-            useCase: formData.useCase.trim() === '' ? 'Use case is required' : ''
+                    ? 'Invalid email format'
+                    : '',
+            phone:
+                formData.phone.trim() !== '' && !/^\+?[1-9]\d{1,14}$/.test(formData.phone.trim())
+                    ? 'Invalid phone number format'
+                    : '', // No error if phone is empty
+            message: formData.message.trim() === '' ? 'Message is required' : ''
         };
         setErrors(newErrors);
         return Object.values(newErrors).every((error) => error === '');
@@ -69,15 +76,15 @@ const ContactForm = () => {
     const resetForm = () => {
         setFormData({
             name: '',
-            organization: '',
             email: '',
-            useCase: ''
+            phone: '',
+            message: ''
         });
         setErrors({
             name: '',
-            organization: '',
             email: '',
-            useCase: ''
+            phone: '',
+            message: ''
         });
     };
 
@@ -112,11 +119,10 @@ const ContactForm = () => {
                 alignItems: 'center',
                 width: '100%',
                 backgroundColor: '#f3f4f6',
-                py: 5
             }}
         >
             {/* Parent Container with Grid */}
-            <Grid container sx={{ maxWidth: 'lg', width: '100%' }} spacing={2} justifyContent="center">
+            <Grid container sx={{ maxWidth: 'lg', width: '100%' }} spacing={2} justifyContent="center" mt={2}>
                 {/* Left Box */}
                 <Grid item xs={12} md={6}>
                     <Box
@@ -129,7 +135,7 @@ const ContactForm = () => {
                         }}
                     >
                         <Typography
-                            variant='h6'
+                            variant="h6"
                             sx={{
                                 fontWeight: 700,
                                 backgroundImage: theme.palette.linearColor.gradient,
@@ -141,31 +147,33 @@ const ContactForm = () => {
                         </Typography>
                         <Typography
                             mt={2}
-                            variant="h4" fontWeight={700} fontSize={'42px'}
+                            variant="h4"
+                            fontWeight={700}
+                            fontSize={'42px'}
                             sx={{
                                 lineHeight: '1.5',
-
                             }}
                         >
-                            Any Questions ? <br /> Write or Call us. <br /> We will right back <br /> within 12 Hrs
+                            Any Questions? <br /> Write or Call us. <br /> We will write back <br /> within 12 Hrs
                         </Typography>
                     </Box>
                 </Grid>
 
                 {/* Right Box (Form) */}
-                <Grid item xs={12} md={6}>
-                    <Box
+                <Grid item xs={12} md={6} bgcolor={red}>
+                    {/* <Box
                         component="form"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: 2,
-                            width: '100%',
-                            maxWidth: 500,
+                            // width: '100%',
                             m: 3,
+                            background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)', 
+                            borderRadius: 2,
+                            
                         }}
                     >
-                        {/* <TextField
+                        <TextField
                             onChange={handleChange}
                             label="Name"
                             variant="outlined"
@@ -173,6 +181,14 @@ const ContactForm = () => {
                             error={!!errors.name}
                             helperText={errors.name}
                             name="name"
+                            InputProps={{
+                                sx: {
+                                    borderColor: 'black', // default border color
+                                    '&.Mui-focused': {
+                                        borderColor: 'black', // focused border color
+                                    },
+                                },
+                            }}
                         />
                         <TextField
                             onChange={handleChange}
@@ -183,37 +199,67 @@ const ContactForm = () => {
                             error={!!errors.email}
                             helperText={errors.email}
                             name="email"
+                            InputProps={{
+                                sx: {
+                                    borderColor: 'black',
+                                    '&.Mui-focused': {
+                                        borderColor: 'black', // focused border color
+                                    },
+                                },
+                            }}
                         />
                         <TextField
                             onChange={handleChange}
-                            label="Organization Name"
+                            label="Phone Number (Optional)"
                             variant="outlined"
+                            type="tel"
                             fullWidth
-                            error={!!errors.organization}
-                            helperText={errors.organization}
-                            name="organization"
+                            error={!!errors.phone}
+                            helperText={errors.phone}
+                            name="phone"
+                            InputProps={{
+                                sx: {
+                                    borderColor: 'black',
+                                    '&.Mui-focused': {
+                                        borderColor: 'black', // focused border color
+                                    },
+                                },
+                            }}
                         />
                         <TextField
                             onChange={handleChange}
-                            label="Use Cases"
+                            label="Message"
                             variant="outlined"
                             multiline
                             rows={4}
                             fullWidth
-                            error={!!errors.useCase}
-                            helperText={errors.useCase}
-                            name="useCase"
+                            error={!!errors.message}
+                            helperText={errors.message}
+                            name="message"
+                            InputProps={{
+                                sx: {
+                                    borderColor: 'black',
+                                    '&.Mui-focused': {
+                                        borderColor: 'black', // focused border color
+                                    },
+                                },
+                            }}
                         />
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="black"
                             size="large"
-                            sx={{ textTransform: 'none', fontSize: '1rem' }}
+                            sx={{
+                                textTransform: 'none',
+                                fontSize: '1rem',
+                                backgroundColor: 'black',
+                                color: 'white',
+                            }}
                             onClick={handleSubmit}
                         >
-                            Book Demo
-                        </Button> */}
-                    </Box>
+                            Submit
+                        </Button>
+                    </Box> */}
                 </Grid>
             </Grid>
         </Box>
