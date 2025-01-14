@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography, ToggleButton, ToggleButtonGroup, Box, Paper, useTheme, Button, useMediaQuery } from '@mui/material';
+import axios from 'axios';  // Make sure you have axios installed
 import Free from '../Custom Icons/Free';
 import Standered from '../Custom Icons/Standered';
 import Proffesional from '../Custom Icons/Proffesional';
 import Enterprice from './Enterprice';
+
 const Plans = () => {
-    const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm","xs"));
-     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const [selectedPlan, setSelectedPlan] = useState('monthly');
     const [currencySymbol, setCurrencySymbol] = useState('');
+  
     const handleToggleChange = (event, newPlan) => {
         if (newPlan) {
             setSelectedPlan(newPlan);
@@ -21,33 +24,33 @@ const Plans = () => {
             {
                 title: 'Free',
                 price: '0',
-                icon: <Free />, // Adding icon for Basic Plan
+                icon: <Free />,
                 longDescription: 'The Basic Plan is perfect for small teams who need simple features to get started. Includes basic support and limited integrations.',
             },
             {
                 title: 'Standered',
                 price: '18',
-                icon: <Standered />, // Adding icon for Pro Plan
+                icon: <Standered />,
                 longDescription: 'The Pro Plan offers advanced features like priority support, advanced analytics, and more integrations to help your team scale efficiently.',
             },
             {
                 title: 'Professional',
                 price: '40',
-                icon: <Proffesional />, // Adding icon for Enterprise Plan
+                icon: <Proffesional />,
                 longDescription: 'The Enterprise Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
             },
         ],
         annually: [
             {
                 title: 'Free',
-                price: '100',
-                icon: <Free />, // Adding icon for Basic Plan
+                price: '0',
+                icon: <Free />,
                 longDescription: 'The Basic Plan is ideal for startups and small businesses that need essential features. Enjoy basic support and access to core tools.',
             },
             {
                 title: 'Standered',
                 price: '300',
-                icon: <Standered />, // Adding icon for Pro Plan
+                icon: <Standered />,
                 longDescription: 'The Pro Plan provides advanced features, such as detailed reporting, additional integrations, and priority support for growing teams.',
             },
             {
@@ -58,49 +61,54 @@ const Plans = () => {
             },
         ],
     };
+
     useEffect(() => {
-        // Function to detect the currency symbol based on the user's locale
-        const detectCurrencySymbol = () => {
-          const userLocale = navigator.language; // Get the user's browser language (e.g., en-US, en-GB, hi-IN)
-          const region = userLocale.split('-')[1]; // Extract the region code (e.g., US, IN)
-    
-          let currencyCode;
-    
-          // Map region codes to currency codes and symbols
-          switch (region) {
-            case 'IN':  // India
-              currencyCode = 'INR';
-              break;
-            case 'GB':  // United Kingdom
-              currencyCode = 'GBP';
-              break;
-            case 'US':  // United States
-              currencyCode = 'USD';
-              break;
-            case 'JP':  // Japan
-              currencyCode = 'JPY';
-              break;
-            case 'CA':  // Canada
-              currencyCode = 'CAD';
-              break;
-            case 'AU':  // Australia
-              currencyCode = 'AUD';
-              break;
-            default:
-              currencyCode = 'USD'; // Default to USD for other cases
-              break;
-          }
-          const formatter = new Intl.NumberFormat(userLocale, {
-            style: 'currency',
-            currency: currencyCode,
-          });
-          const symbol = formatter.format(1).replace(/\d/g, '').trim();
-          setCurrencySymbol(symbol);
+        const detectCurrencySymbol = async () => {
+            try {
+                const response = await axios.get('http://ip-api.com/json');
+                const region = response.data.regionName;  
+                const countryCode = response.data.countryCode; 
+                let currencyCode;
+
+                switch (countryCode) {
+                    case 'IN':  // India
+                        currencyCode = 'INR';
+                        break;
+                    case 'GB':  // United Kingdom
+                        currencyCode = 'GBP';
+                        break;
+                    case 'US':  // United States
+                        currencyCode = 'USD';
+                        break;
+                    case 'JP':  // Japan
+                        currencyCode = 'JPY';
+                        break;
+                    case 'CA':  // Canada
+                        currencyCode = 'CAD';
+                        break;
+                    case 'AU':  
+                        currencyCode = 'AUD';
+                        break;
+                    default:
+                        currencyCode = 'USD';
+                        break;
+                }
+
+                const formatter = new Intl.NumberFormat(response.data.currency, {
+                    style: 'currency',
+                    currency: currencyCode,
+                });
+                const symbol = formatter.format(1).replace(/[\d.,]/g, '').trim();
+                setCurrencySymbol(symbol);
+            } catch (error) {
+                console.error('Error fetching locale data:', error);
+                setCurrencySymbol('$');
+            }
         };
-    
+
         detectCurrencySymbol();
-      }, []);
-    
+    }, []);
+
     return (
         <Grid
             container
@@ -118,8 +126,7 @@ const Plans = () => {
                         marginBottom: 1,
                         fontSize: { xs: '25px', sm: '30px', md: '35px' },
                         color: 'black',
-
-                        textAlign: 'center', // Ensures text is centered
+                        textAlign: 'center',
                     }}
                 >
                     Find the <span style={{ color: '#1677F7' }}>perfect plan</span>
@@ -138,23 +145,22 @@ const Plans = () => {
                     exclusive
                     onChange={handleToggleChange}
                     sx={{
-                        // Remove the border and padding from the ToggleButtonGroup
                         padding: 0,
                         '& .MuiToggleButton-root': {
                             padding: '8px 16px',
                             fontWeight: 'bold',
-                            backgroundColor: 'lightgray', // Default background for unselected
-                            color: 'black', // Default text color
-                            borderRadius: 0, // Remove border radius from the buttons
+                            backgroundColor: 'lightgray',
+                            color: 'black',
+                            borderRadius: 0,
                             '&.Mui-selected': {
-                                backgroundColor: 'black', // Selected background color
-                                color: 'white', // Text color for selected button
+                                backgroundColor: 'black',
+                                color: 'white',
                             },
                         },
                     }}
                 >
-                    <ToggleButton value="monthly" sx={{textTransform:'none'}}>Monthly</ToggleButton>
-                    <ToggleButton value="annually" sx={{textTransform:'none'}}>Annually</ToggleButton>
+                    <ToggleButton value="monthly" sx={{ textTransform: 'none' }}>Monthly</ToggleButton>
+                    <ToggleButton value="annually" sx={{ textTransform: 'none' }}>Annually</ToggleButton>
                 </ToggleButtonGroup>
             </Grid>
 
@@ -173,7 +179,7 @@ const Plans = () => {
                                 height: '100%',
                                 textAlign: 'left',
                                 cursor: 'pointer',
-                                justifyContent: 'space-between', // This ensures the button is at the bottom
+                                justifyContent: 'space-between',
                             }}
                         >
                             {/* Title and Icon */}
@@ -188,7 +194,7 @@ const Plans = () => {
 
                             {/* Price */}
                             <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
-                                {currencySymbol}{plan.price}
+                                {plan.price} {' '}{currencySymbol}
                                 <Typography
                                     variant="body2"
                                     component="span"
@@ -208,10 +214,10 @@ const Plans = () => {
                                 variant="outlined"
                                 fullWidth
                                 sx={{
-                                    borderColor: 'black', // Set border color to black
+                                    borderColor: 'black',
                                     color: 'black',
                                     textTransform: 'none',
-                                    marginTop: 2, // Add space between the description and the button
+                                    marginTop: 2,
                                 }}
                             >
                                 Get Started
@@ -220,8 +226,8 @@ const Plans = () => {
                     </Grid>
                 ))}
             </Grid>
-        <Enterprice/>
 
+            <Enterprice/>
         </Grid>
     );
 };
