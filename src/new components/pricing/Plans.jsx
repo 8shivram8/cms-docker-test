@@ -13,7 +13,7 @@ const Plans = () => {
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const [selectedPlan, setSelectedPlan] = useState('monthly');
     const [currencySymbol, setCurrencySymbol] = useState('');
-  
+
     const handleToggleChange = (event, newPlan) => {
         if (newPlan) {
             setSelectedPlan(newPlan);
@@ -66,9 +66,13 @@ const Plans = () => {
     useEffect(() => {
         const detectCurrencySymbol = async () => {
             try {
-                const response = await axios.get('http://ip-api.com/json');
-                const region = response.data.regionName;  
-                const countryCode = response.data.countryCode; 
+                // const response = await axios.get('http://ip-api.com/json');
+                // const region = response.data.regionName;
+                // const countryCode = response.data.countryCode;
+
+                const response = await axios.get('http://www.geoplugin.net/json.gp');
+                const countryCode = response.data.geoplugin_countryCode;
+
                 let currencyCode;
 
                 switch (countryCode) {
@@ -87,7 +91,7 @@ const Plans = () => {
                     case 'CA':  // Canada
                         currencyCode = 'CAD';
                         break;
-                    case 'AU':  
+                    case 'AU':
                         currencyCode = 'AUD';
                         break;
                     default:
@@ -168,7 +172,7 @@ const Plans = () => {
             {/* Plan Boxes */}
             <Grid container spacing={2} justifyContent="center" mb={3}>
                 {planData[selectedPlan].map((plan, index) => (
-                    <Grid item xs={12} sm={4} key={index} m={isMobile ? 2 : isTablet ? 2 : 0 }>
+                    <Grid item xs={12} sm={4} key={index} m={isMobile ? 2 : isTablet ? 2 : 0}>
                         <Box
                             sx={{
                                 padding: 2,
@@ -228,7 +232,7 @@ const Plans = () => {
                 ))}
             </Grid>
             {/* <PricingTable/> */}
-            <Enterprice/>
+            <Enterprice />
         </Grid>
     );
 };
