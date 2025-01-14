@@ -6,9 +6,12 @@ import {
     Box,
     Button,
     useMediaQuery,
-    useTheme
+    useTheme,
+    Grid2
 } from '@mui/material';
 import { red } from '@mui/material/colors';
+import StyledTextfield from './StyledTextfield';
+import ArrowIcon from './Custom Icons/ArrowIcon';
 
 const ContactForm = () => {
     const theme = useTheme();
@@ -61,8 +64,8 @@ const ContactForm = () => {
                 formData.email.trim() === ''
                     ? 'Email is required'
                     : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
-                    ? 'Invalid email format'
-                    : '',
+                        ? 'Invalid email format'
+                        : '',
             phone:
                 formData.phone.trim() !== '' && !/^\+?[1-9]\d{1,14}$/.test(formData.phone.trim())
                     ? 'Invalid phone number format'
@@ -122,9 +125,9 @@ const ContactForm = () => {
             }}
         >
             {/* Parent Container with Grid */}
-            <Grid container sx={{ maxWidth: 'lg', width: '100%' }} spacing={2} justifyContent="center" mt={2}>
+            <Grid container sx={{ maxWidth: 'lg', width: '100%' }} spacing={2} justifyContent="center" mt={2} >
                 {/* Left Box */}
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} >
                     <Box
                         sx={{
                             display: 'flex',
@@ -149,118 +152,133 @@ const ContactForm = () => {
                             mt={2}
                             variant="h4"
                             fontWeight={700}
-                            fontSize={'42px'}
+                            fontSize={isSmallScreen ? '35px' : '42px'}
                             sx={{
                                 lineHeight: '1.5',
                             }}
                         >
                             Any Questions? <br /> Write or Call us. <br /> We will write back <br /> within 12 Hrs
                         </Typography>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            mt: 6,
+                          }}
+                        >
+                            <Typography
+                               variant="body2" 
+                               fontWeight="light" 
+                               color="text.secondary" 
+                               mr={isSmallScreen ? 2 : 4}
+                            >
+                                (+91) 9090909090
+                            </Typography>
+                            <ArrowIcon
+        
+                                sx={{
+                                    width: 14, // Small icon size
+                                    height: 14,
+                                    color: 'text.secondary',
+                                }}
+                            />
+                            <Typography
+                                variant="body2" 
+                                fontWeight="light" 
+                                color="text.secondary" 
+                                ml={isSmallScreen ? 3 : 4}
+                            >
+                                acosign@gmail.com
+                            </Typography>
+                        </Box>
                     </Box>
                 </Grid>
 
                 {/* Right Box (Form) */}
-                <Grid item xs={12} md={6} bgcolor={red}>
-                    {/* <Box
+                <Grid item xs={12} md={5} bgcolor={red}>
+                    <Box
                         component="form"
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
-                            // width: '100%',
                             m: 3,
-                            background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)', 
+                            background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)',
                             borderRadius: 2,
-                            
                         }}
                     >
-                        <TextField
-                            onChange={handleChange}
-                            label="Name"
-                            variant="outlined"
-                            fullWidth
-                            error={!!errors.name}
-                            helperText={errors.name}
-                            name="name"
-                            InputProps={{
-                                sx: {
-                                    borderColor: 'black', // default border color
-                                    '&.Mui-focused': {
-                                        borderColor: 'black', // focused border color
+                        <Box m={3} gap={2} display={'flex'} flexDirection={'column'}>
+                            <StyledTextfield
+                                onChange={handleChange}
+                                label="Name"
+                                variant="outlined"
+                                error={!!errors.name}
+                                helperText={errors.name}
+                                name="name"
+                            />
+
+
+                            <StyledTextfield
+                                onChange={handleChange}
+                                label="Email"
+                                variant="outlined"
+                                type="email"
+                                error={!!errors.email}
+                                helperText={errors.email}
+                                name="email"
+                            />
+                            <StyledTextfield
+                                onChange={handleChange}
+                                label="Phone Number (Optional)"
+                                variant="outlined"
+                                type="tel"
+                                error={!!errors.phone}
+                                helperText={errors.phone}
+                                name="phone"
+
+                            />
+                            <TextField
+                                onChange={handleChange}
+                                label="Message"
+                                variant="outlined"
+                                multiline
+                                rows={4}
+                                error={!!errors.message}
+                                helperText={errors.message}
+                                name="message"
+                                sx={{
+                                    '& .MuiInputLabel-root': {
+                                        color: 'white',                     // Label color
+                                        fontSize: '0.8rem',                 // Reduced font size
+                                        transform: 'translate(14px, 12px) scale(1)', // Positioning label at the center
+                                        textAlign: 'center',                // Center the label text
                                     },
-                                },
-                            }}
-                        />
-                        <TextField
-                            onChange={handleChange}
-                            label="Email"
-                            variant="outlined"
-                            type="email"
-                            fullWidth
-                            error={!!errors.email}
-                            helperText={errors.email}
-                            name="email"
-                            InputProps={{
-                                sx: {
-                                    borderColor: 'black',
-                                    '&.Mui-focused': {
-                                        borderColor: 'black', // focused border color
+                                    '& .MuiInputLabel-shrink': {
+                                        transform: 'translate(14px, -6px) scale(0.75)', // Position the label when shrunk (focused or filled)
                                     },
-                                },
-                            }}
-                        />
-                        <TextField
-                            onChange={handleChange}
-                            label="Phone Number (Optional)"
-                            variant="outlined"
-                            type="tel"
-                            fullWidth
-                            error={!!errors.phone}
-                            helperText={errors.phone}
-                            name="phone"
-                            InputProps={{
-                                sx: {
-                                    borderColor: 'black',
-                                    '&.Mui-focused': {
-                                        borderColor: 'black', // focused border color
+                                    '& .MuiOutlinedInput-root': {
+                                        borderRadius: '8px',                // Border radius
                                     },
-                                },
-                            }}
-                        />
-                        <TextField
-                            onChange={handleChange}
-                            label="Message"
-                            variant="outlined"
-                            multiline
-                            rows={4}
-                            fullWidth
-                            error={!!errors.message}
-                            helperText={errors.message}
-                            name="message"
-                            InputProps={{
-                                sx: {
-                                    borderColor: 'black',
-                                    '&.Mui-focused': {
-                                        borderColor: 'black', // focused border color
-                                    },
-                                },
-                            }}
-                        />
-                        <Button
-                            variant="contained"
-                            color="black"
-                            size="large"
-                            sx={{
-                                textTransform: 'none',
-                                fontSize: '1rem',
-                                backgroundColor: 'black',
-                                color: 'white',
-                            }}
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </Button>
-                    </Box> */}
+                                }}
+
+                            />
+                            <Button
+                                variant="contained"
+                                color="black"
+                                size="large"
+                                sx={{
+                                    textTransform: 'none',
+                                    fontSize: '1rem',
+                                    backgroundColor: 'black',
+                                    color: 'white',
+                                }}
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </Button>
+                        </Box>
+                    </Box>
                 </Grid>
+
             </Grid>
         </Box>
     );

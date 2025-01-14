@@ -90,6 +90,7 @@ const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
                                 sx={{
                                     fontWeight: 500,
                                     fontSize: '0.875rem',
+                                    textAlign: 'left',
                                     whiteSpace: 'normal', // Allow wrapping
                                     overflowWrap: 'break-word', // Wrap long text
                                     wordBreak: 'break-word', // Break text if necessary
@@ -123,8 +124,8 @@ const CenterScreen = () => {
             iconImage: <Routing />,
             onClick: () => alert('Box 1 clicked'),
             data: [
-                { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet.' },
-                { subtitle: 'Subtitle 2', text: 'Sed do eiusmod tempor incididunt.' },
+                { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+                { subtitle: 'Subtitle 2', text: 'Sed do eiusmod tempor incididunt eiusmod tempor incididunt.' },
             ],
         },
         {

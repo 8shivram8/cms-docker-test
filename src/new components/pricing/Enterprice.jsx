@@ -1,8 +1,10 @@
 import React from 'react'
-import { Grid, Typography, Paper, Box, Button } from '@mui/material'
+import { Grid, Typography, Paper, Box, Button, useMediaQuery, useTheme } from '@mui/material'
 import EnterPriceIcon from '../Custom Icons/EnterPriceIcon'
 
 const Enterprice = () => {
+    const theme=useTheme()
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     const data = {
         title: 'Enterprise',
         price: '600$',
@@ -15,7 +17,7 @@ const Enterprice = () => {
             <Grid item xs={12} sm={6} md={6}>
                 <Box>
                     {/* Main large text */}
-                    <Typography variant="h4" fontWeight={700} fontSize={'40px'} gutterBottom>
+                    <Typography variant="h4" fontWeight={700} fontSize={isSmallScreen ? '35px' : '40px'} gutterBottom>
                         Looking for a
                         <br />
                         Tailored Solution?

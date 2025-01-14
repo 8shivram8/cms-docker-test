@@ -26,7 +26,6 @@ const LayoutNew = () => {
                <Plans/>
                <ContactForm/>
             </Box>
-            <Footer />
         </Box>
     );
 }
