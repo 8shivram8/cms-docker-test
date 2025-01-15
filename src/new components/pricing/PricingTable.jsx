@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import PriceIcon from '../Custom Icons/PriceIcon';
 
 const pricedata = [
   { feature: 'Feature 1', free: false, standard: true, premium: true },
@@ -20,11 +21,13 @@ const PricingTable = () => {
           {headers.map((header, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Box
-                textAlign="center"
+                mr={6}
+                textAlign="right"
               >
-                <Typography variant="h6" gutterBottom> 
+                <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}> 
                   {header}
                 </Typography>
+                {/* <PriceIcon/> */}
               </Box>
             </Grid>
           ))}
@@ -33,16 +36,15 @@ const PricingTable = () => {
 
       {/* Data Rows */}
       <Grid item xs={12} mt={0}>
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               padding={2}
-              border={1}
-              borderRadius={2}
-              borderColor="grey.400"
+              border= '1px solid #e0e0e0'
+              borderRadius= '12px'
               background="linear-gradient(0deg, #F5F5F5 0%, #FFFFFF 29.88%)"
-              textAlign="center"
-              minHeight="200px"  // Ensure there’s height for the background to be visible
+              textAlign="left"
+              // minHeight="200px"  // Ensure there’s height for the background to be visible
             >
               {pricedata.map((row, index) => (
                 <Typography variant="body1" key={index} marginBottom={1}>
