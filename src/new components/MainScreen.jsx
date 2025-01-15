@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import workflowImg from '../assets/workflow.png';
-
+import { IconButton, Menu } from '@mui/material';
+import LanguageIcon from '@mui/icons-material/Language';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -24,11 +25,12 @@ const countries = [
     { label: 'Indonesia', code: 'ID' },
 ];
 
-const MainScreen = ({ selectedCountry, handleCountryChange }) => {
+const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleClose, anchorEl }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     console.log("mydataa", selectedCountry)
+
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
 
@@ -49,48 +51,64 @@ const MainScreen = ({ selectedCountry, handleCountryChange }) => {
                     <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
                         Coalitionify
                     </Typography>
-                    <Box
-                        display={'flex'}
-                        flexDirection={'row'}
-                        gap={2}
-                    >
-                        <FormControl variant="outlined" sx={{ minWidth: 160 }}>
-                            {!selectedCountry && (
-                                <InputLabel
-                                    id="country-select-label"
+                    <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 2}>
+                        {/* Language Icon for mobile view */}
+                        {isMobile ? (
+                            <IconButton onClick={handleClick} sx={{ color: 'white'}} >
+                                <LanguageIcon />
+                            </IconButton>
+                        ) : (
+                            <FormControl variant="outlined" sx={{ minWidth: '160px', height: '37px' }}>
+                                {!selectedCountry && (
+                                    <InputLabel
+                                        id="country-select-label"
+                                        sx={{
+                                            color: 'black',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                            transition: 'all 0.2s ease',
+                                            ml: 1.5,
+                                        }}
+                                    >
+                                        Select Country
+                                    </InputLabel>
+                                )}
+                                <Select
+                                    labelId="country-select-label"
+                                    value={selectedCountry}
+                                    onChange={(e) => handleCountryChange(e.target.value)}
+                                    displayEmpty
                                     sx={{
+                                        height: '37px',
+                                        bgcolor: 'white',
                                         color: 'black',
-                                        top: '50%',
-                                        transform: 'translateY(-50%)',
-                                        transition: 'all 0.2s ease',
-                                        ml: 1.5,
+                                        '& .MuiSelect-icon': { color: 'black' },
                                     }}
                                 >
-                                    Select Country
-                                </InputLabel>
-                            )}
-                            <Select
-                                labelId="country-select-label"
-                                value={selectedCountry}
-                                onChange={(e) => handleCountryChange(e.target.value)}
-                                displayEmpty
-                                sx={{
-                                    height: '37px',
-                                    bgcolor: 'white',
-                                    color: 'black',
-                                    '& .MuiSelect-icon': { color: 'black' },
-                                }}
-                            >
-                                <MenuItem value="" disabled>
-                                    Select Country
-                                </MenuItem>
-                                {countries.map((country) => (
-                                    <MenuItem key={country.code} value={country.code}>
-                                        {country.label}
+                                    <MenuItem value="" disabled>
+                                        Select Country
                                     </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
+                                    {countries.map((country) => (
+                                        <MenuItem key={country.code} value={country.code}>
+                                            {country.label}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        )}
+
+                        {/* Language Menu for mobile view */}
+                        <Menu
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            {countries.map((country) => (
+                                <MenuItem key={country.code} onClick={() => handleCountryChange(country.code)}>
+                                    {country.label}
+                                </MenuItem>
+                            ))}
+                        </Menu>
 
                         <Button
                             variant="outlined"
@@ -101,6 +119,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange }) => {
                                 color: 'white',
                                 textDecoration: 'none',
                                 textTransform: 'none',
+                                minHeight: isMobile ? '25px' : '37px',
+                                m:isMobile ? 2 : 0,
                                 fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
                             }}
                         >
@@ -108,7 +128,6 @@ const MainScreen = ({ selectedCountry, handleCountryChange }) => {
                         </Button>
                     </Box>
                 </Box>
-
 
                 <Box sx={{ textAlign: 'center', mt: 3, px: 2 }}>
                     <Typography

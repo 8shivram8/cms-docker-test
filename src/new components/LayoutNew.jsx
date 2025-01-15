@@ -9,17 +9,25 @@ import ContactForm from './ContactForm';
 
 const LayoutNew = () => {
      const [selectedCountry, setSelectedCountry] = useState(null);
+     const [anchorEl, setAnchorEl] = useState(null);
      const handleCountryChange = (value) => {
-        console.log("value11",value)
         setSelectedCountry(value);
+        setAnchorEl(null);
     };
+    const handleClick = (event) => {
+            setAnchorEl(event.currentTarget);
+        };
+        
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
     return (
         <Box
             display="flex"
             flexDirection="column"
             minHeight="100vh"
         >
-            <MainScreen selectedCountry={selectedCountry} handleCountryChange={handleCountryChange}/>
+            <MainScreen selectedCountry={selectedCountry} handleCountryChange={handleCountryChange} handleClick={handleClick} handleClose={handleClose} anchorEl={anchorEl}/>
             <Box
                 display="flex"
                 flexDirection="column"
