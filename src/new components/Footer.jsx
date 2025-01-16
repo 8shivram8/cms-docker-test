@@ -1,16 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useMediaQuery, useTheme } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
-import logo from '../assets/logo.png';
 
 function Footer() {
   const theme = useTheme();
@@ -27,49 +24,116 @@ function Footer() {
         boxShadow: 3,
       }}
     >
-      <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
+      <Box
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        justifyContent="space-between"
+        alignItems={isMobile ? 'center' : 'flex-start'}
+        gap={isMobile ? 2 : 4}
+      >
         {/* Left Section */}
-        <Grid item xs={12} sm={6} md={6} lg={6}>
-          <Box display="flex" flexDirection="column" alignItems={'left'} ml={15}>
-          <Typography fontWeight="bold" fontSize={'25px'}>Coalitionify</Typography>
-            <Typography variant={'caption'} fontWeight={400} fontSize={'14px'} sx={{ marginTop: 1,color:'#939AAD'}}>
-              We’re here to help! Whether you have questions about <br/>
-              our services, need support, or want to discuss a potential <br/>
+        <Box ml={isMobile ? 2 : isTablet ? 5 : 10} textAlign={isMobile ? 'left' : 'left'} display={'flex'} flexDirection={'column'} gap={2}>
+          <Typography fontWeight="bold" fontSize={'25px'} >Coalitionify</Typography>
+          {!isMobile ? (
+            <Typography
+              variant={'caption'}
+              fontWeight={400}
+              fontSize={'14px'}
+              sx={{ color: '#939AAD' }}
+            >
+              We’re here to help! Whether you have questions about <br />
+              our services, need support, or want to discuss a potential <br />
               project, feel free to reach out.
             </Typography>
-            <Box mt={2} display="flex" gap={1} justifyContent={isMobile ? 'center' : 'flex-start'}>
-              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://facebook.com" target='_blank'>
-                <FacebookIcon />
-              </IconButton>
-              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://twitter.com" target='_blank'>
-                <TwitterIcon />
-              </IconButton>
-              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://instagram.com" target='_blank'>
-                <InstagramIcon />
-              </IconButton>
-              <IconButton sx={{ color: 'primary.main' }} component="a" href="https://github.com" target='_blank'>
-                <GitHubIcon />
-              </IconButton>
-            </Box>
-          </Box>
-        </Grid>
+          ) :
+            (
+              <Typography
+                variant={'caption'}
+                fontWeight={400}
+                fontSize={'14px'}
+                sx={{ color: '#939AAD' }}
+              >
+                We’re here to help! Whether you have questions about
+                our services, need support, or want to discuss a potential
+                project, feel free to reach out.
+              </Typography>
+            )
+          }
 
-        {/* Contact Section */}
-        <Grid item xs={6} sm={6} md={6} textAlign={'left'}>
-          <Box mr={10}>
+        </Box>
+
+        {/* Right Section */}
+        <Box mr={isMobile ? 2 : isTablet ? 5 : 10} textAlign={!isMobile ? 'left' : 'center'}>
           <Typography variant="h6" gutterBottom>Contact</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
+          <Box>
             <Typography variant="body2">Phone: (123) 456-7890</Typography>
-            <Typography variant="body2">Email: contact@company.com</Typography>
+            <Typography variant="body2" mt={1}>Email: contact@company.com</Typography>
           </Box>
-          </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
-      <Divider sx={{ my: 2, borderColor: 'gray' }} />
-      <Typography variant="body2" color="#fff" align="center">
-        © {new Date().getFullYear()} AYS Software Solution. All rights reserved.
-      </Typography>
+      <Divider sx={{ mt: 3, borderColor: 'gray',mb:isMobile ? 2 :1 }} />
+
+      <Box
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        justifyContent="space-between"
+        alignItems="center"
+        mx={10} 
+      >
+        <Typography
+          variant="body2"
+          align="center"
+          sx={{
+            color: '#767F8C', // New color for Typography
+            fontSize: { xs: '0.75rem', sm: '0.875rem' }, // Responsive font size
+          }}
+        >
+          © {new Date().getFullYear()} AYS Software Solution. All rights reserved.
+        </Typography>
+        <Box
+          mt={isMobile ? 2 : 0}
+          display="flex"
+          gap={1}
+          sx={{
+            justifyContent: isMobile ? 'center' : 'flex-start',
+          }}
+        >
+          <IconButton
+            sx={{ color: '#767E94' }}
+            component="a"
+            href="https://facebook.com"
+            target="_blank"
+          >
+            <FacebookIcon />
+          </IconButton>
+          <IconButton
+            sx={{ color: '#767E94' }}
+            component="a"
+            href="https://twitter.com"
+            target="_blank"
+          >
+            <TwitterIcon />
+          </IconButton>
+          <IconButton
+            sx={{ color: '#767E94' }}
+            component="a"
+            href="https://instagram.com"
+            target="_blank"
+          >
+            <InstagramIcon />
+          </IconButton>
+          <IconButton
+            sx={{ color: '#767E94' }}
+            component="a"
+            href="https://github.com"
+            target="_blank"
+          >
+            <GitHubIcon />
+          </IconButton>
+        </Box>
+      </Box>
+
     </Box>
   );
 }
