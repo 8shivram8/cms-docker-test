@@ -6,6 +6,7 @@ import Standered from '../Custom Icons/Standered';
 import Proffesional from '../Custom Icons/Proffesional';
 import Enterprice from './Enterprice';
 import PricingTable from './PricingTable';
+import PricingTableMobile from './PricingTableMobile';
 
 const planData = {
     monthly: [
@@ -251,9 +252,10 @@ const Plans = ({ selectedCountry }) => {
                     </Grid>
                 ))}
             </Grid>
-            {!isMobile && (
+            {!isMobile && !isTablet ? (
                 <PricingTable />
-            )
+            ) :
+            (<PricingTableMobile/>)
             }
             <Enterprice />
         </Grid>
