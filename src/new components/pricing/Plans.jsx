@@ -86,7 +86,7 @@ const Plans = ({ selectedCountry }) => {
         MY: 4.2,  // Example rate for Malaysian Ringgit
         ID: 14.5  // Example rate for Indonesian Rupiah
     };
-    
+
 
     useEffect(() => {
         const currencyMap = {
@@ -251,7 +251,10 @@ const Plans = ({ selectedCountry }) => {
                     </Grid>
                 ))}
             </Grid>
-            {/* <PricingTable /> */}
+            {!isMobile && (
+                <PricingTable />
+            )
+            }
             <Enterprice />
         </Grid>
     );

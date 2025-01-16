@@ -29,14 +29,13 @@ function Footer() {
     >
       <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
         {/* Left Section */}
-        <Grid item xs={12} sm={6} md={3} lg={3} textAlign={isMobile ? 'center' : 'left'}>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
-            <img src={logo} alt="Colitionify Logo" height={40} style={{ marginBottom: '10px' }} />
-            <Typography variant="subtitle2" gutterBottom>
-              Design, Align, Execute
-            </Typography>
-            <Typography variant="subtitle2">
-              Uniting Ideas, Delivering Results
+        <Grid item xs={12} sm={6} md={6} lg={6}>
+          <Box display="flex" flexDirection="column" alignItems={'left'} ml={15}>
+          <Typography fontWeight="bold" fontSize={'25px'}>Coalitionify</Typography>
+            <Typography variant={'caption'} fontWeight={400} fontSize={'14px'} sx={{ marginTop: 1,color:'#939AAD'}}>
+              We’re here to help! Whether you have questions about <br/>
+              our services, need support, or want to discuss a potential <br/>
+              project, feel free to reach out.
             </Typography>
             <Box mt={2} display="flex" gap={1} justifyContent={isMobile ? 'center' : 'flex-start'}>
               <IconButton sx={{ color: 'primary.main' }} component="a" href="https://facebook.com" target='_blank'>
@@ -55,35 +54,14 @@ function Footer() {
           </Box>
         </Grid>
 
-        {/* Center Section */}
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
-          <Typography variant="h6" gutterBottom>Quick Links</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{lineHeight:1.5}}>
-            <Link href="/about" color="inherit" underline="hover">About Us</Link>
-            <Link href="/services" color="inherit" underline="hover">Services</Link>
-            <Link href="/blog" color="inherit" underline="hover">Blog</Link>
-            <Link href="/contact" color="inherit" underline="hover">Contact</Link>
-            <Link href="/privacy" color="inherit" underline="hover">Privacy Policy</Link>
-          </Box>
-        </Grid>
-
-        {/* Address Section */}
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
-          <Typography variant="h6" gutterBottom>Address</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{lineHeight:1.5}}>
-            <Typography variant="body2">1234 Street Name</Typography>
-            <Typography variant="body2">City, State, 12345</Typography>
-            <Typography variant="body2">5678 Another St</Typography>
-            <Typography variant="body2">Another City, State, 67890</Typography>
-          </Box>
-        </Grid>
-
         {/* Contact Section */}
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
+        <Grid item xs={6} sm={6} md={6} textAlign={'left'}>
+          <Box mr={10}>
           <Typography variant="h6" gutterBottom>Contact</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
             <Typography variant="body2">Phone: (123) 456-7890</Typography>
             <Typography variant="body2">Email: contact@company.com</Typography>
+          </Box>
           </Box>
         </Grid>
       </Grid>
