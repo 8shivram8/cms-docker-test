@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Box } from "@mui/material";
-import Footer from './Footer';
 import MainScreen from './MainScreen';
 import CenterScreen from './CenterScreen';
 import Hosting from './Hosting';
 import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
-
+import Footer from '../components/Footer';
 const LayoutNew = () => {
      const [selectedCountry, setSelectedCountry] = useState(null);
      const [anchorEl, setAnchorEl] = useState(null);
@@ -38,6 +37,7 @@ const LayoutNew = () => {
                <Plans selectedCountry={selectedCountry}/>
                <ContactForm/>
             </Box>
+            {/* <Footer/> */}
             <Footer/>
         </Box>
     );

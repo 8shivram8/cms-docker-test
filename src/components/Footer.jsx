@@ -16,7 +16,9 @@ function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
+  const handleLinkClick = (url) => {
+    window.open(url, '_blank');
+  };
   return (
     <Box
       component="footer"
@@ -31,13 +33,24 @@ function Footer() {
         {/* Left Section */}
         <Grid item xs={12} sm={6} md={3} lg={3} textAlign={isMobile ? 'center' : 'left'}>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
-            <img src={logo} alt="Colitionify Logo" height={40} style={{ marginBottom: '10px' }} />
-            <Typography variant="subtitle2" gutterBottom>
+            {/* <img src={logo} alt="Colitionify Logo" height={40} style={{ marginBottom: '10px' }} /> */}
+            <Typography fontWeight="bold" fontSize={'25px'} >Coalitionify</Typography>
+            <Typography
+              variant={'caption'}
+              fontWeight={400}
+              fontSize={'14px'}
+              sx={{ color: '#939AAD' }}
+            >
+              We’re here to help! Whether you have questions about 
+              our services, need support, or want to discuss a potential 
+              project, feel free to reach out.
+            </Typography>
+            {/* <Typography variant="subtitle2" gutterBottom>
               Design, Align, Execute
             </Typography>
             <Typography variant="subtitle2">
               Uniting Ideas, Delivering Results
-            </Typography>
+            </Typography> */}
             <Box mt={2} display="flex" gap={1} justifyContent={isMobile ? 'center' : 'flex-start'}>
               <IconButton sx={{ color: 'primary.main' }} component="a" href="https://facebook.com" target='_blank'>
                 <FacebookIcon />
@@ -58,19 +71,18 @@ function Footer() {
         {/* Center Section */}
         <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Quick Links</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{lineHeight:1.5}}>
-            <Link href="/about" color="inherit" underline="hover">About Us</Link>
-            <Link href="/services" color="inherit" underline="hover">Services</Link>
-            <Link href="/blog" color="inherit" underline="hover">Blog</Link>
-            <Link href="/contact" color="inherit" underline="hover">Contact</Link>
-            <Link href="/privacy" color="inherit" underline="hover">Privacy Policy</Link>
+          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
+            <span onClick={() => handleLinkClick('/about')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>About Us</span>
+            <span onClick={() => handleLinkClick('/privacy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Privacy Policy</span>
+            <span onClick={() => handleLinkClick('/terms-conditions')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Terms & Conditions</span>
+            <span onClick={() => handleLinkClick('/refund-policy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Cancellation/ Refund Policy</span>
           </Box>
         </Grid>
 
         {/* Address Section */}
         <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Address</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{lineHeight:1.5}}>
+          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
             <Typography variant="body2">1234 Street Name</Typography>
             <Typography variant="body2">City, State, 12345</Typography>
             <Typography variant="body2">5678 Another St</Typography>
