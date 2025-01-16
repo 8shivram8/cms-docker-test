@@ -1,106 +1,155 @@
-import React from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Typography, Button } from '@mui/material';
 import PriceIcon from '../Custom Icons/PriceIcon';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const pricedata = [
-  { feature: 'Feature 1', free: false, standard: true, premium: true },
-  { feature: 'Feature 2', free: true, standard: true, premium: true },
-  { feature: 'Feature 3', free: false, standard: false, premium: true },
-  { feature: 'Feature 4', free: true, standard: true, premium: false },
-  { feature: 'Feature 5', free: false, standard: true, premium: true },
+  { feature: 'Limited PDF Pages', free: '(max 10)', standard: '(max 10)', premium: '(max 40)' },
+  { feature: 'Unlimited jobs', free: true, standard: true, premium: true },
+  { feature: 'Unlimited projects', free: true, standard: false, premium: true },
+  { feature: 'Standard form fields', free: true, standard: true, premium: false },
+  { feature: 'Multimedia input field', free: true, standard: true, premium: true },
+  { feature: 'Custom branding', free: true, standard: true, premium: false },
+  { feature: 'Advanced analytics', free: true, standard: true, premium: true },
+  { feature: 'Team collaboration', free: true, standard: false, premium: true },
+  { feature: 'Email notifications', free: true, standard: true, premium: true },
+  { feature: 'API access', free: true, standard: true, premium: true },
+  { feature: '24/7 support', free: true, standard: true, premium: false },
+  { feature: 'Priority support', free: true, standard: true, premium: true },
+  { feature: 'Additional storage', free: true, standard: false, premium: true },
+  { feature: 'Advanced security', free: true, standard: true, premium: true },
 ];
 
 const headers = [' ', 'Free', 'Standard', 'Professional'];
 
 const PricingTable = () => {
-  return (
-    <Grid container spacing={3} padding={2} mt={2}>
-      {/* Header Row */}
-      <Grid item xs={12} mb={0}>
-        <Grid container spacing={3}>
-          {headers.map((header, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <Box
-                mr={6}
-                textAlign="right"
-              >
-                <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}> 
-                  {header}
-                </Typography>
-                {/* <PriceIcon/> */}
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
+  const [showAll, setShowAll] = useState(false);
 
-      {/* Data Rows */}
-      <Grid item xs={12} mt={0}>
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
+  return (
+    <Grid container spacing={3} padding={2} mt={1}>
+      <Grid item xs={12}>
+        {/* Header Row */}
+        <Grid container spacing={3} mb={2}>
+          <Grid item xs={12} sm={4} md={4}>
+            <Box textAlign="center">
+              <Typography variant="h6" sx={{ fontWeight: '200', fontSize: '18px' }}></Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4} md={2.6}>
+            <Box textAlign="center">
+              <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '18px' }}>
+                Free
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4} md={2.6}>
+            <Box textAlign="center">
+              <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '18px' }}>
+                Standard
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4} md={2.6}>
+            <Box textAlign="center">
+              <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '18px' }}>
+                Professional
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* Pricing Table Content */}
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               padding={2}
-              border= '1px solid #e0e0e0'
-              borderRadius= '12px'
+              border="1px solid #e0e0e0"
+              borderRadius="12px"
               background="linear-gradient(0deg, #F5F5F5 0%, #FFFFFF 29.88%)"
-              textAlign="left"
-              // minHeight="200px"  // Ensure there’s height for the background to be visible
+              display="flex"
+              flexDirection="column"
+              gap={2.2}
+              alignItems="flex-start"
             >
-              {pricedata.map((row, index) => (
-                <Typography variant="body1" key={index} marginBottom={1}>
-                  {row.feature}
-                </Typography>
+              {pricedata.slice(0, showAll ? pricedata.length : 5).map((row, index) => (
+                <Box display="flex" alignItems="center" gap={2} key={index}>
+                  <Typography variant="body1">{row.feature}</Typography>
+                  <PriceIcon />
+                </Box>
               ))}
             </Box>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={2.6}>
-            <Box
-              padding={2}
-              border={1}
-              borderRadius={2}
-              borderColor="grey.400"
-              textAlign="center"
-            >
-              {pricedata.map((row, index) => (
-                <Typography variant="body1" key={index} marginBottom={1}>
-                  {row.free ? 'Yes' : 'No'}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
+          {/* Pricing Plans */}
+          {['free', 'standard', 'premium'].map((plan, planIndex) => (
+            <Grid item xs={12} sm={6} md={2.6} key={planIndex}>
+              <Box
+                padding={2}
+                border="1px solid #e0e0e0"
+                borderRadius="12px"
+                textAlign="center"
+                display="flex"
+                flexDirection="column"
+                gap={3}
+                justifyContent="center"
+                alignItems="center"
+              >
+                {pricedata.slice(0, showAll ? pricedata.length : 5).map((row, index) => {
+                  if (index === 0) {
+                    return (
+                      <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '13px' }} key={index}>
+                        {row[plan]}
+                      </Typography>
+                    );
+                  }
+                  return row[plan] === true ? (
+                    <CheckCircleIcon key={index} sx={{ fontSize: 18 }} />
+                  ) : (
+                    <Box key={index} sx={{ width: 18, height: 18, visibility: 'hidden' }} />
+                  );
+                })}
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
 
-          <Grid item xs={12} sm={6} md={2.6}>
-            <Box
-              padding={2}
-              border={1}
-              borderRadius={2}
-              borderColor="grey.400"
-              textAlign="center"
+        {/* Show More / Show Less Button */}
+        <Grid item xs={12} md={11.8} mt={2}>
+          <Box textAlign="center">
+            <Button
+              variant="outlined"
+              onClick={toggleShowAll}
+              
+              sx={{
+                border:'none',
+                width: '100%',
+                bgcolor:'#F6F6F6',
+                textTransform: 'none',
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 1,
+                alignItems: 'center',
+                color:'black',
+                height: '45px',
+              }}
             >
-              {pricedata.map((row, index) => (
-                <Typography variant="body1" key={index} marginBottom={1}>
-                  {row.standard ? 'Yes' : 'No'}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={2.6}>
-            <Box
-              padding={2}
-              border={1}
-              borderRadius={2}
-              borderColor="grey.400"
-              textAlign="center"
-            >
-              {pricedata.map((row, index) => (
-                <Typography variant="body1" key={index} marginBottom={1}>
-                  {row.premium ? 'Yes' : 'No'}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
+              {showAll ? (
+                <>
+                  Show Less <ExpandLessIcon sx={{color:'black'}}/>
+                </>
+              ) : (
+                <>
+                  Show More <ExpandMoreIcon />
+                </>
+              )}
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Grid>

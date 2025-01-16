@@ -38,6 +38,7 @@ const LayoutNew = () => {
                <Plans selectedCountry={selectedCountry}/>
                <ContactForm/>
             </Box>
+            {/* <Footer/> */}
         </Box>
     );
 }
