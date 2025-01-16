@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import { Box, Grid, Typography, Paper, useTheme, IconButton, Tooltip } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DataIcon from './Custom Icons/DataIcon';
 import DocumentationIcon from './Custom Icons/DocumentationIcon';
 import Routing from './Custom Icons/Routing';
 import SdkIcon from './Custom Icons/SdkIcon';
+import { useNavigate } from 'react-router-dom';
 
-const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
+const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
     const theme = useTheme();
     return (
         <Box
             sx={{
-                // padding: 2,
                 borderRadius: '12px',
-                border: isSelected
-                ? `2px solid black` 
-                : '1px solid #e0e0e0',
+                border: isSelected ? `2px solid black` : '1px solid #e0e0e0',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'flex-start', // Align left
+                alignItems: 'flex-start',
                 height: '100%',
                 textAlign: 'left',
                 cursor: 'pointer',
             }}
             onClick={onClick}
         >
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: '100%',
-            }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                }}
+            >
                 <Box display={'flex'} flexDirection={'column'}>
                     <Typography
                         variant="h6"
@@ -45,15 +45,14 @@ const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
                     >
                         {title}
                     </Typography>
-                    {/* Gradient Line */}
                     <Box
                         sx={{
-                            height: '4px', // Increase the height to make it broad
-                            bgcolor: 'transparent', // Make the background transparent so the gradient is visible
+                            height: '4px',
+                            bgcolor: 'transparent',
                             backgroundImage: theme.palette.linearColor.gradient,
-                            borderRadius: '2px', // Optional: for rounded corners
-                            mt: 1, // Optional: adjust spacing from the title
-                            ml: 3
+                            borderRadius: '2px',
+                            mt: 1,
+                            ml: 3,
                         }}
                     />
                 </Box>
@@ -67,7 +66,8 @@ const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                    }}>
+                    }}
+                >
                     {iconImage}
                 </Box>
             </Box>
@@ -83,20 +83,18 @@ const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
                             }}
                         >
                             <CheckCircleIcon sx={{ color: 'black', fontSize: 18, mr: 1 }} />
-
                             <Typography
                                 variant="body2"
-                                mr={1}
                                 sx={{
                                     fontWeight: 500,
                                     fontSize: '0.875rem',
                                     textAlign: 'left',
-                                    whiteSpace: 'normal', // Allow wrapping
-                                    overflowWrap: 'break-word', // Wrap long text
-                                    wordBreak: 'break-word', // Break text if necessary
-                                    display: 'inline', // Ensure inline display of subtitle and text
-                                    minWidth: 0, // Prevent the text from overflowing and ensure wrapping
-                                    flexGrow: 1, // Allow text to take up available space without breaking the layout
+                                    whiteSpace: 'normal',
+                                    overflowWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    display: 'inline',
+                                    minWidth: 0,
+                                    flexGrow: 1,
                                 }}
                             >
                                 <strong>{item.subtitle}</strong>: {item.text}
@@ -109,20 +107,21 @@ const BoxItem = ({ title, iconImage, onClick, data ,isSelected}) => {
     );
 };
 
-
 const CenterScreen = () => {
     const theme = useTheme();
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const navigate = useNavigate();
 
-    const handleBoxClick = (index) => {
-        setSelectedIndex(index === selectedIndex ? null : index); // Toggle selection
+    const handleBoxClick = (index, onClick) => {
+        setSelectedIndex(index === selectedIndex ? null : index);
+        if (onClick) onClick();
     };
 
     const boxesData = [
         {
             title: 'Routing Flexibility',
             iconImage: <Routing />,
-            onClick: () => alert('Box 1 clicked'),
+            onClick: () => navigate('/routing-flexibility'),
             data: [
                 { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
                 { subtitle: 'Subtitle 2', text: 'Sed do eiusmod tempor incididunt eiusmod tempor incididunt.' },
@@ -131,7 +130,7 @@ const CenterScreen = () => {
         {
             title: 'Data Collection',
             iconImage: <DataIcon />,
-            onClick: () => alert('Box 2 clicked'),
+            onClick: () => navigate('/data-collection'),
             data: [
                 { subtitle: 'Subtitle 1', text: 'Ut enim ad minim veniam.' },
                 { subtitle: 'Subtitle 2', text: 'Quis nostrud exercitation ullamco laboris.' },
@@ -140,7 +139,7 @@ const CenterScreen = () => {
         {
             title: 'Document Flexibility',
             iconImage: <DocumentationIcon />,
-            onClick: () => alert('Box 3 clicked'),
+            onClick: () => navigate('/document-flexibility'),
             data: [
                 { subtitle: 'Subtitle 1', text: 'Duis aute irure dolor in reprehenderit.' },
                 { subtitle: 'Subtitle 2', text: 'Excepteur sint occaecat cupidatat non proident.' },
@@ -149,7 +148,7 @@ const CenterScreen = () => {
         {
             title: 'SDK Integration',
             iconImage: <SdkIcon />,
-            onClick: () => alert('Box 4 clicked'),
+            onClick: () => navigate('/sdk-integration'),
             data: [
                 { subtitle: 'Subtitle 1', text: 'Velit esse cillum dolore eu fugiat nulla pariatur.' },
                 { subtitle: 'Subtitle 2', text: 'Excepteur sint occaecat cupidatat non proident.' },
@@ -196,13 +195,11 @@ const CenterScreen = () => {
                         <BoxItem
                             {...box}
                             isSelected={selectedIndex === index}
-                            onClick={() => handleBoxClick(index)}
+                            onClick={() => handleBoxClick(index, box.onClick)}
                         />
                     </Grid>
                 ))}
             </Grid>
-
-
         </Box>
     );
 };
