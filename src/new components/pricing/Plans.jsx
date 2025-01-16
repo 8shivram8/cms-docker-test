@@ -112,7 +112,7 @@ const Plans = ({ selectedCountry }) => {
             ID: 'Rp', // Indonesian Rupiah
         };
 
-        const countryCurrency = currencyMap[selectedCountry] || '$';
+        const countryCurrency = currencyMap[selectedCountry];
         setCurrencySymbol(countryCurrency);
 
         const convertPrices = () => {

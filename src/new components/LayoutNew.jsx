@@ -7,7 +7,7 @@ import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
 import Footer from '../components/Footer';
 const LayoutNew = () => {
-     const [selectedCountry, setSelectedCountry] = useState(null);
+     const [selectedCountry, setSelectedCountry] = useState('IN');
      const [anchorEl, setAnchorEl] = useState(null);
      const handleCountryChange = (value) => {
         setSelectedCountry(value);
