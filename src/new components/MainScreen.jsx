@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, MenuItem, IconButton, Menu } from '@mui/material';
 import workflowImg from '../assets/workflow.png';
-import { IconButton, Menu } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
+import { FlagIcon } from 'react-flag-kit';
+
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -16,7 +17,6 @@ const countries = [
     { label: 'Singapore', code: 'SG' },
     { label: 'Russia', code: 'RU' },
     { label: 'Saudi Arabia', code: 'SA' },
-    { label: 'United Arab Emirates', code: 'AE' },
     { label: 'Mexico', code: 'MX' },
     { label: 'Brazil', code: 'BR' },
     { label: 'South Africa', code: 'ZA' },
@@ -27,13 +27,17 @@ const countries = [
 
 const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleClose, anchorEl }) => {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    console.log("mydataa", selectedCountry)
+    const defaultCountry = 'IN';  // Default country India (you can change this if needed)
+
+    const handleSelectCountry = (countryCode) => {
+        handleCountryChange(countryCode);
+        handleClose();
+    };
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
-
             <Box
                 sx={{
                     position: 'absolute',
@@ -46,65 +50,35 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
             />
 
             <Box sx={{ position: 'relative', zIndex: 1 }}>
-
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 3, ml: 5, mr: 5 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: 5, mr: 5 }}>
                     <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
                         Coalitionify
                     </Typography>
-                    <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 2}>
-                        {/* Language Icon for mobile view */}
-                        {isMobile ? (
-                            <IconButton onClick={handleClick} sx={{ color: 'white'}} >
-                                <LanguageIcon />
-                            </IconButton>
-                        ) : (
-                            <FormControl variant="outlined" sx={{ minWidth: '160px', height: '37px' }}>
-                                {!selectedCountry && (
-                                    <InputLabel
-                                        id="country-select-label"
-                                        sx={{
-                                            color: 'black',
-                                            top: '50%',
-                                            transform: 'translateY(-50%)',
-                                            transition: 'all 0.2s ease',
-                                            ml: 1.5,
-                                        }}
-                                    >
-                                        Select Country
-                                    </InputLabel>
-                                )}
-                                <Select
-                                    labelId="country-select-label"
-                                    value={selectedCountry}
-                                    onChange={(e) => handleCountryChange(e.target.value)}
-                                    displayEmpty
-                                    sx={{
-                                        height: '37px',
-                                        bgcolor: 'white',
-                                        color: 'black',
-                                        '& .MuiSelect-icon': { color: 'black' },
-                                    }}
-                                >
-                                    <MenuItem value="" disabled>
-                                        Select Country
-                                    </MenuItem>
-                                    {countries.map((country) => (
-                                        <MenuItem key={country.code} value={country.code}>
-                                            {country.label}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-                        )}
+                    <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 1}>
 
-                        {/* Language Menu for mobile view */}
+
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <IconButton onClick={handleClick} sx={{ color: 'white' }}>
+                                <FlagIcon code={selectedCountry || defaultCountry} style={{ width: '40px', height: '30px', borderRadius: '5px' }} />
+                            </IconButton>
+                        </Box>
+
                         <Menu
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center', 
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center', 
+                            }}
                         >
                             {countries.map((country) => (
-                                <MenuItem key={country.code} onClick={() => handleCountryChange(country.code)}>
+                                <MenuItem key={country.code} onClick={() => handleSelectCountry(country.code)}>
+                                    <FlagIcon code={country.code} style={{ width: '24px', height: '16px', marginRight: '8px' }} />
                                     {country.label}
                                 </MenuItem>
                             ))}
@@ -119,8 +93,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                 color: 'white',
                                 textDecoration: 'none',
                                 textTransform: 'none',
-                                minHeight: isMobile ? '25px' : '37px',
-                                m:isMobile ? 2 : 0,
+                                m: isMobile ? 2 : 2,
                                 fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
                             }}
                         >
@@ -152,7 +125,6 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     >
                         THAT SIMPLIFIES YOUR WORKFLOWS.
                     </Typography>
-
 
                     <Grid container justifyContent="center" spacing={2}>
                         <Grid item>
