@@ -5,7 +5,7 @@ import CenterScreen from './CenterScreen';
 import Hosting from './Hosting';
 import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
-import Footer from '../components/Footer';
+import Footer from './Footer';
 const LayoutNew = () => {
      const [selectedCountry, setSelectedCountry] = useState('IN');
      const [anchorEl, setAnchorEl] = useState(null);

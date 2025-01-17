@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderNav from './HeaderNav';
-import Footer from './Footer';
+import Footer from '../new components/Footer';
 import { Box } from "@mui/material";
 
 const Layout = ({ children }) => {
@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
             minHeight="100vh"
         >
             <HeaderNav />
-            {/* Main content area that grows to push the footer down */}
+
             <Box 
                 component="main" 
                 flexGrow={1} 
