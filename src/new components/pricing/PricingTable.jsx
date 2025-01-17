@@ -84,7 +84,7 @@ const PricingTable = () => {
             </Box>
           </Grid>
 
-          
+
           {['free', 'standard', 'premium'].map((plan, planIndex) => (
             <Grid item xs={12} sm={6} md={2.6} key={planIndex}>
               <Box
@@ -117,29 +117,30 @@ const PricingTable = () => {
           ))}
         </Grid>
 
-        
+
         <Grid item xs={12} md={11.8} mt={2}>
           <Box textAlign="center">
             <Button
               variant="outlined"
               onClick={toggleShowAll}
-              
+              disableRipple
+              disableFocusRipple
               sx={{
-                border:'none',
+                border: 'none',
                 width: '100%',
-                bgcolor:'#F6F6F6',
+                bgcolor: '#F6F6F6',
                 textTransform: 'none',
                 display: 'flex',
                 justifyContent: 'center',
                 gap: 1,
                 alignItems: 'center',
-                color:'black',
+                color: 'black',
                 height: '45px',
               }}
             >
               {showAll ? (
                 <>
-                  Show Less <ExpandLessIcon sx={{color:'black'}}/>
+                  Show Less <ExpandLessIcon sx={{ color: 'black' }} />
                 </>
               ) : (
                 <>
