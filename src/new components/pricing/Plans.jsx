@@ -64,8 +64,6 @@ const Plans = ({ selectedCountry }) => {
             setSelectedPlan(newPlan);
         }
     };
-
-    // Exchange rates for conversion (assuming these are in USD equivalent)
     const exchangeRates = {
         US: 1,
         IN: 86.41,
@@ -75,17 +73,17 @@ const Plans = ({ selectedCountry }) => {
         AU: 1.35,
         EU: 0.85,
         CN: 6.5,
-        KR: 1300, // Example rate for South Korean Won
-        SG: 1.35, // Example rate for Singapore Dollar (same as AUD)
-        RU: 75,   // Example rate for Russian Ruble
-        SA: 3.75, // Example rate for Saudi Riyal
-        AE: 3.67, // Example rate for UAE Dirham (close to AED)
-        MX: 19.5, // Example rate for Mexican Peso
-        BR: 5.2,  // Example rate for Brazilian Real
-        ZA: 18.5, // Example rate for South African Rand
-        TH: 33.2, // Example rate for Thai Baht
-        MY: 4.2,  // Example rate for Malaysian Ringgit
-        ID: 14.5  // Example rate for Indonesian Rupiah
+        KR: 1300,
+        SG: 1.35,
+        RU: 75,
+        SA: 3.75,
+        AE: 3.67,
+        MX: 19.5,
+        BR: 5.2,
+        ZA: 18.5,
+        TH: 33.2,
+        MY: 4.2,
+        ID: 14.5
     };
 
 
@@ -118,13 +116,12 @@ const Plans = ({ selectedCountry }) => {
         const convertPrices = () => {
             const convertedPlans = { ...planData };
 
-            // Convert monthly and annually plan prices
             ['monthly', 'annually'].forEach((planType) => {
                 convertedPlans[planType] = convertedPlans[planType].map(plan => {
                     const amountInUSD = parseFloat(plan.price);
-                    const convertedAmount = Dinero({ amount: amountInUSD * 100 }) // Convert to cents
-                        .multiply(exchangeRates[selectedCountry] || 1)  // Apply the exchange rate
-                        .toFormat('0,0.00');  // Format as currency
+                    const convertedAmount = Dinero({ amount: amountInUSD * 100 })
+                        .multiply(exchangeRates[selectedCountry] || 1)
+                        .toFormat('0,0.00');
                     return { ...plan, price: convertedAmount };
                 });
             });
@@ -133,7 +130,7 @@ const Plans = ({ selectedCountry }) => {
         };
 
         convertPrices();
-    }, [selectedCountry]); // Depend on selectedCountry to trigger the effect
+    }, [selectedCountry]);
 
     return (
         <Grid
@@ -164,7 +161,6 @@ const Plans = ({ selectedCountry }) => {
                 </Typography>
             </Grid>
 
-            {/* Toggle Button */}
             <Grid item mt={2}>
                 <ToggleButtonGroup
                     value={selectedPlan}
@@ -190,7 +186,7 @@ const Plans = ({ selectedCountry }) => {
                 </ToggleButtonGroup>
             </Grid>
 
-            {/* Plan Boxes */}
+
             <Grid container spacing={2} justifyContent="center" mb={3}>
                 {updatedPlanData[selectedPlan].map((plan, index) => (
                     <Grid item xs={12} sm={4} key={index} m={isMobile ? 2 : isTablet ? 2 : 0}>
@@ -208,7 +204,7 @@ const Plans = ({ selectedCountry }) => {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            {/* Title and Icon */}
+
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                 <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}>
                                     {plan.title}
@@ -218,7 +214,7 @@ const Plans = ({ selectedCountry }) => {
                                 </Box>
                             </Box>
 
-                            {/* Price */}
+
                             <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
                                 {currencySymbol} {plan.price}
                                 <Typography
@@ -230,12 +226,12 @@ const Plans = ({ selectedCountry }) => {
                                 </Typography>
                             </Typography>
 
-                            {/* Long Description */}
+
                             <Typography variant="body2" sx={{ color: 'gray', marginTop: 1, textAlign: 'left' }}>
                                 {plan.longDescription}
                             </Typography>
 
-                            {/* Get Started Button */}
+
                             <Button
                                 variant="outlined"
                                 fullWidth
@@ -255,7 +251,7 @@ const Plans = ({ selectedCountry }) => {
             {!isMobile && !isTablet ? (
                 <PricingTable />
             ) :
-            (<PricingTableMobile/>)
+                (<PricingTableMobile />)
             }
             <Enterprice />
         </Grid>

@@ -8,22 +8,22 @@ const Enterprice = () => {
     const data = {
         title: 'Enterprise',
         price: '600$',
-        icon: <EnterPriceIcon />, // Adding icon for Pro Plan
+        icon: <EnterPriceIcon />, 
         longDescription: 'Unlock limitless possibilities with our Enterprise Plan designed for large-scale businesses and complex workflows.',
     }
     return (
         <Grid container spacing={3} justifyContent="center" alignItems="flex-start" mt={3} p={2}>
-            {/* Left box with text */}
+           
             <Grid item xs={12} sm={6} md={6}>
                 <Box>
-                    {/* Main large text */}
+                    
                     <Typography variant="h4" fontWeight={700} fontSize={isSmallScreen ? '35px' : '40px'} gutterBottom>
                         Looking for a
                         <br />
                         Tailored Solution?
                     </Typography>
 
-                    {/* Smaller description text */}
+                   
                     <Typography variant="body2" fontWeight="light" color="text.secondary">
                         Upgrade to our Enterprise Plan for custom workflows, <br />
                         advanced integrations, and dedicated support to meet <br />
@@ -32,7 +32,6 @@ const Enterprice = () => {
                 </Box>
             </Grid>
 
-            {/* Right box with designed content (can be a Card, Paper, etc.) */}
             <Grid item xs={12} sm={6} md={6}>
                 <Box
                     sx={{
@@ -45,10 +44,10 @@ const Enterprice = () => {
                         height: '100%',
                         textAlign: 'left',
                         cursor: 'pointer',
-                        justifyContent: 'space-between', // This ensures the button is at the bottom
+                        justifyContent: 'space-between', 
                     }}
                 >
-                    {/* Title and Icon */}
+                    
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}>
                             {data.title}
@@ -58,7 +57,7 @@ const Enterprice = () => {
                         </Box>
                     </Box>
 
-                    {/* Price */}
+                    
                     <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
                         {data.price}
                         <Typography
@@ -70,7 +69,6 @@ const Enterprice = () => {
                         </Typography>
                     </Typography>
 
-                    {/* Long Description */}
                     <Typography variant="body2" sx={{ color: 'gray', marginTop: 1, textAlign: 'left' }}>
                         {data.longDescription}
                     </Typography>
@@ -85,10 +83,10 @@ const Enterprice = () => {
                         variant="outlined"
                         fullWidth
                         sx={{
-                            borderColor: 'black', // Set border color to black
+                            borderColor: 'black', 
                             color: 'black',
                             textTransform: 'none',
-                            marginTop: 2, // Add space between the description and the button
+                            marginTop: 2, 
                         }}
                     >
                         Get In Touch

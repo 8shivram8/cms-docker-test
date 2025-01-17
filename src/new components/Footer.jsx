@@ -27,10 +27,9 @@ function Footer() {
       }}
     >
       <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
-        {/* Left Section */}
+       
         <Grid item xs={12} sm={6} md={3} lg={3} textAlign={isMobile ? 'center' : 'left'}>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
-            {/* <img src={logo} alt="Colitionify Logo" height={40} style={{ marginBottom: '10px' }} /> */}
             <Typography fontWeight="bold" fontSize={'25px'} mb={1} >Coalitionify</Typography>
             <Typography
               variant={'caption'}
@@ -55,7 +54,7 @@ function Footer() {
           </Box>
         </Grid>
 
-        {/* Address Section */}
+       
         <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Address</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
@@ -66,7 +65,6 @@ function Footer() {
           </Box>
         </Grid>
 
-        {/* Contact Section */}
         <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Contact</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
@@ -77,9 +75,6 @@ function Footer() {
       </Grid>
 
       <Divider sx={{ my: 2, borderColor: 'gray' }} />
-      {/* <Typography variant="body2" color="#fff" align="center">
-        © {new Date().getFullYear()} AYS Software Solution. All rights reserved.
-      </Typography> */}
       <Box
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
@@ -91,8 +86,8 @@ function Footer() {
           variant="body2"
           align="center"
           sx={{
-            color: '#767F8C', // New color for Typography
-            fontSize: { xs: '0.75rem', sm: '0.875rem' }, // Responsive font size
+            color: '#767F8C', 
+            fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
           }}
         >
           © {new Date().getFullYear()} AYS Software Solution. All rights reserved.

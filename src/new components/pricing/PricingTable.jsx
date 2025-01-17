@@ -34,7 +34,6 @@ const PricingTable = () => {
   return (
     <Grid container spacing={3} padding={2} mt={1}>
       <Grid item xs={12}>
-        {/* Header Row */}
         <Grid container spacing={3} mb={2}>
           <Grid item xs={12} sm={4} md={4}>
             <Box textAlign="center">
@@ -64,7 +63,6 @@ const PricingTable = () => {
           </Grid>
         </Grid>
 
-        {/* Pricing Table Content */}
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
@@ -86,7 +84,7 @@ const PricingTable = () => {
             </Box>
           </Grid>
 
-          {/* Pricing Plans */}
+          
           {['free', 'standard', 'premium'].map((plan, planIndex) => (
             <Grid item xs={12} sm={6} md={2.6} key={planIndex}>
               <Box
@@ -119,7 +117,7 @@ const PricingTable = () => {
           ))}
         </Grid>
 
-        {/* Show More / Show Less Button */}
+        
         <Grid item xs={12} md={11.8} mt={2}>
           <Box textAlign="center">
             <Button
