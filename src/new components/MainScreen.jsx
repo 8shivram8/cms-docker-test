@@ -29,7 +29,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    const defaultCountry = 'IN';  // Default country India (you can change this if needed)
+    const defaultCountry = 'IN';
 
     const handleSelectCountry = (countryCode) => {
         handleCountryChange(countryCode);
@@ -69,15 +69,24 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             onClose={handleClose}
                             anchorOrigin={{
                                 vertical: 'bottom',
-                                horizontal: 'center', 
+                                horizontal: 'center',
                             }}
                             transformOrigin={{
                                 vertical: 'top',
-                                horizontal: 'center', 
+                                horizontal: 'center',
                             }}
                         >
                             {countries.map((country) => (
-                                <MenuItem key={country.code} onClick={() => handleSelectCountry(country.code)}>
+                                <MenuItem
+                                    key={country.code}
+                                    onClick={() => handleSelectCountry(country.code)}
+                                    sx={{
+                                        bgcolor: selectedCountry === country.code ? '#e0e0e0' : 'transparent',
+                                        '&:hover': {
+                                            bgcolor: '#f0f0f0', 
+                                        },
+                                    }}
+                                >
                                     <FlagIcon code={country.code} style={{ width: '24px', height: '16px', marginRight: '8px' }} />
                                     {country.label}
                                 </MenuItem>
