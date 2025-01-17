@@ -9,7 +9,6 @@ const boxesData = [
     {
         title: 'Coalitionify Cloud',
         iconImage: cloudImage,
-        onClick: () => alert('Box 1 clicked'),
         data: [
             { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
             { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
@@ -20,7 +19,6 @@ const boxesData = [
     {
         title: 'Deploy on your premise',
         iconImage: cloudImage,
-        onClick: () => alert('Box 2 clicked'),
         data: [
             { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
             { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
@@ -44,7 +42,6 @@ const Hosting = () => {
             background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)',
         }}>
             <Grid spacing={4} container justifyContent="center" sx={{ maxWidth: '800px' }} mb={8}>
-                {/* Title */}
                 <Grid item xs={12}>
                     <Typography
                         variant="h4"
@@ -60,7 +57,6 @@ const Hosting = () => {
                     </Typography>
                 </Grid>
 
-                {/* Boxes */}
                 {boxesData.map((box, index) => (
                     <Grid item xs={12} sm={6} key={index}>
                         <Box
@@ -88,7 +84,7 @@ const Hosting = () => {
                                     mb: 2,
                                     backgroundImage: theme.palette.linearColor.gradient,
                                     WebkitBackgroundClip: 'text',
-                                    color: index === 1 ? 'white' : 'transparent',  // Set text color to white for index 1
+                                    color: index === 1 ? 'white' : 'transparent', 
                                 }}
                             >
                                 {box.title}
@@ -114,13 +110,12 @@ const Hosting = () => {
                                                     fontWeight: 500,
                                                     fontSize: '0.875rem',
                                                     textAlign: 'left',
-                                                    whiteSpace: 'normal', // Allow wrapping
-                                                    overflowWrap: 'break-word', // Wrap long text
-                                                    wordBreak: 'break-word', // Break text if necessary
-                                                    display: 'inline', // Ensure inline display of subtitle and text
-                                                    minWidth: 0, // Prevent the text from overflowing and ensure wrapping
-                                                    // flexGrow: 1, // Allow text to take up available space without breaking the layout
-                                                    color: index === 1 ? 'white' : 'black',  // Set text color to white for index 1
+                                                    whiteSpace: 'normal', 
+                                                    overflowWrap: 'break-word', 
+                                                    wordBreak: 'break-word', 
+                                                    display: 'inline', 
+                                                    minWidth: 0, 
+                                                    color: index === 1 ? 'white' : 'black', 
                                                 }}
                                             >
                                                 <strong>{item.subtitle}</strong>: {item.text}
@@ -133,15 +128,15 @@ const Hosting = () => {
                             <Box
                                 sx={{
                                     display: 'flex',
-                                    justifyContent: 'center',  // Centers the content horizontally
-                                    alignItems: 'center',      // Centers the content vertically
+                                    justifyContent: 'center',  
+                                    alignItems: 'center',     
                                     mb: 2,
                                 }}
                             >
                                 <img
                                     src={box.iconImage}
-                                    alt={box.title} // Add alt text for accessibility
-                                    style={{ width: '250px', height: '250px' }} // Set the size of the icon
+                                    alt={box.title} 
+                                    style={{ width: '250px', height: '250px' }}
                                 />
                             </Box>
 
