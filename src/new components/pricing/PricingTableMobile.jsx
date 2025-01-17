@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Grid, Typography, Card, CardContent, Divider } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Grid, Typography, Card, CardContent, Divider, Button } from "@mui/material";
 
 const pricedata = [
   { feature: "Limited PDF Pages", free: "(max 10)", standard: "(max 10)", premium: "(max 40)" },
@@ -25,6 +25,12 @@ const renderValue = (value) => {
 };
 
 const PricingTableMobile = () => {
+  const [showAll, setShowAll] = useState({ Free: false, Standard: false, Premium: false });
+
+  const handleToggle = (plan) => {
+    setShowAll((prev) => ({ ...prev, [plan]: !prev[plan] }));
+  };
+
   return (
     <Box sx={{ padding: 2 }}>
       <Grid container spacing={2}>
@@ -36,7 +42,7 @@ const PricingTableMobile = () => {
                   {plan} Plan
                 </Typography>
                 <Divider />
-                {pricedata.map((item, idx) => (
+                {pricedata.slice(0, showAll[plan] ? pricedata.length : 5).map((item, idx) => (
                   <Box key={idx} display="flex" justifyContent="space-between" my={1}>
                     <Typography variant="body2" color="text.secondary">
                       {item.feature}
@@ -44,6 +50,17 @@ const PricingTableMobile = () => {
                     <Typography variant="body2">{renderValue(item[plan.toLowerCase()])}</Typography>
                   </Box>
                 ))}
+                <Box display="flex" justifyContent="flex-end" mt={2}>
+                  <Button 
+                  disableRipple
+                  disableFocusRipple
+                  color="black"
+                  sx={{textTransform:'none'}}
+                  onClick={() => handleToggle(plan)}
+                  >
+                    {showAll[plan] ? "Show Less" : "Show More"}
+                  </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
