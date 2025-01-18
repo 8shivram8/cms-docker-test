@@ -117,22 +117,22 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         color="white"
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                            fontSize: isMobile ? '20px' : isTablet ? '36px' : '44px',
+                            fontSize: isMobile ? '20px' : isTablet ? '36px' : '36px',
                             mb: 1,
                         }}
                     >
-                        E-SIGNATURE & DATA COLLECTION
+                        Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple.
                     </Typography>
                     <Typography
                         variant="h1"
                         color="white"
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                            fontSize: isMobile ? '20px' : isTablet ? '36px' : '44px',
+                            fontSize: isMobile ? '14px' : isTablet ? '18px' : '22px',
                             mb: 2,
                         }}
                     >
-                        THAT SIMPLIFIES YOUR WORKFLOWS.
+                        Streamline your processes, eliminate paperwork, and save time with Coalitionify. 
                     </Typography>
 
                     <Grid container justifyContent="center" spacing={2}>
@@ -161,7 +161,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
                                 }}
                             >
-                                Reach to Us
+                                Book a Demo
                             </Button>
                         </Grid>
                     </Grid>

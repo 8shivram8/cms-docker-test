@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box } from "@mui/material";
 import MainScreen from './MainScreen';
 import CenterScreen from './CenterScreen';
+import KeyFeatures from './KeyFeatures'
 import Hosting from './Hosting';
 import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
@@ -32,6 +33,7 @@ const LayoutNew = () => {
                 flexDirection="column"
                 flex={1}
             >
+                <KeyFeatures/>
                <CenterScreen/>
                <Hosting/>
                <Plans selectedCountry={selectedCountry}/>
