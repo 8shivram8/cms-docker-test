@@ -128,7 +128,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         color="white"
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                            fontSize: isMobile ? '14px' : isTablet ? '18px' : '22px',
+                            fontSize: isMobile ? '14px' : isTablet ? '18px' : '28px',
                             mb: 2,
                         }}
                     >
