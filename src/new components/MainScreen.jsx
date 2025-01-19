@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, MenuItem, IconButton, Menu } from '@mui/material';
-import workflowImg from '../assets/workflow.png';
+import workflowImg from '../assets/poster2.png';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 
