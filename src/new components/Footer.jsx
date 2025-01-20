@@ -68,8 +68,8 @@ function Footer() {
         <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Contact</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
-            <Typography variant="body2">Phone: (123) 456-7890</Typography>
-            <Typography variant="body2">Email: contact@company.com</Typography>
+            {/* <Typography variant="body2">Phone: (123) 456-7890</Typography> */}
+            <Typography variant="body2">Email: support@coalitionify.com</Typography>
           </Box>
         </Grid>
       </Grid>

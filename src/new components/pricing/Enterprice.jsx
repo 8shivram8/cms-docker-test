@@ -1,29 +1,36 @@
 import React from 'react'
 import { Grid, Typography, Paper, Box, Button, useMediaQuery, useTheme } from '@mui/material'
 import EnterPriceIcon from '../Custom Icons/EnterPriceIcon'
+import { scroller } from 'react-scroll'
 
 const Enterprice = () => {
-    const theme=useTheme()
+    const theme = useTheme()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     const data = {
         title: 'Enterprise',
         price: '600$',
-        icon: <EnterPriceIcon />, 
+        icon: <EnterPriceIcon />,
         longDescription: 'Unlock limitless possibilities with our Enterprise Plan designed for large-scale businesses and complex workflows.',
     }
+    const scrollToContactForm = () => {
+        scroller.scrollTo('contactForm', {
+            duration: 800,
+            smooth: true,
+        });
+    };
     return (
         <Grid container spacing={3} justifyContent="center" alignItems="flex-start" mt={3} p={2}>
-           
+
             <Grid item xs={12} sm={6} md={6}>
                 <Box>
-                    
+
                     <Typography variant="h4" fontWeight={700} fontSize={isSmallScreen ? '35px' : '40px'} gutterBottom>
                         Looking for a
                         <br />
                         Tailored Solution?
                     </Typography>
 
-                   
+
                     <Typography variant="body2" fontWeight="light" color="text.secondary">
                         Upgrade to our Enterprise Plan for custom workflows, <br />
                         advanced integrations, and dedicated support to meet <br />
@@ -44,10 +51,10 @@ const Enterprice = () => {
                         height: '100%',
                         textAlign: 'left',
                         cursor: 'pointer',
-                        justifyContent: 'space-between', 
+                        justifyContent: 'space-between',
                     }}
                 >
-                    
+
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}>
                             {data.title}
@@ -57,7 +64,7 @@ const Enterprice = () => {
                         </Box>
                     </Box>
 
-                    
+
                     <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
                         {data.price}
                         <Typography
@@ -83,11 +90,12 @@ const Enterprice = () => {
                         variant="outlined"
                         fullWidth
                         sx={{
-                            borderColor: 'black', 
+                            borderColor: 'black',
                             color: 'black',
                             textTransform: 'none',
-                            marginTop: 2, 
+                            marginTop: 2,
                         }}
+                        onClick={scrollToContactForm}
                     >
                         Get In Touch
                     </Button>

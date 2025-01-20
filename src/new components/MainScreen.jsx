@@ -8,6 +8,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
 import logo from '../assets/AcoSignLogo.png'
+import { Link, scroller } from 'react-scroll';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -40,6 +41,13 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleClose();
     };
     const images = [workflowImg, img2, img3];
+
+    const scrollToContactForm = () => {
+        scroller.scrollTo('contactForm', {
+            duration: 1200, 
+            smooth:true,
+        });
+    };
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
@@ -160,18 +168,21 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             </Button>
                         </Grid>
                         <Grid item>
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    color: 'white',
-                                    textDecoration: 'none',
-                                    textTransform: 'none',
-                                    border: '1px solid #FFFFFF',
-                                    fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
-                                }}
-                            >
-                                Book a Demo
-                            </Button>
+                            <Link to="contactForm" smooth={true} duration={1500}>
+                                <Button
+                                    variant="outlined"
+                                    sx={{
+                                        color: 'white',
+                                        textDecoration: 'none',
+                                        textTransform: 'none',
+                                        border: '1px solid #FFFFFF',
+                                        fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                    }}
+                                    onClick={scrollToContactForm}
+                                >
+                                    Book a Demo
+                                </Button>
+                            </Link>
                         </Grid>
                     </Grid>
                 </Box>

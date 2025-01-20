@@ -241,6 +241,8 @@ const Plans = ({ selectedCountry }) => {
                                     textTransform: 'none',
                                     marginTop: 2,
                                 }}
+                                target='_blank'
+                                href="https://app.coalitionify.com/signIn"
                             >
                                 Get Started
                             </Button>
