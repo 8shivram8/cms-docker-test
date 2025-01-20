@@ -8,6 +8,7 @@ import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
 import KeyFeaturesNew from './KeyFeaturesNew';
+import IntegrationPage from './IntegrationPage';
 const LayoutNew = () => {
      const [selectedCountry, setSelectedCountry] = useState('IN');
      const [anchorEl, setAnchorEl] = useState(null);
@@ -38,6 +39,7 @@ const LayoutNew = () => {
                 <KeyFeaturesNew/>
                <CenterScreen/>
                <Hosting/>
+               <IntegrationPage/>
                <Plans selectedCountry={selectedCountry}/>
                <ContactForm/>
             </Box>
