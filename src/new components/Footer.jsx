@@ -90,7 +90,7 @@ function Footer() {
             fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
           }}
         >
-          © {new Date().getFullYear()} AYS Software Solution. All rights reserved.
+          © {new Date().getFullYear()} Coalitionify Innovate Private Limited. All rights reserved.
         </Typography>
         <Box
           mt={isMobile ? 2 : 0}
