@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DataIcon from "./Custom Icons/DataIcon";
 import DocumentationIcon from "./Custom Icons/DocumentationIcon";
@@ -112,6 +112,8 @@ const CenterScreen = () => {
     const theme = useTheme();
     const [selectedIndex, setSelectedIndex] = useState(null);
     const navigate = useNavigate();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
     const handleBoxClick = (index, onClick) => {
         setSelectedIndex(index === selectedIndex ? null : index);
@@ -204,11 +206,11 @@ const CenterScreen = () => {
                 Streamline Your Workflows with Powerful Features
             </Typography>
             <Grid container spacing={2}>
-                <Grid item md={6} style={{ height: '450px' }}>
+                <Grid item sm={12} md={6} style={{ height: '450px' }}>
                     <img src={backImage} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Grid>
 
-                <Grid item md={6} style={{ paddingLeft: '16px' }}>
+                <Grid item sm={12} md={6} style={{ paddingLeft: '16px' }} mt={isMobile ? 2 : 0}>
                     <Grid container spacing={4} justifyContent="center">
                         {boxesData.map((box, index) => (
                             <Grid
