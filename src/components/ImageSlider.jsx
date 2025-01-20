@@ -9,21 +9,19 @@ const ImageSlider = ({ images }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 1500);
+      handleNext();
+    }, 3000);
 
     return () => clearInterval(intervalId);
-  }, [images.length]);
+  }, [currentIndex, images.length]);
 
-  const goToPrevious = () => {
+  const handlePrevious = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  const goToNext = () => {
+  const handleNext = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
@@ -37,23 +35,22 @@ const ImageSlider = ({ images }) => {
         justifyContent: "center",
         position: "relative",
         width: isMobile ? "100%" : "60%",
-        height: "100%",
+        height:isMobile? "300px" : "350px",
+        overflow: "hidden",
       }}
     >
       <Button
-        onClick={goToPrevious}
+        onClick={handlePrevious}
         sx={{
           position: "absolute",
-          left: "10px",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          color: "white",
-          minWidth: "40px",
-          minHeight: "40px",
+          left: 0,
+          zIndex: 2,
+          color: "black",
+          minWidth: "20px",
+          minHeight: "20px",
           borderRadius: "50%",
-          fontSize: "18px",
-          "&:hover": {
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-          },
+          fontSize: "35px",
+          boxShadow: "none",
         }}
       >
         &#8249;
@@ -61,37 +58,39 @@ const ImageSlider = ({ images }) => {
 
       <Box
         sx={{
-          flex: 1,
-          textAlign: "center",
-          overflow: "hidden",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          transform: `translateX(-${currentIndex * 100}%)`,
+          transition: "transform 0.5s ease-in-out",
         }}
       >
-        <img
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex}`}
-          style={{
-            width: "100%",
-            maxHeight: "100%",
-            objectFit: "cover",
-          }}
-        />
+        {images.map((image, index) => (
+          <Box
+            key={index}
+            sx={{
+              flex: "0 0 100%",
+              height: "100%",
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+        ))}
       </Box>
 
       <Button
-        onClick={goToNext}
+        onClick={handleNext}
         sx={{
           position: "absolute",
-          right: "10px",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          color: "white",
-          minWidth: "40px",
-          minHeight: "40px",
+          right: "2px",
+          zIndex: 2,
+          color: "black",
+          minWidth: "20px",
+          minHeight: "20px",
           borderRadius: "50%",
-          fontSize: "18px",
-          "&:hover": {
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-          },
+          fontSize: "35px",
+          boxShadow: "none",
         }}
       >
         &#8250;

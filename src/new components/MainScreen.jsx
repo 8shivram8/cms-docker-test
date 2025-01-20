@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, MenuItem, IconButton, Menu } from '@mui/material';
 import workflowImg from '../assets/poster2.png';
+import img1 from '../assets/newworkflow.jpg';
+import img2 from '../assets/sliderImages/savetime.webp';
+import img3 from '../assets/sliderImages/gogreen.webp';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
+import ImageSlider from '../components/ImageSlider';
 
 const countries = [
     { label: 'United States', code: 'US' },
@@ -35,6 +39,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
+    const images = [workflowImg,img2,img3];
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
@@ -45,7 +50,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     left: 0,
                     right: 0,
                     background: theme.palette.background.gradient,
-                    height: isMobile ? '48vh' : isTablet ? '65vh' : '70vh',
+                    height: isMobile ? '70vh' : isTablet ? '70vh' : '70vh',
                 }}
             />
 
@@ -117,7 +122,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         color="white"
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                            fontSize: '3.5rem',
+                            fontSize: isMobile ? '2rem' : isTablet ? '2.5rem' : '3.5rem',
                             mb: 1,
                         }}
                     >
@@ -128,14 +133,14 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         color="white"
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                            fontSize: isMobile ? '14px' : isTablet ? '18px' : '28px',
+                            fontSize: isMobile ? '16px' : isTablet ? '18px' : '28px',
                             mb: 2,
                         }}
                     >
                         Streamline your processes, eliminate paperwork, and save time with Coalitionify. 
                     </Typography>
 
-                    <Grid container justifyContent="center" spacing={2}>
+                    <Grid container justifyContent="center" spacing={2} mt={1}>
                         <Grid item>
                             <Button
                                 variant="outlined"
@@ -167,10 +172,10 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     </Grid>
                 </Box>
 
-                <Box sx={{ py: 4, mt: 5 }}>
+                <Box sx={{ py: 4, mt: 3 }}>
                     <Container>
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <img
+                            {/* <img
                                 src={workflowImg}
                                 alt="Workflow"
                                 style={{
@@ -178,7 +183,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     maxWidth: isMobile ? '100%' : isTablet ? '90%' : '800px',
                                     height: 'auto',
                                 }}
-                            />
+                            /> */}
+                            <ImageSlider images={images}/>
                         </Box>
                     </Container>
                 </Box>
