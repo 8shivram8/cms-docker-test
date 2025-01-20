@@ -3,6 +3,7 @@ import { Box, Grid, Typography, Card, CardContent, Divider, Button } from "@mui/
 import Free from "../Custom Icons/Free";
 import Standered from "../Custom Icons/Standered";
 import Proffesional from "../Custom Icons/Proffesional";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const pricedata = [
     { feature: "Limited PDF Pages", free: "(max 10)", standard: "(max 10)", premium: "(max 40)" },
@@ -27,10 +28,15 @@ const plans = [
 ];
 
 const renderValue = (value) => {
-    if (value === true) return "✔";
-    if (value === false) return "✖";
+    if (value === true) {
+        return <CheckCircleIcon sx={{ fontSize: 18 }} />;
+    }
+    if (value === false) {
+        return <Box sx={{ width: 18, height: 17, visibility: 'hidden' }} />;
+    }
     return value;
 };
+
 
 const PricingTableMobile = () => {
     const [showAll, setShowAll] = useState({ Free: false, Standard: false, Premium: false });
@@ -54,7 +60,7 @@ const PricingTableMobile = () => {
                                         {plan.icon}
                                     </Box>
                                 </Box>
-                                <Divider sx={{mt:1}}/>
+                                <Divider sx={{ mt: 1 }} />
                                 {pricedata.slice(0, showAll[plan] ? pricedata.length : 5).map((item, idx) => (
                                     <Box key={idx} display="flex" justifyContent="space-between" my={1}>
                                         <Typography variant="body2" color="text.secondary">
