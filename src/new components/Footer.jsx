@@ -112,7 +112,7 @@ function Footer() {
           <IconButton
             sx={{ color: '#767E94' }}
             component="a"
-            href="https://youtube.com"
+            href="https://www.youtube.com/channel/UCGjNgPkRGyU0AHQMkFrjdeg"
             target="_blank"
           >
              <YouTubeIcon />
