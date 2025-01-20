@@ -10,6 +10,7 @@ import Footer from './Footer';
 import KeyFeaturesNew from './KeyFeaturesNew';
 import IntegrationPage from './IntegrationPage';
 import { Element } from 'react-scroll';
+import Security from './Security';
 const LayoutNew = () => {
     const [selectedCountry, setSelectedCountry] = useState('IN');
     const [anchorEl, setAnchorEl] = useState(null);
@@ -46,6 +47,7 @@ const LayoutNew = () => {
                 <CenterScreen />
                 <Hosting />
                 <IntegrationPage />
+                <Security/>
                 <Plans selectedCountry={selectedCountry} />
                 <Element name="contactForm" id="contactForm">
                     <ContactForm />
