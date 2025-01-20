@@ -9,7 +9,7 @@ const theme = createTheme({
       main: '#031E50',  
     },
     background: {
-      gradient: 'linear-gradient(to bottom right, #1677F7, #FFFFFF)', 
+      gradient: 'linear-gradient(to top left, #1677F7, #FFFFFF)'
     },
     
     linearColor: {

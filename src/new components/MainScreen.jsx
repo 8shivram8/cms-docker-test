@@ -7,7 +7,7 @@ import img3 from '../assets/sliderImages/gogreen.webp';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
-
+import logo from '../assets/AcoSignLogo.png'
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -39,7 +39,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [workflowImg,img2,img3];
+    const images = [workflowImg, img2, img3];
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
@@ -56,9 +56,11 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
 
             <Box sx={{ position: 'relative', zIndex: 1 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: 5, mr: 5 }}>
-                    <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
+                    {/* <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
                         Coalitionify
-                    </Typography>
+                    </Typography> */}
+                    <img src={logo} width="150" height="auto" />
+
                     <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 1}>
 
 
@@ -88,7 +90,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     sx={{
                                         bgcolor: selectedCountry === country.code ? '#e0e0e0' : 'transparent',
                                         '&:hover': {
-                                            bgcolor: '#f0f0f0', 
+                                            bgcolor: '#f0f0f0',
                                         },
                                     }}
                                 >
@@ -137,12 +139,14 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             mt: 1,
                         }}
                     >
-                        Streamline your processes, eliminate paperwork, and save time with Coalitionify. 
+                        Streamline your processes, eliminate paperwork, and save time with Coalitionify.
                     </Typography>
 
                     <Grid container justifyContent="center" spacing={2} mt={1}>
                         <Grid item>
                             <Button
+                                target='_blank'
+                                href="https://app.coalitionify.com/signIn"
                                 variant="outlined"
                                 sx={{
                                     bgcolor: 'black',
@@ -172,7 +176,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     </Grid>
                 </Box>
 
-                <Box sx={{mt: 4 }}>
+                <Box sx={{ mt: 4 }}>
                     <Container>
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                             {/* <img
@@ -184,7 +188,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     height: 'auto',
                                 }}
                             /> */}
-                            <ImageSlider images={images}/>
+                            <ImageSlider images={images} />
                         </Box>
                     </Container>
                 </Box>
