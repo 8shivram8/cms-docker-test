@@ -7,6 +7,7 @@ import Hosting from './Hosting';
 import Plans from './pricing/Plans';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
+import KeyFeaturesNew from './KeyFeaturesNew';
 const LayoutNew = () => {
      const [selectedCountry, setSelectedCountry] = useState('IN');
      const [anchorEl, setAnchorEl] = useState(null);
@@ -33,7 +34,8 @@ const LayoutNew = () => {
                 flexDirection="column"
                 flex={1}
             >
-                <KeyFeatures/>
+                {/* <KeyFeatures/> */}
+                <KeyFeaturesNew/>
                <CenterScreen/>
                <Hosting/>
                <Plans selectedCountry={selectedCountry}/>

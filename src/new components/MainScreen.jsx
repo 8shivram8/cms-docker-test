@@ -123,7 +123,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
                             fontSize: isMobile ? '2rem' : isTablet ? '2.5rem' : '3.5rem',
-                            mb: 1,
+                            // mb: 1,
                         }}
                     >
                         Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple.
@@ -134,7 +134,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
                             fontSize: isMobile ? '16px' : isTablet ? '18px' : '28px',
-                            mb: 2,
+                            mt: 1,
                         }}
                     >
                         Streamline your processes, eliminate paperwork, and save time with Coalitionify. 
@@ -172,7 +172,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     </Grid>
                 </Box>
 
-                <Box sx={{ py: 4, mt: 3 }}>
+                <Box sx={{mt: 4 }}>
                     <Container>
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                             {/* <img
