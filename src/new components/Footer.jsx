@@ -104,7 +104,7 @@ function Footer() {
           <IconButton
             sx={{ color: '#767E94' }}
             component="a"
-            href="https://github.com"
+            href="https://www.npmjs.com/package/coalitionify-sdk"
             target="_blank"
           >
             <GitHubIcon />
