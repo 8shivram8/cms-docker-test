@@ -7,7 +7,8 @@ import img3 from '../assets/sliderImages/gogreen.webp';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
-
+import logo from '../assets/AcoSignLogo.png'
+import { Link, scroller } from 'react-scroll';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -39,7 +40,14 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [workflowImg,img2,img3];
+    const images = [workflowImg, img2, img3];
+
+    const scrollToContactForm = () => {
+        scroller.scrollTo('contactForm', {
+            duration: 1200, 
+            smooth:true,
+        });
+    };
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
@@ -56,9 +64,11 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
 
             <Box sx={{ position: 'relative', zIndex: 1 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: 5, mr: 5 }}>
-                    <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
+                    {/* <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
                         Coalitionify
-                    </Typography>
+                    </Typography> */}
+                    <img src={logo} width="150" height="auto" />
+
                     <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 1}>
 
 
@@ -88,7 +98,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     sx={{
                                         bgcolor: selectedCountry === country.code ? '#e0e0e0' : 'transparent',
                                         '&:hover': {
-                                            bgcolor: '#f0f0f0', 
+                                            bgcolor: '#f0f0f0',
                                         },
                                     }}
                                 >
@@ -123,7 +133,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
                             fontSize: isMobile ? '2rem' : isTablet ? '2.5rem' : '3.5rem',
-                            mb: 1,
+                            // mb: 1,
                         }}
                     >
                         Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple.
@@ -134,15 +144,17 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
                             fontSize: isMobile ? '16px' : isTablet ? '18px' : '28px',
-                            mb: 2,
+                            mt: 1,
                         }}
                     >
-                        Streamline your processes, eliminate paperwork, and save time with Coalitionify. 
+                        Streamline your processes, eliminate paperwork, and save time with Coalitionify.
                     </Typography>
 
                     <Grid container justifyContent="center" spacing={2} mt={1}>
                         <Grid item>
                             <Button
+                                target='_blank'
+                                href="https://app.coalitionify.com/signIn"
                                 variant="outlined"
                                 sx={{
                                     bgcolor: 'black',
@@ -156,23 +168,26 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             </Button>
                         </Grid>
                         <Grid item>
-                            <Button
-                                variant="outlined"
-                                sx={{
-                                    color: 'white',
-                                    textDecoration: 'none',
-                                    textTransform: 'none',
-                                    border: '1px solid #FFFFFF',
-                                    fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
-                                }}
-                            >
-                                Book a Demo
-                            </Button>
+                            <Link to="contactForm" smooth={true} duration={1500}>
+                                <Button
+                                    variant="outlined"
+                                    sx={{
+                                        color: 'white',
+                                        textDecoration: 'none',
+                                        textTransform: 'none',
+                                        border: '1px solid #FFFFFF',
+                                        fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                    }}
+                                    onClick={scrollToContactForm}
+                                >
+                                    Book a Demo
+                                </Button>
+                            </Link>
                         </Grid>
                     </Grid>
                 </Box>
 
-                <Box sx={{ py: 4, mt: 3 }}>
+                <Box sx={{ mt: 4 }}>
                     <Container>
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                             {/* <img
@@ -184,7 +199,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     height: 'auto',
                                 }}
                             /> */}
-                            <ImageSlider images={images}/>
+                            <ImageSlider images={images} />
                         </Box>
                     </Container>
                 </Box>

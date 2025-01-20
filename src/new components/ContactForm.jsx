@@ -166,14 +166,14 @@ const ContactForm = () => {
                             mt: 6,
                           }}
                         >
-                            <Typography
+                            {/* <Typography
                                variant="body2" 
                                fontWeight="light" 
                                color="text.secondary" 
                                mr={isSmallScreen ? 2 : 4}
                             >
                                 (+91) 9090909090
-                            </Typography>
+                            </Typography> */}
                             <ArrowIcon
         
                                 sx={{
@@ -188,7 +188,7 @@ const ContactForm = () => {
                                 color="text.secondary" 
                                 ml={isSmallScreen ? 3 : 4}
                             >
-                                acosign@gmail.com
+                               info@coalitionify.com
                             </Typography>
                         </Box>
                     </Box>
