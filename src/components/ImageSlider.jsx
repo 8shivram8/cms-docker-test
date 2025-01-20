@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 const ImageSlider = ({ images }) => {
@@ -9,92 +9,86 @@ const ImageSlider = ({ images }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      handleNext();
-    }, 3000);
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [currentIndex, images.length]);
+  }, [images.length]);
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
   };
 
   return (
     <Box
       sx={{
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        position: "relative",
-        width: isMobile ? "100%" : "60%",
-        height:isMobile? "300px" : "350px",
-        overflow: "hidden",
+        width: isMobile ? "100%" : "75%",
       }}
     >
-      <Button
-        onClick={handlePrevious}
+      {/* Slider Box */}
+      <Box
         sx={{
-          position: "absolute",
-          left: 0,
-          zIndex: 2,
-          color: "black",
-          minWidth: "20px",
-          minHeight: "20px",
-          borderRadius: "50%",
-          fontSize: "35px",
-          boxShadow: "none",
+          position: "relative",
+          width: "100%",
+          height: isMobile ? "300px" : "350px",
+          overflow: "hidden",
         }}
       >
-        &#8249;
-      </Button>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            transform: `translateX(-${currentIndex * 100}%)`,
+            transition: "transform 0.5s ease-in-out",
+          }}
+        >
+          {images.map((image, index) => (
+            <Box
+              key={index}
+              sx={{
+                flex: "0 0 100%",
+                height: "100%",
+                backgroundImage: `url(${image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          ))}
+        </Box>
+      </Box>
 
+      {/* Dots Box */}
       <Box
         sx={{
           display: "flex",
-          width: "100%",
-          height: "100%",
-          transform: `translateX(-${currentIndex * 100}%)`,
-          transition: "transform 0.5s ease-in-out",
+          justifyContent: "center",
+          marginTop: "10px",
+          gap: "10px",
         }}
       >
-        {images.map((image, index) => (
+        {images.map((_, index) => (
           <Box
             key={index}
+            onClick={() => handleDotClick(index)}
             sx={{
-              flex: "0 0 100%",
-              height: "100%",
-              backgroundImage: `url(${image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              width: "10px",
+              height: "10px",
+              borderRadius: "50%",
+              border: "1px solid black",
+              backgroundColor: currentIndex === index ? "black" : "white",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease, transform 0.2s ease",
             }}
           />
         ))}
       </Box>
-
-      <Button
-        onClick={handleNext}
-        sx={{
-          position: "absolute",
-          right: "2px",
-          zIndex: 2,
-          color: "black",
-          minWidth: "20px",
-          minHeight: "20px",
-          borderRadius: "50%",
-          fontSize: "35px",
-          boxShadow: "none",
-        }}
-      >
-        &#8250;
-      </Button>
     </Box>
   );
 };
