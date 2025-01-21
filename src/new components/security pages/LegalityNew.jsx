@@ -67,7 +67,7 @@ const LegalityNew = () => {
                 flexDirection: 'column',
             }}
         >
-            <Box
+            {/* <Box
                 sx={{
                     background: theme.palette.background.gradient,
                     color: 'white',
@@ -78,6 +78,9 @@ const LegalityNew = () => {
                 }}
             >
                 <img src={logo} width="140" height="auto" style={{ marginLeft: 5 }} />
+            </Box> */}
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
+                <img src={logo} width="150" height="auto" />
             </Box>
             <Container
                 maxWidth="md"

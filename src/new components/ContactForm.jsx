@@ -38,7 +38,7 @@ const ContactForm = () => {
         validationSchema,
         onSubmit: async (values, { resetForm }) => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/app-builder/api/v1/auth/user-query`, {
+                const response = await fetch('https://api.coalitionify.com/app-builder/api/v1/auth/user-query', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const ContactForm = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             m: 3,
-                            background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)',
+                            background: 'linear-gradient(215.51deg, #1677F7 0%, #63A6FF 64.27%, #D9E9FF 107.12%)',
                             borderRadius: 2,
                         }}
                         onSubmit={formik.handleSubmit}
