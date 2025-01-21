@@ -1,7 +1,7 @@
 import { styled, TextField } from "@mui/material";
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',  // White background with 50% opacity
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',  // White background with 50% opacity
     borderRadius: '8px',
     height: '40px',  // Slightly decrease the height
     '& .MuiInputBase-root': {

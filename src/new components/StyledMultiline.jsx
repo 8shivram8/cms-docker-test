@@ -1,7 +1,7 @@
 import { styled, TextField } from "@mui/material";
 
 const StyledMultiline = styled(TextField)(({ theme }) => ({
-    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Background with opacity
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Background with opacity
     borderRadius: '8px',
     '& .MuiInputBase-root': {
         border: 'none',

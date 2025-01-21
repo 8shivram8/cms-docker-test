@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, MenuItem, IconButton, Menu } from '@mui/material';
 import workflowImg from '../assets/poster2.png';
-import img1 from '../assets/newworkflow.jpg';
-import img2 from '../assets/sliderImages/savetime.webp';
+import img1 from '../assets/banner images/banner1.jpg';
+import img2 from '../assets/banner images/banner2.jpg';
 import img3 from '../assets/sliderImages/gogreen.webp';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
@@ -40,8 +40,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    // const images = [workflowImg, img2, img3];
-    const images = [workflowImg];
+    const images = [img1, img2];
+    // const images = [workflowImg];
 
     const scrollToContactForm = () => {
         scroller.scrollTo('contactForm', {
