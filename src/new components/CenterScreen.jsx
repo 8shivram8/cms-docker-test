@@ -6,7 +6,7 @@ import DocumentationIcon from "./Custom Icons/DocumentationIcon";
 import Routing from "./Custom Icons/Routing";
 import SdkIcon from "./Custom Icons/SdkIcon";
 import { useNavigate } from "react-router-dom";
-import backImage from "../assets/featureimg.jpeg";
+import backImage from "../assets/features.png";
 
 const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
     const theme = useTheme();
@@ -206,12 +206,48 @@ const CenterScreen = () => {
                 Streamline Your Workflows with Powerful Features
             </Typography>
             <Grid container spacing={2}>
-                <Grid item sm={12} md={6} style={{ height: '450px' }}>
-                    <img src={backImage} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Grid
+                    item
+                    sm={12}
+                    md={6}
+                    // bgcolor={'#C7CCD2'}
+                    sx={{
+                        height: { xs: 'auto', md: '450px' },
+                        display: 'flex',
+                        alignItems: { xs: 'center', md: 'stretch' },
+                        justifyContent: { xs: 'center', md: 'flex-start' },
+
+                    }}
+                >
+                    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} bgcolor={'#C7CCD2'}
+                        sx={{ height: { xs: 'auto', md: '100%' }, width: '100%' }}
+                    >
+                        <img
+                            src={backImage}
+                            style={{
+                                width: '80%',
+                                height: '80%',
+                                borderRadius: isMobile ? '8px' : '0', // Rounded corners for mobile
+                            }}
+                        />
+                    </Box>
                 </Grid>
 
-                <Grid item sm={12} md={6} style={{ paddingLeft: '16px' }} mt={isMobile ? 2 : 0}>
-                    <Grid container spacing={4} justifyContent="center">
+                <Grid
+                    item
+                    sm={12}
+                    md={6}
+                    sx={{
+                        paddingLeft: { xs: '0', md: '16px' },
+                        display: 'flex',
+                        alignItems: { xs: 'center', md: 'center' },
+                        justifyContent: 'center',
+                        flexDirection: { xs: 'column', md: 'row' },
+                        textAlign: { xs: 'center', md: 'left' },
+                    }}
+                    mt={isMobile ? 2 : 0}
+                >
+                    <Grid container spacing={2} justifyContent="center">
                         {boxesData.map((box, index) => (
                             <Grid
                                 item
@@ -219,7 +255,11 @@ const CenterScreen = () => {
                                 sm={6}
                                 md={6}
                                 key={index}
-                                sx={{ marginBottom: 1 }}
+                                sx={{
+                                    marginBottom: { xs: 2, md: 0.5 },
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                }}
                             >
                                 <BoxItem
                                     {...box}
@@ -231,6 +271,7 @@ const CenterScreen = () => {
                     </Grid>
                 </Grid>
             </Grid>
+
 
         </Box>
     );
