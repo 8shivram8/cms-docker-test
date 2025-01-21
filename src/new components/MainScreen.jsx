@@ -40,7 +40,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [workflowImg, img2, img3];
+    // const images = [workflowImg, img2, img3];
+    const images = [workflowImg];
 
     const scrollToContactForm = () => {
         scroller.scrollTo('contactForm', {

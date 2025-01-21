@@ -36,15 +36,19 @@ const ImageSlider = ({ images }) => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "300px" : "350px",
+          paddingTop: "56.25%",
           overflow: "hidden",
+          // bgcolor:'lightblue'
         }}
       >
         <Box
           sx={{
-            display: "flex",
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
             height: "100%",
+            display: "flex",
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: "transform 0.5s ease-in-out",
           }}

@@ -160,11 +160,11 @@ const ContactForm = () => {
                             Any Questions? <br /> Write or Call us. <br /> We will write back <br /> within 12 Hrs
                         </Typography>
                         <Box
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            mt: 6,
-                          }}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                mt: 6,
+                            }}
                         >
                             {/* <Typography
                                variant="body2" 
@@ -175,7 +175,7 @@ const ContactForm = () => {
                                 (+91) 9090909090
                             </Typography> */}
                             <ArrowIcon
-        
+
                                 sx={{
                                     width: 14, // Small icon size
                                     height: 14,
@@ -183,12 +183,12 @@ const ContactForm = () => {
                                 }}
                             />
                             <Typography
-                                variant="body2" 
-                                fontWeight="light" 
-                                color="text.secondary" 
+                                variant="body2"
+                                fontWeight="light"
+                                color="text.secondary"
                                 ml={isSmallScreen ? 3 : 4}
                             >
-                               info@coalitionify.com
+                                info@coalitionify.com
                             </Typography>
                         </Box>
                     </Box>
@@ -207,60 +207,95 @@ const ContactForm = () => {
                         }}
                     >
                         <Box m={3} gap={2} display={'flex'} flexDirection={'column'}>
-                            <StyledTextfield
+                            <input
                                 onChange={handleChange}
-                                label="Name"
-                                variant="outlined"
-                                error={!!errors.name}
-                                helperText={errors.name}
                                 name="name"
-                            />
-
-
-                            <StyledTextfield
-                                onChange={handleChange}
-                                label="Email"
-                                variant="outlined"
-                                type="email"
-                                error={!!errors.email}
-                                helperText={errors.email}
-                                name="email"
-                            />
-                            <StyledTextfield
-                                onChange={handleChange}
-                                label="Phone Number (Optional)"
-                                variant="outlined"
-                                type="tel"
-                                error={!!errors.phone}
-                                helperText={errors.phone}
-                                name="phone"
-
-                            />
-                            <TextField
-                                onChange={handleChange}
-                                label="Message"
-                                variant="outlined"
-                                multiline
-                                rows={4}
-                                error={!!errors.message}
-                                helperText={errors.message}
-                                name="message"
-                                sx={{
-                                    '& .MuiInputLabel-root': {
-                                        color: 'white',                     // Label color
-                                        fontSize: '0.8rem',                 // Reduced font size
-                                        transform: 'translate(14px, 12px) scale(1)', // Positioning label at the center
-                                        textAlign: 'center',                // Center the label text
-                                    },
-                                    '& .MuiInputLabel-shrink': {
-                                        transform: 'translate(14px, -6px) scale(0.75)', // Position the label when shrunk (focused or filled)
-                                    },
-                                    '& .MuiOutlinedInput-root': {
-                                        borderRadius: '8px',                // Border radius
-                                    },
+                                type="text"
+                                placeholder="Name"
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    border: '1px solid #D4D4D4',
+                                    borderRadius: '8px',
+                                    fontSize: '1rem',
+                                    fontFamily: 'Arial, sans-serif',
+                                    color: 'white',
+                                    backgroundColor: 'transparent',
+                                    outline: 'none',
+                                    boxSizing: 'border-box',
                                 }}
-
                             />
+                            <style>
+                                {`
+                                    input::placeholder {
+                                    color: white;
+                                     }
+                                 `}
+                            </style>
+                            <input
+                                onChange={handleChange}
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    border: '1px solid #D4D4D4',
+                                    borderRadius: '8px',
+                                    fontSize: '1rem',
+                                    fontFamily: 'Arial, sans-serif',
+                                    color: 'white',
+                                    backgroundColor: 'transparent',
+                                    outline: 'none',
+                                    boxSizing: 'border-box',
+                                }}
+                            />
+
+                            <input
+                                onChange={handleChange}
+                                name="phone"
+                                type="tel"
+                                placeholder="Phone Number (Optional)"
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    border: '1px solid #D4D4D4',
+                                    borderRadius: '8px',
+                                    fontSize: '1rem',
+                                    fontFamily: 'Arial, sans-serif',
+                                    color: 'white',
+                                    backgroundColor: 'transparent',
+                                    outline: 'none',
+                                    boxSizing: 'border-box',
+                                }}
+                            />
+
+                            <textarea
+                                onChange={handleChange}
+                                name="message"
+                                placeholder="Message"
+                                rows="4"
+                                style={{
+                                    width: '100%',
+                                    padding: '12px',
+                                    border: '1px solid #D4D4D4',
+                                    borderRadius: '8px',
+                                    fontSize: '1rem',
+                                    fontFamily: 'Arial, sans-serif',
+                                    color: 'white',
+                                    backgroundColor: 'transparent',
+                                    resize: 'none',
+                                    outline: 'none',
+                                    boxSizing: 'border-box',
+                                }}
+                            />
+                            <style>
+                                {`
+                                textarea::placeholder {
+                                 color: white;
+                                     }
+                                 `}
+                            </style>
                             <Button
                                 variant="contained"
                                 color="black"
@@ -285,3 +320,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
