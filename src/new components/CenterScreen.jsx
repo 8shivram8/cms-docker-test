@@ -226,7 +226,8 @@ const CenterScreen = () => {
                         <img
                             src={backImage}
                             style={{
-                                width: '80%',
+                                objectFit:'contain',
+                                width: isMobile ? '80%' : '',
                                 height: '80%',
                                 borderRadius: isMobile ? '8px' : '0', // Rounded corners for mobile
                             }}
