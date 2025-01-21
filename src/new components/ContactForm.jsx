@@ -1,109 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Typography,
     Grid,
-    TextField,
     Box,
     Button,
     useMediaQuery,
-    useTheme,
-    Grid2
+    useTheme
 } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import StyledTextfield from './StyledTextfield';
+import StyledMultiline from './StyledMultiline';
 import ArrowIcon from './Custom Icons/ArrowIcon';
 
 const ContactForm = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Name is required'),
+        email: Yup.string()
+            .email('Invalid email format')
+            .required('Email is required'),
+        phone: Yup.string()
+            .matches(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number format')
+            .nullable(),
+        message: Yup.string().nullable(),
     });
-    const [errors, setErrors] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
-    });
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-
-        let error = '';
-        if (name === 'name' && value.trim() === '') {
-            error = 'Name is required';
-        }
-        if (name === 'email') {
-            if (value.trim() === '') {
-                error = 'Email is required';
-            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) {
-                error = 'Invalid email format';
-            }
-        }
-        if (name === 'phone' && value.trim() !== '') { // Phone is optional
-            if (!/^\+?[1-9]\d{1,14}$/.test(value.trim())) {
-                error = 'Invalid phone number format';
-            }
-        }
-        if (name === 'message' && value.trim() === '') {
-            error = 'Message is required';
-        }
-
-        setErrors({ ...errors, [name]: error });
-    };
-
-    const validateForm = () => {
-        const newErrors = {
-            name: formData.name.trim() === '' ? 'Name is required' : '',
-            email:
-                formData.email.trim() === ''
-                    ? 'Email is required'
-                    : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
-                        ? 'Invalid email format'
-                        : '',
-            phone:
-                formData.phone.trim() !== '' && !/^\+?[1-9]\d{1,14}$/.test(formData.phone.trim())
-                    ? 'Invalid phone number format'
-                    : '', // No error if phone is empty
-            message: formData.message.trim() === '' ? 'Message is required' : ''
-        };
-        setErrors(newErrors);
-        return Object.values(newErrors).every((error) => error === '');
-    };
-
-    const resetForm = () => {
-        setFormData({
+    const formik = useFormik({
+        initialValues: {
             name: '',
             email: '',
             phone: '',
-            message: ''
-        });
-        setErrors({
-            name: '',
-            email: '',
-            phone: '',
-            message: ''
-        });
-    };
-
-    const handleSubmit = async () => {
-        if (validateForm()) {
+            message: '',
+        },
+        validationSchema,
+        onSubmit: async (values, { resetForm }) => {
             try {
-                const response = await fetch('https://your-api-endpoint.com/submit', {
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/app-builder/api/v1/auth/user-query`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(values),
                 });
 
                 if (response.ok) {
-                    setShowSuccessMessage(true);
                     resetForm();
                 } else {
                     console.error('API call failed');
@@ -111,8 +54,8 @@ const ContactForm = () => {
             } catch (error) {
                 console.error('Error during API call:', error);
             }
-        }
-    };
+        },
+    });
 
     return (
         <Box
@@ -122,12 +65,10 @@ const ContactForm = () => {
                 alignItems: 'center',
                 width: '100%',
                 backgroundColor: '#f3f4f6',
-                mt:2
+                mt: 2
             }}
         >
-            {/* Parent Container with Grid */}
             <Grid container sx={{ maxWidth: 'lg', width: '100%' }} spacing={2} justifyContent="center" mt={2} >
-                {/* Left Box */}
                 <Grid item xs={12} md={6} >
                     <Box
                         sx={{
@@ -167,18 +108,9 @@ const ContactForm = () => {
                                 mt: 6,
                             }}
                         >
-                            {/* <Typography
-                               variant="body2" 
-                               fontWeight="light" 
-                               color="text.secondary" 
-                               mr={isSmallScreen ? 2 : 4}
-                            >
-                                (+91) 9090909090
-                            </Typography> */}
                             <ArrowIcon
-
                                 sx={{
-                                    width: 14, // Small icon size
+                                    width: 14,
                                     height: 14,
                                     color: 'text.secondary',
                                 }}
@@ -195,8 +127,7 @@ const ContactForm = () => {
                     </Box>
                 </Grid>
 
-                {/* Right Box (Form) */}
-                <Grid item xs={12} md={5} bgcolor={red}>
+                <Grid item xs={12} md={5}>
                     <Box
                         component="form"
                         sx={{
@@ -206,98 +137,56 @@ const ContactForm = () => {
                             background: 'linear-gradient(to bottom left, #1677F7, #FFFFFF)',
                             borderRadius: 2,
                         }}
+                        onSubmit={formik.handleSubmit}
                     >
                         <Box m={3} gap={2} display={'flex'} flexDirection={'column'}>
-                            <input
-                                onChange={handleChange}
+                            <StyledTextfield
                                 name="name"
                                 type="text"
                                 placeholder="Name"
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    border: '1px solid #D4D4D4',
-                                    borderRadius: '8px',
-                                    fontSize: '1rem',
-                                    fontFamily: 'Arial, sans-serif',
-                                    color: 'white',
-                                    backgroundColor: 'transparent',
-                                    outline: 'none',
-                                    boxSizing: 'border-box',
-                                }}
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.name && Boolean(formik.errors.name)}
+                                helperText={formik.touched.name && formik.errors.name}
+                                sx={{ mb: 1 }}
                             />
-                            <style>
-                                {`
-                                    input::placeholder {
-                                    color: white;
-                                     }
-                                 `}
-                            </style>
-                            <input
-                                onChange={handleChange}
+                            <StyledTextfield
                                 name="email"
                                 type="email"
                                 placeholder="Email"
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    border: '1px solid #D4D4D4',
-                                    borderRadius: '8px',
-                                    fontSize: '1rem',
-                                    fontFamily: 'Arial, sans-serif',
-                                    color: 'white',
-                                    backgroundColor: 'transparent',
-                                    outline: 'none',
-                                    boxSizing: 'border-box',
-                                }}
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.email && Boolean(formik.errors.email)}
+                                helperText={formik.touched.email && formik.errors.email}
+                                sx={{ mb: 1 }}
                             />
-
-                            <input
-                                onChange={handleChange}
+                            <StyledTextfield
                                 name="phone"
                                 type="tel"
                                 placeholder="Phone Number (Optional)"
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    border: '1px solid #D4D4D4',
-                                    borderRadius: '8px',
-                                    fontSize: '1rem',
-                                    fontFamily: 'Arial, sans-serif',
-                                    color: 'white',
-                                    backgroundColor: 'transparent',
-                                    outline: 'none',
-                                    boxSizing: 'border-box',
-                                }}
+                                value={formik.values.phone}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                helperText={formik.touched.phone && formik.errors.phone}
+                                sx={{ mb: 1 }}
                             />
-
-                            <textarea
-                                onChange={handleChange}
+                            <StyledMultiline
                                 name="message"
-                                placeholder="Message"
-                                rows="4"
-                                style={{
-                                    width: '100%',
-                                    padding: '12px',
-                                    border: '1px solid #D4D4D4',
-                                    borderRadius: '8px',
-                                    fontSize: '1rem',
-                                    fontFamily: 'Arial, sans-serif',
-                                    color: 'white',
-                                    backgroundColor: 'transparent',
-                                    resize: 'none',
-                                    outline: 'none',
-                                    boxSizing: 'border-box',
-                                }}
+                                multiline
+                                rows={4}
+                                placeholder="Message (Optional)"
+                                value={formik.values.message}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.message && Boolean(formik.errors.message)}
+                                helperText={formik.touched.message && formik.errors.message}
+                                sx={{ mb: 1 }}
                             />
-                            <style>
-                                {`
-                                textarea::placeholder {
-                                 color: white;
-                                     }
-                                 `}
-                            </style>
                             <Button
+                                type="submit"
                                 variant="contained"
                                 color="black"
                                 size="large"
@@ -307,18 +196,15 @@ const ContactForm = () => {
                                     backgroundColor: 'black',
                                     color: 'white',
                                 }}
-                                onClick={handleSubmit}
                             >
                                 Submit
                             </Button>
                         </Box>
                     </Box>
                 </Grid>
-
             </Grid>
         </Box>
     );
 };
 
 export default ContactForm;
-
