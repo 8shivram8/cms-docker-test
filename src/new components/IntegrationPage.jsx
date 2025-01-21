@@ -52,7 +52,12 @@ const IntegrationPage = () => {
                                 sx={{
                                     border: '1px solid #e0e0e0',
                                     borderRadius: '5px',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'scale(1.03)',
+                                    },
                                 }}
+
                             >
                                 <Typography variant="h4">{item.icon}</Typography>
                                 <Typography variant="body2" mt={1} align="left" fontWeight={700} fontSize={'18px'}>
