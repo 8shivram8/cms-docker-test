@@ -1,19 +1,32 @@
 import { styled, TextField } from "@mui/material";
 
-const StyledTextfield = styled(TextField)(({ theme }) => ({
-    '& .MuiInputLabel-root': {
-        color: 'white',                     // Label color
-        fontSize: '0.8rem',                 // Reduced font size
-        transform: 'translate(14px, 12px) scale(1)', // Positioning label at the center
-        textAlign: 'center',                // Center the label text
+const StyledTextField = styled(TextField)(({ theme }) => ({
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',  // White background with 50% opacity
+    borderRadius: '8px',
+    height: '40px',  // Slightly decrease the height
+    '& .MuiInputBase-root': {
+        border: 'none',
+        height: '100%',  // Ensure the input stretches to fill the height
+        display: 'flex',
+        alignItems: 'center',  // Vertically center the text and placeholder
+        '&::before, &::after': {
+            border: 'none',
+        },
     },
-    '& .MuiInputLabel-shrink': {
-        transform: 'translate(14px, -6px) scale(0.75)', // Position the label when shrunk (focused or filled)
+    '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
     },
-    '& .MuiOutlinedInput-root': {
-        borderRadius: '8px',                // Border radius
-        height: '40px',                     // Reduced height of the text field
+    '& .MuiInputAdornment-positionStart': {
+        color: theme.palette.primary.main,
+    },
+    '& .MuiInputBase-input': {
+        color: 'black',  // Text color
+    },
+    '& .MuiInputBase-input::placeholder': {
+        color: 'white',  // Set placeholder color to white
+        textAlign: 'left',  // Center the placeholder text horizontally
+        opacity: 1,  // Ensure the placeholder is fully opaque
     },
 }));
 
-export default StyledTextfield;
+export default StyledTextField;
