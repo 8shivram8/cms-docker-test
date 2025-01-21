@@ -19,10 +19,10 @@ const Routingflexibility = () => {
             title: 'Expiry Routing',
             subtitle: 'Never let tasks linger or cause delays in your workflows. Set expiration times for each stage, ensuring tasks are automatically rerouted, escalated, or completed if deadlines are missed. This feature is perfect for businesses that prioritize fast turnarounds or have time-sensitive processes like client onboarding or contract renewals. Example: Escalate a delayed approval to a manager if it isn’t addressed within 48 hours.Never let tasks linger or cause delays in your workflows. Set expiration times for each stage, ensuring tasks are automatically rerouted, escalated, or completed if deadlines are missed.',
         },
-        {
-            title: 'Decline Routing',
-            subtitle: 'Rejected decisions don’t have to bring processes to a halt. With decline routing, ensure declined tasks are sent back to the originator or forwarded to alternate approvers for modifications or further action. This reduces bottlenecks and keeps the workflow moving. Example: If a document is rejected by the finance team, it can be rerouted to the creator with feedback or sent to another approver for further input.',
-        },
+        // {
+        //     title: 'Decline Routing',
+        //     subtitle: 'Rejected decisions don’t have to bring processes to a halt. With decline routing, ensure declined tasks are sent back to the originator or forwarded to alternate approvers for modifications or further action. This reduces bottlenecks and keeps the workflow moving. Example: If a document is rejected by the finance team, it can be rerouted to the creator with feedback or sent to another approver for further input.',
+        // },
     ];
 
     return (

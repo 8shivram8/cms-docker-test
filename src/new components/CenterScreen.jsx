@@ -18,7 +18,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                height: "100%",
+                height: "220px",
                 textAlign: "left",
                 cursor: "pointer",
             }}
@@ -127,12 +127,12 @@ const CenterScreen = () => {
             onClick: () => navigate("/routing-flexibility"),
             data: [
                 {
-                    subtitle: "Subtitle 1",
-                    text: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+                    subtitle: "Conditional Routing",
+                    text: "Automate workflows based on specific conditions.",
                 },
                 {
-                    subtitle: "Subtitle 2",
-                    text: "Sed do eiusmod tempor incididunt eiusmod tempor incididunt.",
+                    subtitle: "Expiry Routing",
+                    text: "Set the expiry for documents to sign.",
                 },
             ],
         },
@@ -141,10 +141,10 @@ const CenterScreen = () => {
             iconImage: <DataIcon />,
             onClick: () => navigate("/data-collection"),
             data: [
-                { subtitle: "Subtitle 1", text: "Ut enim ad minim veniam." },
+                { subtitle: "Input Fields and multi- media", text: "Collect critical information directly within your documents." },
                 {
-                    subtitle: "Subtitle 2",
-                    text: "Quis nostrud exercitation ullamco laboris.",
+                    subtitle: "Image Capture",
+                    text: "Add visual data seamlessly to your workflows.",
                 },
             ],
         },
@@ -154,12 +154,12 @@ const CenterScreen = () => {
             onClick: () => navigate("/document-flexibility"),
             data: [
                 {
-                    subtitle: "Subtitle 1",
-                    text: "Duis aute irure dolor in reprehenderit.",
+                    subtitle: "Multi-Step Documents",
+                    text: "Manage complex workflows with ease.",
                 },
                 {
-                    subtitle: "Subtitle 2",
-                    text: "Excepteur sint occaecat cupidatat non proident.",
+                    subtitle: "Bulk Signing",
+                    text: "Handle high-volume document signing in seconds.",
                 },
             ],
         },
@@ -169,13 +169,13 @@ const CenterScreen = () => {
             onClick: () => navigate("/sdk-integration"),
             data: [
                 {
-                    subtitle: "Subtitle 1",
-                    text: "Velit esse cillum dolore eu fugiat nulla pariatur.",
+                    subtitle: "Seamless Integration",
+                    text: "Easily integrates with your existing systems for a smooth user experience.",
                 },
-                {
-                    subtitle: "Subtitle 2",
-                    text: "Excepteur sint occaecat cupidatat non proident.",
-                },
+                // {
+                //     subtitle: "Custom SDK",
+                //     text: "Integrate our SDK for a fully customizable experience and enhanced functionality.",
+                // }
             ],
         },
     ];
@@ -213,7 +213,8 @@ const CenterScreen = () => {
                     md={6}
                     // bgcolor={'#C7CCD2'}
                     sx={{
-                        height: { xs: 'auto', md: '450px' },
+                        // height: { xs: 'auto', md: '450px' },
+                        height: { xs: 'auto', md: '478px' },  
                         display: 'flex',
                         alignItems: { xs: 'center', md: 'stretch' },
                         justifyContent: { xs: 'center', md: 'flex-start' },

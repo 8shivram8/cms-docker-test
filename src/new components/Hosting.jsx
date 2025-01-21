@@ -10,20 +10,20 @@ const boxesData = [
         title: 'Coalitionify Cloud',
         iconImage: cloudImage,
         data: [
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
-            { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Platform as a Service', text: 'A fully managed solution for your e-signature needs.' },
+            { subtitle: 'Highly Secure & Legally Binding', text: 'Meets the highest standards for data protection and compliance.' },
+            { subtitle: 'Team Collaboration', text: 'Work seamlessly with your team on shared workflows.' },
+            { subtitle: 'Ready to Start', text: 'Launch your e-signature workflows instantly without setup hassles.' },
         ],
     },
     {
         title: 'Deploy on your premise',
         iconImage: cloudImage,
         data: [
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet abcd abcd' },
-            { subtitle: 'Subtitle 2', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
-            { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
+            { subtitle: 'Host on Your Cloud', text: 'Take advantage of our technology while maintaining your infrastructure.' },
+            { subtitle: 'Absolute Control', text: 'Gain full control over your data and configurations.' },
+            { subtitle: 'Host on Your Cloud', text: 'Take advantage of our technology while maintaining your infrastructure.' },
+            // { subtitle: 'Subtitle 1', text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet' },
         ],
     },
 ]
@@ -72,8 +72,10 @@ const Hosting = () => {
                                 cursor: 'pointer',
                                 transition: 'transform 0.3s ease-in-out',
                                 '&:hover': {
-                                    transform: 'scale(1.05)',
+                                    transform: 'scale(1.03)',
                                 },
+                                height:'600px'
+                                
                             }}
                         >
 
