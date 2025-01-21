@@ -34,9 +34,6 @@ const Security = () => {
             <Container maxWidth="xl" sx={{ px: { xs: 3, md: 12 } }}>
                 <Grid container spacing={4} alignItems="center" >
                     <Grid item xs={12} md={8} display={'flex'} flexDirection={'column'}>
-                        {/* <Typography variant="h4" component="h1" gutterBottom>
-                            Our Commitment to Security
-                        </Typography> */}
                         <Box display={'flex'} justifyContent={'left'}>
                             <Typography
                                 variant="h4"

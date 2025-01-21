@@ -122,6 +122,7 @@ const ContactForm = () => {
                 alignItems: 'center',
                 width: '100%',
                 backgroundColor: '#f3f4f6',
+                mt:2
             }}
         >
             {/* Parent Container with Grid */}
