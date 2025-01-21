@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/AcoSignLogo.png'
+import logo from '../../assets/AcoSignLogo.png';
 
 const DataCollectionNew = () => {
     const theme = useTheme();
@@ -12,33 +12,41 @@ const DataCollectionNew = () => {
 
     const contentData = [
         {
-            title: 'Data Capture',
-            subtitle: 'Efficient data collection is essential for accurate insights. Our platform allows users to capture essential data from various sources in real time, ensuring that every decision is based on the latest information. From form-based inputs to sensor data, we handle it all.',
+            title: 'Embed Input Fields',
+            subtitle: 'Easily integrate customizable input fields directly into your PDFs or digital forms, allowing for precise data collection.',
+            details: [
+                'Supported Fields: Text fields, radio buttons, checkboxes, and dropdown menus.',
+                'Use Cases: Perfect for forms requiring structured responses, such as consent forms, feedback surveys, or application submissions.'
+            ]
         },
         {
-            title: 'Data Validation',
-            subtitle: 'Ensure the integrity of the data being collected with built-in validation mechanisms. Users can set rules for required fields, data formats, and consistency checks, preventing errors and improving the quality of the collected data.',
+            title: 'Image Capture',
+            subtitle: 'Enable users to upload images directly as part of the workflow, ensuring authenticity and relevance.',
+            details: [
+                'Features: Support for live image capture or upload from devices.',
+                'Use Cases: ID verification, incident reporting, or adding visual proof for a process.'
+            ]
         },
         {
-            title: 'Data Integration',
-            subtitle: 'Seamlessly integrate the collected data with other platforms or systems. Our solution supports a wide range of integrations, including APIs, webhooks, and data export features, allowing users to streamline their workflows and enhance the value of the collected data.',
+            title: 'File Upload with Versioning',
+            subtitle: 'Simplify document management with robust file upload capabilities and version control.',
+            details: [
+                'Features: Allow users to upload multiple versions of a file while maintaining a clear version history for tracking changes.',
+                'Use Cases: Contract amendments, policy updates, or collaborative document editing.'
+            ]
         },
+        {
+            title: 'Multimedia Input',
+            subtitle: 'Support advanced data collection with audio and video input fields, catering to diverse user needs.',
+            details: [
+                'Features: Users can record or upload audio and video clips directly within the workflow.',
+                'Use Cases: Video interviews, customer feedback in multimedia formats, or voice-recorded instructions.'
+            ]
+        }
     ];
 
     return (
         <Box>
-            {/* <Box
-                sx={{
-                    background: theme.palette.background.gradient,
-                    color: 'white',
-                    py: 1,
-                    height: '40px',
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-            >
-                  <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
-            </Box> */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
                 <img src={logo} width="150" height="auto" />
             </Box>
@@ -134,6 +142,48 @@ const DataCollectionNew = () => {
                                     >
                                         {item.subtitle}
                                     </Typography>
+                                    <List sx={{ paddingLeft: 2 }}>
+                                        {item.details.map((detail, idx) => (
+                                            <ListItem
+                                                key={idx}
+                                                sx={{
+                                                    display: 'flex',
+                                                    alignItems: 'flex-start',
+                                                    paddingLeft: 0,
+                                                    paddingY: 0.5,
+                                                }}
+                                            >
+                                                <ListItemIcon
+                                                    sx={{
+                                                        minWidth: 'auto',
+                                                        marginRight: '10px',
+                                                        marginTop: '8px',
+                                                    }}
+                                                >
+                                                    <Box
+                                                        sx={{
+                                                            width: '6px',
+                                                            height: '6px',
+                                                            backgroundColor: 'black',
+                                                            borderRadius: '50%',
+                                                        }}
+                                                    />
+                                                </ListItemIcon>
+                                                <ListItemText
+                                                    secondary={detail} // text before ":"
+                                                   
+                                                    sx={{
+                                                        textAlign: 'justify',
+                                                        color:theme.palette.text.secondary,
+                                                        margin: 0,
+                                                        lineHeight: 1,
+                                                        fontSize: isMobile ? '10px' : isTablet ? '12px' : '12px',
+                                                        fontFamily: 'Poppins, sans-serif',
+                                                    }}
+                                                />
+                                            </ListItem>
+                                        ))}
+                                    </List>
                                 </Box>
                             ))}
                         </Box>
