@@ -9,8 +9,8 @@ import DataCollectionNew from './feature components/DataCollectionNew';
 import Privacy from './footer pages/Privacy';
 import Terms from './footer pages/Terms';
 import Refund from './footer pages/Refund';
-import Trust from './security pages/Trust';
-import { Legality } from './security pages/Legality';
+import TrustSecurity from './security pages/TrustSecurity';
+import LegalityNew from './security pages/LegalityNew';
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -26,8 +26,8 @@ const AppRoutesNew = () => {
             <Route path="/data-collection" element={<DataCollectionNew />} />
             <Route path="/document-flexibility" element={<DocumentFlexibility />} />
             <Route path="/sdk-integration" element={<SdkIntegration />} />
-            <Route path=" /trust-and-security" element={<Trust />} />
-            <Route path="/e-signature-legality" element={<Legality />} />
+            <Route path="/trust-security" element={< TrustSecurity/>} />
+            <Route path="/e-signature-legality" element={<LegalityNew/>} />
            
         </Routes>
 

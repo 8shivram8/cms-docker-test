@@ -19,7 +19,7 @@ const Security = () => {
     ];
     const handleLinkClick = (url) => {
         window.open(url, '_blank');
-      };
+    };
     return (
         <Box
             sx={{
@@ -28,7 +28,7 @@ const Security = () => {
                 py: 5,
                 display: 'flex',
                 justifyContent: 'center',
-                mt:5
+                mt: 5
             }}
         >
             <Container maxWidth="xl" sx={{ px: { xs: 3, md: 12 } }}>
@@ -60,11 +60,11 @@ const Security = () => {
                                         textAlign: 'left',
                                         whiteSpace: 'normal',
                                         color: 'black',
-                                        whiteSpace: 'normal', 
-                                        overflowWrap: 'break-word', 
-                                        wordBreak: 'break-word', 
-                                        display: 'inline', 
-                                        minWidth: 0, 
+                                        whiteSpace: 'normal',
+                                        overflowWrap: 'break-word',
+                                        wordBreak: 'break-word',
+                                        display: 'inline',
+                                        minWidth: 0,
                                     }}
                                 >
                                     {point}
@@ -76,8 +76,16 @@ const Security = () => {
                             <Typography
                                 variant="subtitle1"
                                 color="#1677F7"
-                                sx={{ fontSize: '18px', display: 'inline-flex', alignItems: 'center' }}
-                                onClick={() => handleLinkClick('/trust-and-security')}
+                                sx={{
+                                    fontSize: '18px',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                        textDecoration: 'underline', // Optional, for a hover effect
+                                    },
+                                }}
+                                onClick={() => handleLinkClick('/trust-security')}
                             >
                                 Learn more about trust and security at Acosign
                             </Typography>
@@ -87,7 +95,15 @@ const Security = () => {
                             <Typography
                                 variant="subtitle1"
                                 color="#1677F7"
-                                sx={{ fontSize: '18px', display: 'inline-flex', alignItems: 'center' }}
+                                sx={{
+                                    fontSize: '18px',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                        textDecoration: 'underline', // Optional, for a hover effect
+                                    },
+                                }}
                                 onClick={() => handleLinkClick('/e-signature-legality')}
                             >
                                 Learn about E-signature legality in India
