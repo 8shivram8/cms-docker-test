@@ -26,7 +26,7 @@ const DocumentFlexibility = () => {
 
     return (
         <Box>
-            <Box
+            {/* <Box
                 sx={{
                     background: theme.palette.background.gradient,
                     color: 'white',
@@ -36,20 +36,11 @@ const DocumentFlexibility = () => {
                     alignItems: 'center',
                 }}
             >
-                {/* <Typography
-                    variant="h6"
-                    sx={{
-                        color: 'white',
-                        fontWeight: 600,
-                        fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
-                        ml: 8,
-                    }}
-                >
-                    Coalitionify
-                </Typography> */}
                   <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
+            </Box> */}
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
+                <img src={logo} width="150" height="auto" />
             </Box>
-
             <Container maxWidth="lg" sx={{ mt: 4 }}>
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
