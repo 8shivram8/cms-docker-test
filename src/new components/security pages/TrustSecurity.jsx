@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery,ListItemIcon, useTheme } from '@mui/material';
-import logo from '../../assets/AcoSignLogo.png'
+import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
+import logo from '../../assets/AcoSignLogo.png';
+
 const TrustSecurity = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -8,51 +9,51 @@ const TrustSecurity = () => {
 
     const sections = [
         {
-            title: '1. Information We Collect',
+            title: '1. Data Collection and Usage',
             subtitles: [
-                'Personal Information: Name, email address, phone number, payment information, and billing details.',
-                'Document and Form Data: Information uploaded to the Platform, including forms, signatures, and associated metadata.',
-                'Audit Logs: Time-stamped logs of actions related to document creation, editing, sharing, and signing.',
-                'Usage Data: IP addresses, device types, browser versions, and interaction data.',
+                'We collect only the necessary information required for delivering our services, including your name, email address, and usage data.',
+                'Your data is used exclusively for enhancing security and providing a seamless user experience.',
+                'We do not collect sensitive data without your explicit consent.',
             ],
         },
         {
-            title: '2. How We Use Your Information',
+            title: '2. Secure Storage and Encryption',
             subtitles: [
-                'Provide core services like form building, document creation, signature collection, and payment processing.',
-                'Maintain audit trails for legal and regulatory compliance.',
-                'Analyze Platform usage for performance improvements and troubleshooting.',
-                'Communicate updates, support information, and subscription-related notifications.',
+                'All data is encrypted using industry-leading standards (256-bit encryption) both at rest and in transit.',
+                'Your personal and document data is stored in highly secure data centers.',
+                'Regular audits and penetration tests are conducted to identify and mitigate potential risks.',
             ],
         },
         {
-            title: '3. Data Security and Retention',
+            title: '3. Commitment to Confidentiality',
             subtitles: [
-                'Encryption: All customer data is encrypted with 256-bit encryption, both at rest and in transit, to ensure the highest level of security.',
-                'HIPAA Compliance: We adhere to HIPAA regulations to protect sensitive health-related information.',
-                'Retention: User data, including documents and logs, is stored securely for up to 5 years after the termination of your subscription.',
-                'Access Control: Only authorized personnel have access to your encrypted data, strictly following our No-Disclosure Policy.',
+                'We adhere to strict confidentiality agreements to ensure your data is never shared without your permission.',
+                'No unauthorized personnel or third parties have access to your data.',
+                'We follow a strict No-Disclosure Policy to safeguard sensitive information.',
             ],
         },
         {
-            title: '4. Data Sharing',
+            title: '4. Access Control',
             subtitles: [
-                'Data is shared only with trusted third-party service providers (e.g., payment gateways) to facilitate essential services.',
-                'No data is sold or disclosed to unauthorized third parties.',
+                'Access to data is granted only to authorized personnel based on roles and responsibilities.',
+                'Multi-factor authentication and logging ensure secure access management.',
+                'Unauthorized access attempts are actively monitored and addressed immediately.',
             ],
         },
         {
-            title: '5. Your Rights',
+            title: '5. Compliance and Certifications',
             subtitles: [
-                'Access or delete your personal data.',
-                'Opt out of non-essential communications.',
-                'Submit complaints to info@coalitionify.com regarding data usage or security.',
+                'We comply with global security standards such as GDPR, HIPAA, and SOC 2.',
+                'Our platform undergoes regular compliance reviews to meet evolving regulations.',
+                'You can request a copy of our security compliance certifications by contacting us.',
             ],
         },
         {
-            title: '6. Changes to This Policy',
+            title: '6. Your Security Rights',
             subtitles: [
-                'We may revise this Privacy Policy from time to time. Continued use of the Platform constitutes acceptance of these changes.',
+                'Request access to your data or opt for data deletion.',
+                'Report security concerns or vulnerabilities by reaching out to security@coalitionify.com.',
+                'Receive prompt updates about any security-related changes that might impact your data.',
             ],
         },
     ];
@@ -76,27 +77,13 @@ const TrustSecurity = () => {
                     justifyContent: 'flex-start',
                 }}
             >
-                {/* <Typography
-                    variant="h6"
-                    ml={4}
-                    my={2}
-                    sx={{
-                        fontWeight: 600,
-                        fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
-                    }}
-                >
-                    Coalitionify
-                </Typography> */}
-                <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
+                <img src={logo} width="140" height="auto" style={{ marginLeft: 5 }} />
             </Box>
             <Container
                 maxWidth="md"
                 sx={{
                     backgroundColor: 'white',
-                    // borderRadius: 2,
-                    // boxShadow: theme.shadows[2],
                     padding: 4,
-                    // marginTop: 4,
                     textAlign: 'left',
                 }}
             >
@@ -125,16 +112,15 @@ const TrustSecurity = () => {
                         fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
                     }}
                 >
-                    Coalitionify Innovate Pvt Ltd ("we," "our," or "us") is committed to protecting the privacy and security of
-                    our users ("you," "your"). This Privacy Policy explains how we collect, use, disclose, and safeguard your
-                    information when you use our signature workflow platform ("Platform").
+                    At Coalitionify Innovate Pvt Ltd, we prioritize your trust and security. This document outlines our 
+                    commitment to protecting your data and ensuring a secure experience on our platform.
                 </Typography>
                 {sections.map((section, index) => (
                     <Box key={index} sx={{ marginTop: 3 }}>
                         <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '18px' }}>
                             {section.title}
                         </Typography>
-                        <List sx={{ paddingLeft: 2,}}>
+                        <List sx={{ paddingLeft: 2 }}>
                             {section.subtitles.map((subtitle, idx) => (
                                 <ListItem
                                     key={idx}
@@ -174,7 +160,6 @@ const TrustSecurity = () => {
                                 </ListItem>
                             ))}
                         </List>
-
                     </Box>
                 ))}
             </Container>
