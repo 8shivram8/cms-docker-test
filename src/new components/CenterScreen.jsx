@@ -72,7 +72,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                     {iconImage}
                 </Box>
             </Box>
-            <Grid container spacing={2} sx={{ m: 1, width: "100%" }}>
+            <Grid container spacing={2} sx={{ m: 1,p:1, width: "100%" }}>
                 {data.map((item, index) => (
                     <Grid item key={index} xs={12}>
                         <Box
@@ -95,7 +95,6 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                                     wordBreak: "break-word",
                                     display: "inline",
                                     minWidth: 0,
-                                    flexGrow: 1,
                                 }}
                             >
                                 <strong>{item.subtitle}</strong>: {item.text}
