@@ -11,10 +11,10 @@ const StyledMultiline = styled(TextField)(({ theme }) => ({
         border: 'none',
     },
     '& .MuiInputBase-input': {
-        color: 'black',
+        color: 'white',
     },
     '& .MuiInputBase-input::placeholder': {
-        color: 'white',
+        color: 'rgba(255, 255, 255, 0.6)',
         opacity: 1,
     },
     '&.MuiOutlinedInput-multiline': {

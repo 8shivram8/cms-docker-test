@@ -20,13 +20,14 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
         color: theme.palette.primary.main,
     },
     '& .MuiInputBase-input': {
-        color: 'black',  // Text color
+        color: 'white',  // Text color
     },
     '& .MuiInputBase-input::placeholder': {
-        color: 'white',  // Set placeholder color to white
-        textAlign: 'left',  // Center the placeholder text horizontally
-        opacity: 1,  // Ensure the placeholder is fully opaque
+        color: 'rgba(255, 255, 255, 0.6)', // Light white with 60% opacity
+        textAlign: 'left',
+        opacity: 1,
     },
+
 }));
 
 export default StyledTextField;
