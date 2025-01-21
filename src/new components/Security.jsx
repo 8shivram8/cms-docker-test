@@ -34,9 +34,26 @@ const Security = () => {
             <Container maxWidth="xl" sx={{ px: { xs: 3, md: 12 } }}>
                 <Grid container spacing={4} alignItems="center" >
                     <Grid item xs={12} md={8} display={'flex'} flexDirection={'column'}>
-                        <Typography variant="h4" component="h1" gutterBottom>
+                        {/* <Typography variant="h4" component="h1" gutterBottom>
                             Our Commitment to Security
-                        </Typography>
+                        </Typography> */}
+                        <Box display={'flex'} justifyContent={'left'}>
+                            <Typography
+                                variant="h4"
+                                align="left"
+                                sx={{
+                                    fontWeight: 700,
+                                    marginBottom: 4,
+                                    fontSize: { xs: "25px", sm: "30px", md: "35px" },
+                                    backgroundImage: theme.palette.linearColor.gradient,
+                                    backgroundImage: theme.palette.linearColor.gradient,
+                                    WebkitBackgroundClip: 'text',
+                                    color: "transparent",
+                                }}
+                            >
+                                Our Commitment to Security
+                            </Typography>
+                        </Box>
                         <Typography variant="subtitle1" gutterBottom>
                             Our platform meets or exceeds global security and compliance standards to ensure your data and documents are always safe:
                         </Typography>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery,ListItemIcon, useTheme } from '@mui/material';
-import logo from '../../assets/AcoSignLogo.png'
+import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
+import logo from '../../assets/AcoSignLogo.png';
+
 const LegalityNew = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -8,51 +9,51 @@ const LegalityNew = () => {
 
     const sections = [
         {
-            title: '1. Information We Collect',
+            title: '1. Legal Recognition of E-signatures',
             subtitles: [
-                'Personal Information: Name, email address, phone number, payment information, and billing details.',
-                'Document and Form Data: Information uploaded to the Platform, including forms, signatures, and associated metadata.',
-                'Audit Logs: Time-stamped logs of actions related to document creation, editing, sharing, and signing.',
-                'Usage Data: IP addresses, device types, browser versions, and interaction data.',
+                'E-signatures are legally binding under global standards such as ESIGN Act, UETA, and eIDAS.',
+                'Ensure compliance with country-specific regulations for cross-border transactions.',
+                'Digital signatures meet stricter legal requirements with cryptographic validation.',
             ],
         },
         {
-            title: '2. How We Use Your Information',
+            title: '2. Validity Criteria',
             subtitles: [
-                'Provide core services like form building, document creation, signature collection, and payment processing.',
-                'Maintain audit trails for legal and regulatory compliance.',
-                'Analyze Platform usage for performance improvements and troubleshooting.',
-                'Communicate updates, support information, and subscription-related notifications.',
+                'The signer must provide consent to conduct business electronically.',
+                'Intent to sign must be clearly demonstrated by the signer.',
+                'Proper record-keeping ensures an audit trail of signing activities.',
             ],
         },
         {
-            title: '3. Data Security and Retention',
+            title: '3. Security Measures',
             subtitles: [
-                'Encryption: All customer data is encrypted with 256-bit encryption, both at rest and in transit, to ensure the highest level of security.',
-                'HIPAA Compliance: We adhere to HIPAA regulations to protect sensitive health-related information.',
-                'Retention: User data, including documents and logs, is stored securely for up to 5 years after the termination of your subscription.',
-                'Access Control: Only authorized personnel have access to your encrypted data, strictly following our No-Disclosure Policy.',
+                'Documents are encrypted with 256-bit encryption for secure transmission and storage.',
+                'Two-factor authentication (2FA) can be used to verify signer identity.',
+                'Comprehensive audit logs track every action taken on a document.',
             ],
         },
         {
-            title: '4. Data Sharing',
+            title: '4. Use Cases',
             subtitles: [
-                'Data is shared only with trusted third-party service providers (e.g., payment gateways) to facilitate essential services.',
-                'No data is sold or disclosed to unauthorized third parties.',
+                'Contracts and agreements across industries such as real estate, finance, and healthcare.',
+                'Government forms and regulatory filings.',
+                'Internal approvals and employee onboarding.',
             ],
         },
         {
-            title: '5. Your Rights',
+            title: '5. Dispute Resolution',
             subtitles: [
-                'Access or delete your personal data.',
-                'Opt out of non-essential communications.',
-                'Submit complaints to info@coalitionify.com regarding data usage or security.',
+                'E-signature platforms like ours provide a tamper-evident seal to ensure document integrity.',
+                'Audit logs serve as evidence in case of disputes.',
+                'We offer legal support to validate e-signatures in court if required.',
             ],
         },
         {
-            title: '6. Changes to This Policy',
+            title: '6. Future of E-signatures',
             subtitles: [
-                'We may revise this Privacy Policy from time to time. Continued use of the Platform constitutes acceptance of these changes.',
+                'Growing adoption of blockchain-based e-signatures for immutable record-keeping.',
+                'Integration with AI for advanced fraud detection and verification.',
+                'Enhanced global regulatory frameworks for seamless cross-border use.',
             ],
         },
     ];
@@ -76,27 +77,13 @@ const LegalityNew = () => {
                     justifyContent: 'flex-start',
                 }}
             >
-                {/* <Typography
-                    variant="h6"
-                    ml={4}
-                    my={2}
-                    sx={{
-                        fontWeight: 600,
-                        fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
-                    }}
-                >
-                    Coalitionify
-                </Typography> */}
-                <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
+                <img src={logo} width="140" height="auto" style={{ marginLeft: 5 }} />
             </Box>
             <Container
                 maxWidth="md"
                 sx={{
                     backgroundColor: 'white',
-                    // borderRadius: 2,
-                    // boxShadow: theme.shadows[2],
                     padding: 4,
-                    // marginTop: 4,
                     textAlign: 'left',
                 }}
             >
@@ -106,7 +93,7 @@ const LegalityNew = () => {
                     gutterBottom
                     sx={{ fontWeight: 'bold', fontSize: isMobile ? '20px' : isTablet ? '22px' : '24px' }}
                 >
-                    E-signature legality
+                    E-signature Legality
                 </Typography>
                 <Typography
                     variant="subtitle1"
@@ -125,16 +112,14 @@ const LegalityNew = () => {
                         fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
                     }}
                 >
-                    Coalitionify Innovate Pvt Ltd ("we," "our," or "us") is committed to protecting the privacy and security of
-                    our users ("you," "your"). This Privacy Policy explains how we collect, use, disclose, and safeguard your
-                    information when you use our signature workflow platform ("Platform").
+                    Coalitionify Innovate Pvt Ltd ("we," "our," or "us") ensures that electronic signatures comply with applicable laws and offer the highest level of security and reliability. This section outlines the legality and application of e-signatures.
                 </Typography>
                 {sections.map((section, index) => (
                     <Box key={index} sx={{ marginTop: 3 }}>
                         <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '18px' }}>
                             {section.title}
                         </Typography>
-                        <List sx={{ paddingLeft: 2,}}>
+                        <List sx={{ paddingLeft: 2 }}>
                             {section.subtitles.map((subtitle, idx) => (
                                 <ListItem
                                     key={idx}
@@ -174,7 +159,6 @@ const LegalityNew = () => {
                                 </ListItem>
                             ))}
                         </List>
-
                     </Box>
                 ))}
             </Container>
