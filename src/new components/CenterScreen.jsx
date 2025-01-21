@@ -189,7 +189,8 @@ const CenterScreen = () => {
                 justifyContent: "center",
                 mt: 5,
                 textAlign: "center",
-                padding: 2,
+                padding: isMobile ? 2 : 0,
+                pr:2
             }}
         >
             <Typography
