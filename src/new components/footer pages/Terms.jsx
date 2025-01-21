@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, List, ListItem, ListItemText,ListItemIcon, useMediaQuery, useTheme } from '@mui/material';
-
+import logo from '../../assets/AcoSignLogo.png'
 const Terms = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -75,7 +75,7 @@ const Terms = () => {
                     justifyContent: 'flex-start',
                 }}
             >
-                <Typography
+                {/* <Typography
                     variant="h6"
                     ml={4}
                     my={2}
@@ -85,7 +85,8 @@ const Terms = () => {
                     }}
                 >
                     Coalitionify
-                </Typography>
+                </Typography> */}
+                <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
             </Box>
             <Container
                 maxWidth="md"

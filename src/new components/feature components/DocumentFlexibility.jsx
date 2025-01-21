@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
-
+import logo from '../../assets/AcoSignLogo.png'
 const DocumentFlexibility = () => {
     const theme = useTheme();
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ const DocumentFlexibility = () => {
                     alignItems: 'center',
                 }}
             >
-                <Typography
+                {/* <Typography
                     variant="h6"
                     sx={{
                         color: 'white',
@@ -46,7 +46,8 @@ const DocumentFlexibility = () => {
                     }}
                 >
                     Coalitionify
-                </Typography>
+                </Typography> */}
+                  <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
             </Box>
 
             <Container maxWidth="lg" sx={{ mt: 4 }}>

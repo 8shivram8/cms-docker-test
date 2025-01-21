@@ -48,7 +48,7 @@ const LayoutNew = () => {
                 <Hosting />
                 <IntegrationPage />
                 <Security/>
-                <Plans selectedCountry={selectedCountry} />
+                {/* <Plans selectedCountry={selectedCountry} /> */}
                 <Element name="contactForm" id="contactForm">
                     <ContactForm />
                 </Element>
