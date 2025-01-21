@@ -17,7 +17,9 @@ const Security = () => {
         'CSA STAR Certification: Industry standard for cloud security assurance.',
         'APEC CBPR Certification: Upholding data privacy across the Asia-Pacific region.',
     ];
-
+    const handleLinkClick = (url) => {
+        window.open(url, '_blank');
+      };
     return (
         <Box
             sx={{
@@ -75,6 +77,7 @@ const Security = () => {
                                 variant="subtitle1"
                                 color="#1677F7"
                                 sx={{ fontSize: '18px', display: 'inline-flex', alignItems: 'center' }}
+                                onClick={() => handleLinkClick('/trust-and-security')}
                             >
                                 Learn more about trust and security at Acosign
                             </Typography>
@@ -85,6 +88,7 @@ const Security = () => {
                                 variant="subtitle1"
                                 color="#1677F7"
                                 sx={{ fontSize: '18px', display: 'inline-flex', alignItems: 'center' }}
+                                onClick={() => handleLinkClick('/e-signature-legality')}
                             >
                                 Learn about E-signature legality in India
                             </Typography>
