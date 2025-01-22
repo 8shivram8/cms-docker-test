@@ -20,11 +20,10 @@ const integrationData = [
 
 const IntegrationPage = () => {
     const theme = useTheme();
-    const navigate = useNavigate(); // Initialize the navigate function
+    const navigate = useNavigate(); 
 
-    // Function to handle navigation on box click
     const handleNavigate = (route) => {
-        navigate(route); // Navigate to the route passed as an argument
+        navigate(route);
     };
 
     return (
@@ -63,9 +62,9 @@ const IntegrationPage = () => {
                                     '&:hover': {
                                         transform: 'scale(1.03)',
                                     },
-                                    cursor: 'pointer', // Add cursor pointer for better UX
+                                    cursor: 'pointer',
                                 }}
-                                onClick={() => handleNavigate(item.route)} // Call the navigate function on click
+                                onClick={() => handleNavigate(item.route)} 
                             >
                                 <Typography variant="h4">{item.icon}</Typography>
                                 <Typography variant="body2" mt={1} align="left" fontWeight={700} fontSize={'18px'}>
