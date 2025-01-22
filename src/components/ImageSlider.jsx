@@ -72,12 +72,12 @@ const ImageSlider = ({ images }) => {
             bottom: 15,
             right: 15,
             zIndex: 1,
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            color: "white",
+            backgroundColor: 'transparent',
+            color: "black",
             textTransform: "none",
             "&:hover": {
-              backgroundColor: 'transparent',
-              color: "black",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              color: "white",
             },
             [theme.breakpoints.down("sm")]: {
               padding: "4px 10px",
