@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery,ListItemIcon, useTheme } from '@mui/material';
+import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
 import logo from '../../assets/AcoSignLogo.png'
+import { useNavigate } from 'react-router-dom';
 const Privacy = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-
+    const navigate = useNavigate();
     const sections = [
         {
             title: '1. Information We Collect',
@@ -56,7 +57,9 @@ const Privacy = () => {
             ],
         },
     ];
-
+    const handleNavigate = () => {
+        navigate('/');
+    };
     return (
         <Box
             sx={{
@@ -79,7 +82,14 @@ const Privacy = () => {
                 <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
             </Box> */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
-                <img src={logo} width="150" height="auto" />
+                <img
+                    src={logo}
+                    width="150"
+                    height="auto"
+                    alt="Logo"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleNavigate}
+                />
             </Box>
             <Container
                 maxWidth="md"
@@ -126,7 +136,7 @@ const Privacy = () => {
                         <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '18px' }}>
                             {section.title}
                         </Typography>
-                        <List sx={{ paddingLeft: 2,}}>
+                        <List sx={{ paddingLeft: 2, }}>
                             {section.subtitles.map((subtitle, idx) => (
                                 <ListItem
                                     key={idx}

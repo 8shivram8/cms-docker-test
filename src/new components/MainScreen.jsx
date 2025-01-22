@@ -9,6 +9,7 @@ import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
 import logo from '../assets/AcoSignLogo.png'
 import { Link, scroller } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -49,6 +50,11 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
             smooth: true,
         });
     };
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/');
+    };
 
     return (
         <Box sx={{ position: 'relative', height: 'auto' }}>
@@ -68,7 +74,14 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     {/* <Typography sx={{ color: 'white', fontWeight: 600, fontSize: isMobile ? '14px' : isTablet ? '16px' : '18px' }}>
                         Coalitionify
                     </Typography> */}
-                    <img src={logo} width="150" height="auto" />
+                    <img
+                        src={logo}
+                        width="150"
+                        height="auto"
+                        alt="Logo"
+                        style={{ cursor: 'pointer' }}
+                        onClick={handleNavigate}
+                    />
 
                     <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 1}>
 
