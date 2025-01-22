@@ -73,7 +73,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                     <Box display={'flex'} flexDirection={'row'} gap={isMobile ? 0 : 1}>
 
 
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        {/* <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <IconButton onClick={handleClick} sx={{ color: 'white' }}>
                                 <FlagIcon code={selectedCountry || defaultCountry} style={{ width: '40px', height: '30px', borderRadius: '5px' }} />
                             </IconButton>
@@ -107,7 +107,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     {country.label}
                                 </MenuItem>
                             ))}
-                        </Menu>
+                        </Menu> */}
 
                         <Button
                             variant="outlined"
