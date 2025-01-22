@@ -13,6 +13,7 @@ import StyledTextfield from './StyledTextfield';
 import StyledMultiline from './StyledMultiline';
 import ArrowIcon from './Custom Icons/ArrowIcon';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import EmailIcon from '@mui/icons-material/Email';
 
 const ContactForm = () => {
     const theme = useTheme();
@@ -111,24 +112,27 @@ const ContactForm = () => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 mt: 6,
-
                             }}
                         >
-                            <ArrowIcon
-                                sx={{
-                                    width: 14,
-                                    height: 14,
-                                    color: 'text.secondary',
-                                }}
-                            />
+                            <a href="mailto:info@coalitionify.com" style={{ textDecoration: 'none' }}>
+                                <EmailIcon
+                                    sx={{
+                                        width: 20,
+                                        height: 20,
+                                        color: '#1677F7',
+                                        cursor: 'pointer',
+                                    }}
+                                />
+                            </a>
                             <Typography
                                 variant="body2"
                                 fontWeight="light"
                                 color="text.secondary"
-                                ml={isSmallScreen ? 3 : 4}
-
+                                ml={isSmallScreen ? 1 : 1}
                             >
-                                info@coalitionify.com
+                                <a href="mailto:info@coalitionify.com" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    info@coalitionify.com
+                                </a>
                             </Typography>
                         </Box>
                     </Box>
