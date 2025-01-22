@@ -45,8 +45,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
 
     const scrollToContactForm = () => {
         scroller.scrollTo('contactForm', {
-            duration: 1200, 
-            smooth:true,
+            duration: 1200,
+            smooth: true,
         });
     };
 
@@ -134,11 +134,12 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         sx={{
                             fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
                             fontSize: isMobile ? '2rem' : isTablet ? '2.5rem' : '3.5rem',
-                            // mb: 1,
+                            textShadow: '1px 1px 4px rgba(0, 0, 0, 0.1)',
                         }}
                     >
                         Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple.
                     </Typography>
+
                     <Typography
                         variant="h1"
                         color="white"
