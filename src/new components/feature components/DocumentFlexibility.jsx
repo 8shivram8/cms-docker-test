@@ -49,12 +49,21 @@ const DocumentFlexibility = () => {
                 'Benefit: Simplify processes where group consensus is required.'
             ]
         }
-    ];    
-
+    ];
+    const handleNavigate = () => {
+        navigate('/');
+    };
     return (
         <Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
-                <img src={logo} width="150" height="auto" />
+                <img
+                    src={logo}
+                    width="150"
+                    height="auto"
+                    alt="Logo"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleNavigate}
+                />
             </Box>
             <Container maxWidth="lg" sx={{ mt: 4 }}>
                 <Grid container spacing={4}>
@@ -178,10 +187,10 @@ const DocumentFlexibility = () => {
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     secondary={detail} // text before ":"
-                                                   
+
                                                     sx={{
                                                         textAlign: 'justify',
-                                                        color:theme.palette.text.secondary,
+                                                        color: theme.palette.text.secondary,
                                                         margin: 0,
                                                         lineHeight: 1,
                                                         fontSize: isMobile ? '10px' : isTablet ? '12px' : '12px',

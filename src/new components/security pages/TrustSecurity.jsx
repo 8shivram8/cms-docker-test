@@ -1,12 +1,13 @@
 import React from 'react';
 import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
 import logo from '../../assets/AcoSignLogo.png';
+import { useNavigate } from 'react-router-dom';
 
 const TrustSecurity = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-
+    const navigate = useNavigate();
     const sections = [
         {
             title: '1. Data Collection and Usage',
@@ -57,7 +58,9 @@ const TrustSecurity = () => {
             ],
         },
     ];
-
+    const handleNavigate = () => {
+        navigate('/');
+    };
     return (
         <Box
             sx={{
@@ -79,8 +82,15 @@ const TrustSecurity = () => {
             >
                 <img src={logo} width="140" height="auto" style={{ marginLeft: 5 }} />
             </Box> */}
-             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
-                <img src={logo} width="150" height="auto" />
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
+                <img
+                    src={logo}
+                    width="150"
+                    height="auto"
+                    alt="Logo"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleNavigate}
+                />
             </Box>
             <Container
                 maxWidth="md"
@@ -115,7 +125,7 @@ const TrustSecurity = () => {
                         fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px',
                     }}
                 >
-                    At Coalitionify Innovate Pvt Ltd, we prioritize your trust and security. This document outlines our 
+                    At Coalitionify Innovate Pvt Ltd, we prioritize your trust and security. This document outlines our
                     commitment to protecting your data and ensuring a secure experience on our platform.
                 </Typography>
                 {sections.map((section, index) => (

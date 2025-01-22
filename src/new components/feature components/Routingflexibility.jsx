@@ -24,7 +24,9 @@ const Routingflexibility = () => {
         //     subtitle: 'Rejected decisions don’t have to bring processes to a halt. With decline routing, ensure declined tasks are sent back to the originator or forwarded to alternate approvers for modifications or further action. This reduces bottlenecks and keeps the workflow moving. Example: If a document is rejected by the finance team, it can be rerouted to the creator with feedback or sent to another approver for further input.',
         // },
     ];
-
+    const handleNavigate = () => {
+        navigate('/');
+    };
     return (
         <Box>
             {/* <Box
@@ -40,7 +42,14 @@ const Routingflexibility = () => {
                 <img src={logo} width="140" height="auto" style={{marginLeft:5}} />
             </Box> */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
-                <img src={logo} width="150" height="auto" />
+                <img
+                    src={logo}
+                    width="150"
+                    height="auto"
+                    alt="Logo"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleNavigate}
+                />
             </Box>
 
             <Container maxWidth="lg" sx={{ mt: 4 }}>

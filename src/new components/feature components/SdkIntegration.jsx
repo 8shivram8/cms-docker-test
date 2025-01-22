@@ -23,7 +23,9 @@ const SdkIntegration = () => {
             subtitle: 'Our SDK is built with top-notch security in mind. It supports OAuth 2.0, SSL encryption, and other industry-standard security protocols to protect your data during the integration process. It also ensures compliance with data privacy regulations like GDPR.',
         },
     ];
-
+    const handleNavigate = () => {
+        navigate('/');
+    };
     return (
         <Box>
             {/* <Box
@@ -39,7 +41,14 @@ const SdkIntegration = () => {
                 <img src={logo} width="140" height="auto" style={{marginLeft:5}}/>
             </Box> */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
-                <img src={logo} width="150" height="auto" />
+                <img
+                    src={logo}
+                    width="150"
+                    height="auto"
+                    alt="Logo"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleNavigate}
+                />
             </Box>
             <Container maxWidth="lg" sx={{ mt: 4 }}>
                 <Grid container spacing={4}>
