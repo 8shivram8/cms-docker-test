@@ -28,7 +28,7 @@ function Footer() {
     >
       <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
        
-        <Grid item xs={12} sm={6} md={3} lg={3} textAlign={isMobile ? 'center' : 'left'}>
+        <Grid item xs={12} sm={6} md={4} lg={4} textAlign={isMobile ? 'center' : 'left'}>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
             <Typography fontWeight="bold" fontSize={'25px'} mb={1} >Coalitionify</Typography>
             <Typography
@@ -45,17 +45,20 @@ function Footer() {
           </Box>
         </Grid>
 
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
+        <Grid item xs={6} sm={6} md={4} textAlign={isMobile ? 'center' : 'left'}>
+          <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center '}> 
+          
+          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'} sx={{ lineHeight: 1.5 }}>
           <Typography variant="h6" gutterBottom>Quick Links</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
             <span onClick={() => handleLinkClick('/privacy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Privacy Policy</span>
             <span onClick={() => handleLinkClick('/terms-conditions')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Terms & Conditions</span>
             <span onClick={() => handleLinkClick('/refund-policy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Cancellation/ Refund Policy</span>
           </Box>
+          </Box>
         </Grid>
 
        
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
+        {/* <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Address</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
             <Typography variant="body2">1234 Street Name</Typography>
@@ -63,11 +66,11 @@ function Footer() {
             <Typography variant="body2">5678 Another St</Typography>
             <Typography variant="body2">Another City, State, 67890</Typography>
           </Box>
-        </Grid>
+        </Grid> */}
 
-        <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
+        <Grid item xs={6} sm={6} md={4} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Contact</Typography>
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
+          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'}>
             {/* <Typography variant="body2">Phone: (123) 456-7890</Typography> */}
             <Typography variant="body2">Email: support@coalitionify.com</Typography>
           </Box>
