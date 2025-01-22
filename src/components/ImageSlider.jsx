@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery ,Button} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 const ImageSlider = ({ images }) => {
@@ -38,7 +38,6 @@ const ImageSlider = ({ images }) => {
           width: "100%",
           paddingTop: "56.25%",
           overflow: "hidden",
-          // bgcolor:'lightblue'
         }}
       >
         <Box
@@ -66,8 +65,37 @@ const ImageSlider = ({ images }) => {
             />
           ))}
         </Box>
+        <Button
+          variant="outlined"
+          sx={{
+            position: "absolute",
+            bottom: 15,
+            right: 15,
+            zIndex: 1,
+            backgroundColor: "rgba(0, 0, 0, 0.9)",
+            color: "white",
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: 'transparent',
+              color: "black",
+            },
+            [theme.breakpoints.down("sm")]: {
+              padding: "4px 10px",
+              fontSize: "0.5rem",
+              bottom: 4,
+              right: 4,
+            },
+            [theme.breakpoints.down("xs")]: {
+              padding: "2px 6px",
+              fontSize: "0.5rem",
+              bottom: 2,
+              right: 2,
+            },
+          }}
+        >
+          Try Now
+        </Button>
       </Box>
-
       {/* Dots Box */}
       <Box
         sx={{
