@@ -164,6 +164,11 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                     textDecoration: 'none',
                                     textTransform: 'none',
                                     fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                    transition: 'transform 0.3s ease',
+                                    '&:hover': {
+                                        transform: 'scale(1.04)',
+                                        // bgcolor: 'black',
+                                    },
                                 }}
                             >
                                 2 Months Free Trial
@@ -179,6 +184,10 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                         textTransform: 'none',
                                         border: '1px solid #FFFFFF',
                                         fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.04)',
+                                        },
                                     }}
                                     onClick={scrollToContactForm}
                                 >
