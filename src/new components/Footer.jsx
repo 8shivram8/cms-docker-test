@@ -83,7 +83,12 @@ function Footer() {
           <Typography variant="h6" gutterBottom>Contact</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'}>
             {/* <Typography variant="body2">Phone: (123) 456-7890</Typography> */}
-            <Typography variant="body2">Email: support@coalitionify.com</Typography>
+            <Typography variant="body2" onClick={()=>trackEvent('click on email')}>
+            Email : {' '}
+              <a href="mailto:support@coalitionify.com" style={{ textDecoration: 'none', color: 'inherit' }}>
+               support@coalitionify.com
+              </a>
+            </Typography>
           </Box>
         </Grid>
       </Grid>
@@ -120,7 +125,7 @@ function Footer() {
             component="a"
             href="https://www.npmjs.com/package/coalitionify-sdk"
             target="_blank"
-            onClick={()=>trackEvent('Github icon clicked')}
+            onClick={() => trackEvent('Github icon clicked')}
           >
             <GitHubIcon />
           </IconButton>
@@ -129,7 +134,7 @@ function Footer() {
             component="a"
             href="https://www.youtube.com/channel/UCGjNgPkRGyU0AHQMkFrjdeg"
             target="_blank"
-            onClick={()=>trackEvent('Youtube icon clicked')}
+            onClick={() => trackEvent('Youtube icon clicked')}
           >
             <YouTubeIcon />
           </IconButton>
