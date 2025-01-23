@@ -7,6 +7,7 @@ import Routing from "./Custom Icons/Routing";
 import SdkIcon from "./Custom Icons/SdkIcon";
 import { useNavigate } from "react-router-dom";
 import backImage from "../assets/features.png";
+import { useMixpanel } from "../mixpanel/MixpanelContext";
 
 const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
     const theme = useTheme();
@@ -113,10 +114,11 @@ const CenterScreen = () => {
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
-    const handleBoxClick = (index, onClick) => {
+    const {trackEvent}=useMixpanel()
+    const handleBoxClick = (index, onClick,title) => {
         setSelectedIndex(index === selectedIndex ? null : index);
         if (onClick) onClick();
+        trackEvent(`move to ${title} page`,{feature : title})
     };
 
     const boxesData = [
@@ -266,7 +268,7 @@ const CenterScreen = () => {
                                 <BoxItem
                                     {...box}
                                     isSelected={selectedIndex === index}
-                                    onClick={() => handleBoxClick(index, box.onClick)}
+                                    onClick={() => handleBoxClick(index, box.onClick,box.title)}
                                 />
                             </Grid>
                         ))}

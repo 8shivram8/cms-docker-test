@@ -2,11 +2,13 @@ import React from 'react';
 import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
 import logo from '../../assets/AcoSignLogo.png'
 import { useNavigate } from 'react-router-dom';
+import { useMixpanel } from '../../mixpanel/MixpanelContext';
 const Privacy = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
     const navigate = useNavigate();
+    const {trackEvent}=useMixpanel()
     const sections = [
         {
             title: '1. Information We Collect',
@@ -59,6 +61,7 @@ const Privacy = () => {
     ];
     const handleNavigate = () => {
         navigate('/');
+        trackEvent('move to home page')
     };
     return (
         <Box

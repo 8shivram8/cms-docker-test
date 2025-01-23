@@ -8,6 +8,7 @@ import Salesforce from './Custom Icons/Salesforce';
 import HubIcon from './Custom Icons/HubIcon';
 import Razor from './Custom Icons/Razor';
 import { Stripe } from './Custom Icons/Stripe';
+import { useMixpanel } from '../mixpanel/MixpanelContext';
 
 const integrationData = [
     { icon: <Teams />, name: 'Teams Integration', route: '/teams-integration' },
@@ -21,9 +22,10 @@ const integrationData = [
 const IntegrationPage = () => {
     const theme = useTheme();
     const navigate = useNavigate(); 
-
-    const handleNavigate = (route) => {
+    const {trackEvent}=useMixpanel()
+    const handleNavigate = (route,name) => {
         navigate(route);
+        trackEvent(`move to ${name} page`,{data : name})
     };
 
     return (
@@ -64,7 +66,7 @@ const IntegrationPage = () => {
                                     },
                                     cursor: 'pointer',
                                 }}
-                                onClick={() => handleNavigate(item.route)} 
+                                onClick={() => handleNavigate(item.route,item.name)} 
                             >
                                 <Typography variant="h4">{item.icon}</Typography>
                                 <Typography variant="body2" mt={1} align="left" fontWeight={700} fontSize={'18px'}>

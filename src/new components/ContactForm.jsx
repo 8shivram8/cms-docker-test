@@ -14,12 +14,13 @@ import StyledMultiline from './StyledMultiline';
 import ArrowIcon from './Custom Icons/ArrowIcon';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EmailIcon from '@mui/icons-material/Email';
+import { useMixpanel } from '../mixpanel/MixpanelContext';
 
 const ContactForm = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-
+    const {trackEvent}=useMixpanel()
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         email: Yup.string()
@@ -39,7 +40,7 @@ const ContactForm = () => {
             message: '',
         },
         validationSchema,
-        onSubmit: async (values, { resetForm }) => {
+        onSubmit: async (values, { resetForm }) => {    
             try {
                 const response = await fetch('https://api.coalitionify.com/app-builder/api/v1/auth/user-query', {
                     method: 'POST',
@@ -52,6 +53,7 @@ const ContactForm = () => {
                 if (response.ok) {
                     resetForm();
                     setIsFormSubmitted(true);
+                    trackEvent('contact form submitted',{data:values})
                 } else {
                     console.error('API call failed');
                 }
@@ -113,6 +115,7 @@ const ContactForm = () => {
                                 alignItems: 'center',
                                 mt: 6,
                             }}
+                            onClick={() => trackEvent('clicked on email')}
                         >
                             <a href="mailto:info@coalitionify.com" style={{ textDecoration: 'none' }}>
                                 <EmailIcon

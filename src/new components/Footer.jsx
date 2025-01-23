@@ -7,12 +7,14 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { useMixpanel } from '../mixpanel/MixpanelContext';
 
 
 function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const { trackEvent } = useMixpanel()
   const handleLinkClick = (url) => {
     window.open(url, '_blank');
   };
@@ -27,7 +29,7 @@ function Footer() {
       }}
     >
       <Grid container spacing={isMobile ? 2 : 4} justifyContent="center">
-       
+
         <Grid item xs={12} sm={6} md={4} lg={4} textAlign={isMobile ? 'center' : 'left'}>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'}>
             <Typography fontWeight="bold" fontSize={'25px'} mb={1} >Coalitionify</Typography>
@@ -46,18 +48,27 @@ function Footer() {
         </Grid>
 
         <Grid item xs={6} sm={6} md={4} textAlign={isMobile ? 'center' : 'left'}>
-          <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center '}> 
-          
-          <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'} sx={{ lineHeight: 1.5 }}>
-          <Typography variant="h6" gutterBottom>Quick Links</Typography>
-            <span onClick={() => handleLinkClick('/privacy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Privacy Policy</span>
-            <span onClick={() => handleLinkClick('/terms-conditions')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Terms & Conditions</span>
-            <span onClick={() => handleLinkClick('/refund-policy')} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Cancellation/ Refund Policy</span>
-          </Box>
+          <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center '}>
+
+            <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'} sx={{ lineHeight: 1.5 }}>
+              <Typography variant="h6" gutterBottom>Quick Links</Typography>
+              <span onClick={() => {
+                handleLinkClick('/privacy')
+                trackEvent('move to privacy policy page')
+              }} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Privacy Policy</span>
+              <span onClick={() => {
+                handleLinkClick('/terms-conditions')
+                trackEvent('move to terms and conditions page')
+              }} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Terms & Conditions</span>
+              <span onClick={() => {
+                handleLinkClick('/refund-policy')
+                trackEvent('move to Cancellation/Refund Policy page')
+              }} style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>Cancellation/ Refund Policy</span>
+            </Box>
           </Box>
         </Grid>
 
-       
+
         {/* <Grid item xs={6} sm={6} md={3} textAlign={isMobile ? 'center' : 'left'}>
           <Typography variant="h6" gutterBottom>Address</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'flex-start'} sx={{ lineHeight: 1.5 }}>
@@ -83,14 +94,14 @@ function Footer() {
         flexDirection={isMobile ? 'column' : 'row'}
         justifyContent="space-between"
         alignItems="center"
-        mx={10} 
+        mx={10}
       >
         <Typography
           variant="body2"
           align="center"
           sx={{
-            color: '#767F8C', 
-            fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+            color: '#767F8C',
+            fontSize: { xs: '0.75rem', sm: '0.875rem' },
           }}
         >
           © {new Date().getFullYear()} Coalitionify Innovate Private Limited. All rights reserved.
@@ -103,12 +114,13 @@ function Footer() {
             justifyContent: isMobile ? 'center' : 'flex-start',
           }}
         >
-         
+
           <IconButton
             sx={{ color: '#767E94' }}
             component="a"
             href="https://www.npmjs.com/package/coalitionify-sdk"
             target="_blank"
+            onClick={()=>trackEvent('Github icon clicked')}
           >
             <GitHubIcon />
           </IconButton>
@@ -117,8 +129,9 @@ function Footer() {
             component="a"
             href="https://www.youtube.com/channel/UCGjNgPkRGyU0AHQMkFrjdeg"
             target="_blank"
+            onClick={()=>trackEvent('Youtube icon clicked')}
           >
-             <YouTubeIcon />
+            <YouTubeIcon />
           </IconButton>
         </Box>
       </Box>
