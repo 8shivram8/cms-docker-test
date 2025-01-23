@@ -5,7 +5,7 @@ const MixpanelContext = createContext(null);
 
 export const MixpanelProvider = ({ children }) => {
   useEffect(() => {
-    mixpanel.init('4972cc3c451b5aa1303cca12ee4fee89', {
+    mixpanel.init('c8adf360786813ebcbdc0b2983d8b933', {
       ignore_dnt: true,
       debug: true,
       persistence: 'localStorage',
