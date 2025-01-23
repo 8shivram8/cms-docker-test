@@ -4,11 +4,13 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import sign from '../assets/sign.jpeg';
+import { useMixpanel } from '../mixpanel/MixpanelContext';
 
 const Security = () => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+    const {trackEvent}=useMixpanel()
     const securityPoints = [
         'ISO/IEC 27001: International standard for information security management.',
         'GDPR Compliance: Ensuring user data privacy and security in the EU.',
@@ -99,7 +101,10 @@ const Security = () => {
                                         textDecoration: 'underline', // Optional, for a hover effect
                                     },
                                 }}
-                                onClick={() => handleLinkClick('/trust-security')}
+                                onClick={() => {
+                                    handleLinkClick('/trust-security')
+                                    trackEvent('move to trust and security page')
+                                }}
                             >
                                 Learn more about trust and security at Acosign
                             </Typography>
@@ -118,7 +123,10 @@ const Security = () => {
                                         textDecoration: 'underline', // Optional, for a hover effect
                                     },
                                 }}
-                                onClick={() => handleLinkClick('/e-signature-legality')}
+                                onClick={() => {
+                                    handleLinkClick('/e-signature-legality')
+                                    trackEvent('move to e-signature legality page')
+                                }}
                             >
                                 Learn about E-signature legality in India
                             </Typography>

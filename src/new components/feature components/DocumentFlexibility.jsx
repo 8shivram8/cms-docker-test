@@ -3,13 +3,14 @@ import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery, 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/AcoSignLogo.png';
+import { useMixpanel } from '../../mixpanel/MixpanelContext';
 
 const DocumentFlexibility = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
+    const {trackEvent}=useMixpanel()
     const contentData = [
         {
             title: 'Dynamic Templates',
@@ -52,6 +53,7 @@ const DocumentFlexibility = () => {
     ];
     const handleNavigate = () => {
         navigate('/');
+        trackEvent('move to home page')
     };
     return (
         <Box>
@@ -79,7 +81,10 @@ const DocumentFlexibility = () => {
                                         },
                                     }}
                                     disableRipple
-                                    onClick={() => navigate(-1)}
+                                    onClick={() => {
+                                        navigate(-1)
+                                        trackEvent('back button clicked')
+                                    }}
                                 >
                                     <ArrowBackIcon />
                                 </IconButton>

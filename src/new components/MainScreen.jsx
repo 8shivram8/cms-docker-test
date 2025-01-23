@@ -10,6 +10,7 @@ import ImageSlider from '../components/ImageSlider';
 import logo from '../assets/AcoSignLogo.png'
 import { Link, scroller } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
+import { useMixpanel } from '../mixpanel/MixpanelContext';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -35,6 +36,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+    const  {trackEvent}=useMixpanel()
     const defaultCountry = 'IN';
 
     const handleSelectCountry = (countryCode) => {
@@ -49,11 +51,13 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
             duration: 1200,
             smooth: true,
         });
+        trackEvent('Book a Demo button clicked')
     };
     const navigate = useNavigate();
 
     const handleNavigate = () => {
         navigate('/');
+        trackEvent('AcoSign logo clicked')
     };
 
     return (
@@ -134,6 +138,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                 m: isMobile ? 2 : 2,
                                 fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
                             }}
+                            onClick={()=>trackEvent('Log In button clicked')}
                         >
                             Log In
                         </Button>
@@ -183,6 +188,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                         // bgcolor: 'black',
                                     },
                                 }}
+                                onClick={()=>trackEvent('Free Trial button clicked')}
                             >
                                 2 Months Free Trial
                             </Button>

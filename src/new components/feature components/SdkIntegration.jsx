@@ -3,12 +3,13 @@ import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery }
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/AcoSignLogo.png'
+import { useMixpanel } from '../../mixpanel/MixpanelContext';
 const SdkIntegration = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
+    const {trackEvent}=useMixpanel()
     const contentData = [
         {
             title: 'Seamless API Integration',
@@ -25,6 +26,7 @@ const SdkIntegration = () => {
     ];
     const handleNavigate = () => {
         navigate('/');
+        trackEvent('move to home page')
     };
     return (
         <Box>

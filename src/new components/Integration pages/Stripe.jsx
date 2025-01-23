@@ -3,12 +3,13 @@ import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery }
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/AcoSignLogo.png';
+import { useMixpanel } from '../../mixpanel/MixpanelContext';
 
 const Stripe = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+const { trackEvent } = useMixpanel()
   const contentData = [
     {
       title: 'Seamless Payment Processing',
@@ -29,6 +30,7 @@ const Stripe = () => {
 
   const handleNavigate = () => {
     navigate('/');
+    trackEvent('move to home page')
   };
 
   return (
@@ -57,7 +59,10 @@ const Stripe = () => {
                     },
                   }}
                   disableRipple
-                  onClick={() => navigate(-1)}
+                  onClick={() => {
+                    navigate(-1)
+                    trackEvent('Back button clicked')
+                }}
                 >
                   <ArrowBackIcon />
                 </IconButton>

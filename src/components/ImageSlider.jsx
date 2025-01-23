@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Box, useMediaQuery ,Button} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useMixpanel } from "../mixpanel/MixpanelContext";
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const {trackEvent}=useMixpanel()
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) =>
@@ -19,6 +20,7 @@ const ImageSlider = ({ images }) => {
 
   const handleDotClick = (index) => {
     setCurrentIndex(index);
+    trackEvent('slide images')
   };
 
   return (
@@ -92,6 +94,7 @@ const ImageSlider = ({ images }) => {
               right: 2,
             },
           }}
+          onClick={()=>trackEvent('Try Now button clicked')}
         >
           Try Now
         </Button>
