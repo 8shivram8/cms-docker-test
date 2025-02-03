@@ -3,8 +3,8 @@ import { Grid, Box, Typography } from '@mui/material'
 import FirstKey from './Custom Icons/FirstKey'
 import Key from './Custom Icons/Key'
 const features = [
+  { title: 'Secure access', subtitle: 'Vendors and partners get secure access to submit data. No need for additional licenses for ERP, PLM, or CRM systems.' },
   { title: 'Dynamic Form Builder', subtitle: 'Easily create rich forms for every use case, add multimedia input on top of your document. Build multistep wizard for data collection.' },
-  { title: 'Secure E-Signatures', subtitle: 'Collect legally binding signatures with audit trails, encryption, and QR scan. Bulk trigger, bulk signing, participant group and lot more to streamline your process.' },
   { title: 'Multi-User Workflows', subtitle: 'Collaborate with teams, clients, and stakeholders. Build simple to complex workflow in a minute. Try predefined templates for all your need in one click.' },
   { title: 'SDK Integration', subtitle: 'Connect seamlessly with any system your are using. Free integration support to onboard any system you want.' }
 ]

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import backImage from "../assets/features.png";
 import { useMixpanel } from "../mixpanel/MixpanelContext";
 
-const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
+const BoxItem = ({ title, iconImage, onClick, data, isSelected,isMobile }) => {
     const theme = useTheme();
     return (
         <Box
@@ -19,7 +19,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                height: "220px",
+                height:isMobile ? "325px" : "220px",
                 textAlign: "left",
                 cursor: "pointer",
             }}
@@ -73,7 +73,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                     {iconImage}
                 </Box>
             </Box>
-            <Grid container spacing={2} sx={{ m: 1,p:1, width: "100%" }}>
+            <Grid container spacing={2} sx={{ m: 1, p: 1, width: "100%" }}>
                 {data.map((item, index) => (
                     <Grid item key={index} xs={12}>
                         <Box
@@ -97,9 +97,8 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected }) => {
                                     display: "inline",
                                     minWidth: 0,
                                 }}
-                            >
-                                <strong>{item.subtitle}</strong>: {item.text}
-                            </Typography>
+                                dangerouslySetInnerHTML={{ __html: item.text }}
+                            />
                         </Box>
                     </Grid>
                 ))}
@@ -114,69 +113,72 @@ const CenterScreen = () => {
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    const {trackEvent}=useMixpanel()
-    const handleBoxClick = (index, onClick,title) => {
+    const { trackEvent } = useMixpanel()
+    const handleBoxClick = (index, onClick, title) => {
         setSelectedIndex(index === selectedIndex ? null : index);
         if (onClick) onClick();
-        trackEvent(`move to ${title} page`,{feature : title})
+        trackEvent(`move to ${title} page`, { feature: title })
     };
 
     const boxesData = [
         {
-            title: "Routing Flexibility",
+            title: "Retail & Real Estate",
             iconImage: <Routing />,
-            onClick: () => navigate("/routing-flexibility"),
+            onClick: () => navigate("/retail-real-estate"),
             data: [
                 {
                     subtitle: "Conditional Routing",
-                    text: "Automate workflows based on specific conditions.",
+                    text: "Allow <b>brokers</b>, <b>distributors</b>, and <b>vendors</b> to submit leads, sales reports, and property details effortlessly.",
                 },
                 {
                     subtitle: "Expiry Routing",
-                    text: "Set the expiry for documents to sign.",
+                    text: "Coalitionify <b>verifies lead authenticity using AI</b>, preventing unqualified submissions and optimizing sales workflows. ",
                 },
             ],
         },
         {
-            title: "Data Collection",
+            title: "Manufacturing & Supply Chain",
             iconImage: <DataIcon />,
-            onClick: () => navigate("/data-collection"),
+            onClick: () => navigate("/manufacturing-supply-chain"),
             data: [
-                { subtitle: "Input Fields and multi- media", text: "Collect critical information directly within your documents." },
+                {
+                    subtitle: "Input Fields and multi- media",
+                    text: "Enable <b>temporary</b> suppliers to submit RFQs & compliance data, <b>reducing procurement delays</b> and ensuring <b>faster vendor approvals.</b>"
+                },
                 {
                     subtitle: "Image Capture",
-                    text: "Add visual data seamlessly to your workflows.",
+                    text: "Coalitionify also helps suppliers track RFQ statuses without needing direct ERP/PLM access. ",
                 },
             ],
         },
         {
-            title: "Document Flexibility",
+            title: "engineering and construction",
             iconImage: <DocumentationIcon />,
-            onClick: () => navigate("/document-flexibility"),
+            onClick: () => navigate("/engineering-construction"),
             data: [
                 {
                     subtitle: "Multi-Step Documents",
-                    text: "Manage complex workflows with ease.",
+                    text: "Manage <b>temporary contractors and engineering consultants</b> without giving them ERP access.",
                 },
                 {
                     subtitle: "Bulk Signing",
-                    text: "Handle high-volume document signing in seconds.",
+                    text: "Coalitionify enables <b>real-time work order submissions, progress tracking, and compliance verification</b>, ensuring faster approvals and transparent workflows.",
                 },
             ],
         },
         {
-            title: "SDK Integration",
+            title: "HR & Employee Background Verification",
             iconImage: <SdkIcon />,
-            onClick: () => navigate("/sdk-integration"),
+            onClick: () => navigate("/background-verification"),
             data: [
                 {
                     subtitle: "Seamless Integration",
-                    text: "Easily integrates with your existing systems for a smooth user experience.",
+                    text: "Automate third-party background checks by integrating external agencies into your HRMS.",
                 },
-                // {
-                //     subtitle: "Custom SDK",
-                //     text: "Integrate our SDK for a fully customizable experience and enhanced functionality.",
-                // }
+                {
+                    subtitle: "Custom SDK",
+                    text: "Coalitionify ensures secure data submission, AI-driven validation, and real-time tracking for seamless verification.",
+                }
             ],
         },
     ];
@@ -191,7 +193,7 @@ const CenterScreen = () => {
                 mt: 5,
                 textAlign: "center",
                 padding: isMobile ? 2 : 0,
-                pr:2
+                // pr:2
             }}
         >
             <Typography
@@ -208,7 +210,7 @@ const CenterScreen = () => {
                 Streamline Your Workflows with Powerful Features
             </Typography>
             <Grid container spacing={2}>
-                <Grid
+                {/* <Grid
                     item
                     sm={12}
                     md={6}
@@ -235,12 +237,12 @@ const CenterScreen = () => {
                             }}
                         />
                     </Box>
-                </Grid>
+                </Grid> */}
 
                 <Grid
                     item
                     sm={12}
-                    md={6}
+                    md={12}
                     sx={{
                         paddingLeft: { xs: '0', md: '16px' },
                         display: 'flex',
@@ -249,6 +251,7 @@ const CenterScreen = () => {
                         flexDirection: { xs: 'column', md: 'row' },
                         textAlign: { xs: 'center', md: 'left' },
                     }}
+                    m={2}
                     mt={isMobile ? 2 : 0}
                 >
                     <Grid container spacing={2} justifyContent="center">
@@ -268,7 +271,8 @@ const CenterScreen = () => {
                                 <BoxItem
                                     {...box}
                                     isSelected={selectedIndex === index}
-                                    onClick={() => handleBoxClick(index, box.onClick,box.title)}
+                                    onClick={() => handleBoxClick(index, box.onClick, box.title)}
+                                    isMobile={isMobile}
                                 />
                             </Grid>
                         ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, List, ListItem, ListItemText, useMediaQuery, ListItemIcon, useTheme } from '@mui/material';
-import logo from '../../assets/AcoSignLogo.png';
+import logo from '../../assets/acoflow.png';
 import { useNavigate } from 'react-router-dom';
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
 
