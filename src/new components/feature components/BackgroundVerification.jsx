@@ -153,11 +153,17 @@ const BackgroundVerification = () => {
                                 </Typography>
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" 
+                                sx={{ 
+                                  mt: 2, 
+                                  color: '#99A2AC', 
+                                  lineHeight: 1.6, 
+                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
+                                }}>
                                     HR departments often face slow, manual background checks, leading to delays in the hiring process. Traditional methods involve inconsistent data collection, making it harder to track the verification progress.
                                 </Typography>
                             ) : (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
                                     HR departments often face slow, manual background checks, leading to delays in the hiring process. Traditional methods involve inconsistent data collection, making it harder to track the verification progress.
                                 </Typography>
                             )}
@@ -457,7 +463,7 @@ const BackgroundVerification = () => {
                             </Typography>
 
                             {/* Action Links */}
-                            <Typography variant="body1" sx={{ color: 'text.primary', mt: 1, mb: 3 }}>
+                            <Typography variant="body1" sx={{ color: 'text.primary', mt: 1, mb: 8 }}>
                                 <Link
                                     sx={{ cursor: 'pointer', mr: 3 }}
                                     onClick={handleBookDemo}
@@ -466,7 +472,7 @@ const BackgroundVerification = () => {
                                 </Link>
                                 <Link
                                     sx={{ cursor: 'pointer' }}
-                                    onClick={handleTalkExpert}
+                                    onClick={handleBookDemo}
                                 >
                                     📞 Talk to an Expert
                                 </Link>

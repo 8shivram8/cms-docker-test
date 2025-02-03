@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import backImage from "../assets/features.png";
 import { useMixpanel } from "../mixpanel/MixpanelContext";
 
-const BoxItem = ({ title, iconImage, onClick, data, isSelected,isMobile }) => {
+const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
     const theme = useTheme();
     return (
         <Box
@@ -19,7 +19,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected,isMobile }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                height:isMobile ? "325px" : "220px",
+                height: isMobile ? "360px" : "220px",
                 textAlign: "left",
                 cursor: "pointer",
             }}
@@ -73,7 +73,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected,isMobile }) => {
                     {iconImage}
                 </Box>
             </Box>
-            <Grid container spacing={2} sx={{ m: 1, p: 1, width: "100%" }}>
+            <Grid container spacing={2} mt={1} sx={{ px: 3, py: 1, width: "100%" }}>
                 {data.map((item, index) => (
                     <Grid item key={index} xs={12}>
                         <Box
@@ -85,25 +85,27 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected,isMobile }) => {
                             }}
                         >
                             <CheckCircleIcon sx={{ color: "black", fontSize: 18, mr: 1 }} />
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    fontWeight: 500,
-                                    fontSize: "0.875rem",
-                                    textAlign: "left",
-                                    whiteSpace: "normal",
-                                    overflowWrap: "break-word",
-                                    wordBreak: "break-word",
-                                    display: "inline",
-                                    minWidth: 0,
-                                }}
-                                dangerouslySetInnerHTML={{ __html: item.text }}
-                            />
+                            <Box sx={{ textAlign: "justify", width: "100%" }}>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        fontWeight: 500,
+                                        fontSize: "0.875rem",
+                                        whiteSpace: "normal",
+                                        overflowWrap: "break-word",
+                                        wordBreak: "break-word",
+                                        display: "block",
+                                    }}
+                                    dangerouslySetInnerHTML={{ __html: item.text }}
+                                />
+                            </Box>
                         </Box>
                     </Grid>
                 ))}
             </Grid>
+
         </Box>
+
     );
 };
 
@@ -152,7 +154,7 @@ const CenterScreen = () => {
             ],
         },
         {
-            title: "engineering and construction",
+            title: "Engineering and Construction",
             iconImage: <DocumentationIcon />,
             onClick: () => navigate("/engineering-construction"),
             data: [
@@ -244,17 +246,17 @@ const CenterScreen = () => {
                     sm={12}
                     md={12}
                     sx={{
-                        paddingLeft: { xs: '0', md: '16px' },
+                        // padding: { xs: 2, md: 3 },
                         display: 'flex',
-                        alignItems: { xs: 'center', md: 'center' },
+                        alignItems: 'center',
                         justifyContent: 'center',
-                        flexDirection: { xs: 'column', md: 'row' },
-                        textAlign: { xs: 'center', md: 'left' },
+                        flexDirection: 'column',
+                        textAlign: 'center',
                     }}
                     m={2}
                     mt={isMobile ? 2 : 0}
                 >
-                    <Grid container spacing={2} justifyContent="center">
+                    <Grid container spacing={3} justifyContent="center" width="100%">
                         {boxesData.map((box, index) => (
                             <Grid
                                 item
@@ -263,9 +265,9 @@ const CenterScreen = () => {
                                 md={6}
                                 key={index}
                                 sx={{
-                                    marginBottom: { xs: 2, md: 0.5 },
                                     display: 'flex',
                                     justifyContent: 'center',
+                                    alignItems: 'stretch',
                                 }}
                             >
                                 <BoxItem
@@ -277,7 +279,9 @@ const CenterScreen = () => {
                             </Grid>
                         ))}
                     </Grid>
+
                 </Grid>
+
             </Grid>
 
 

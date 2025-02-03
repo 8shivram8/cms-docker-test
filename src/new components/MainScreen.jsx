@@ -126,7 +126,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             ))}
                         </Menu> */}
 
-                        <Button
+                        {/* <Button
                             variant="outlined"
                             target='_blank'
                             href="https://app.coalitionify.com/signIn"
@@ -141,7 +141,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             onClick={()=>trackEvent('Log In button clicked')}
                         >
                             Log In
-                        </Button>
+                        </Button> */}
                     </Box>
                 </Box>
 
@@ -177,7 +177,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         <Grid item>
                             <Button
                                 target='_blank'
-                                href="https://app.coalitionify.com/signIn"
+                                // href="https://app.coalitionify.com/signIn"
                                 variant="outlined"
                                 sx={{
                                     bgcolor: 'black',
@@ -191,7 +191,10 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                         // bgcolor: 'black',
                                     },
                                 }}
-                                onClick={()=>trackEvent('Free Trial button clicked')}
+                                onClick={()=>{
+                                    trackEvent('Free Trial button clicked')
+                                    scrollToContactForm()
+                                }}
                             >
                                 1 Months Free Trial
                             </Button>
