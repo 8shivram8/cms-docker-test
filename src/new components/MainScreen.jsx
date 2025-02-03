@@ -7,7 +7,7 @@ import img3 from '../assets/sliderImages/gogreen.webp';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
-import logo from '../assets/AcoSignLogo.png'
+import logo from '../assets/acoflow.png'
 import { Link, scroller } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import { useMixpanel } from '../mixpanel/MixpanelContext';
@@ -155,7 +155,9 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             textShadow: '1px 1px 4px rgba(0, 0, 0, 0.1)',
                         }}
                     >
-                        Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple.
+                        {/* Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple. */}
+                        Seamless Collaboration with your <br/>
+                        Vendors & Partners
                     </Typography>
 
                     <Typography
@@ -167,7 +169,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             mt: 1,
                         }}
                     >
-                        Streamline your processes, eliminate paperwork, and save time with Coalitionify.
+                        {/* Streamline your processes, eliminate paperwork, and save time with Coalitionify. */}
+                        Connect your Vendors & Partners with your ecosystem effortlessly—without requiring direct/indirect CRM/PLM/ERP access
                     </Typography>
 
                     <Grid container justifyContent="center" spacing={2} mt={1}>
@@ -190,7 +193,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                 }}
                                 onClick={()=>trackEvent('Free Trial button clicked')}
                             >
-                                2 Months Free Trial
+                                1 Months Free Trial
                             </Button>
                         </Grid>
                         <Grid item>

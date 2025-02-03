@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, Container, Typography, IconButton, useTheme, useMediaQuery } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/AcoSignLogo.png'
+import logo from '../../assets/acoflow.png'
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
 const SdkIntegration = () => {
     const theme = useTheme();
@@ -66,7 +66,10 @@ const SdkIntegration = () => {
                                         },
                                     }}
                                     disableRipple
-                                    onClick={() => navigate(-1)}
+                                    onClick={() => {
+                                        navigate(-1)
+                                        trackEvent('back button clicked')
+                                    }}
                                 >
                                     <ArrowBackIcon />
                                 </IconButton>

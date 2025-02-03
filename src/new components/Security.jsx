@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, Grid, Typography, List, ListItem, ListItemIcon, ListItemText, useMediaQuery, useTheme, Divider } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
@@ -10,14 +10,19 @@ const Security = () => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    const {trackEvent}=useMixpanel()
+    const { trackEvent } = useMixpanel()
+    // const securityPoints = [
+    //     'ISO/IEC 27001: International standard for information security management.',
+    //     'GDPR Compliance: Ensuring user data privacy and security in the EU.',
+    //     'SOC 2 Type II: Rigorous audits for data handling, ensuring confidentiality, integrity, and availability.',
+    //     'HIPAA Compliance: For handling sensitive healthcare information securely.',
+    //     'CSA STAR Certification: Industry standard for cloud security assurance.',
+    //     'APEC CBPR Certification: Upholding data privacy across the Asia-Pacific region.',
+    // ];
     const securityPoints = [
-        'ISO/IEC 27001: International standard for information security management.',
-        'GDPR Compliance: Ensuring user data privacy and security in the EU.',
-        'SOC 2 Type II: Rigorous audits for data handling, ensuring confidentiality, integrity, and availability.',
-        'HIPAA Compliance: For handling sensitive healthcare information securely.',
-        'CSA STAR Certification: Industry standard for cloud security assurance.',
-        'APEC CBPR Certification: Upholding data privacy across the Asia-Pacific region.',
+        '<b>Transparent & Compliant Approach</b> </br> Coalitionify follows industry-leading security and compliance best practices, aligning with the standards of ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. We are actively working toward obtaining formal certifications to further demonstrate our commitment to security and compliance.',
+        '<b>Commitment to Security Standards</b> </br> While we are not yet certified, Coalitionify implements security controls and processes that adhere to internationally recognized standards, including ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. Certification is part of our future roadmap.',
+        '<b>Best Practices with Future Certification Plans</b> </br> Coalitionify is committed to security and data privacy by following best practices in line with ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. While certification is pending, we have implemented stringent policies and controls that align with these frameworks.',
     ];
     const handleLinkClick = (url) => {
         window.open(url, '_blank');
@@ -57,37 +62,37 @@ const Security = () => {
                             Our platform meets or exceeds global security and compliance standards to ensure your data and documents are always safe:
                         </Typography>
                         {securityPoints.map((point, index) => (
-                            <Box
-                                key={index}
-                                mt={1}
-                                mb={1}
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center', // Ensure both icon and text are vertically aligned
-                                    flexDirection: 'row',
-                                    width: '100%',
-                                }}
-                            >
-                                <CheckCircleIcon sx={{ color: 'black', fontSize: 18, mr: 1 }} />
-                                <Typography
-                                    variant="subtitle1"
+                            <React.Fragment key={index}>
+                                <Box
+                                    mt={1}
+                                    mb={1}
                                     sx={{
-                                        fontWeight: 500,
-                                        textAlign: 'left',
-                                        whiteSpace: 'normal',
-                                        color: 'black',
-                                        whiteSpace: 'normal',
-                                        overflowWrap: 'break-word',
-                                        wordBreak: 'break-word',
-                                        display: 'inline',
-                                        minWidth: 0,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        flexDirection: 'row',
+                                        width: '100%',
                                     }}
                                 >
-                                    {point}
-                                </Typography>
-                            </Box>
+                                    <Box sx={{ flex: 1 }}>
+                                        <Typography
+                                            variant="subtitle1"
+                                            sx={{
+                                                fontWeight: 500,
+                                                textAlign: 'justify',
+                                                whiteSpace: 'normal',
+                                                color: 'black',
+                                                overflowWrap: 'break-word',
+                                                wordBreak: 'break-word',
+                                                display: 'block',
+                                                width: '100%',
+                                            }}
+                                            dangerouslySetInnerHTML={{ __html: point }}
+                                        />
+                                    </Box>
+                                </Box>
+                                {index < securityPoints.length - 1 && <Divider sx={{ width: '100%', mb: 1 }} />}
+                            </React.Fragment>
                         ))}
-
                         <Box display="flex" alignItems="center" mt={1}>
                             <Typography
                                 variant="subtitle1"
@@ -110,7 +115,7 @@ const Security = () => {
                             </Typography>
                             <ArrowForwardIcon sx={{ fontSize: '16px', marginLeft: '8px', color: '#1677F7' }} />
                         </Box>
-                        <Box display="flex" alignItems="center">
+                        {/* <Box display="flex" alignItems="center">
                             <Typography
                                 variant="subtitle1"
                                 color="#1677F7"
@@ -131,7 +136,7 @@ const Security = () => {
                                 Learn about E-signature legality in India
                             </Typography>
                             <ArrowForwardIcon sx={{ fontSize: '16px', marginLeft: '8px', color: '#1677F7' }} />
-                        </Box>
+                        </Box> */}
 
                     </Grid>
                     <Grid item xs={12} md={4} display="flex" justifyContent={!isMobile ? "right" : "center"}>

@@ -28,7 +28,7 @@ const MySwiper = () => {
             <Box
                 sx={{
                     padding: 3,
-                    mt:3,
+                    mt: 3,
                     backgroundColor: '#f3f4f6',
                 }}
             >

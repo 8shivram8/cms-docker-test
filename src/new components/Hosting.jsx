@@ -74,8 +74,8 @@ const Hosting = () => {
                                 '&:hover': {
                                     transform: 'scale(1.03)',
                                 },
-                                height:'600px'
-                                
+                                height: '600px'
+
                             }}
                         >
 
@@ -86,7 +86,7 @@ const Hosting = () => {
                                     mb: 2,
                                     backgroundImage: theme.palette.linearColor.gradient,
                                     WebkitBackgroundClip: 'text',
-                                    color: index === 1 ? 'white' : 'transparent', 
+                                    color: index === 1 ? 'white' : 'transparent',
                                 }}
                             >
                                 {box.title}
@@ -103,7 +103,7 @@ const Hosting = () => {
                                                 width: '100%',
                                             }}
                                         >
-                                            <CheckCircleIcon sx={{ color:index === 1 ? 'white' : 'black', fontSize: 18, mr: 1 }} />
+                                            <CheckCircleIcon sx={{ color: index === 1 ? 'white' : 'black', fontSize: 18, mr: 1 }} />
 
                                             <Typography
                                                 variant="body2"
@@ -112,12 +112,12 @@ const Hosting = () => {
                                                     fontWeight: 500,
                                                     fontSize: '0.875rem',
                                                     textAlign: 'left',
-                                                    whiteSpace: 'normal', 
-                                                    overflowWrap: 'break-word', 
-                                                    wordBreak: 'break-word', 
-                                                    display: 'inline', 
-                                                    minWidth: 0, 
-                                                    color: index === 1 ? 'white' : 'black', 
+                                                    whiteSpace: 'normal',
+                                                    overflowWrap: 'break-word',
+                                                    wordBreak: 'break-word',
+                                                    display: 'inline',
+                                                    minWidth: 0,
+                                                    color: index === 1 ? 'white' : 'black',
                                                 }}
                                             >
                                                 <strong>{item.subtitle}</strong>: {item.text}
@@ -130,14 +130,14 @@ const Hosting = () => {
                             <Box
                                 sx={{
                                     display: 'flex',
-                                    justifyContent: 'center',  
-                                    alignItems: 'center',     
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                     mb: 2,
                                 }}
                             >
                                 <img
                                     src={box.iconImage}
-                                    alt={box.title} 
+                                    alt={box.title}
                                     style={{ width: '250px', height: '250px' }}
                                 />
                             </Box>

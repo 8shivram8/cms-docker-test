@@ -17,6 +17,10 @@ import Salesforce from './Integration pages/Salesforce';
 import Hubspot from './Integration pages/Hubspot';
 import Razorpay from './Integration pages/Razorpay';
 import Stripe from './Integration pages/Stripe';
+import RealEstate from './feature components/RealEstate';
+import SupplyChain from './feature components/SupplyChain';
+import EngineeringConstruction from './feature components/EngineeringConstruction';
+import BackgroundVerification from './feature components/BackgroundVerification';
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -28,10 +32,14 @@ const AppRoutesNew = () => {
             <Route path="/privacy" element={<Privacy />} /> 
             <Route path="/terms-conditions" element={<Terms />} /> 
             <Route path="/refund-policy" element={<Refund />} /> 
-            <Route path="/routing-flexibility" element={<Routingflexibility />} />
+            {/* <Route path="/routing-flexibility" element={<Routingflexibility />} />
             <Route path="/data-collection" element={<DataCollectionNew />} />
             <Route path="/document-flexibility" element={<DocumentFlexibility />} />
-            <Route path="/sdk-integration" element={<SdkIntegration />} />
+            <Route path="/sdk-integration" element={<SdkIntegration />} /> */}
+            <Route path="/retail-real-estate" element={<RealEstate />} />
+            <Route path="/manufacturing-supply-chain" element={<SupplyChain />} />
+            <Route path="/engineering-construction" element={<EngineeringConstruction />} />
+            <Route path="/background-verification" element={<BackgroundVerification />} />
             <Route path="/trust-security" element={< TrustSecurity/>} />
             <Route path="/e-signature-legality" element={<LegalityNew/>} />
             <Route path="/teams-integration" element={<Teams/>} />
