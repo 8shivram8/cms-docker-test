@@ -151,11 +151,17 @@ const EngineeringConstruction = () => {
                                 </Typography>
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" 
+                                sx={{ 
+                                  mt: 2, 
+                                  color: '#99A2AC', 
+                                  lineHeight: 1.6, 
+                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
+                                }}>
                                     Engineering and construction projects are complex, with numerous moving parts. Traditional project management methods struggle to predict labor needs, stay within budget, and ensure safety compliance.
                                 </Typography>
                             ) : (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
                                     Engineering and construction projects are complex, with numerous moving parts. Traditional project management methods struggle to predict labor needs, stay within budget, and ensure safety compliance.
                                 </Typography>
                             )}
@@ -464,7 +470,7 @@ const EngineeringConstruction = () => {
                                 </Link>
                                 <Link
                                     sx={{ cursor: 'pointer' }}
-                                    onClick={handleTalkExpert}
+                                    onClick={handleBookDemo}
                                 >
                                     📞 Talk to an Expert
                                 </Link>

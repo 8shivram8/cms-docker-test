@@ -148,11 +148,20 @@ const SupplyChain = () => {
 
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                                    Manufacturing and supply chain organizations work with numerous vendors, suppliers, and logistics partners. However, most ERP and procurement systems are designed for internal teams, making third-party vendor collaboration slow and inefficient.
-                                </Typography>
+                                <Typography 
+                                variant="h6" 
+                                sx={{ 
+                                  mt: 2, 
+                                  color: '#99A2AC', 
+                                  lineHeight: 1.6, 
+                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
+                                }}
+                              >
+                                Manufacturing and supply chain organizations work with numerous vendors, suppliers, and logistics partners. However, most ERP and procurement systems are designed for internal teams, making third-party vendor collaboration slow and inefficient.
+                              </Typography>
+                              
                             ) : (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
                                     Manufacturing and supply chain organizations work with numerous vendors, suppliers, and logistics partners. However, most ERP and procurement systems are designed for internal teams, making third-party vendor collaboration slow and inefficient.
                                 </Typography>
                             )}
@@ -465,7 +474,7 @@ const SupplyChain = () => {
                                 </Link>
                                 <Link
                                     sx={{ cursor: 'pointer' }}
-                                    onClick={handleTalkExpert}
+                                    onClick={handleBookDemo}
                                 >
                                     📞 Talk to an Expert
                                 </Link>

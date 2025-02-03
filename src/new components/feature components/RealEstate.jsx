@@ -148,11 +148,17 @@ const RealEstate = () => {
 
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" 
+                                sx={{ 
+                                  mt: 2, 
+                                  color: '#99A2AC', 
+                                  lineHeight: 1.6, 
+                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
+                                }}>
                                     Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
                                 </Typography>
                             ) : (
-                                <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
+                                <Typography variant="h6" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
                                     Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
                                 </Typography>
                             )}
@@ -465,7 +471,7 @@ const RealEstate = () => {
                                 </Link>
                                 <Link
                                     sx={{ cursor: 'pointer' }}
-                                    onClick={handleTalkExpert}
+                                    onClick={handleBookDemo}
                                 >
                                     📞 Talk to an Expert
                                 </Link>
