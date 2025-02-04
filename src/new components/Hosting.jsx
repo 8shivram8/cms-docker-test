@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid, Typography, useTheme } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Routing from './Custom Icons/Routing'
 import DataIcon from './Custom Icons/DataIcon'
 import cloudImage from '../assets/cloud.png'
@@ -30,6 +30,8 @@ const boxesData = [
 
 const Hosting = () => {
     const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     return (
         <Box sx={{
             display: 'flex',
@@ -47,7 +49,7 @@ const Hosting = () => {
                         variant="h4"
                         sx={{
                             fontWeight: 700,
-                            marginBottom: 3,
+                            marginBottom: 1.5,
                             fontSize: { xs: '25px', sm: '30px', md: '35px' },
                             color: 'white',
                             mt: 5
@@ -55,6 +57,17 @@ const Hosting = () => {
                     >
                         Flexible Hosting Options
                     </Typography>
+                    <Typography
+                    variant="h1"
+                    color="white"
+                    sx={{
+                        fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
+                        fontSize: {xs : '16px',sm:'18px',md: '27px'},
+                        // mt: 1,
+                    }}
+                >
+                    complete white label solution
+                </Typography>
                 </Grid>
 
                 {boxesData.map((box, index) => (

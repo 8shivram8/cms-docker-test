@@ -18,8 +18,8 @@ const HowItWorks = ({data,data1,data2,data3}) => {
         </Grid>
         <Grid item xs={12}>
       <Box display="flex" flexDirection="column" alignItems="center" width="100%" border={'1px solid black'}>
-        <Box display="flex" flexDirection={isMobile ? "column" : "row"} width="88%" sx={{ minHeight: "150px" }} mt={2}>
-          <Box p={2} flex={1} textAlign="left" sx={{ pr: isMobile ? 0 : 2, width: "100%" }}>
+        <Box display="flex" flexDirection={isMobile ? "column" : "row"}  sx={{ minHeight: "150px" }} mt={3}>
+          <Box p={isMobile ? 2 :0} flex={1} textAlign="left" sx={{width: "100%" }}>
             <Typography variant="h6" fontWeight={600} mb={1}>
               {data.title}
             </Typography>
@@ -45,8 +45,8 @@ const HowItWorks = ({data,data1,data2,data3}) => {
             <Divider orientation="vertical" flexItem sx={{ bgcolor: "grey.400", height: "150px", alignSelf: "center" }} />
           )}
 
-          <Box p={2} flex={1} textAlign="left" sx={{ pl: isMobile ? 0 : 4, width: "100%" }}>
-            <Typography variant="h6" fontWeight={400} mb={1}>
+          <Box p={2} flex={1} textAlign="left" sx={{ pl: isMobile ? 2 : 4, width: "100%" }}>
+            <Typography variant="h6" fontWeight={400} mb={1} mt={isMobile ? 1 : 4}>
               {data1.title}
             </Typography>
             <List dense>
