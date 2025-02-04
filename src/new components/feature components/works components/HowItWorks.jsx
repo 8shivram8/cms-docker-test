@@ -18,7 +18,7 @@ const HowItWorks = ({data,data1,data2,data3}) => {
         </Grid>
         <Grid item xs={12}>
       <Box display="flex" flexDirection="column" alignItems="center"  border={'1px solid black'}>
-        <Box display="flex" flexDirection={isMobile ? "column" : "row"}  sx={{ minHeight: "150px" }} mt={3} gap={2}>
+        <Box display="flex" flexDirection={isMobile ? "column" : "row"}  sx={{ minHeight: "150px" }} mt={0.5} gap={2}>
           <Box p={isMobile ? 2 :3} textAlign="left" sx={{width: isMobile ? '100%' : "44%" }}>
             <Typography variant="h6" fontWeight={600} mb={1}>
               {data.title}

@@ -66,7 +66,7 @@ const Hosting = () => {
                         // mt: 1,
                     }}
                 >
-                    complete white label solution
+                    Complete White Label Solution
                 </Typography>
                 </Grid>
 
