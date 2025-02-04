@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/acoflow.png';
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
+import IntegrationAnimatedText from '../../styled component/IntegrationAnimatedText';
 
 const Slack = () => {
     const theme = useTheme();
@@ -32,7 +33,8 @@ const Slack = () => {
         navigate('/');
         trackEvent('move to home page')
     };
-
+     const title='Slack Integration'
+    const description='Elevate your team’s communication and workflow efficiency with Slack integration.Share information effortlessly, stay updated with notifications, and execute custom actions—all from your Slack workspace.'
     return (
         <Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, ml: !isMobile ? 5 : 0, mr: 5, mt: 2 }}>
@@ -49,7 +51,7 @@ const Slack = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <Box>
-                            <Box display="flex" alignItems="center">
+                            {/* <Box display="flex" alignItems="center">
                                 <IconButton
                                     sx={{
                                         color: '#99A2AC',
@@ -69,26 +71,11 @@ const Slack = () => {
                                 <Typography variant="body1" sx={{ ml: 1, color: '#99A2AC' }}>
                                     Back
                                 </Typography>
-                            </Box>
+                            </Box> */}
                             <Box display="flex">
-                                <Typography
-                                    variant="h4"
-                                    sx={{
-                                        mt: 2,
-                                        fontWeight: 600,
-                                        backgroundImage: theme.palette.linearColor.gradient,
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                    }}
-                                >
-                                    Slack Integration
-                                </Typography>
+                                <IntegrationAnimatedText title={title} theme={theme}/>
                             </Box>
-                            <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                                Elevate your team’s communication and workflow efficiency with Slack integration.
-                                Share information effortlessly, stay updated with notifications, and execute custom
-                                actions—all from your Slack workspace.
-                            </Typography>
+                            <IntegrationAnimatedText description={description} theme={theme}/>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>

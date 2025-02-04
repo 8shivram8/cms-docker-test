@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/acoflow.png';
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
+import IntegrationAnimatedText from '../../styled component/IntegrationAnimatedText';
 
 const Stripe = () => {
   const theme = useTheme();
@@ -32,6 +33,8 @@ const { trackEvent } = useMixpanel()
     navigate('/');
     trackEvent('move to home page')
   };
+   const title='Stripe Integration'
+    const description='Enhance your payment systems with Stripe. From seamless payment processing to global reach and customizable workflows,Stripe provides a powerful solution for businesses of all sizes to manage payments securely and efficiently.'
 
   return (
     <Box>
@@ -49,7 +52,7 @@ const { trackEvent } = useMixpanel()
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Box>
-              <Box display="flex" alignItems="center">
+              {/* <Box display="flex" alignItems="center">
                 <IconButton
                   sx={{
                     color: '#99A2AC',
@@ -69,9 +72,9 @@ const { trackEvent } = useMixpanel()
                 <Typography variant="body1" sx={{ ml: 1, color: '#99A2AC' }}>
                   Back
                 </Typography>
-              </Box>
+              </Box> */}
               <Box display="flex">
-                <Typography
+                {/* <Typography
                   variant="h4"
                   sx={{
                     mt: 2,
@@ -82,12 +85,10 @@ const { trackEvent } = useMixpanel()
                   }}
                 >
                   Stripe Integration
-                </Typography>
+                </Typography> */}
+                <IntegrationAnimatedText title={title} theme={theme}/>
               </Box>
-              <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                Enhance your payment systems with Stripe. From seamless payment processing to global reach and customizable workflows, 
-                Stripe provides a powerful solution for businesses of all sizes to manage payments securely and efficiently.
-              </Typography>
+              <IntegrationAnimatedText description={description} theme={theme}/>
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>

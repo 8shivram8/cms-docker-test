@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/acoflow.png';
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
+import IntegrationAnimatedText from '../../styled component/IntegrationAnimatedText';
 
 const Razorpay = () => {
     const theme = useTheme();
@@ -32,6 +33,8 @@ const Razorpay = () => {
         navigate('/');
         trackEvent('move to home page')
     };
+     const title='Razorpay Integration'
+    const description=' Unlock the power of secure and efficient payment processing with Razorpay.Streamline your financial operations, automate workflows, and gain real-time insights into transactions to enhance your business growth.'
 
     return (
         <Box>
@@ -49,7 +52,7 @@ const Razorpay = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <Box>
-                            <Box display="flex" alignItems="center">
+                            {/* <Box display="flex" alignItems="center">
                                 <IconButton
                                     sx={{
                                         color: '#99A2AC',
@@ -69,26 +72,11 @@ const Razorpay = () => {
                                 <Typography variant="body1" sx={{ ml: 1, color: '#99A2AC' }}>
                                     Back
                                 </Typography>
-                            </Box>
+                            </Box> */}
                             <Box display="flex">
-                                <Typography
-                                    variant="h4"
-                                    sx={{
-                                        mt: 2,
-                                        fontWeight: 600,
-                                        backgroundImage: theme.palette.linearColor.gradient,
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                    }}
-                                >
-                                    Razorpay Integration
-                                </Typography>
+                                <IntegrationAnimatedText title={title} theme={theme}/>
                             </Box>
-                            <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                                Unlock the power of secure and efficient payment processing with Razorpay.
-                                Streamline your financial operations, automate workflows, and gain real-time insights
-                                into transactions to enhance your business growth.
-                            </Typography>
+                            <IntegrationAnimatedText description={description} theme={theme}/>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
