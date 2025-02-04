@@ -144,6 +144,21 @@ const CenterScreen = () => {
 
     const boxesData = [
         {
+            title: "Secure & Automated Multi-User Workflow",
+            iconImage: <DocumentationIcon />,
+            onClick: () => navigate("/multiuser-workflow"),
+            data: [
+                {
+                    subtitle: "Multi-Step Documents",
+                    text: "Manage <b>temporary contractors and engineering consultants</b> without giving them ERP access.",
+                },
+                {
+                    subtitle: "Bulk Signing",
+                    text: "Coalitionify enables <b>real-time work order submissions, progress tracking, and compliance verification</b>, ensuring faster approvals and transparent workflows.",
+                },
+            ],
+        },
+        {
             title: "Retail & Real Estate",
             iconImage: <Routing />,
             onClick: () => navigate("/retail-real-estate"),
@@ -170,21 +185,6 @@ const CenterScreen = () => {
                 {
                     subtitle: "Image Capture",
                     text: "Coalitionify also helps suppliers track RFQ statuses without needing direct ERP/PLM access. ",
-                },
-            ],
-        },
-        {
-            title: "Engineering and Construction",
-            iconImage: <DocumentationIcon />,
-            onClick: () => navigate("/engineering-construction"),
-            data: [
-                {
-                    subtitle: "Multi-Step Documents",
-                    text: "Manage <b>temporary contractors and engineering consultants</b> without giving them ERP access.",
-                },
-                {
-                    subtitle: "Bulk Signing",
-                    text: "Coalitionify enables <b>real-time work order submissions, progress tracking, and compliance verification</b>, ensuring faster approvals and transparent workflows.",
                 },
             ],
         },

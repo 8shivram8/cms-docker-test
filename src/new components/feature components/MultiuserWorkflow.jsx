@@ -11,61 +11,68 @@ import { scroller } from 'react-scroll';
 import KeyFeaturesNew from '../KeyFeaturesNew';
 import Challenges from './Challenges';
 import HowItWorks from './works components/HowItWorks';
+import AnimatedTypographyComman from '../../styled component/AnimatedTypographyComman';
 
-const EngineeringConstruction = () => {
+const MultiuserWorkflow = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const { trackEvent } = useMixpanel()
-    const data2 = {
-        title: "AI-Powered Lead Submission & Qualification",
-        details: [
-            "External brokers submit leads via secure links (no CRM access required).",
-            "AI auto-fills missing data and detects anomalies.",
-            "Financial details, property preferences, and history are validated instantly."
-        ]
-    };
-
     const data = {
-        title: "Lead Scoring with AI & Vector Search",
+        title: "Document Preparation & Secure Sending",
         details: [
-            "OpenAI-powered intent detection identifies serious buyers.",
-            "Vector search matches new leads against past successful buyers.",
+            "Upload contracts, agreements, or forms into the system.",
+            "Add signature fields, initials, checkboxes, and custom fields as required."
         ]
     };
+    
     const data1 = {
-        title: "Score Breakdown",
+        title: "Multi-User Signing Rules & Secure Delivery",
         details: [
-            "Financial Eligibility (30 pts) → Budget, credit check.",
-            "Lead Intent (30 pts) → Urgency, interest.",
-            "Engagement & Behavior (20 pts) → CRM activity, inquiries.",
-            "Market Factors (20 pts) → Location demand, trends."
-        ]
-    }
-
-    const data3 = {
-        title: "AI-Based Lead Routing & CRM Integration",
-        details: [
-            "High-scoring leads (80+) are auto-routed to sales teams.",
-            "Medium-scoring leads (50-80) go to pre-sales nurturing.",
-            "CRM-agnostic → Integrates with Salesforce, HubSpot, or custom CRMs."
+            "All Must Sign → Every assigned participant must sign.",
+            "Any 2 Out of N → Any two participants can sign to complete.",
+            "Custom Rules → Set conditions based on role, department, or priority.",
+            "Send documents securely to recipients via email, SMS, or a secure link."
         ]
     };
+    
+    const data2 = {
+        title: "Bulk Signing & Automated Workflow Triggers",
+        details: [
+            "Bulk Document Sending → Send multiple agreements in one go.",
+            "Bulk Signature Requests → Recipients can sign multiple documents with a single action.",
+            "Automated Reminders → Notify pending signers to complete the process.",
+            "Real-Time Status Tracking → Monitor signing progress across all documents."
+        ]
+    };
+    
+    const data3 = {
+        title: "Seamless Multi-Party Signing Experience",
+        details: [
+            "Recipients can sign from any device (desktop, mobile, tablet) – no app required.",
+            "Supports typed, drawn, or uploaded signature images.",
+            "Multi-user signing workflows with real-time updates.",
+            "Parallel & Sequential Signing → Define whether signers can sign simultaneously or in order."
+        ]
+    };
+    
 
     const keychallenges = [
-        { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
-        { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
-        { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
-        { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
-      ]
-    const benefits = [
-        'No Need for CRM Access → Brokers submit leads securely via Coalitionify.',
-        'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
-        'More Accurate Lead Scoring → AI compares against past high-converting leads.',
-        'Financial Eligibility Assessment → Flags leads that don’t meet budget requirements.',
-        'Higher Conversion Rates → Sales teams receive only highly qualified leads.'
+        { title: "Multi-User Approvals", subtitle: "Coordinating multiple signers delays document completion." },
+        { title: "Manual Tracking", subtitle: "Lack of real-time updates makes tracking signatures difficult." },
+        { title: "Security Risks", subtitle: "Documents are vulnerable to tampering without secure storage." },
+        { title: "Brand Consistency", subtitle: "Inconsistent branding affects trust in signed documents." }
     ];
+    
+    const benefits = [
+        "Multi-User Signature Rules → Configure All Must Sign or Any 2 of N approvals.",
+        "Bulk Signing & Workflow Triggers → Automate large-scale signing tasks.",
+        "Automated Tracking & Audit Logs → Full visibility into every signing action.",
+        "Secure & Tamper-Proof Storage → Encrypted document repository.",
+        "Custom Branding & White Labeling → Maintain brand consistency."
+    ];
+    
     const handleNavigate = () => {
         navigate('/');
         trackEvent('move to home page')
@@ -80,6 +87,8 @@ const EngineeringConstruction = () => {
             });
         }, 500);
     };
+    const text1='Secure & Automated Multi-User Signature Workflow'
+    const text2=''
 
     return (
         <Box>
@@ -99,7 +108,7 @@ const EngineeringConstruction = () => {
                     <Grid item xs={12} md={6}>
                         <Box>
                             <Box display={'flex'} flexDirection={'column'}>
-                                <Typography
+                                {/* <Typography
                                     variant="h4"
                                     sx={{
                                         mt: 2,
@@ -122,7 +131,8 @@ const EngineeringConstruction = () => {
                                     }}
                                 >
                                     The Problem with Traditional Lead Qualification
-                                </Typography>
+                                </Typography> */}
+                                <AnimatedTypographyComman theme={theme} text1={text1} text2={text2}/>
 
                             </Box>
                             {!isMobile ? (
@@ -133,11 +143,11 @@ const EngineeringConstruction = () => {
                                         lineHeight: 1.6,
                                         fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
                                     }}>
-                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
+                                   Coalitionify simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
                                 </Typography>
                             ) : (
                                 <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
-                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
+                                    Coalitionify simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
                                 </Typography>
                             )}
                         </Box>
@@ -172,7 +182,7 @@ const EngineeringConstruction = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing Coalitionify: AI-Powered Real Estate Lead Qualification
+                                Introducing Coalitionify: AI-Powered Multi-User Signature Workflow
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -182,7 +192,7 @@ const EngineeringConstruction = () => {
                                     color: 'text.primary',
                                 }}
                             >
-                                Our platform leverages AI, vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
+                                Our platform leverages automation, encryption, and real-time tracking to streamline multi-user signing, enhance security, and ensure compliance—enabling faster, tamper-proof, and legally binding document approvals.
                             </Typography>
 
                             <Challenges keychallenges={keychallenges}/>
@@ -281,4 +291,4 @@ const EngineeringConstruction = () => {
     );
 };
 
-export default EngineeringConstruction;
+export default MultiuserWorkflow;
