@@ -62,8 +62,7 @@ const Hosting = () => {
                     color="white"
                     sx={{
                         fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                        fontSize: {xs : '16px',sm:'18px',md: '27px'},
-                        // mt: 1,
+                        fontSize: {xs : '16px',sm:'18px',md: '18px'},
                     }}
                 >
                     Complete White Label Solution
