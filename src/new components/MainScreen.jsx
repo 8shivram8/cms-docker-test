@@ -11,6 +11,7 @@ import logo from '../assets/acoflow.png'
 import { Link, scroller } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import { useMixpanel } from '../mixpanel/MixpanelContext';
+import AnimatedTypography from '../styled component/AnimatedTypography';
 const countries = [
     { label: 'United States', code: 'US' },
     { label: 'India', code: 'IN' },
@@ -146,7 +147,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                 </Box>
 
                 <Box sx={{ textAlign: 'center', mt: 3, px: 2 }}>
-                    <Typography
+                    {/* <Typography
                         variant="h1"
                         color="white"
                         sx={{
@@ -155,12 +156,12 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             textShadow: '1px 1px 4px rgba(0, 0, 0, 0.1)',
                         }}
                     >
-                        {/* Build Your Workflow: Digital Forms, Signatures, and Data Collection Made Simple. */}
                         Seamless Collaboration with your <br/>
                         Vendors & Partners
-                    </Typography>
+                    </Typography> */}
+                    <AnimatedTypography isMobile={isMobile} isTablet={isTablet}/>
 
-                    <Typography
+                    {/* <Typography
                         variant="h1"
                         color="white"
                         sx={{
@@ -169,9 +170,8 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             mt: 1,
                         }}
                     >
-                        {/* Streamline your processes, eliminate paperwork, and save time with Coalitionify. */}
                         Connect your Vendors & Partners with your ecosystem effortlessly—without requiring direct/indirect CRM/PLM/ERP access
-                    </Typography>
+                    </Typography> */}
 
                     <Grid container justifyContent="center" spacing={2} mt={1}>
                         <Grid item>
