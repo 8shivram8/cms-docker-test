@@ -111,7 +111,7 @@ const Security = () => {
                                     trackEvent('move to trust and security page')
                                 }}
                             >
-                                Learn more about trust and security at Acosign
+                                Learn more about trust and security at AcoFlow
                             </Typography>
                             <ArrowForwardIcon sx={{ fontSize: '16px', marginLeft: '8px', color: '#1677F7' }} />
                         </Box>

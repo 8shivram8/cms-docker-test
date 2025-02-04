@@ -31,7 +31,7 @@ const RealEstate = () => {
     const data = {
         title: "Lead Scoring with AI & Vector Search",
         details: [
-            "OpenAI-powered intent detection identifies serious buyers.",
+            "AI-powered intent detection identifies serious buyers.",
             "Vector search matches new leads against past successful buyers.",
         ]
     };
