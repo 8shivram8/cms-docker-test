@@ -9,7 +9,7 @@ const features = [
   { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
 ]
 
-const Challenges = () => {
+const Challenges = ({keychallenges}) => {
   return (
     <Box bgcolor="#1677F7" py={3} mt={7} position={'relative'} mb={7}>
         <Box position="absolute" top={0} left={0}>
@@ -23,7 +23,7 @@ const Challenges = () => {
       </Typography>
       <Box display="flex" justifyContent="center">
         <Grid container justifyContent="center" maxWidth="lg">
-          {features.map((feature, index) => (
+          {keychallenges.map((feature, index) => (
             <Grid item xs={6} sm={6} md={3} key={index}>
               <Box textAlign="left" p={3}>
                 <Typography variant="h6" color="white" fontWeight={700}>

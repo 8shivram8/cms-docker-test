@@ -1,89 +1,84 @@
 import React from 'react';
-import { Box, Grid, Container, Typography, IconButton, useTheme,Link, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, Grid, Container, Typography, IconButton, useTheme, Button, Divider, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/acoflow.png';
-import img from '../../assets/sign.jpeg';
+import logo from '../../assets/acoflow.png'
+import img from '../../assets/sign.jpeg'
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import { scroller } from 'react-scroll';
+import KeyFeaturesNew from '../KeyFeaturesNew';
+import Challenges from './Challenges';
+import HowItWorks from './works components/HowItWorks';
+
 const EngineeringConstruction = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    const { trackEvent } = useMixpanel();
-    
-    const contentData = [
-        {
-            title: "AI-Driven Project Design & Planning",
-            subtitle: "",
-            details: [
-                "Automated design suggestions using AI tools based on project scope.",
-                "AI-assisted cost estimations with historical project data.",
-                "Real-time project risk assessment powered by machine learning."
-            ]
-        },
-        {
-            title: "Construction Workforce Optimization with AI",
-            subtitle: "",
-            details: [
-                "AI predicts labor requirements based on project size and complexity.",
-                "AI-driven scheduling adjusts based on weather, workforce, and resource availability.",
-                {
-                    subtitle: "Key areas of focus:",
-                    details: [
-                        "Labor Allocation (30 pts) → Efficient deployment of workers.",
-                        "Safety Compliance (30 pts) → Ensuring compliance with safety protocols.",
-                        "Cost Control (20 pts) → Managing project budgets effectively.",
-                        "Material Availability (20 pts) → Optimizing supply chain for material procurement."
-                    ]
-                }
-            ]
-        },
-        {
-            title: "Real-Time Progress Monitoring & ERP Integration",
-            subtitle: "",
-            details: [
-                "Real-time project status updates based on sensor data and AI insights.",
-                "Medium-complexity projects are flagged for manual checks.",
-                "Seamless ERP Integration → Works with SAP, Oracle, or custom systems."
-            ]
-        }
-    ];    
+    const { trackEvent } = useMixpanel()
+    const data2 = {
+        title: "AI-Powered Lead Submission & Qualification",
+        details: [
+            "External brokers submit leads via secure links (no CRM access required).",
+            "AI auto-fills missing data and detects anomalies.",
+            "Financial details, property preferences, and history are validated instantly."
+        ]
+    };
+
+    const data = {
+        title: "Lead Scoring with AI & Vector Search",
+        details: [
+            "OpenAI-powered intent detection identifies serious buyers.",
+            "Vector search matches new leads against past successful buyers.",
+        ]
+    };
+    const data1 = {
+        title: "Score breakdown:",
+        details: [
+            "Financial Eligibility (30 pts) → Budget, credit check.",
+            "Lead Intent (30 pts) → Urgency, interest.",
+            "Engagement & Behavior (20 pts) → CRM activity, inquiries.",
+            "Market Factors (20 pts) → Location demand, trends."
+        ]
+    }
+
+    const data3 = {
+        title: "AI-Based Lead Routing & CRM Integration",
+        details: [
+            "High-scoring leads (80+) are auto-routed to sales teams.",
+            "Medium-scoring leads (50-80) go to pre-sales nurturing.",
+            "CRM-agnostic → Integrates with Salesforce, HubSpot, or custom CRMs."
+        ]
+    };
 
     const keychallenges = [
-        'Manual planning processes result in time delays and inefficiencies.',
-        'Difficulty in predicting labor requirements and project timelines.',
-        'Safety violations and non-compliance risks on construction sites.',
-        'Unforeseen cost overruns due to improper budget allocation.'
-    ];
+        { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
+        { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
+        { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
+        { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
+      ]
     const benefits = [
-        'No Need for ERP Access → Construction firms submit project data securely via Coalitionify.',
-        'Faster Project Qualification → AI auto-checks project details, reducing manual reviews.',
-        'More Accurate Risk Assessment → AI compares against past high-performing projects.',
-        'Automated Compliance & Financial Checks → Flags high-risk projects before approval.',
-        'Stronger Project Stability → Project managers receive only reliable, pre-qualified contractors.'
+        'No Need for CRM Access → Brokers submit leads securely via Coalitionify.',
+        'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
+        'More Accurate Lead Scoring → AI compares against past high-converting leads.',
+        'Financial Eligibility Assessment → Flags leads that don’t meet budget requirements.',
+        'Higher Conversion Rates → Sales teams receive only highly qualified leads.'
     ];
-
     const handleNavigate = () => {
         navigate('/');
-        trackEvent('move to home page');
+        trackEvent('move to home page')
     };
-    const handleBookDemo = () => {
-            navigate('/');
-            setTimeout(() => {
-                scroller.scrollTo('contactForm', {
-                    duration: 1200,
-                    smooth: true,
-                });
-            }, 500); 
-        };
-   
 
-    const handleTalkExpert = () => {
-        console.log("Talk to an expert clicked");
-        // Add your navigation or API call here
+    const handleBookDemo = () => {
+        navigate('/');
+        setTimeout(() => {
+            scroller.scrollTo('contactForm', {
+                duration: 1200,
+                smooth: true,
+            });
+        }, 500);
     };
 
     return (
@@ -103,27 +98,6 @@ const EngineeringConstruction = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <Box>
-                            <Box display="flex" alignItems="center">
-                                <IconButton
-                                    sx={{
-                                        color: '#99A2AC',
-                                        p: 0,
-                                        '&:hover': {
-                                            backgroundColor: 'transparent',
-                                        },
-                                    }}
-                                    disableRipple
-                                    onClick={() => {
-                                        navigate(-1);
-                                        trackEvent('back button clicked');
-                                    }}
-                                >
-                                    <ArrowBackIcon />
-                                </IconButton>
-                                <Typography variant="body1" sx={{ ml: 1, color: '#99A2AC' }}>
-                                    Back
-                                </Typography>
-                            </Box>
                             <Box display={'flex'} flexDirection={'column'}>
                                 <Typography
                                     variant="h4"
@@ -135,7 +109,7 @@ const EngineeringConstruction = () => {
                                         WebkitTextFillColor: 'transparent',
                                     }}
                                 >
-                                    Transforming Engineering & Construction
+                                    Revolutionizing Real Estate Lead Management
                                 </Typography>
                                 <Typography
                                     variant="h5"
@@ -147,22 +121,23 @@ const EngineeringConstruction = () => {
                                         WebkitTextFillColor: 'transparent',
                                     }}
                                 >
-                                   The Challenges of Traditional Project Management
+                                    The Problem with Traditional Lead Qualification
                                 </Typography>
+
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="h6" 
-                                sx={{ 
-                                  mt: 2, 
-                                  color: '#99A2AC', 
-                                  lineHeight: 1.6, 
-                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
-                                }}>
-                                    Engineering and construction projects are complex, with numerous moving parts. Traditional project management methods struggle to predict labor needs, stay within budget, and ensure safety compliance.
+                                <Typography variant="h6"
+                                    sx={{
+                                        mt: 2,
+                                        color: 'text.primary',
+                                        lineHeight: 1.6,
+                                        fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
+                                    }}>
+                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
                                 </Typography>
                             ) : (
-                                <Typography variant="h6" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                                    Engineering and construction projects are complex, with numerous moving parts. Traditional project management methods struggle to predict labor needs, stay within budget, and ensure safety compliance.
+                                <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
+                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
                                 </Typography>
                             )}
                         </Box>
@@ -171,259 +146,79 @@ const EngineeringConstruction = () => {
                         <Box>
                             <img
                                 src={img}
-                                alt="Engineering and Construction"
+                                alt="Description"
                                 style={{
                                     width: '100%',
-                                    height: '300px',
+                                    height: '300px', // Adjust height as needed
                                     borderRadius: '8px',
                                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                                    objectFit: 'cover',
+                                    objectFit: 'cover', // Ensures the image fills the space without distortion
                                 }}
                             />
                         </Box>
+
+
                     </Grid>
                     <Grid item xs={12}>
-                        <Box sx={{ mt: 1 }}>
+                        <Divider sx={{ width: '70%', mb: 2, mx: 'auto', color: 'black', mt: 2 }} />
+                        <Box sx={{ mt: 2 }} display={'flex'} flexDirection={'column'}>
+                            <Typography
+                                variant="h5"
+                                sx={{
+                                    mt: 3,
+                                    fontWeight: 200,
+                                    backgroundImage: theme.palette.linearColor.gradient,
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}
+                            >
+                                Introducing Coalitionify: AI-Powered Real Estate Lead Qualification
+                            </Typography>
                             <Typography
                                 variant="h6"
                                 sx={{
-                                    fontWeight: 500,
-                                    color: 'black',
+                                    mt: 2,
+                                    fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" },
+                                    color: 'text.primary',
                                 }}
                             >
-                                Key Challenges:
+                                Our platform leverages AI, vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
                             </Typography>
-                            <List sx={{ paddingLeft: 2, paddingTop: 1, paddingBottom: 0 }}>
-                                {keychallenges.map((item, index) => (
-                                    <ListItem
-                                        key={index}
+
+                            <Challenges keychallenges={keychallenges}/>
+                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3}/>
+                            <Box
+                                m={3}
+                                display={'flex'}
+                                flexDirection={'column'}
+                                sx={{
+                                    mt: 8,
+                                    border: '1px solid #e0e0e0', // Light border around the component
+                                    padding: 2, // Padding around the whole component
+                                    borderRadius: '8px', // Optional: rounded corners
+                                }}
+                            >
+                                <Box display={'flex'}>
+                                    <Typography
+                                        variant="h4"
+                                        fontWeight={600}
                                         sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            paddingLeft: 0,
-                                            paddingY: 0.2,
+                                            backgroundImage: theme.palette.linearColor.gradient,
+                                            WebkitBackgroundClip: "text",
+                                            color: "transparent",
                                         }}
+
                                     >
-                                        <ListItemIcon
-                                            sx={{
-                                                minWidth: 'auto',
-                                                marginRight: '6px',
-                                            }}
-                                        >
-                                            <Box
-                                                sx={{
-                                                    width: '6px',
-                                                    height: '6px',
-                                                    backgroundColor: 'black',
-                                                    borderRadius: '50%',
-                                                }}
-                                            />
-                                        </ListItemIcon>
-                                        <ListItemText
-                                            primary={item}
-                                            sx={{
-                                                color: 'text.secondary',
-                                                margin: 0,
-                                                lineHeight: 1.2,
-                                                fontSize: isMobile ? '10px' : isTablet ? '12px' : '12px',
-                                                fontFamily: 'Poppins, sans-serif',
-                                            }}
-                                        />
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </Box>
-                        <Box sx={{ mt: 2 }}>
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    fontWeight: 500,
-                                    color: 'black',
-                                }}
-                            >
-                               Introducing Coalitionify: AI-Powered Project Optimization
-                            </Typography>
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    fontSize: isMobile ? '10px' : isTablet ? '12px' : '16px',
-                                    color: 'text.secondary',
-                                }}
-                            >
-                               Our platform leverages AI, machine learning, and real-time data to automate construction planning, optimize labor allocation, and ensure safety compliance, resulting in streamlined project delivery.
-                            </Typography>
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    fontWeight: 500,
-                                    color: 'black',
-                                    mt: 3
-                                }}
-                            >
-                               🔹 How It Works 
-                            </Typography>
-                            <Box sx={{ mt: 1 }}>
-                                {contentData.map((item, index) => (
-                                    <Box key={index} sx={{ mb: 3 }}>
-                                        <Typography
-                                            variant="h6"
-                                            sx={{
-                                                fontWeight: 400,
-                                                color: 'black',
-                                            }}
-                                        >
-                                            {item.title}
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            sx={{
-                                                fontWeight: 400,
-                                                color: theme.palette.text.secondary,
-                                                wordWrap: 'break-word',
-                                                lineHeight: 1.6,
-                                                textAlign: 'left',
-                                            }}
-                                        >
-                                            {item.subtitle}
-                                        </Typography>
-                                        <List sx={{ paddingLeft: 2 }}>
-                                            {item.details.map((detail, idx) => (
-                                                typeof detail === 'string' ? (
-                                                    <ListItem
-                                                        key={idx}
-                                                        sx={{
-                                                            display: 'flex',
-                                                            alignItems: 'flex-start',
-                                                            paddingLeft: 0,
-                                                            paddingY: 0.5,
-                                                        }}
-                                                    >
-                                                        <ListItemIcon
-                                                            sx={{
-                                                                minWidth: 'auto',
-                                                                marginRight: '10px',
-                                                                marginTop: '8px',
-                                                            }}
-                                                        >
-                                                            <Box
-                                                                sx={{
-                                                                    width: '6px',
-                                                                    height: '6px',
-                                                                    backgroundColor: 'black',
-                                                                    borderRadius: '50%',
-                                                                }}
-                                                            />
-                                                        </ListItemIcon>
-                                                        <ListItemText
-                                                            primary={detail}
-                                                            sx={{
-                                                                textAlign: 'justify',
-                                                                color: theme.palette.text.secondary,
-                                                                margin: 0,
-                                                                lineHeight: 1,
-                                                                fontSize: isMobile ? '10px' : isTablet ? '16px' : '38px',
-                                                                fontFamily: 'Poppins, sans-serif',
-                                                            }}
-                                                        />
-                                                    </ListItem>
-                                                ) : (
-                                                    <Box key={idx} sx={{ paddingLeft: 4 }}>
-                                                        <Typography
-                                                            variant="body1"
-                                                            sx={{
-                                                                fontWeight: 400,
-                                                                color: theme.palette.text.secondary,
-                                                                lineHeight: 1.6,
-                                                                marginBottom: 1,
-                                                                display: 'flex',
-                                                                alignItems: 'left',
-                                                            }}
-                                                        >
-                                                            <ListItemIcon
-                                                                sx={{
-                                                                    minWidth: 'auto',
-                                                                    marginRight: '10px',
-                                                                    marginTop: '8px',
-                                                                }}
-                                                            >
-                                                                <Box
-                                                                    sx={{
-                                                                        width: '6px',
-                                                                        height: '6px',
-                                                                        backgroundColor: 'black',
-                                                                        borderRadius: '50%',
-                                                                    }}
-                                                                />
-                                                            </ListItemIcon>
-                                                            {detail.subtitle}
-                                                        </Typography>
-                                                        <List sx={{ paddingLeft: 2 }}>
-                                                            {detail.details.map((subDetail, subIdx) => (
-                                                                <ListItem
-                                                                    key={subIdx}
-                                                                    sx={{
-                                                                        display: 'flex',
-                                                                        alignItems: 'flex-start',
-                                                                        paddingLeft: 0,
-                                                                        paddingY: 0.5,
-                                                                    }}
-                                                                >
-                                                                    <ListItemIcon
-                                                                        sx={{
-                                                                            minWidth: 'auto',
-                                                                            marginRight: '10px',
-                                                                            marginTop: '8px',
-                                                                        }}
-                                                                    >
-                                                                        <Box
-                                                                            sx={{
-                                                                                width: '6px',
-                                                                                height: '6px',
-                                                                                backgroundColor: 'black',
-                                                                                borderRadius: '50%',
-                                                                            }}
-                                                                        />
-                                                                    </ListItemIcon>
-                                                                    <ListItemText
-                                                                        primary={subDetail}
-                                                                        sx={{
-                                                                            textAlign: 'justify',
-                                                                            color: theme.palette.text.secondary,
-                                                                            margin: 0,
-                                                                            lineHeight: 1,
-                                                                            fontSize: isMobile ? '10px' : isTablet ? '16px' : '38px',
-                                                                            fontFamily: 'Poppins, sans-serif',
-                                                                        }}
-                                                                    />
-                                                                </ListItem>
-                                                            ))}
-                                                        </List>
-                                                    </Box>
-                                                )
-                                            ))}
-                                        </List>
-                                    </Box>
-                                ))}
-                            </Box>
-
-                            <Box sx={{ mt: 4 }}>
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        fontWeight: 500,
-                                        color: 'black',
-                                    }}
-                                >
-                                   🚀 Why Choose Coalitionify?
-                                </Typography>
-
-                                <List sx={{ paddingLeft: 2, paddingTop: 1, paddingBottom: 0 }}>
+                                        Why Choose Coalitionify?
+                                    </Typography>
+                                </Box>
+                                <List sx={{ paddingLeft:isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0,mt:1 }}>
                                     {benefits.map((benefit, index) => (
                                         <ListItem
                                             key={index}
                                             sx={{
                                                 display: 'flex',
-                                                alignItems: 'center',
+                                                alignItems: 'flex-start',
                                                 paddingLeft: 0,
                                                 paddingY: 0.5,
                                             }}
@@ -432,17 +227,20 @@ const EngineeringConstruction = () => {
                                                 sx={{
                                                     minWidth: 'auto',
                                                     marginRight: '10px',
+                                                    display: 'flex',
+                                                    alignItems: 'flex-start',
+                                                    marginTop: '3px',
                                                 }}
                                             >
-                                                <CheckCircleIcon sx={{ color: 'green', fontSize: '16px' }} />
+                                                <CheckOutlinedIcon sx={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }} />
                                             </ListItemIcon>
                                             <ListItemText
                                                 primary={benefit}
                                                 sx={{
                                                     textAlign: 'left',
-                                                    color: 'text.secondary',
+                                                    color: 'text.primary',
                                                     margin: 0,
-                                                    lineHeight: 1.5,
+                                                    lineHeight: 1.8,
                                                     fontSize: '16px',
                                                     fontFamily: 'Poppins, sans-serif',
                                                 }}
@@ -450,33 +248,33 @@ const EngineeringConstruction = () => {
                                         </ListItem>
                                     ))}
                                 </List>
-                            </Box>
-                        </Box>
-                        <Box sx={{ mt: 4 }}>
-                            <Typography variant="body1" sx={{ color: 'text.primary' }}>
-                                🎯 Ready to Transform Your Lead Management?
-                            </Typography>
-                            <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>
-                                🚀 Start using AI to qualify and route leads efficiently.
-                            </Typography>
 
-                            {/* Action Links */}
-                            <Typography variant="body1" sx={{ color: 'text.primary', mt: 1,mb:3 }}>
-                                <Link
-                                    sx={{ cursor: 'pointer', mr: 3 }}
+                            </Box>
+                            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', mb: 7 }}>
+                                <Button
+
+                                    variant="outlined"
+                                    sx={{
+                                        bgcolor: 'black',
+                                        color: 'white',
+                                        textDecoration: 'none',
+                                        textTransform: 'none',
+                                        fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.04)',
+                                        },
+                                    }}
                                     onClick={handleBookDemo}
                                 >
                                     📩 Book a Demo
-                                </Link>
-                                <Link
-                                    sx={{ cursor: 'pointer' }}
-                                    onClick={handleBookDemo}
-                                >
-                                    📞 Talk to an Expert
-                                </Link>
-                            </Typography>
+                                </Button>
+                            </Box>
+
+
                         </Box>
                     </Grid>
+
                 </Grid>
             </Container>
         </Box>

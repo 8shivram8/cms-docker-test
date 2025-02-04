@@ -10,7 +10,7 @@ import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import { scroller } from 'react-scroll';
 import KeyFeaturesNew from '../KeyFeaturesNew';
 import Challenges from './Challenges';
-import HowItWorks from './HowItWorks';
+import HowItWorks from './works components/HowItWorks';
 
 const RealEstate = () => {
     const theme = useTheme();
@@ -18,7 +18,7 @@ const RealEstate = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const { trackEvent } = useMixpanel()
-    const leadSubmission = {
+    const data2 = {
         title: "AI-Powered Lead Submission & Qualification",
         details: [
             "External brokers submit leads via secure links (no CRM access required).",
@@ -27,14 +27,14 @@ const RealEstate = () => {
         ]
     };
 
-    const leadScoring = {
+    const data = {
         title: "Lead Scoring with AI & Vector Search",
         details: [
             "OpenAI-powered intent detection identifies serious buyers.",
             "Vector search matches new leads against past successful buyers.",
         ]
     };
-    const leadScoring1 = {
+    const data1 = {
         title: "Score breakdown:",
         details: [
             "Financial Eligibility (30 pts) → Budget, credit check.",
@@ -44,7 +44,7 @@ const RealEstate = () => {
         ]
     }
 
-    const leadRouting = {
+    const data3 = {
         title: "AI-Based Lead Routing & CRM Integration",
         details: [
             "High-scoring leads (80+) are auto-routed to sales teams.",
@@ -54,10 +54,11 @@ const RealEstate = () => {
     };
 
     const keychallenges = [
-        'Features: Add custom fields, adapt layouts, and reuse templates for various purposes.',
-        'Use Cases: Contracts, invoices, consent forms, or any document requiring consistency and personalization.',
-        'Benefit: Save time by reducing repetitive tasks and maintaining document standardization.'
-    ]
+        { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
+        { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
+        { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
+        { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
+      ]
     const benefits = [
         'No Need for CRM Access → Brokers submit leads securely via Coalitionify.',
         'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
@@ -184,8 +185,8 @@ const RealEstate = () => {
                                 Our platform leverages AI, vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
                             </Typography>
 
-                            <Challenges />
-                            <HowItWorks />
+                            <Challenges keychallenges={keychallenges}/>
+                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3}/>
                             <Box
                                 m={3}
                                 display={'flex'}
