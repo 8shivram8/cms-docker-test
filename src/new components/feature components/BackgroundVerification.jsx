@@ -66,12 +66,13 @@ const BackgroundVerification = () => {
     ];
 
     const benefits = [
-        "Faster Hiring Decisions → AI automates screening, reducing HR workload.",
-        "More Accurate Background Verification → AI flags inconsistencies in candidate data.",
-        "Automated Compliance & Risk Checks → Ensures adherence to hiring regulations.",
-        "Reduced Hiring Risks → Prevents onboarding of high-risk candidates.",
-        "Stronger Workforce Stability → HR teams hire only verified, trustworthy employees."
-    ];
+        "No need for manual verification → AI automates identity & employment history checks.",
+        "Faster background checks → Instant document validation & database cross-referencing.",
+        "More accurate risk assessment → AI compares against past flagged cases.",
+        "Automated compliance & criminal checks → Flags risky candidates before onboarding.",
+        "Stronger workforce integrity → HR teams receive only pre-verified candidates."
+      ];
+      
     
     const handleNavigate = () => {
         navigate('/');
