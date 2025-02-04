@@ -48,7 +48,7 @@ const AnimatedTypography = ({ isMobile, isTablet }) => {
                         mt: 1,
                     }}
                 >
-                    Connect your Vendors & Partners with your ecosystem effortlessly—without requiring direct/indirect CRM/PLM/ERP access
+                    Connect your Vendors & Partners with your ecosystem effortlessly
                 </Typography>
             </motion.div>
         </Box>

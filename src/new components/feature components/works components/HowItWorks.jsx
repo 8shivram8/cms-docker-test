@@ -18,8 +18,18 @@ const HowItWorks = ({ data, data1, data2, data3 }) => {
         </Grid>
         <Grid item xs={12}>
           <Box display="flex" flexDirection="column" alignItems="center" border={'1px solid black'}>
-            <Box display="flex" flexDirection={isMobile ? "column" : "row"} sx={{ minHeight: "150px" }} mt={0.5} gap={2}>
-              <Box p={isMobile ? 2 : 3} textAlign="left">
+            <Box
+              display="flex"
+              flexDirection={isMobile ? "column" : "row"}
+              justifyContent="space-between"
+              sx={{ minHeight: "150px", width: "100%", gap: 2, p: 1 }}
+            >
+              <Box
+                flex={1}
+                p={isMobile ? 2 : 3}
+                textAlign="left"
+                sx={{ minWidth: 0 }}
+              >
                 <Typography variant="h6" fontWeight={600} mb={1}>
                   {data.title}
                 </Typography>
@@ -39,14 +49,18 @@ const HowItWorks = ({ data, data1, data2, data3 }) => {
                 </List>
               </Box>
 
-              {isMobile ? (
-                <Divider sx={{ bgcolor: "grey.400", my: 2 }} />
-              ) : (
-                <Divider orientation="vertical" flexItem sx={{ bgcolor: "grey.400", height: "150px", alignSelf: "center" }} />
-              )}
-
-              <Box p={3} textAlign="left" sx={{ pl: isMobile ? 2 : 4, }}>
-                <Typography variant="h6" fontWeight={400} mb={1} mt={isMobile ? 1 : 6.5}>
+              <Divider
+                sx={{ bgcolor: "grey.400", height: isMobile ? '1px' : '145px', alignSelf: isMobile ? "stretch" : "center"  }}
+                orientation={isMobile ? "horizontal" : "vertical"}
+                flexItem
+              />
+              <Box
+                flex={1}
+                p={isMobile ? 2 : 3}
+                textAlign="left"
+                sx={{ minWidth: 0 }}
+              >
+                <Typography variant="h6" fontWeight={400} mb={1} mt={isMobile ? 1 : 5.9}>
                   {data1.title}
                 </Typography>
                 <List dense>
@@ -67,9 +81,10 @@ const HowItWorks = ({ data, data1, data2, data3 }) => {
             </Box>
           </Box>
         </Grid>
+
         <Grid container item xs={12} spacing={3} alignItems="stretch" justifyContent="space-between" mt={0.2}>
           <Grid item xs={12} md={6}>
-            <Box p={3} height="80%" border={'1px solid black'}>
+            <Box p={3} height="80%" border={'1px solid black'} mb={isMobile ? 3 : 0}>
               <Typography variant="h6" fontWeight={600} mb={1}>
                 {data2.title}
               </Typography>
