@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme,Button} from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DataIcon from "./Custom Icons/DataIcon";
 import DocumentationIcon from "./Custom Icons/DocumentationIcon";
@@ -14,6 +14,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
     return (
         <Box
             sx={{
+                position: "relative",
                 borderRadius: "12px",
                 border: isSelected ? `2px solid black` : "1px solid #e0e0e0",
                 display: "flex",
@@ -22,8 +23,8 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
                 height: isMobile ? "360px" : "220px",
                 textAlign: "left",
                 cursor: "pointer",
+                paddingBottom: "50px", 
             }}
-            onClick={onClick}
         >
             <Box
                 sx={{
@@ -34,6 +35,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
                 }}
             >
                 <Box display={"flex"} flexDirection={"column"}>
+                    
                     <Typography
                         variant="h6"
                         sx={{
@@ -103,7 +105,25 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
                     </Grid>
                 ))}
             </Grid>
-
+            <Button
+                variant="outlined"
+                sx={{
+                    position: "absolute",
+                    bottom: 15,
+                    right: 15,
+                    zIndex: 1,
+                    backgroundColor: "transparent",
+                    color: "black",
+                    textTransform: "none",
+                    "&:hover": {
+                        backgroundColor: "rgba(0, 0, 0, 0.9)",
+                        color: "white",
+                    },
+                }}
+                onClick={onClick}
+            >
+                Learn more
+            </Button>
         </Box>
 
     );
@@ -192,10 +212,11 @@ const CenterScreen = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                mt: 5,
+                mt: 20,
                 textAlign: "center",
                 padding: isMobile ? 2 : 0,
-                // pr:2
+                maxWidth:'lg',
+                margin:'auto'
             }}
         >
             <Typography

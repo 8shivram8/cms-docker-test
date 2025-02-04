@@ -1,15 +1,15 @@
 import React from 'react'
 import { Grid, Box, Typography } from '@mui/material'
-import FirstKey from './Custom Icons/FirstKey'
-import Key from './Custom Icons/Key'
+import FirstKey from '../Custom Icons/FirstKey'
+import Key from '../Custom Icons/Key'
 const features = [
-  { title: 'Secure access', subtitle: 'Vendors and partners get secure access to submit data. No need for additional licenses for ERP, PLM, or CRM systems.' },
-  { title: 'Dynamic Form Builder', subtitle: 'Easily create rich forms for every use case, add multimedia input on top of your document. Build multistep wizard for data collection.' },
-  { title: 'Multi-User Workflows', subtitle: 'Collaborate with teams, clients, and stakeholders. Build simple to complex workflow in a minute. Try predefined templates for all your need in one click.' },
-  { title: 'SDK Integration', subtitle: 'Connect seamlessly with any system your are using. Free integration support to onboard any system you want.' }
+  { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
+  { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
+  { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
+  { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
 ]
 
-const KeyFeaturesNew = () => {
+const Challenges = () => {
   return (
     <Box bgcolor="#1677F7" py={3} mt={7} position={'relative'} mb={7}>
         <Box position="absolute" top={0} left={0}>
@@ -19,7 +19,7 @@ const KeyFeaturesNew = () => {
         <Key />
       </Box>
       <Typography variant="h4" align="center" color="white" sx={{ fontWeight:700}}>
-        Key Features
+        Key Challenges
       </Typography>
       <Box display="flex" justifyContent="center">
         <Grid container justifyContent="center" maxWidth="lg">
@@ -41,4 +41,4 @@ const KeyFeaturesNew = () => {
   )
 }
 
-export default KeyFeaturesNew
+export default Challenges

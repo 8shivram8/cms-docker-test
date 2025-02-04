@@ -80,7 +80,7 @@ const BackgroundVerification = () => {
                 duration: 1200,
                 smooth: true,
             });
-        }, 500); 
+        }, 500);
     };
 
     const handleTalkExpert = () => {
@@ -153,13 +153,13 @@ const BackgroundVerification = () => {
                                 </Typography>
                             </Box>
                             {!isMobile ? (
-                                <Typography variant="h6" 
-                                sx={{ 
-                                  mt: 2, 
-                                  color: '#99A2AC', 
-                                  lineHeight: 1.6, 
-                                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" } 
-                                }}>
+                                <Typography variant="h6"
+                                    sx={{
+                                        mt: 2,
+                                        color: '#99A2AC',
+                                        lineHeight: 1.6,
+                                        fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
+                                    }}>
                                     HR departments often face slow, manual background checks, leading to delays in the hiring process. Traditional methods involve inconsistent data collection, making it harder to track the verification progress.
                                 </Typography>
                             ) : (
@@ -408,18 +408,26 @@ const BackgroundVerification = () => {
                                 ))}
                             </Box>
 
-                            <Box sx={{ mt: 4 }}>
+                            <Box
+                                sx={{
+                                    mt: 4,
+                                    border: '1px solid #e0e0e0', // Light border around the component
+                                    padding: 2, // Padding around the whole component
+                                    borderRadius: '8px', // Optional: rounded corners
+                                }}
+                            >
                                 <Typography
                                     variant="h6"
                                     sx={{
                                         fontWeight: 500,
                                         color: 'black',
+                                        textAlign: 'center', // Center the title
                                     }}
                                 >
                                     🚀 Why Choose Coalitionify?
                                 </Typography>
 
-                                <List sx={{ paddingLeft: 2, paddingTop: 1, paddingBottom: 0 }}>
+                                <List sx={{ paddingLeft: 3, paddingTop: 1, paddingBottom: 0 }}>
                                     {benefits.map((benefit, index) => (
                                         <ListItem
                                             key={index}
@@ -453,6 +461,7 @@ const BackgroundVerification = () => {
                                     ))}
                                 </List>
                             </Box>
+
                         </Box>
                         <Box sx={{ mt: 4 }}>
                             <Typography variant="body1" sx={{ color: 'text.primary' }}>
