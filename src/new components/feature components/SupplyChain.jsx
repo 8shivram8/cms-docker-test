@@ -22,7 +22,7 @@ const SupplyChain = () => {
     const data = {
         title: "Vendor Scoring with AI & Vector Search",
         details: [
-            "OpenAI-powered analysis identifies high-risk or unreliable suppliers.",
+            "AI-powered analysis identifies high-risk or unreliable suppliers.",
             "Vector search matches new vendors against past successful partnerships."
         ]
     };

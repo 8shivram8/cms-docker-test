@@ -24,7 +24,7 @@ const BackgroundVerification = () => {
     const data = {
         title: "AI-Driven Background Verification & Risk Scoring",
         details: [
-            "OpenAI-powered analysis checks for employment gaps, fraudulent claims, and identity mismatches.",
+            "AI-powered analysis checks for employment gaps, fraudulent claims, and identity mismatches.",
             "Vector search matches candidates against industry records and past flagged cases."
         ]
     };
