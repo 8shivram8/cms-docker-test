@@ -73,7 +73,7 @@ const HowItWorks = () => {
               </Box>
               <Divider orientation="vertical" flexItem sx={{ bgcolor: "grey.400", height: "150px", alignSelf: "center" }} />
               <Box p={2} flex={1} textAlign="left" sx={{ pl: 4 }}>
-                <Typography variant="h6" fontWeight={600} mb={1}>
+                <Typography variant="h6" fontWeight={400} mb={1}>
                   {leadScoring1.title}
                 </Typography>
                 <List dense>
