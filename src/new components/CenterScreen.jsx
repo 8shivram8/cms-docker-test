@@ -150,11 +150,11 @@ const CenterScreen = () => {
             data: [
                 {
                     subtitle: "Multi-Step Documents",
-                    text: "Manage <b>temporary contractors and engineering consultants</b> without giving them ERP access.",
+                    text: "Enable <b>teams</b>, <b>clients</b>, and <b>stakeholders</b> to sign documents seamlessly with automated workflows and real-time tracking.",
                 },
                 {
                     subtitle: "Bulk Signing",
-                    text: "Coalitionify enables <b>real-time work order submissions, progress tracking, and compliance verification</b>, ensuring faster approvals and transparent workflows.",
+                    text: "Coalitionify ensures <b>document integrity</b> with AI-powered verification, preventing unauthorized modifications and streamlining approval processes.",
                 },
             ],
         },
