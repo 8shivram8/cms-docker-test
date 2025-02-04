@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/acoflow.png';
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
+import IntegrationAnimatedText from '../../styled component/IntegrationAnimatedText';
 
 const Salesforce = () => {
     const theme = useTheme();
@@ -32,6 +33,8 @@ const Salesforce = () => {
         navigate('/');
         trackEvent('move to home page')
     };
+     const title='Salesforce Integration'
+    const description='Maximize your CRM capabilities with Salesforce integration. Sync data, automate workflows,and gain actionable insights to improve sales performance and streamline operations.Unlock the potential of your Salesforce environment today.'
 
     return (
         <Box>
@@ -49,7 +52,7 @@ const Salesforce = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <Box>
-                            <Box display="flex" alignItems="center">
+                            {/* <Box display="flex" alignItems="center">
                                 <IconButton
                                     sx={{
                                         color: '#99A2AC',
@@ -69,26 +72,11 @@ const Salesforce = () => {
                                 <Typography variant="body1" sx={{ ml: 1, color: '#99A2AC' }}>
                                     Back
                                 </Typography>
-                            </Box>
+                            </Box> */}
                             <Box display="flex">
-                                <Typography
-                                    variant="h4"
-                                    sx={{
-                                        mt: 2,
-                                        fontWeight: 600,
-                                        backgroundImage: theme.palette.linearColor.gradient,
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                    }}
-                                >
-                                    Salesforce Integration
-                                </Typography>
+                                <IntegrationAnimatedText title={title} theme={theme}/>
                             </Box>
-                            <Typography variant="body2" sx={{ mt: 2, color: '#99A2AC' }} lineHeight={1.6}>
-                                Maximize your CRM capabilities with Salesforce integration. Sync data, automate workflows,
-                                and gain actionable insights to improve sales performance and streamline operations.
-                                Unlock the potential of your Salesforce environment today.
-                            </Typography>
+                            <IntegrationAnimatedText description={description} theme={theme}/>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
