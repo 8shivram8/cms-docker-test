@@ -21,6 +21,8 @@ import RealEstate from './feature components/RealEstate';
 import SupplyChain from './feature components/SupplyChain';
 import EngineeringConstruction from './feature components/EngineeringConstruction';
 import BackgroundVerification from './feature components/BackgroundVerification';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import '../styled component/AppRoutesNew.css';
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -35,15 +37,13 @@ const AppRoutesNew = () => {
     return (
         <>
             <div ref={topRef} tabIndex="-1" style={{ position: "absolute", top: 0 }} />
+            <TransitionGroup>
+            <CSSTransition key={location.key} classNames="slide-fade" timeout={600}>
             <Routes location={location}>
                 <Route path="/" element={<LayoutNew />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms-conditions" element={<Terms />} />
                 <Route path="/refund-policy" element={<Refund />} />
-                {/* <Route path="/routing-flexibility" element={<Routingflexibility />} />
-            <Route path="/data-collection" element={<DataCollectionNew />} />
-            <Route path="/document-flexibility" element={<DocumentFlexibility />} />
-            <Route path="/sdk-integration" element={<SdkIntegration />} /> */}
                 <Route path="/retail-real-estate" element={<RealEstate />} />
                 <Route path="/manufacturing-supply-chain" element={<SupplyChain />} />
                 <Route path="/engineering-construction" element={<EngineeringConstruction />} />
@@ -58,6 +58,8 @@ const AppRoutesNew = () => {
                 <Route path="/stripe-integration" element={<Stripe />} />
 
             </Routes>
+            </CSSTransition>
+            </TransitionGroup>
         </>
 
     );

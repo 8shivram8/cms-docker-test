@@ -35,7 +35,7 @@ const EngineeringConstruction = () => {
         ]
     };
     const data1 = {
-        title: "Score breakdown:",
+        title: "Score Breakdown",
         details: [
             "Financial Eligibility (30 pts) → Budget, credit check.",
             "Lead Intent (30 pts) → Urgency, interest.",

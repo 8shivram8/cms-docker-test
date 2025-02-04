@@ -11,6 +11,7 @@ import { scroller } from 'react-scroll';
 import KeyFeaturesNew from '../KeyFeaturesNew';
 import Challenges from './Challenges';
 import HowItWorks from './works components/HowItWorks';
+import AnimatedTypographyComman from '../../styled component/AnimatedTypographyComman';
 
 const RealEstate = () => {
     const theme = useTheme();
@@ -35,7 +36,7 @@ const RealEstate = () => {
         ]
     };
     const data1 = {
-        title: "Score breakdown:",
+        title: "Score Breakdown",
         details: [
             "Financial Eligibility (30 pts) → Budget, credit check.",
             "Lead Intent (30 pts) → Urgency, interest.",
@@ -80,6 +81,8 @@ const RealEstate = () => {
             });
         }, 500);
     };
+    const text1='Revolutionizing Real Estate Lead Management'
+    const text2='The Problem with Traditional Lead Qualification'
 
     return (
         <Box>
@@ -99,7 +102,7 @@ const RealEstate = () => {
                     <Grid item xs={12} md={6}>
                         <Box>
                             <Box display={'flex'} flexDirection={'column'}>
-                                <Typography
+                                {/* <Typography
                                     variant="h4"
                                     sx={{
                                         mt: 2,
@@ -122,7 +125,8 @@ const RealEstate = () => {
                                     }}
                                 >
                                     The Problem with Traditional Lead Qualification
-                                </Typography>
+                                </Typography> */}
+                                <AnimatedTypographyComman theme={theme} text1={text1} text2={text2}/>
 
                             </Box>
                             {!isMobile ? (
