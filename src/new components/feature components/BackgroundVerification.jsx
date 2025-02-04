@@ -11,6 +11,7 @@ import { scroller } from 'react-scroll';
 import KeyFeaturesNew from '../KeyFeaturesNew';
 import Challenges from './Challenges';
 import HowItWorks from './works components/HowItWorks';
+import AnimatedTypographyComman from '../../styled component/AnimatedTypographyComman';
 
 const BackgroundVerification = () => {
     const theme = useTheme();
@@ -18,54 +19,60 @@ const BackgroundVerification = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const { trackEvent } = useMixpanel()
-    const data2 = {
-        title: "AI-Powered Lead Submission & Qualification",
-        details: [
-            "External brokers submit leads via secure links (no CRM access required).",
-            "AI auto-fills missing data and detects anomalies.",
-            "Financial details, property preferences, and history are validated instantly."
-        ]
-    };
+    
 
     const data = {
-        title: "Lead Scoring with AI & Vector Search",
+        title: "AI-Driven Background Verification & Risk Scoring",
         details: [
-            "OpenAI-powered intent detection identifies serious buyers.",
-            "Vector search matches new leads against past successful buyers.",
+            "OpenAI-powered analysis checks for employment gaps, fraudulent claims, and identity mismatches.",
+            "Vector search matches candidates against industry records and past flagged cases."
         ]
     };
+    
     const data1 = {
         title: "Score Breakdown",
         details: [
-            "Financial Eligibility (30 pts) → Budget, credit check.",
-            "Lead Intent (30 pts) → Urgency, interest.",
-            "Engagement & Behavior (20 pts) → CRM activity, inquiries.",
-            "Market Factors (20 pts) → Location demand, trends."
-        ]
-    }
-
-    const data3 = {
-        title: "AI-Based Lead Routing & CRM Integration",
-        details: [
-            "High-scoring leads (80+) are auto-routed to sales teams.",
-            "Medium-scoring leads (50-80) go to pre-sales nurturing.",
-            "CRM-agnostic → Integrates with Salesforce, HubSpot, or custom CRMs."
+            "Identity Verification (30 pts) → Aadhaar/PAN matching, duplicate detection.",
+            "Employment History (30 pts) → Past company verification, role confirmation.",
+            "Financial Stability (20 pts) → Credit score, loan repayment behavior (optional).",
+            "Criminal & Compliance Check (20 pts) → Court cases, legal disputes, blacklist records."
         ]
     };
-
+    
+    const data2 = {
+        title: "AI-Powered Candidate Submission & Screening",
+        details: [
+            "Candidates submit personal, educational, and employment details via secure links (no manual data entry required).",
+            "AI auto-fills missing fields, cross-verifies with official records, and detects inconsistencies.",
+            "Instant verification of documents, including PAN, Aadhaar, education certificates, and past employment records."
+        ]
+    };
+    
+    const data3 = {
+        title: "AI-Based Risk Categorization & HR System Integration",
+        details: [
+            "High-Scoring Candidates (80+) → Auto-approved for hiring.",
+            "Medium-Scoring Candidates (50-80) → Requires additional verification.",
+            "Low-Scoring Candidates (<50) → Flagged for HR review.",
+            "Seamless HRMS Integration → Works with SAP SuccessFactors, Workday, BambooHR, or custom HR systems."
+        ]
+    };
+    
     const keychallenges = [
-        { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
-        { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
-        { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
-        { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
-      ]
-    const benefits = [
-        'No Need for CRM Access → Brokers submit leads securely via Coalitionify.',
-        'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
-        'More Accurate Lead Scoring → AI compares against past high-converting leads.',
-        'Financial Eligibility Assessment → Flags leads that don’t meet budget requirements.',
-        'Higher Conversion Rates → Sales teams receive only highly qualified leads.'
+        { title: "Data Authenticity", subtitle: "Manual document verification increases the risk of forged or inaccurate data." },
+        { title: "Employment History Validation", subtitle: "Past employment details are difficult to verify across multiple organizations." },
+        { title: "Financial & Criminal Checks", subtitle: "Limited access to financial records and criminal databases for risk assessment." },
+        { title: "HR System Integration", subtitle: "Lack of seamless integration with existing HRMS platforms slows down hiring decisions." }
     ];
+
+    const benefits = [
+        "Faster Hiring Decisions → AI automates screening, reducing HR workload.",
+        "More Accurate Background Verification → AI flags inconsistencies in candidate data.",
+        "Automated Compliance & Risk Checks → Ensures adherence to hiring regulations.",
+        "Reduced Hiring Risks → Prevents onboarding of high-risk candidates.",
+        "Stronger Workforce Stability → HR teams hire only verified, trustworthy employees."
+    ];
+    
     const handleNavigate = () => {
         navigate('/');
         trackEvent('move to home page')
@@ -80,6 +87,8 @@ const BackgroundVerification = () => {
             });
         }, 500);
     };
+    const text1='Revolutionizing HR & Employee Background Verification'
+    const text2=''
 
     return (
         <Box>
@@ -99,7 +108,7 @@ const BackgroundVerification = () => {
                     <Grid item xs={12} md={6}>
                         <Box>
                             <Box display={'flex'} flexDirection={'column'}>
-                                <Typography
+                                {/* <Typography
                                     variant="h4"
                                     sx={{
                                         mt: 2,
@@ -122,7 +131,8 @@ const BackgroundVerification = () => {
                                     }}
                                 >
                                     The Problem with Traditional Lead Qualification
-                                </Typography>
+                                </Typography> */}
+                                <AnimatedTypographyComman theme={theme} text1={text1} text2={text2}/>
 
                             </Box>
                             {!isMobile ? (
@@ -133,11 +143,11 @@ const BackgroundVerification = () => {
                                         lineHeight: 1.6,
                                         fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
                                     }}>
-                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
+                                    Coalitionify streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
                                 </Typography>
                             ) : (
                                 <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
-                                    Real estate agencies receive thousands of property inquiries from websites, social media, and partner referrals. However, most CRM solutions are designed for in-house sales teams, making third-party broker collaboration tedious.
+                                   Coalitionify streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
                                 </Typography>
                             )}
                         </Box>
@@ -172,7 +182,7 @@ const BackgroundVerification = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing Coalitionify: AI-Powered Real Estate Lead Qualification
+                                Introducing Coalitionify: AI-Powered Employee Background Verification
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -182,7 +192,7 @@ const BackgroundVerification = () => {
                                     color: 'text.primary',
                                 }}
                             >
-                                Our platform leverages AI, vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
+                                Our platform leverages AI, vector databases, and identity verification to automate employee background checks, improve accuracy, and streamline hiring decisions—ensuring a trustworthy workforce.
                             </Typography>
 
                             <Challenges keychallenges={keychallenges}/>
