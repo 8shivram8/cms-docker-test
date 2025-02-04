@@ -67,7 +67,7 @@ const ImageSlider = ({ images }) => {
             />
           ))}
         </Box>
-        <Button
+        {/* <Button
           variant="outlined"
           sx={{
             position: "absolute",
@@ -97,7 +97,7 @@ const ImageSlider = ({ images }) => {
           onClick={()=>trackEvent('Try Now button clicked')}
         >
           Try Now
-        </Button>
+        </Button> */}
       </Box>
       {/* Dots Box */}
       <Box
