@@ -110,7 +110,7 @@ const HowItWorks = ({ data, data1, data2, data3 }) => {
               <Typography variant="h6" fontWeight={600} mb={1}>
                 {data3.title}
               </Typography>
-              <List dense>
+              <List dense sx={{mb:4}}>
                 {data3.details.map((item, index) => (
                   <ListItem key={index} sx={{ alignItems: "flex-start" }}>
                     <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}>

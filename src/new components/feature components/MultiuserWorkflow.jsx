@@ -222,7 +222,7 @@ const MultiuserWorkflow = () => {
                                         Why Choose AcoFlow?
                                     </Typography>
                                 </Box>
-                                <List sx={{ paddingLeft:isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0,mt:1 }}>
+                                <List sx={{ paddingLeft: isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0, mt: 1 }}>
                                     {benefits.map((benefit, index) => (
                                         <ListItem
                                             key={index}
@@ -247,12 +247,16 @@ const MultiuserWorkflow = () => {
                                             <ListItemText
                                                 primary={benefit}
                                                 sx={{
-                                                    textAlign: 'left',
+                                                    textAlign: 'justify',
                                                     color: 'text.primary',
                                                     margin: 0,
                                                     lineHeight: 1.8,
                                                     fontSize: '16px',
                                                     fontFamily: 'Poppins, sans-serif',
+                                                    display: 'block',
+                                                    width: '100%',
+                                                    overflowWrap: 'break-word',
+                                                    wordBreak: 'break-word',
                                                 }}
                                             />
                                         </ListItem>
