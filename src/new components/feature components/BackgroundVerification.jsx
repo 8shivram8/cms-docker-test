@@ -19,7 +19,7 @@ const BackgroundVerification = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const { trackEvent } = useMixpanel()
-    
+
 
     const data = {
         title: "AI-Driven Background Verification & Risk Scoring",
@@ -28,7 +28,7 @@ const BackgroundVerification = () => {
             "Vector search matches candidates against industry records and past flagged cases."
         ]
     };
-    
+
     const data1 = {
         title: "Score Breakdown",
         details: [
@@ -38,7 +38,7 @@ const BackgroundVerification = () => {
             "Criminal & Compliance Check (20 pts) → Court cases, legal disputes, blacklist records."
         ]
     };
-    
+
     const data2 = {
         title: "AI-Powered Candidate Submission & Screening",
         details: [
@@ -47,7 +47,7 @@ const BackgroundVerification = () => {
             "Instant verification of documents, including PAN, Aadhaar, education certificates, and past employment records."
         ]
     };
-    
+
     const data3 = {
         title: "AI-Based Risk Categorization & HR System Integration",
         details: [
@@ -57,7 +57,7 @@ const BackgroundVerification = () => {
             "Seamless HRMS Integration → Works with SAP SuccessFactors, Workday, BambooHR, or custom HR systems."
         ]
     };
-    
+
     const keychallenges = [
         { title: "Data Authenticity", subtitle: "Manual document verification increases the risk of forged or inaccurate data." },
         { title: "Employment History Validation", subtitle: "Past employment details are difficult to verify across multiple organizations." },
@@ -71,9 +71,9 @@ const BackgroundVerification = () => {
         "More accurate risk assessment → AI compares against past flagged cases.",
         "Automated compliance & criminal checks → Flags risky candidates before onboarding.",
         "Stronger workforce integrity → HR teams receive only pre-verified candidates."
-      ];
-      
-    
+    ];
+
+
     const handleNavigate = () => {
         navigate('/');
         trackEvent('move to home page')
@@ -88,8 +88,8 @@ const BackgroundVerification = () => {
             });
         }, 500);
     };
-    const text1='Revolutionizing HR & Employee Background Verification'
-    const text2=''
+    const text1 = 'Revolutionizing HR & Employee Background Verification'
+    const text2 = ''
 
     return (
         <Box>
@@ -133,7 +133,7 @@ const BackgroundVerification = () => {
                                 >
                                     The Problem with Traditional Lead Qualification
                                 </Typography> */}
-                                <AnimatedTypographyComman theme={theme} text1={text1} text2={text2}/>
+                                <AnimatedTypographyComman theme={theme} text1={text1} text2={text2} />
 
                             </Box>
                             {!isMobile ? (
@@ -148,7 +148,7 @@ const BackgroundVerification = () => {
                                 </Typography>
                             ) : (
                                 <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
-                                   AcoFlow streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
+                                    AcoFlow streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
                                 </Typography>
                             )}
                         </Box>
@@ -196,8 +196,8 @@ const BackgroundVerification = () => {
                                 Our platform leverages AI, vector databases, and identity verification to automate employee background checks, improve accuracy, and streamline hiring decisions—ensuring a trustworthy workforce.
                             </Typography>
 
-                            <Challenges keychallenges={keychallenges}/>
-                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3}/>
+                            <Challenges keychallenges={keychallenges} />
+                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3} />
                             <Box
                                 m={3}
                                 display={'flex'}
@@ -223,7 +223,7 @@ const BackgroundVerification = () => {
                                         Why Choose AcoFlow?
                                     </Typography>
                                 </Box>
-                                <List sx={{ paddingLeft:isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0,mt:1 }}>
+                                <List sx={{ paddingLeft: isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0, mt: 1 }}>
                                     {benefits.map((benefit, index) => (
                                         <ListItem
                                             key={index}
@@ -248,17 +248,22 @@ const BackgroundVerification = () => {
                                             <ListItemText
                                                 primary={benefit}
                                                 sx={{
-                                                    textAlign: 'left',
+                                                    textAlign: 'justify',
                                                     color: 'text.primary',
                                                     margin: 0,
                                                     lineHeight: 1.8,
                                                     fontSize: '16px',
                                                     fontFamily: 'Poppins, sans-serif',
+                                                    display: 'block',
+                                                    width: '100%',
+                                                    overflowWrap: 'break-word',
+                                                    wordBreak: 'break-word',
                                                 }}
                                             />
                                         </ListItem>
                                     ))}
                                 </List>
+
 
                             </Box>
                             <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', mb: 7 }}>

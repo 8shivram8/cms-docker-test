@@ -242,12 +242,16 @@ const SupplyChain = () => {
                                             <ListItemText
                                                 primary={benefit}
                                                 sx={{
-                                                    textAlign: 'left',
+                                                    textAlign: 'justify',
                                                     color: 'text.primary',
                                                     margin: 0,
                                                     lineHeight: 1.8,
                                                     fontSize: '16px',
                                                     fontFamily: 'Poppins, sans-serif',
+                                                    display: 'block',
+                                                    width: '100%',
+                                                    overflowWrap: 'break-word',
+                                                    wordBreak: 'break-word',
                                                 }}
                                             />
                                         </ListItem>
