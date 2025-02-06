@@ -7,7 +7,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const boxesData = [
     {
-        title: 'Coalitionify Cloud',
+        title: 'AcoFlow Cloud',
         iconImage: cloudImage,
         data: [
             { subtitle: 'Platform as a Service', text: 'A fully managed solution for your e-signature needs.' },
@@ -58,15 +58,15 @@ const Hosting = () => {
                         Flexible Hosting Options
                     </Typography>
                     <Typography
-                    variant="h1"
-                    color="white"
-                    sx={{
-                        fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
-                        fontSize: {xs : '16px',sm:'18px',md: '18px'},
-                    }}
-                >
-                    Complete White Label Solution
-                </Typography>
+                        variant="h1"
+                        color="white"
+                        sx={{
+                            fontWeight: isMobile ? 500 : isTablet ? 600 : 700,
+                            fontSize: { xs: '16px', sm: '18px', md: '18px' },
+                        }}
+                    >
+                        Complete White Label Solution
+                    </Typography>
                 </Grid>
 
                 {boxesData.map((box, index) => (
@@ -115,20 +115,20 @@ const Hosting = () => {
                                                 width: '100%',
                                             }}
                                         >
-                                            <CheckCircleIcon sx={{ color: index === 1 ? 'white' : 'black', fontSize: 18, mr: 1 }} />
-
+                                            <CheckCircleIcon
+                                                sx={{ color: index === 1 ? 'white' : 'black', fontSize: 18, mr: 1 }}
+                                            />
                                             <Typography
                                                 variant="body2"
-                                                mr={1}
                                                 sx={{
                                                     fontWeight: 500,
                                                     fontSize: '0.875rem',
-                                                    textAlign: 'left',
+                                                    textAlign: 'justify',
                                                     whiteSpace: 'normal',
                                                     overflowWrap: 'break-word',
                                                     wordBreak: 'break-word',
-                                                    display: 'inline',
-                                                    minWidth: 0,
+                                                    display: 'block',
+                                                    width: '100%',
                                                     color: index === 1 ? 'white' : 'black',
                                                 }}
                                             >
@@ -138,6 +138,7 @@ const Hosting = () => {
                                     </Grid>
                                 ))}
                             </Grid>
+
 
                             <Box
                                 sx={{

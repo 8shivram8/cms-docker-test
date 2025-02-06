@@ -61,7 +61,7 @@ const RealEstate = () => {
         { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
       ]
     const benefits = [
-        'No Need for CRM Access → Brokers submit leads securely via Coalitionify.',
+        'No Need for CRM Access → Brokers submit leads securely via AcoFlow.',
         'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
         'More Accurate Lead Scoring → AI compares against past high-converting leads.',
         'Financial Eligibility Assessment → Flags leads that don’t meet budget requirements.',
@@ -176,7 +176,7 @@ const RealEstate = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing Coalitionify: AI-Powered Real Estate Lead Qualification
+                                Introducing AcoFlow: AI-Powered Real Estate Lead Qualification
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -213,7 +213,7 @@ const RealEstate = () => {
                                         }}
 
                                     >
-                                        Why Choose Coalitionify?
+                                        Why Choose AcoFlow?
                                     </Typography>
                                 </Box>
                                 <List sx={{ paddingLeft:isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0,mt:1 }}>

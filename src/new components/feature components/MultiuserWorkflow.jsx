@@ -143,11 +143,11 @@ const MultiuserWorkflow = () => {
                                         lineHeight: 1.6,
                                         fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
                                     }}>
-                                   Coalitionify simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
+                                   AcoFlow simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
                                 </Typography>
                             ) : (
                                 <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
-                                    Coalitionify simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
+                                    AcoFlow simplifies document signing, approvals, and compliance tracking with multi-user participation rules, bulk signing, and a detailed audit trail—ensuring a seamless and legally binding signature process.
                                 </Typography>
                             )}
                         </Box>
@@ -182,7 +182,7 @@ const MultiuserWorkflow = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing Coalitionify: AI-Powered Multi-User Signature Workflow
+                                Introducing AcoFlow: AI-Powered Multi-User Signature Workflow
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -219,7 +219,7 @@ const MultiuserWorkflow = () => {
                                         }}
 
                                     >
-                                        Why Choose Coalitionify?
+                                        Why Choose AcoFlow?
                                     </Typography>
                                 </Box>
                                 <List sx={{ paddingLeft:isMobile ? 1 : 3, paddingTop: 1, paddingBottom: 0,mt:1 }}>
