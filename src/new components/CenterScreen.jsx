@@ -20,7 +20,7 @@ const BoxItem = ({ title, iconImage, onClick, data, isSelected, isMobile }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                height: isMobile ? "360px" : "220px",
+                height: isMobile ? "375px" : "220px",
                 textAlign: "left",
                 cursor: "pointer",
                 paddingBottom: "50px", 
@@ -154,7 +154,7 @@ const CenterScreen = () => {
                 },
                 {
                     subtitle: "Bulk Signing",
-                    text: "Coalitionify ensures <b>document integrity</b> with AI-powered verification, preventing unauthorized modifications and streamlining approval processes.",
+                    text: "AcoFlow ensures <b>document integrity</b> with AI-powered verification, preventing unauthorized modifications and streamlining approval processes.",
                 },
             ],
         },
@@ -169,7 +169,7 @@ const CenterScreen = () => {
                 },
                 {
                     subtitle: "Expiry Routing",
-                    text: "Coalitionify <b>verifies lead authenticity using AI</b>, preventing unqualified submissions and optimizing sales workflows. ",
+                    text: "AcoFlow <b>verifies lead authenticity using AI</b>, preventing unqualified submissions and optimizing sales workflows. ",
                 },
             ],
         },
@@ -184,7 +184,7 @@ const CenterScreen = () => {
                 },
                 {
                     subtitle: "Image Capture",
-                    text: "Coalitionify also helps suppliers track RFQ statuses without needing direct ERP/PLM access. ",
+                    text: "AcoFlow also helps suppliers track RFQ statuses without needing direct ERP/PLM access. ",
                 },
             ],
         },
@@ -199,7 +199,7 @@ const CenterScreen = () => {
                 },
                 {
                     subtitle: "Custom SDK",
-                    text: "Coalitionify ensures secure data submission, AI-driven validation, and real-time tracking for seamless verification.",
+                    text: "AcoFlow ensures secure data submission, AI-driven validation, and real-time tracking for seamless verification.",
                 }
             ],
         },

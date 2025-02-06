@@ -20,9 +20,9 @@ const Security = () => {
     //     'APEC CBPR Certification: Upholding data privacy across the Asia-Pacific region.',
     // ];
     const securityPoints = [
-        '<b>Transparent & Compliant Approach</b> </br> Coalitionify follows industry-leading security and compliance best practices, aligning with the standards of ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. We are actively working toward obtaining formal certifications to further demonstrate our commitment to security and compliance.',
-        '<b>Commitment to Security Standards</b> </br> While we are not yet certified, Coalitionify implements security controls and processes that adhere to internationally recognized standards, including ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. Certification is part of our future roadmap.',
-        '<b>Best Practices with Future Certification Plans</b> </br> Coalitionify is committed to security and data privacy by following best practices in line with ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. While certification is pending, we have implemented stringent policies and controls that align with these frameworks.',
+        '<b>Transparent & Compliant Approach</b> </br> AcoFlow follows industry-leading security and compliance best practices, aligning with the standards of ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. We are actively working toward obtaining formal certifications to further demonstrate our commitment to security and compliance.',
+        '<b>Commitment to Security Standards</b> </br> While we are not yet certified, AcoFlow implements security controls and processes that adhere to internationally recognized standards, including ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. Certification is part of our future roadmap.',
+        '<b>Best Practices with Future Certification Plans</b> </br> AcoFlow is committed to security and data privacy by following best practices in line with ISO/IEC 27001, GDPR, SOC 2 Type II, HIPAA, CSA STAR, and APEC CBPR. While certification is pending, we have implemented stringent policies and controls that align with these frameworks.',
     ];
     const handleLinkClick = (url) => {
         window.open(url, '_blank');
