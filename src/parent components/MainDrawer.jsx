@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Divider, Drawer, Stack, Collapse } from '@mui/material';
+import { Box, Button, Divider, Drawer, Stack, Collapse,Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
@@ -11,7 +11,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import logo from '../assets/acoflow.png';
 import { Link } from 'react-scroll';
 
-const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
+const MainDrawer = ({ drawerOpen, handleDrawerToggle }) => {
     const [isProductsOpen, setProductsOpen] = useState(false);
 
     const handleProductsToggle = () => {
@@ -47,7 +47,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                         paddingBottom: 1,
                     }}
                 >
-                    <img
+                    {/* <img
                         src={logo}
                         alt="Company Logo"
                         style={{
@@ -56,7 +56,22 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                             cursor: 'pointer',
                         }}
                         onClick={handleDrawerToggle}
-                    />
+                    /> */}
+                    <Typography
+                        variant="h5"
+                        component={RouterLink}
+                        to="/"
+                        color='black'
+                        sx={{
+                            textDecoration: 'none',
+                            fontSize: '1.5rem',
+                            fontWeight: 400,
+                            lineHeight: 1.3,
+                            // marginBottom: 1,
+                        }}
+                    >
+                        Coalitionify
+                    </Typography>
                 </Box>
                 <Divider />
 
@@ -81,10 +96,7 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                         },
                     }}
                 >
-                    <Button component={RouterLink} to="/" startIcon={<HomeIcon sx={{ color: 'primary.main' }} />}>Home</Button>
-                    <Button component={RouterLink} to="/about" startIcon={<InfoIcon sx={{ color: 'primary.main' }} />}>About Us</Button>
-
-
+                
                     <Button
                         onClick={handleProductsToggle}
                         endIcon={isProductsOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -103,25 +115,24 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                                 },
                             }}
                         >
-                            <Button component={RouterLink} to="/esignWorkflow">
-                                eSign Workflow
+                            <Button component={RouterLink} to="/acoFlow">
+                               AcoFlow
                             </Button>
-                            <Button component={RouterLink} to="/businessWorkflow">
-                                Business Workflow
+                            <Button component={RouterLink} to="/acosign">
+                                AcoSign
                             </Button>
-                            <Button component={RouterLink} to="/dailyDiary">
+                            {/* <Button component={RouterLink} to="/dailyDiary">
                                 Daily Diary
-                            </Button>
+                            </Button> */}
                         </Stack>
                     </Collapse>
+                    <Button component={RouterLink} to="/services" startIcon={<ContactMailIcon sx={{ color: 'primary.main' }} />}>Services</Button>
 
-                    <Button component={RouterLink} to="/resources" startIcon={<ContactMailIcon sx={{ color: 'primary.main' }} />}>Resources</Button>
-                    <Button component={RouterLink} to="/pricing" startIcon={<MonetizationOnIcon sx={{ color: 'primary.main' }} />}>Pricing</Button>
                 </Stack>
             </Box>
 
             {/* Contact Us Button */}
-            <Box
+            {/* <Box
                 sx={{
                     padding: 2,
                     marginBottom: 2,
@@ -144,9 +155,9 @@ const MyDrawer = ({ drawerOpen, handleDrawerToggle }) => {
                         Book Demo
                     </Button>
                 </Link>
-            </Box>
+            </Box> */}
         </Drawer>
     );
 };
 
-export default MyDrawer;
+export default MainDrawer;

@@ -4,11 +4,11 @@ import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import MyDrawer from './MyDrawer';
 import { Link } from 'react-scroll';
+import MainDrawer from './MainDrawer';
+import logo from '../assets/AcoSignFavIcon.png'
 
-
-function HeaderNav() {
+function MainHeader() {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const theme = useTheme();
@@ -87,39 +87,61 @@ function HeaderNav() {
                                 MenuListProps={{
                                     'aria-labelledby': 'products-menu-button',
                                 }}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
                             >
                                 <MenuItem
                                     component={RouterLink}
-                                    to="/esignWorkflow"
+                                    to="/acoFlow"
                                     onClick={handleClose}
+                                    sx={{ display: 'flex', alignItems: 'center', padding: 1 }}
                                 >
-                                    AcoFlow
+                                    <Box display="flex" alignItems="center" sx={{ height: '100%' }}>
+                                        <img src={logo} alt="AcoFlow Logo" width={24} height={24} />
+                                    </Box>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', paddingLeft: 2 }}>
+                                        <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                                            AcoFlow
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                            Workflow Automation
+                                        </Typography>
+                                    </Box>
                                 </MenuItem>
                                 <MenuItem
                                     component={RouterLink}
-                                    to="/businessWorkflow"
+                                    to="/acosign"
                                     onClick={handleClose}
+                                    sx={{ display: 'flex', alignItems: 'center', padding: 1 }}
                                 >
-                                    AcoSign
+                                    <Box display="flex" alignItems="center" sx={{ height: '100%' }}>
+                                        <img src={logo} alt="AcoSign Logo" width={24} height={24} />
+                                    </Box>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', paddingLeft: 2 }}>
+                                        <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                                            AcoSign
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                            E-Signature Solution
+                                        </Typography>
+                                    </Box>
                                 </MenuItem>
                             </Menu>
 
                             <Button
                                 component={RouterLink}
-                                to="/resources"
+                                to="/services"
                                 color="inherit"
                                 sx={{ textTransform: 'none', fontSize: '1rem' }}
                             >
-                                services
+                                Services
                             </Button>
-                            {/* <Button
-                                component={RouterLink}
-                                to="/pricing"
-                                color="inherit"
-                                sx={{ textTransform: 'none', fontSize: '1rem' }}
-                            >
-                                Pricing
-                            </Button> */}
                         </Stack>
                     </Grid>
                 )}
@@ -131,7 +153,7 @@ function HeaderNav() {
                         target='_blank'
                         href="https://app.coalitionify.com/signIn"
                         sx={{
-                            bgcolor: 'black',
+                            bgcolor: '#1677F7',
                             color: 'white',
                             textDecoration: 'none',
                             textTransform: 'none',
@@ -144,11 +166,11 @@ function HeaderNav() {
                 </Grid>
             </Grid>
 
-            <MyDrawer drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} />
+            <MainDrawer drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} />
 
 
         </Box>
     );
 }
 
-export default HeaderNav;
+export default MainHeader;
