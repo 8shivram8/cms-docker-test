@@ -57,7 +57,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate('/');
+        navigate('/acoFlow');
         trackEvent('AcoSign logo clicked')
     };
 
