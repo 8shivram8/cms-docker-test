@@ -8,6 +8,8 @@ import Homepage from './Homepage';
 import Products from './Products';
 import img1 from '../assets/acoflowimg.jpg';
 import img2 from '../assets/newworkflow.jpg';
+import img3 from '../assets/DocumentLibrary.jpg'
+import Plans from '../new components/pricing/Plans';
 const MainLayout = () => {
     return (
         <Box
@@ -24,7 +26,7 @@ const MainLayout = () => {
 
                 <Homepage/>
                 <KeyFeaturesNew />
-                <Products img1={img1} img2={img2}/>
+                <Products img1={img1} img2={img2} img3={img3}/>
             </Box> 
             <Footer />
         </Box>

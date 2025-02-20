@@ -115,6 +115,25 @@ function MainHeader() {
                                     </Box>
                                 </MenuItem>
                                 <MenuItem
+                                    component="a"
+                                    href='https://app.coalitionify.com/builder'
+                                    target='_blank'
+                                    onClick={handleClose}
+                                    sx={{ display: 'flex', alignItems: 'center', padding: 1 }}
+                                >
+                                    <Box display="flex" alignItems="center" sx={{ height: '100%' }}>
+                                        <img src={logo} alt="AcoFlow Logo" width={24} height={24} />
+                                    </Box>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', paddingLeft: 2 }}>
+                                        <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                                            Document Library
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                            Manage and Store Documents
+                                        </Typography>
+                                    </Box>
+                                </MenuItem>
+                                {/* <MenuItem
                                     component={RouterLink}
                                     to="/acosign"
                                     onClick={handleClose}
@@ -131,7 +150,7 @@ function MainHeader() {
                                             E-Signature Solution
                                         </Typography>
                                     </Box>
-                                </MenuItem>
+                                </MenuItem> */}
                             </Menu>
 
                             <Button

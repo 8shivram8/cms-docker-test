@@ -6,19 +6,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const pricedata = [
-  { feature: 'Limited PDF Pages', free: '(max 10)', standard: '(max 10)', premium: '(max 40)' },
-  { feature: 'Unlimited jobs', free: true, standard: true, premium: true },
-  { feature: 'Unlimited projects', free: true, standard: false, premium: true },
-  { feature: 'Standard form fields', free: true, standard: true, premium: false },
+  // { feature: 'Limited PDF Pages', free: '(max 10)', standard: '(max 10)', premium: '(max 40)' },
+  { feature: 'projects', free: 'Unlimited', standard: '20 (max)', premium: 'Unlimited' },
+  { feature: 'jobs', free: 'Unlimited', standard: '100 per project(max)', premium: 'Unlimited' },
+  { feature: 'Standard form fields', free: true, standard: true, premium: true },
   { feature: 'Multimedia input field', free: true, standard: true, premium: true },
-  { feature: 'Custom branding', free: true, standard: true, premium: false },
+  { feature: 'Custom branding', free: true, standard: true, premium: true },
   { feature: 'Advanced analytics', free: true, standard: true, premium: true },
-  { feature: 'Team collaboration', free: true, standard: false, premium: true },
+  { feature: 'Team collaboration', free: true, standard: true, premium: true },
   { feature: 'Email notifications', free: true, standard: true, premium: true },
   { feature: 'API access', free: true, standard: true, premium: true },
-  { feature: '24/7 support', free: true, standard: true, premium: false },
+  { feature: '24/7 support', free: true, standard: true, premium: true },
   { feature: 'Priority support', free: true, standard: true, premium: true },
-  { feature: 'Additional storage', free: true, standard: false, premium: true },
+  { feature: 'Additional storage', free: true, standard: true, premium: true },
   { feature: 'Advanced security', free: true, standard: true, premium: true },
 ];
 
@@ -43,7 +43,7 @@ const PricingTable = () => {
           <Grid item xs={12} sm={4} md={2.6}>
             <Box textAlign="center">
               <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '18px' }}>
-                Free
+                Free (1 month)
               </Typography>
             </Box>
           </Grid>
@@ -99,9 +99,9 @@ const PricingTable = () => {
                 alignItems="center"
               >
                 {pricedata.slice(0, showAll ? pricedata.length : 5).map((row, index) => {
-                  if (index === 0) {
+                  if ((index === 0 || index === 1)) {
                     return (
-                      <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '13px' }} key={index}>
+                      <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '12px' }} key={index}>
                         {row[plan]}
                       </Typography>
                     );
