@@ -6,20 +6,19 @@ import Proffesional from "../Custom Icons/Proffesional";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const pricedata = [
-    { feature: "Limited PDF Pages", free: "(max 10)", standard: "(max 10)", premium: "(max 40)" },
-    { feature: "Unlimited jobs", free: true, standard: true, premium: true },
-    { feature: "Unlimited projects", free: true, standard: false, premium: true },
-    { feature: "Standard form fields", free: true, standard: true, premium: false },
-    { feature: "Multimedia input field", free: true, standard: true, premium: true },
-    { feature: "Custom branding", free: true, standard: true, premium: false },
-    { feature: "Advanced analytics", free: true, standard: true, premium: true },
-    { feature: "Team collaboration", free: true, standard: false, premium: true },
-    { feature: "Email notifications", free: true, standard: true, premium: true },
-    { feature: "API access", free: true, standard: true, premium: true },
-    { feature: "24/7 support", free: true, standard: true, premium: false },
-    { feature: "Priority support", free: true, standard: true, premium: true },
-    { feature: "Additional storage", free: true, standard: false, premium: true },
-    { feature: "Advanced security", free: true, standard: true, premium: true },
+    { feature: 'projects', free: 'Unlimited', standard: '20 (max)', premium: 'Unlimited' },
+    { feature: 'jobs', free: 'Unlimited', standard: '100 per project(max)', premium: 'Unlimited' },
+    { feature: 'Standard form fields', free: true, standard: true, premium: true },
+    { feature: 'Multimedia input field', free: true, standard: true, premium: true },
+    { feature: 'Custom branding', free: true, standard: true, premium: true },
+    { feature: 'Advanced analytics', free: true, standard: true, premium: true },
+    { feature: 'Team collaboration', free: true, standard: true, premium: true },
+    { feature: 'Email notifications', free: true, standard: true, premium: true },
+    { feature: 'API access', free: true, standard: true, premium: true },
+    { feature: '24/7 support', free: true, standard: true, premium: true },
+    { feature: 'Priority support', free: true, standard: true, premium: true },
+    { feature: 'Additional storage', free: true, standard: true, premium: true },
+    { feature: 'Advanced security', free: true, standard: true, premium: true },
 ];
 const plans = [
     { plan: "Free", icon: <Free /> },

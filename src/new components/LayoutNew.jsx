@@ -45,10 +45,11 @@ const LayoutNew = () => {
                 {/* <KeyFeatures/> */}
                 <KeyFeaturesNew />
                 <CenterScreen />
+                <Plans selectedCountry={selectedCountry} />
                 <Hosting />
                 <IntegrationPage />
                 <Security/>
-                {/* <Plans selectedCountry={selectedCountry} /> */}
+               
                 <Element name="contactForm" id="contactForm">
                     <ContactForm />
                 </Element>

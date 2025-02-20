@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import acosign from "../assets/AcoSignFavIcon.png";
 import { useNavigate } from "react-router-dom";
 
-const Products = ({ img1, img2 }) => {
+const Products = ({ img1, img2, img3 }) => {
     const navigate = useNavigate();
 
     return (
@@ -42,7 +42,39 @@ const Products = ({ img1, img2 }) => {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={4} alignItems="center" sx={{ flexDirection: { xs: "column", md: "row-reverse" }, mt: 6 }}>
+                <Grid container spacing={4} alignItems="center" sx={{ flexDirection: { xs: "column", md: "row-reverse" } }}>
+                    <Grid item xs={12} md={6} sx={{ textAlign: { xs: "left", md: "left" } }}>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                            <Box component="img" src={acosign} alt="AcoFlow" sx={{ height: 30 }} />
+                            <Typography variant="h4" fontWeight={700}>
+                                Document Library
+                            </Typography>
+                        </Box>
+                        <Typography variant="h6" color="text.secondary" gutterBottom mt={1}>
+                            Organize and Access Your Documents Easily
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ textAlign: "left", display: "inline-block", maxWidth: "100%" }}>
+                            The Document Library allows you to store, manage, and share documents securely. Keep all your important files in one place and access them whenever needed. With powerful search and categorization features, finding the right document has never been easier.
+                        </Typography>
+
+                        <Button
+                            variant="contained"
+                            endIcon={<ArrowForwardIcon />}
+                            sx={{ mt: 2, borderRadius: "20px", textTransform: "none", bgcolor: "#1677F7", color: "white" }}
+                            // onClick={() => navigate("/document-library")}
+                            component="a"
+                            href='https://app.coalitionify.com/builder'
+                            target='_blank'
+                        >
+                            Explore Document Library
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Box component="img" src={img3} alt="AcoFlow" sx={{ width: "100%", borderRadius: "12px" }} />
+                    </Grid>
+                </Grid>
+
+                {/* <Grid container spacing={4} alignItems="center" sx={{ flexDirection: { xs: "column", md: "row" } }}>
                     <Grid item xs={12} md={6} sx={{ textAlign: { xs: "left", md: "left" } }}>
                         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                             <Box component="img" src={acosign} alt="AcoSign" sx={{ height: 30 }} />
@@ -68,7 +100,7 @@ const Products = ({ img1, img2 }) => {
                     <Grid item xs={12} md={6}>
                         <Box component="img" src={img2} alt="AcoSign" sx={{ width: "100%", borderRadius: "12px" }} />
                     </Grid>
-                </Grid>
+                </Grid> */}
             </Box>
         </Container>
     );
