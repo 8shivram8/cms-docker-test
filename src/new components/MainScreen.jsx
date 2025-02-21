@@ -141,7 +141,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             }}
                             onClick={()=>trackEvent('Log In button clicked')}
                         >
-                            Log In
+                            Sign In
                         </Button>
                     </Box>
                 </Box>
