@@ -20,13 +20,13 @@ const planData = {
             title: 'Standard',
             price: '1500',
             icon: <Standered />,
-            longDescription: 'The Pro Plan offers advanced features like priority support, advanced analytics, and more integrations to help your team scale efficiently.',
+            longDescription: 'The Standard Plan offers advanced features like priority support, advanced analytics, and more integrations to help your team scale efficiently.',
         },
         {
             title: 'Professional',
             price: '3000',
             icon: <Proffesional />,
-            longDescription: 'The Enterprise Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
+            longDescription: 'The Professional Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
         },
     ],
     annually: [
@@ -34,19 +34,19 @@ const planData = {
             title: 'Free',
             price: '0',
             icon: <Free />,
-            longDescription: 'The Basic Plan is ideal for startups and small businesses that need essential features. Enjoy basic support and access to core tools.',
+            longDescription: 'The Basic Plan is perfect for small teams who need simple features to get started. Includes basic support and limited integrations.',
         },
         {
             title: 'Standard',
-            price: '25000',
+            price: '15000',
             icon: <Standered />,
-            longDescription: 'The Pro Plan provides advanced features, such as detailed reporting, additional integrations, and priority support for growing teams.',
+            longDescription: 'The Standard Plan offers advanced features like priority support, advanced analytics, and more integrations to help your team scale efficiently.',
         },
         {
             title: 'Professional',
-            price: '50000',
+            price: '30000',
             icon: <Proffesional />,
-            longDescription: 'The Enterprise Plan offers everything you need to scale your business, including unlimited integrations, enterprise-level security, and dedicated support.',
+            longDescription: 'The Professional Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
         },
     ],
 };
@@ -214,18 +214,29 @@ const Plans = ({ selectedCountry }) => {
                                 </Box>
                             </Box>
 
+                            {
+                                plan.title == 'Free' ? (
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 1 }}>
+                                        (1 Month free)
 
-                            <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
-                                {currencySymbol} {plan.price}
-                                <Typography
-                                    variant="body2"
-                                    component="span"
-                                    sx={{ fontWeight: 'light', fontSize: '0.85rem', marginLeft: 0.5 }}
-                                >
-                                    {selectedPlan === 'monthly' ? '/month' : '/year'}
-                                </Typography>
-                            </Typography>
+                                    </Typography>
+                                )
+                                    :
+                                    (
+                                        <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
+                                            {currencySymbol} {plan.price}
+                                            <Typography
+                                                variant="body2"
+                                                component="span"
+                                                sx={{ fontWeight: 'light', fontSize: '0.85rem', marginLeft: 0.5 }}
+                                            >
+                                                {selectedPlan === 'monthly' ? '/month' : '/year'}
+                                            </Typography>
+                                        </Typography>
+                                    )
 
+
+                            }
 
                             <Typography variant="body2" sx={{ color: 'gray', marginTop: 1, textAlign: 'left' }}>
                                 {plan.longDescription}
