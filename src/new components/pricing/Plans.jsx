@@ -18,13 +18,13 @@ const planData = {
         },
         {
             title: 'Standard',
-            price: '18',
+            price: '1500',
             icon: <Standered />,
             longDescription: 'The Pro Plan offers advanced features like priority support, advanced analytics, and more integrations to help your team scale efficiently.',
         },
         {
             title: 'Professional',
-            price: '40',
+            price: '3000',
             icon: <Proffesional />,
             longDescription: 'The Enterprise Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
         },
@@ -38,13 +38,13 @@ const planData = {
         },
         {
             title: 'Standard',
-            price: '300',
+            price: '25000',
             icon: <Standered />,
             longDescription: 'The Pro Plan provides advanced features, such as detailed reporting, additional integrations, and priority support for growing teams.',
         },
         {
             title: 'Professional',
-            price: '600',
+            price: '50000',
             icon: <Proffesional />,
             longDescription: 'The Enterprise Plan offers everything you need to scale your business, including unlimited integrations, enterprise-level security, and dedicated support.',
         },
@@ -56,7 +56,7 @@ const Plans = ({ selectedCountry }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const [selectedPlan, setSelectedPlan] = useState('monthly');
-    const [currencySymbol, setCurrencySymbol] = useState('');
+    const [currencySymbol, setCurrencySymbol] = useState('₹');
     const [updatedPlanData, setUpdatedPlanData] = useState(planData);
 
     const handleToggleChange = (event, newPlan) => {
@@ -87,50 +87,50 @@ const Plans = ({ selectedCountry }) => {
     };
 
 
-    useEffect(() => {
-        const currencyMap = {
-            IN: '₹',  // Indian Rupee
-            GB: '£',  // British Pound
-            US: '$',  // US Dollar
-            JP: '¥',  // Japanese Yen
-            CA: 'C$', // Canadian Dollar
-            AU: 'A$', // Australian Dollar
-            EU: '€',  // Euro
-            CN: '¥',  // Chinese Yuan
-            KR: '₩',  // South Korean Won
-            SG: 'S$', // Singapore Dollar
-            RU: '₽',  // Russian Ruble
-            SA: '﷼',  // Saudi Riyal
-            AE: 'د.إ', // UAE Dirham
-            MX: '$',  // Mexican Peso
-            BR: 'R$', // Brazilian Real
-            ZA: 'R',  // South African Rand
-            TH: '฿',  // Thai Baht
-            MY: 'RM', // Malaysian Ringgit
-            ID: 'Rp', // Indonesian Rupiah
-        };
+    // useEffect(() => {
+    //     const currencyMap = {
+    //         IN: '₹',  // Indian Rupee
+    //         GB: '£',  // British Pound
+    //         US: '$',  // US Dollar
+    //         JP: '¥',  // Japanese Yen
+    //         CA: 'C$', // Canadian Dollar
+    //         AU: 'A$', // Australian Dollar
+    //         EU: '€',  // Euro
+    //         CN: '¥',  // Chinese Yuan
+    //         KR: '₩',  // South Korean Won
+    //         SG: 'S$', // Singapore Dollar
+    //         RU: '₽',  // Russian Ruble
+    //         SA: '﷼',  // Saudi Riyal
+    //         AE: 'د.إ', // UAE Dirham
+    //         MX: '$',  // Mexican Peso
+    //         BR: 'R$', // Brazilian Real
+    //         ZA: 'R',  // South African Rand
+    //         TH: '฿',  // Thai Baht
+    //         MY: 'RM', // Malaysian Ringgit
+    //         ID: 'Rp', // Indonesian Rupiah
+    //     };
 
-        const countryCurrency = currencyMap[selectedCountry];
-        setCurrencySymbol(countryCurrency);
+    //     const countryCurrency = currencyMap[selectedCountry];
+    //     setCurrencySymbol(countryCurrency);
 
-        const convertPrices = () => {
-            const convertedPlans = { ...planData };
+    //     const convertPrices = () => {
+    //         const convertedPlans = { ...planData };
 
-            ['monthly', 'annually'].forEach((planType) => {
-                convertedPlans[planType] = convertedPlans[planType].map(plan => {
-                    const amountInUSD = parseFloat(plan.price);
-                    const convertedAmount = Dinero({ amount: amountInUSD * 100 })
-                        .multiply(exchangeRates[selectedCountry] || 1)
-                        .toFormat('0,0.00');
-                    return { ...plan, price: convertedAmount };
-                });
-            });
+    //         ['monthly', 'annually'].forEach((planType) => {
+    //             convertedPlans[planType] = convertedPlans[planType].map(plan => {
+    //                 const amountInUSD = parseFloat(plan.price);
+    //                 const convertedAmount = Dinero({ amount: amountInUSD * 100 })
+    //                     .multiply(exchangeRates[selectedCountry] || 1)
+    //                     .toFormat('0,0.00');
+    //                 return { ...plan, price: convertedAmount };
+    //             });
+    //         });
 
-            setUpdatedPlanData(convertedPlans);
-        };
+    //         setUpdatedPlanData(convertedPlans);
+    //     };
 
-        convertPrices();
-    }, [selectedCountry]);
+    //     convertPrices();
+    // }, [selectedCountry]);
 
     return (
         <Grid

@@ -56,7 +56,7 @@ const Enterprice = () => {
                 >
 
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                        <Typography variant="h6" sx={{ fontWeight: 200, fontSize: '16px' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '16px' }}>
                             {data.title}
                         </Typography>
                         <Box sx={{ width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -65,7 +65,7 @@ const Enterprice = () => {
                     </Box>
 
 
-                    <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
+                    {/* <Typography variant="h4" sx={{ fontWeight: 'bold', marginTop: 1 }}>
                         {data.price}
                         <Typography
                             variant="body2"
@@ -74,7 +74,7 @@ const Enterprice = () => {
                         >
                             /month
                         </Typography>
-                    </Typography>
+                    </Typography> */}
 
                     <Typography variant="body2" sx={{ color: 'gray', marginTop: 1, textAlign: 'left' }}>
                         {data.longDescription}
