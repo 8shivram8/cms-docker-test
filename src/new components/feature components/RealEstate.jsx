@@ -73,7 +73,7 @@ const RealEstate = () => {
     };
 
     const handleBookDemo = () => {
-        navigate('/');
+        navigate('/acoFlow');
         setTimeout(() => {
             scroller.scrollTo('contactForm', {
                 duration: 1200,
