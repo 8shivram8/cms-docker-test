@@ -5,18 +5,23 @@ import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 import Teams from './Custom Icons/Teams';
 import Slag from './Custom Icons/Slag';
 import Salesforce from './Custom Icons/Salesforce';
+import GoogleDriveIcon from './Custom Icons/GoogleDriveIcon'
+
 import HubIcon from './Custom Icons/HubIcon';
 import Razor from './Custom Icons/Razor';
 import { Stripe } from './Custom Icons/Stripe';
 import { useMixpanel } from '../mixpanel/MixpanelContext';
+import OneDriveIcon from './Custom Icons/OneDriveIcon';
 
 const integrationData = [
     { icon: <Teams />, name: 'Teams Integration', route: '/teams-integration' },
     { icon: <Slag />, name: 'Slack Integration', route: '/slack-integration' },
-    { icon: <Salesforce />, name: 'Salesforce Integration', route: '/salesforce-integration' },
-    { icon: <HubIcon />, name: 'HubSpot Integration', route: '/hubspot-integration' },
-    { icon: <Razor />, name: 'Razorpay Integration', route: '/razorpay-integration' },
-    { icon: <Stripe />, name: 'Stripe Integration', route: '/stripe-integration' }
+    // { icon: <Salesforce />, name: 'Salesforce Integration', route: '/salesforce-integration' },
+    // { icon: <HubIcon />, name: 'HubSpot Integration', route: '/hubspot-integration' },
+    { icon: <GoogleDriveIcon />, name: 'Google drive Integration', route: '/googleDrive-integration' },
+    { icon: <OneDriveIcon/>, name: 'Onedrive Integration', route: '/onedrive-integration' },
+    // { icon: <Razor />, name: 'Razorpay Integration', route: '/razorpay-integration' },
+    // { icon: <Stripe />, name: 'Stripe Integration', route: '/stripe-integration' }
 ];
 
 const IntegrationPage = () => {

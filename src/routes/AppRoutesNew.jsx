@@ -25,6 +25,8 @@ import '../styled component/AppRoutesNew.css';
 import MultiuserWorkflow from '../new components/feature components/MultiuserWorkflow';
 import MainLayout from '../parent components/MainLayout';
 import AcoSign from '../parent components/AcoSign';
+import GoogleDrive from '../new components/Integration pages/GoogleDrive';
+import Onedrive from '../new components/Integration pages/Onedrive';
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -61,6 +63,9 @@ const AppRoutesNew = () => {
                         <Route path="/hubspot-integration" element={<Hubspot />} />
                         <Route path="/razorpay-integration" element={<Razorpay />} />
                         <Route path="/stripe-integration" element={<Stripe />} />
+                        <Route path="/googleDrive-integration" element={<GoogleDrive />} />
+                        <Route path="/onedrive-integration" element={<Onedrive />} />
+                        
 
                     </Routes>
                 </CSSTransition>

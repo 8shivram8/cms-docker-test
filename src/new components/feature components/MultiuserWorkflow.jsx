@@ -66,7 +66,7 @@ const MultiuserWorkflow = () => {
     ];
     
     const benefits = [
-        "Multi-User Signature Rules → Configure All Must Sign or Any 2 of N approvals.",
+        "Multi-User Signature Rules → Configure all must sign or any 2 of N approvals.",
         "Bulk Signing & Workflow Triggers → Automate large-scale signing tasks.",
         "Automated Tracking & Audit Logs → Full visibility into every signing action.",
         "Secure & Tamper-Proof Storage → Encrypted document repository.",
