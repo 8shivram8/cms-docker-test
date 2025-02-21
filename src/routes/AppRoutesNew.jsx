@@ -42,8 +42,8 @@ const AppRoutesNew = () => {
             <TransitionGroup>
                 <CSSTransition key={location.key} classNames="slide-fade" timeout={600}>
                     <Routes location={location}>
-                        <Route path="" element={<MainLayout />} />
-                        <Route path="/acoFlow" element={<LayoutNew />} />
+                        {/* <Route path="" element={<MainLayout />} /> */}
+                        <Route path="" element={<LayoutNew />} />
                         <Route path="/acoSign" element={<AcoSign />} />
                         <Route path="/services" element={< AcoSign/>} />
                         <Route path="/privacy" element={<Privacy />} />                      
