@@ -157,7 +157,7 @@ const Plans = ({ selectedCountry }) => {
                     for your needs
                 </Typography>
                 <Typography variant="h6" align="center" sx={{ color: 'gray', fontWeight: 400, fontSize: '15px' }}>
-                    Select AcoSign plans that match your goals
+                    Select AcoFlow plans that match your goals
                 </Typography>
             </Grid>
 
