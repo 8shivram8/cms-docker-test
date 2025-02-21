@@ -80,7 +80,7 @@ const BackgroundVerification = () => {
     };
 
     const handleBookDemo = () => {
-        navigate('/acoFlow');
+        navigate('/');
         setTimeout(() => {
             scroller.scrollTo('contactForm', {
                 duration: 1200,
