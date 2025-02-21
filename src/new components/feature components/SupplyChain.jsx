@@ -38,16 +38,16 @@ const SupplyChain = () => {
     };
 
     const data2 = {
-        title: "AI-Powered Vendor Submission & Qualification",
+        title: "Vendor Submission & Qualification",
         details: [
             "External vendors submit compliance and financial data via secure links (no ERP access required).",
-            "AI auto-fills missing fields and detects inconsistencies.",
+            "Auto-fills missing fields and detects inconsistencies.",
             "Supplier certifications, financial stability, and compliance records are instantly validated."
         ]
     };
 
     const data3 = {
-        title: "AI-Based Vendor Routing & ERP Integration",
+        title: "Vendor Routing & ERP Integration",
         details: [
             "High-scoring vendors (80+) are auto-routed for contract approvals.",
             "Medium-scoring vendors (50-80) require additional verification.",
@@ -65,8 +65,8 @@ const SupplyChain = () => {
 
     const benefits = [
         'No Need for ERP Access → Vendors submit compliance and financial data securely via AcoFlow.',
-        'Faster Vendor Qualification → AI auto-checks vendor details, reducing manual reviews.',
-        'More Accurate Risk Assessment → AI compares against past high-performing vendors.',
+        'Faster Vendor Qualification → auto-checks vendor details, reducing manual reviews.',
+        'More Accurate Risk Assessment → compares against past high-performing vendors.',
         'Automated Compliance & Financial Checks → Flags high-risk vendors before onboarding.',
         'Stronger Supply Chain Stability → Procurement teams receive only reliable, pre-qualified vendors.'
     ];
@@ -84,6 +84,7 @@ const SupplyChain = () => {
             });
         }, 500);
     };
+    const flag='true'
     const text1 = 'Revolutionizing Vendor & Supplier Management'
     const text2 = 'The Problem with Traditional Vendor Qualification'
     return (
@@ -177,7 +178,7 @@ const SupplyChain = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing AcoFlow: AI-Powered Vendor Qualification & Compliance
+                                Introducing AcoFlow: Vendor Qualification & Compliance
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -187,11 +188,11 @@ const SupplyChain = () => {
                                     color: 'text.primary',
                                 }}
                             >
-                                Our platform leverages AI, vector databases, and financial analysis to automate vendor qualification, improve scoring accuracy, and optimize procurement decision-making for a more reliable supply chain.
+                                Our platform leverages vector databases, and financial analysis to automate vendor qualification, improve scoring accuracy, and optimize procurement decision-making for a more reliable supply chain.
                             </Typography>
 
                             <Challenges keychallenges={keychallenges} />
-                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3} />
+                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3} flag={flag}/>
                             <Box
                                 m={3}
                                 display={'flex'}

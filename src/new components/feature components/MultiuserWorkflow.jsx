@@ -182,7 +182,7 @@ const MultiuserWorkflow = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing AcoFlow: AI-Powered Multi-User Signature Workflow
+                                Introducing AcoFlow: Multi-User Signature Workflow
                             </Typography>
                             <Typography
                                 variant="h6"

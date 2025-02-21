@@ -20,10 +20,10 @@ const RealEstate = () => {
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const { trackEvent } = useMixpanel()
     const data2 = {
-        title: "AI-Powered Lead Submission & Qualification",
+        title: "Lead Submission & Qualification",
         details: [
             "External brokers submit leads via secure links (no CRM access required).",
-            "AI auto-fills missing data and detects anomalies.",
+            "auto-fills missing data and detects anomalies.",
             "Financial details, property preferences, and history are validated instantly."
         ]
     };
@@ -46,7 +46,7 @@ const RealEstate = () => {
     }
 
     const data3 = {
-        title: "AI-Based Lead Routing & CRM Integration",
+        title: "Lead Routing & CRM Integration",
         details: [
             "High-scoring leads (80+) are auto-routed to sales teams.",
             "Medium-scoring leads (50-80) go to pre-sales nurturing.",
@@ -62,8 +62,8 @@ const RealEstate = () => {
       ]
     const benefits = [
         'No Need for CRM Access → Brokers submit leads securely via AcoFlow.',
-        'Faster Lead Verification → AI auto-checks lead details, reducing manual reviews.',
-        'More Accurate Lead Scoring → AI compares against past high-converting leads.',
+        'Faster Lead Verification → auto-checks lead details, reducing manual reviews.',
+        'More Accurate Lead Scoring → compares against past high-converting leads.',
         'Financial Eligibility Assessment → Flags leads that don’t meet budget requirements.',
         'Higher Conversion Rates → Sales teams receive only highly qualified leads.'
     ];
@@ -81,6 +81,7 @@ const RealEstate = () => {
             });
         }, 500);
     };
+    const flag='true'
     const text1='Revolutionizing Real Estate Lead Management'
     const text2='The Problem with Traditional Lead Qualification'
 
@@ -176,7 +177,7 @@ const RealEstate = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing AcoFlow: AI-Powered Real Estate Lead Qualification
+                                Introducing AcoFlow: Real Estate Lead Qualification
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -186,11 +187,11 @@ const RealEstate = () => {
                                     color: 'text.primary',
                                 }}
                             >
-                                Our platform leverages AI, vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
+                                Our platform leverages vector databases, and financial analysis to automate lead verification, improve scoring accuracy, and optimize routing for higher conversion rates.
                             </Typography>
 
                             <Challenges keychallenges={keychallenges}/>
-                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3}/>
+                            <HowItWorks data={data} data1={data1} data2={data2} data3={data3} flag={flag}/>
                             <Box
                                 m={3}
                                 display={'flex'}

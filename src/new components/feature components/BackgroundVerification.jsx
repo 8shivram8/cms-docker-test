@@ -22,9 +22,9 @@ const BackgroundVerification = () => {
 
 
     const data = {
-        title: "AI-Driven Background Verification & Risk Scoring",
+        title: "Background Verification & Risk Scoring",
         details: [
-            "AI-powered analysis checks for employment gaps, fraudulent claims, and identity mismatches.",
+            "Checks for employment gaps, fraudulent claims, and identity mismatches.",
             "Vector search matches candidates against industry records and past flagged cases."
         ]
     };
@@ -40,16 +40,16 @@ const BackgroundVerification = () => {
     };
 
     const data2 = {
-        title: "AI-Powered Candidate Submission & Screening",
+        title: "Candidate Submission & Screening",
         details: [
             "Candidates submit personal, educational, and employment details via secure links (no manual data entry required).",
-            "AI auto-fills missing fields, cross-verifies with official records, and detects inconsistencies.",
+            "Auto-fills missing fields, cross-verifies with official records, and detects inconsistencies.",
             "Instant verification of documents, including PAN, Aadhaar, education certificates, and past employment records."
         ]
     };
 
     const data3 = {
-        title: "AI-Based Risk Categorization & HR System Integration",
+        title: "Risk Categorization & HR System Integration",
         details: [
             "High-Scoring Candidates (80+) → Auto-approved for hiring.",
             "Medium-Scoring Candidates (50-80) → Requires additional verification.",
@@ -66,9 +66,9 @@ const BackgroundVerification = () => {
     ];
 
     const benefits = [
-        "No need for manual verification → AI automates identity & employment history checks.",
+        "No need for manual verification → Automates identity & employment history checks.",
         "Faster background checks → Instant document validation & database cross-referencing.",
-        "More accurate risk assessment → AI compares against past flagged cases.",
+        "More accurate risk assessment → Compares against past flagged cases.",
         "Automated compliance & criminal checks → Flags risky candidates before onboarding.",
         "Stronger workforce integrity → HR teams receive only pre-verified candidates."
     ];
@@ -144,11 +144,11 @@ const BackgroundVerification = () => {
                                         lineHeight: 1.6,
                                         fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" }
                                     }}>
-                                    AcoFlow streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
+                                    AcoFlow streamlines employee background verification checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
                                 </Typography>
                             ) : (
                                 <Typography variant="h6" sx={{ mt: 2, color: 'text.primary', }} lineHeight={1.6}>
-                                    AcoFlow streamlines employee background verification with AI-driven checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
+                                    AcoFlow streamlines employee background verification checks, automated document validation, and seamless HR system integration—ensuring a faster, more reliable, and compliant hiring process.
                                 </Typography>
                             )}
                         </Box>
@@ -183,7 +183,7 @@ const BackgroundVerification = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Introducing AcoFlow: AI-Powered Employee Background Verification
+                                Introducing AcoFlow: Employee Background Verification
                             </Typography>
                             <Typography
                                 variant="h6"
@@ -193,7 +193,7 @@ const BackgroundVerification = () => {
                                     color: 'text.primary',
                                 }}
                             >
-                                Our platform leverages AI, vector databases, and identity verification to automate employee background checks, improve accuracy, and streamline hiring decisions—ensuring a trustworthy workforce.
+                                Our platform leverages vector databases, and identity verification to automate employee background checks, improve accuracy, and streamline hiring decisions—ensuring a trustworthy workforce.
                             </Typography>
 
                             <Challenges keychallenges={keychallenges} />
