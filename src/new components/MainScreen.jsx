@@ -3,7 +3,11 @@ import { Box, Button, Typography, Container, Grid, useTheme, useMediaQuery, Menu
 import workflowImg from '../assets/poster2.png';
 import img1 from '../assets/banner images/banner1.jpg';
 import img2 from '../assets/banner images/banner2.jpg';
-import img3 from '../assets/sliderImages/gogreen.webp';
+import img3 from '../assets/banner images/banner3.png';
+import img4 from '../assets/banner images/banner4.png';
+import img5 from '../assets/banner images/banner5.png';
+import img6 from '../assets/banner images/banner6.png';
+import img7 from '../assets/banner images/banner7.png';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
@@ -44,7 +48,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [img1, img2];
+    const images = [img1, img2,img3,img4,img5,img6,img7];
     // const images = [workflowImg];
 
     const scrollToContactForm = () => {
