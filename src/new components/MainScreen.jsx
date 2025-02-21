@@ -127,7 +127,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             ))}
                         </Menu> */}
 
-                        {/* <Button
+                        <Button
                             variant="outlined"
                             target='_blank'
                             href="https://app.coalitionify.com/signIn"
@@ -142,7 +142,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             onClick={()=>trackEvent('Log In button clicked')}
                         >
                             Log In
-                        </Button> */}
+                        </Button>
                     </Box>
                 </Box>
 
