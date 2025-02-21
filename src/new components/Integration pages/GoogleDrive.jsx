@@ -60,7 +60,7 @@ const GoogleDrive = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Box>
+                        {/* <Box>
                             <video
                                 controls
                                 style={{
@@ -72,7 +72,7 @@ const GoogleDrive = () => {
                                 <source src="your-video-url.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
-                        </Box>
+                        </Box> */}
                     </Grid>
                     <Grid item xs={12}>
                         <Box sx={{ mt: 4 }}>
