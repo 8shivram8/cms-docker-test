@@ -18,8 +18,8 @@ const integrationData = [
     { icon: <Slag />, name: 'Slack Integration', route: '/slack-integration' },
     // { icon: <Salesforce />, name: 'Salesforce Integration', route: '/salesforce-integration' },
     // { icon: <HubIcon />, name: 'HubSpot Integration', route: '/hubspot-integration' },
-    { icon: <GoogleDriveIcon />, name: 'Google drive Integration', route: '/googleDrive-integration' },
-    { icon: <OneDriveIcon/>, name: 'Onedrive Integration', route: '/onedrive-integration' },
+    { icon: <GoogleDriveIcon />, name: 'Google Drive Integration', route: '/googleDrive-integration' },
+    { icon: <OneDriveIcon/>, name: 'OneDrive Integration', route: '/onedrive-integration' },
     // { icon: <Razor />, name: 'Razorpay Integration', route: '/razorpay-integration' },
     // { icon: <Stripe />, name: 'Stripe Integration', route: '/stripe-integration' }
 ];
