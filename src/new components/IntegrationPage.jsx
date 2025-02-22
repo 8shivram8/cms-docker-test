@@ -52,9 +52,9 @@ const IntegrationPage = () => {
                 </Typography>
             </Box>
             <Box display="flex" justifyContent="center" width="100%">
-                <Grid container spacing={3} justifyContent="center" alignItems="center" maxWidth="md">
+                <Grid container spacing={3} justifyContent="center" alignItems="center" maxWidth="lg">
                     {integrationData.map((item, index) => (
-                        <Grid item xs={6} sm={6} md={4} key={index} gap={2}>
+                        <Grid item xs={6} sm={6} md={3} key={index} gap={2}>
                             <Box
                                 bgcolor="white"
                                 p={2}
