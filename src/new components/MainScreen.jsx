@@ -8,6 +8,9 @@ import img4 from '../assets/banner images/banner4.png';
 import img5 from '../assets/banner images/banner5.png';
 import img6 from '../assets/banner images/banner6.png';
 import img7 from '../assets/banner images/banner7.png';
+import img8 from '../assets/banner images/form2.png';
+import img9 from '../assets/banner images/form3.png';
+import img10 from '../assets/banner images/form4.png';
 import LanguageIcon from '@mui/icons-material/Language';
 import { FlagIcon } from 'react-flag-kit';
 import ImageSlider from '../components/ImageSlider';
@@ -48,7 +51,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [img4,img5,img6,img7];
+    const images = [img4,img5,img6,img7,img10];
     // const images = [workflowImg];
 
     const scrollToContactForm = () => {

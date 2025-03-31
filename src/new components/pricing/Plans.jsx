@@ -238,12 +238,12 @@ const Plans = ({ selectedCountry }) => {
 
                             }
 
-<Typography 
-    variant="body2" 
-    sx={{ color: 'gray', marginTop: 1, textAlign: 'justify' }}
->
-    {plan.longDescription}
-</Typography>
+                            <Typography
+                                variant="body2"
+                                sx={{ color: 'gray', marginTop: 1, textAlign: 'justify' }}
+                            >
+                                {plan.longDescription}
+                            </Typography>
 
 
 
