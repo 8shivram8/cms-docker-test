@@ -14,7 +14,7 @@ const planData = {
             title: 'Free',
             price: '0',
             icon: <Free />,
-            longDescription: 'The Basic Plan is perfect for small teams who need simple features to get started. Includes basic support and limited integrations.',
+            longDescription: 'Experience the full power of AcoFlow with zero commitment. Explore all premium features, automate your workflows, collect e-signatures, collaborate in real time, and streamline approvals—absolutely free for 30 days.',
         },
         {
             title: 'Standard',
@@ -34,7 +34,7 @@ const planData = {
             title: 'Free',
             price: '0',
             icon: <Free />,
-            longDescription: 'The Basic Plan is perfect for small teams who need simple features to get started. Includes basic support and limited integrations.',
+            longDescription: 'Experience the full power of AcoFlow with zero commitment. Explore all premium features, automate your workflows, collect e-signatures, collaborate in real time, and streamline approvals—absolutely free for 30 days.',
         },
         {
             title: 'Standard',
@@ -238,9 +238,14 @@ const Plans = ({ selectedCountry }) => {
 
                             }
 
-                            <Typography variant="body2" sx={{ color: 'gray', marginTop: 1, textAlign: 'left' }}>
-                                {plan.longDescription}
-                            </Typography>
+<Typography 
+    variant="body2" 
+    sx={{ color: 'gray', marginTop: 1, textAlign: 'justify' }}
+>
+    {plan.longDescription}
+</Typography>
+
+
 
 
                             <Button
