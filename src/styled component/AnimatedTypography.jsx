@@ -48,7 +48,7 @@ const AnimatedTypography = ({ isMobile, isTablet }) => {
                         mt: 1,
                     }}
                 >
-                    Connect your Vendors & Partners with your ecosystem effortlessly
+                    Powered by AI to Generate Forms with Ease. <br></br> Approval Process and Seamless Integration into Your System.
                 </Typography>
             </motion.div>
         </Box>

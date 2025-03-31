@@ -7,19 +7,25 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const pricedata = [
   // { feature: 'Limited PDF Pages', free: '(max 10)', standard: '(max 10)', premium: '(max 40)' },
-  { feature: 'projects', free: 'Unlimited', standard: '20 (max)', premium: 'Unlimited' },
-  { feature: 'jobs', free: 'Unlimited', standard: '100 per project(max)', premium: 'Unlimited' },
+  { feature: 'Workflow', free: '1', standard: '4', premium: 'Unlimited' },
+  { feature: 'Jobs', free: '10', standard: '100', premium: 'Unlimited' },
   { feature: 'Standard form fields', free: true, standard: true, premium: true },
-  { feature: 'Multimedia input field', free: true, standard: true, premium: true },
-  { feature: 'Custom branding', free: true, standard: true, premium: true },
-  { feature: 'Advanced analytics', free: true, standard: true, premium: true },
-  { feature: 'Team collaboration', free: true, standard: true, premium: true },
-  { feature: 'Email notifications', free: true, standard: true, premium: true },
-  { feature: 'API access', free: true, standard: true, premium: true },
-  { feature: '24/7 support', free: true, standard: true, premium: true },
+  { feature: 'Form Builder: Whiteborad image', free: true, standard: true, premium: true },
+  { feature: 'Form Builder: PDF Document', free: true, standard: true, premium: true },
+  { feature: 'Form Builder: Form Image', free: true, standard: true, premium: true },
+  { feature: 'Audit Logs', free: true, standard: true, premium: true },
+  { feature: 'Multimedia input field', free: true, standard: false, premium: true },
+  { feature: 'Custom branding', free: true, standard: false, premium: true },
+  { feature: 'Team collaboration', free: true, standard: false, premium: true },
+  { feature: 'Google Drive Integration', free: true, standard: true, premium: true },
+  { feature: 'One Drive Integration', free: true, standard: true, premium: true },
+  { feature: 'ID Verification: Email', free: true, standard: true, premium: true },
+  { feature: 'ID Verification: SMS', free: true, standard: true, premium: true },
+  { feature: 'API access', free: true, standard: false, premium: true },
   { feature: 'Priority support', free: true, standard: true, premium: true },
-  { feature: 'Additional storage', free: true, standard: true, premium: true },
-  { feature: 'Advanced security', free: true, standard: true, premium: true },
+  { feature: 'Customization', free: false, standard: false, premium: true },
+  { feature: 'Reusable Document/Form', free: true, standard: true, premium: true },
+  
 ];
 
 const headers = [' ', 'Free', 'Standard', 'Professional'];

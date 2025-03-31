@@ -132,7 +132,7 @@ function Footer() {
           <IconButton
             sx={{ color: '#767E94' }}
             component="a"
-            href="https://www.youtube.com/channel/UCGjNgPkRGyU0AHQMkFrjdeg"
+            href="https://www.youtube.com/@CoalitionifyInnovate"
             target="_blank"
             onClick={() => trackEvent('Youtube icon clicked')}
           >
