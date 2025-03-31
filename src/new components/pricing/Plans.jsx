@@ -24,7 +24,7 @@ const planData = {
         },
         {
             title: 'Professional',
-            price: '3000',
+            price: '5000',
             icon: <Proffesional />,
             longDescription: 'The Professional Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
         },
@@ -44,7 +44,7 @@ const planData = {
         },
         {
             title: 'Professional',
-            price: '30000',
+            price: '48000',
             icon: <Proffesional />,
             longDescription: 'The Professional Plan includes all features, enterprise-grade security, dedicated account management, and custom solutions tailored to your needs.',
         },

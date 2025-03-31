@@ -4,6 +4,7 @@ import PriceIcon from '../Custom Icons/PriceIcon';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const pricedata = [
   // { feature: 'Limited PDF Pages', free: '(max 10)', standard: '(max 10)', premium: '(max 40)' },
@@ -25,7 +26,7 @@ const pricedata = [
   { feature: 'Priority support', free: true, standard: true, premium: true },
   { feature: 'Customization', free: false, standard: false, premium: true },
   { feature: 'Reusable Document/Form', free: true, standard: true, premium: true },
-  
+
 ];
 
 const headers = [' ', 'Free', 'Standard', 'Professional'];
@@ -113,9 +114,15 @@ const PricingTable = () => {
                     );
                   }
                   return row[plan] === true ? (
-                    <CheckCircleIcon key={index} sx={{ fontSize: 18 }} />
+                    <CheckCircleIcon
+                      key={index}
+                      sx={{
+                        fontSize: 18,
+                        color: 'rgba(91, 213, 82, 1)'
+                      }}
+                    />
                   ) : (
-                    <Box key={index} sx={{ width: 18, height: 18, visibility: 'hidden' }} />
+                    <CancelIcon key={index} sx={{ fontSize: 18, color: 'rgba(91.18%, 31.66%, 30.46%, 1)' }} />
                   );
                 })}
               </Box>
