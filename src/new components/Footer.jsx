@@ -7,6 +7,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useMixpanel } from '../mixpanel/MixpanelContext';
 
 
@@ -83,10 +84,10 @@ function Footer() {
           <Typography variant="h6" gutterBottom>Contact</Typography>
           <Box display="flex" flexDirection="column" alignItems={isMobile ? 'center' : 'left'}>
             {/* <Typography variant="body2">Phone: (123) 456-7890</Typography> */}
-            <Typography variant="body2" onClick={()=>trackEvent('click on email')}>
-            Email : {' '}
+            <Typography variant="body2" onClick={() => trackEvent('click on email')}>
+              Email : {' '}
               <a href="mailto:support@coalitionify.com" style={{ textDecoration: 'none', color: 'inherit' }}>
-               support@coalitionify.com
+                support@coalitionify.com
               </a>
             </Typography>
           </Box>
@@ -137,6 +138,15 @@ function Footer() {
             onClick={() => trackEvent('Youtube icon clicked')}
           >
             <YouTubeIcon />
+          </IconButton>
+          <IconButton
+            sx={{ color: '#767E94'}}
+            component="a"
+            href="https://www.linkedin.com/company/coalitionify-innovate"
+            target="_blank"
+            onClick={() => trackEvent('LinkedIn icon clicked')}
+          >
+            <LinkedInIcon />
           </IconButton>
         </Box>
       </Box>
