@@ -12,7 +12,7 @@ const pricedata = [
   { feature: 'Jobs', free: '10', standard: '100', premium: 'Unlimited' },
   { feature: 'Comment & Request changeflow', free: true, standard: true, premium: true },
   { feature: 'Standard form fields', free: true, standard: true, premium: true },
-  { feature: 'Form Builder: Whiteborad image', free: true, standard: true, premium: true },
+  { feature: 'Form Builder: Whiteboard image', free: true, standard: true, premium: true },
   { feature: 'Form Builder: PDF Document', free: true, standard: true, premium: true },
   { feature: 'Form Builder: Form Image', free: true, standard: true, premium: true },
   { feature: 'Audit Logs', free: true, standard: true, premium: true },

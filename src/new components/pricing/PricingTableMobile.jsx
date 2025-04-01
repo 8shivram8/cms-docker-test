@@ -26,7 +26,7 @@ const pricedata = [
     { feature: 'Workflow', free: '1', standard: '4', premium: 'Unlimited' },
     { feature: 'Jobs', free: '10', standard: '100', premium: 'Unlimited' },
     { feature: 'Standard form fields', free: true, standard: true, premium: true },
-    { feature: 'Form Builder: Whiteborad image', free: true, standard: true, premium: true },
+    { feature: 'Form Builder: Whiteboard image', free: true, standard: true, premium: true },
     { feature: 'Form Builder: PDF Document', free: true, standard: true, premium: true },
     { feature: 'Form Builder: Form Image', free: true, standard: true, premium: true },
     { feature: 'Audit Logs', free: true, standard: true, premium: true },
