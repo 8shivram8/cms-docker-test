@@ -275,7 +275,10 @@ const SupplyChain = () => {
                                             transform: 'scale(1.04)',
                                         },
                                     }}
-                                    onClick={handleBookDemo}
+                                    onClick={() => {
+                                        window.open('https://calendly.com/yogesh-coalitionify/30min', '_blank');
+                                        // scrollToContactForm();
+                                    }}
                                 >
                                     📩 Book a Demo
                                 </Button>

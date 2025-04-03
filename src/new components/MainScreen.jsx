@@ -44,14 +44,14 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-    const  {trackEvent}=useMixpanel()
+    const { trackEvent } = useMixpanel()
     const defaultCountry = 'IN';
 
     const handleSelectCountry = (countryCode) => {
         handleCountryChange(countryCode);
         handleClose();
     };
-    const images = [img4,img5,img6,img7,img10];
+    const images = [img4, img5, img6, img7, img10];
     // const images = [workflowImg];
 
     const scrollToContactForm = () => {
@@ -146,7 +146,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                 m: isMobile ? 2 : 2,
                                 fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
                             }}
-                            onClick={()=>trackEvent('Log In button clicked')}
+                            onClick={() => trackEvent('Log In button clicked')}
                         >
                             Sign In
                         </Button>
@@ -166,7 +166,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                         Seamless Collaboration with your <br/>
                         Vendors & Partners
                     </Typography> */}
-                    <AnimatedTypography isMobile={isMobile} isTablet={isTablet}/>
+                    <AnimatedTypography isMobile={isMobile} isTablet={isTablet} />
 
                     {/* <Typography
                         variant="h1"
@@ -198,7 +198,7 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                                         // bgcolor: 'black',
                                     },
                                 }}
-                                onClick={()=>{
+                                onClick={() => {
                                     trackEvent('Free Trial button clicked')
                                     scrollToContactForm()
                                 }}
@@ -207,25 +207,29 @@ const MainScreen = ({ selectedCountry, handleCountryChange, handleClick, handleC
                             </Button>
                         </Grid>
                         <Grid item>
-                            <Link to="contactForm" smooth={true} duration={1500}>
-                                <Button
-                                    variant="outlined"
-                                    sx={{
-                                        color: 'white',
-                                        textDecoration: 'none',
-                                        textTransform: 'none',
-                                        border: '1px solid #FFFFFF',
-                                        fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
-                                        transition: 'transform 0.3s ease',
-                                        '&:hover': {
-                                            transform: 'scale(1.04)',
-                                        },
-                                    }}
-                                    onClick={scrollToContactForm}
-                                >
-                                    Book a Demo
-                                </Button>
-                            </Link>
+                            {/* <Link to="contactForm" smooth={true} duration={1500}> */}
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                    textTransform: 'none',
+                                    border: '1px solid #FFFFFF',
+                                    fontSize: isMobile ? '10px' : isTablet ? '12px' : '14px',
+                                    transition: 'transform 0.3s ease',
+                                    '&:hover': {
+                                        transform: 'scale(1.04)',
+                                    },
+                                }}
+                                onClick={() => {
+                                    window.open('https://calendly.com/yogesh-coalitionify/30min', '_blank');
+                                    // scrollToContactForm();
+                                }}
+                            >
+                                Book a Demo
+                            </Button>
+
+                            {/* </Link> */}
                         </Grid>
                     </Grid>
                 </Box>
