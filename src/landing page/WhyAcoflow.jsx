@@ -7,7 +7,6 @@ import RichData from './Icons/feature icons/RichData';
 import Enterprice from './Icons/feature icons/Enterprice';
 
 const WhyAcoflow = () => {
-    const theme = useTheme()
     const data = [
         {
             icon: <AiPowered />,
@@ -64,10 +63,14 @@ const WhyAcoflow = () => {
                                     flexDirection: 'column',
                                     alignItems: 'flex-start',
                                     justifyContent: 'flex-start',
-                                    //   gap: 1,
                                     pt: 3,
                                     px: 3,
                                     bgcolor: 'white',
+                                    transition: 'all 0.3s ease',
+                                    transform: 'scale(1)',
+                                    '&:hover': {
+                                        transform: 'scale(1.02)',
+                                    },
                                 }}
                             >
                                 <Box>{item.icon}</Box>
