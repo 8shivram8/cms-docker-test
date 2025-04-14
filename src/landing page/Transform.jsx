@@ -15,15 +15,47 @@ const Transform = () => {
     >
       <Container maxWidth="lg">
         <Box
-          sx={{ bgcolor: '#81C784', }}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          gap={3}
-          p={3}
-          borderRadius={5}
+          sx={{
+            bgcolor: '#81C784',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 3,
+            p: 3,
+            borderRadius: 5,
+            overflow: 'hidden',
+          }}
         >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: 70,
+              height: 70,
+              borderRadius: '0 0 100% 0',
+              borderRight: '4px solid white',
+              borderBottom: '4px solid white',
+              backgroundColor: 'transparent',
+            }}
+          />
+
+          {/* Bottom-right inner arc */}
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              width: 60,
+              height: 60,
+              borderRadius: '100% 0 0 0',
+              borderLeft: '4px solid white',
+              borderTop: '4px solid white',
+              backgroundColor: 'transparent',
+            }}
+          />
           <Typography variant="h4" fontWeight={700} color="white" mt={2}>
             Ready to Transform Your Workflows?
           </Typography>
