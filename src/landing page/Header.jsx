@@ -21,7 +21,7 @@ function Header({ scrollToSection }) {
         { label: 'Why AcoFlow?', to: 'why' },
         { label: 'Industries', to: 'industries' },
         { label: 'Features', to: 'capabilities' },
-        { label: 'Pricing', to: 'pricing' },
+        { label: 'Pricing', to: 'plans' },
         { label: 'Blog', to: 'blog' },
     ];
 

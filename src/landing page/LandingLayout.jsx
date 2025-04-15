@@ -8,13 +8,15 @@ import Capabilities from './Capabilities';
 import Industries from './Industries';
 import Transform from './Transform';
 import Footer from './Footer';
+import Plans from '../new components/pricing/Plans';
 
 const LandingLayout = () => {
     const whyRef = useRef(null);
     const capabilitiesRef = useRef(null);
     const industriesRef = useRef(null);
     const transformRef = useRef(null);
-
+    const plansRef = useRef(null);
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -58,16 +60,19 @@ const LandingLayout = () => {
                             capabilities: capabilitiesRef,
                             industries: industriesRef,
                             transform: transformRef,
+                            plans:plansRef
                         };
                         map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
                     }}
                 />
-                <Mainscreen />
+                <Mainscreen plansRef={plansRef}/>
             </Box>
             <HorizontalBar />
             <div ref={whyRef}><WhyAcoflow /></div>
             <div ref={capabilitiesRef}><Capabilities /></div>
             <div ref={industriesRef}><Industries /></div>
+            <div ref={plansRef}><Plans /></div>
+            
             <div ref={transformRef}><Transform /></div>
             <Box sx={{ position: 'relative', overflow: 'hidden' }}>
                 <Box
@@ -105,6 +110,7 @@ const LandingLayout = () => {
                         capabilities: capabilitiesRef,
                         industries: industriesRef,
                         transform: transformRef,
+                        plans:plansRef
                     };
                     map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
                 }}

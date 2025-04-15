@@ -2,7 +2,10 @@ import React from 'react'
 import { Button, Typography, Box, Grid } from '@mui/material'
 import ContactForm from './ContactForm'
 
-const Mainscreen = () => {
+const Mainscreen = ({plansRef}) => {
+    function scrollToPlans(){
+        plansRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    }
     return (
         <Box sx={{ flexGrow: 1, p: { xs: 2, md: 6 } }} mt={4}>
 
@@ -30,7 +33,9 @@ const Mainscreen = () => {
                         <Button variant="outlined" size="large" sx={{
                             color: 'black',
                             borderColor: '#1677F7',
-                        }}>See Plans</Button>
+                        }}
+                        onClick={scrollToPlans}
+                        >See Plans</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6}>

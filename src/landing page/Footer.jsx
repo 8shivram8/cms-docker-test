@@ -75,7 +75,7 @@ const Footer = ({ scrollToSection }) => {
                             <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Why AcoFlow</Link>
                             <Link onClick={() => scrollToSection('industries')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Industries</Link>
                             <Link onClick={() => scrollToSection('capabilities')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Features</Link>
-                            <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
+                            <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
                             <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Blog</Link>
 
                             {
