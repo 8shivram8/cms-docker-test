@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Container, Button } from '@mui/material';
 
-const Transform = () => {
+const Transform = ({handleScrollToForm}) => {
   return (
     <Box
       sx={{
@@ -64,8 +64,6 @@ const Transform = () => {
           </Typography>
           <Button
             variant="contained"
-            target="_blank"
-            href="https://app.coalitionify.com/signIn"
             sx={{
               mb: 2,
               // bgcolor: 'white',
@@ -79,7 +77,7 @@ const Transform = () => {
                 bgcolor: '#1677F7',
               },
             }}
-
+            onClick={handleScrollToForm}
           >
             Get Started
           </Button>

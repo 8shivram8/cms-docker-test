@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Typography, Box, Grid } from '@mui/material'
 import ContactForm from './ContactForm'
 
-const Mainscreen = ({plansRef}) => {
-    function scrollToPlans(){
+const Mainscreen = ({ plansRef,contactFormRef }) => {
+    function scrollToPlans() {
         plansRef?.current?.scrollIntoView({ behavior: 'smooth' });
     }
     return (
@@ -30,16 +30,16 @@ const Mainscreen = ({plansRef}) => {
                     <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                         <Button variant="contained" size="large" sx={{ bgcolor: '#1677F7', color: 'white' }} target="_blank"
                             href="https://app.coalitionify.com/signIn">Get Started Free</Button>
-                        <Button variant="outlined" size="large" sx={{
+                        {/* <Button variant="outlined" size="large" sx={{
                             color: 'black',
                             borderColor: '#1677F7',
                         }}
-                        onClick={scrollToPlans}
-                        >See Plans</Button>
+                            onClick={scrollToPlans}
+                        >See Plans</Button> */}
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <ContactForm />
+                    <ContactForm contactFormRef={contactFormRef}/>
                 </Grid>
             </Grid>
         </Box>
