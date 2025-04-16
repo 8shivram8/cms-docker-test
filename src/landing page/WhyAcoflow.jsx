@@ -10,31 +10,31 @@ const WhyAcoflow = () => {
     const data = [
         {
             icon: <AiPowered />,
-            title: 'AI Powered Form Creation',
-            subtitle: 'Instantly convert PDFs, scanned documents, or templates into reusable digital forms.'
+            title: 'AI-Powered Lead Generation',
+            subtitle: 'Automatically capture high-intent leads using AI-driven algorithms that target the right prospects at the right time.'
         },
         {
             icon: <WorkflowAuto />,
-            title: 'End-to-End Workflow Automation',
-            subtitle: 'Build multi-step, conditional approval flows with reminders, expiry actions, and declined routing. No coding or heavy SDK integrations needed.'
+            title: 'Dynamic Website Builder',
+            subtitle: 'Create personalized, dynamic websites for your business in minutes, optimizing for lead conversion and customer engagement.'
         },
         {
             icon: <Colaborate />,
-            title: 'Collaborate Externally without Onboarding',
-            subtitle: 'Share secure links via Email, WhatsApp, or SMS. Vendors, customers, or partners can fill out forms or eSign without logging into your systems.'
+            title: 'Seamless Marketing Automation',
+            subtitle: 'Automate your marketing campaigns across multiple platforms. Reach your prospects with personalized messages via email, social media, and SMS.'
         },
         {
             icon: <RichData />,
-            title: 'Rich Data Capture + eSignature',
-            subtitle: 'Collect text, files, images, addresses, and more in one workflow. This is perfect for complex processes where more than just a signature is needed.'
+            title: 'Meta Marketing & Lead Tracking',
+            subtitle: 'Optimize your ad campaigns with advanced tracking and analytics. Measure ROI across platforms like Facebook, Instagram, and Google Ads.'
         },
         {
             icon: <Enterprice />,
-            title: 'Enterprise Grade Security & Compliance',
-            subtitle: 'Full audit logs for every interaction. Track, review, and stay compliant with minimal effort.'
+            title: 'Robust Analytics & Reporting',
+            subtitle: 'Track, analyze, and improve lead generation performance. Gain insights into customer behavior and fine-tune your strategies effortlessly.'
         },
     ];
-
+    
     return (
         <Box width="100%" mt={10} mb={10}>
             <Container maxWidth="xl">
@@ -44,7 +44,7 @@ const WhyAcoflow = () => {
                     textAlign="center"
                     mb={6}
                 >
-                    Why AcoFlow
+                    Why AcoLead
                 </Typography>
 
                 <Grid container spacing={3} justifyContent="flex-start">

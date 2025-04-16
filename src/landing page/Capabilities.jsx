@@ -10,29 +10,30 @@ const Capabilities = () => {
     const capabilities = [
         {
             icon: <MultiStep />,
-            title: 'Multi Step Workflows',
-            subtitle: 'Seamlessly route forms for approval, track changes, and notify stakeholders—all within AcoFlow.',
+            title: 'Automated Lead Nurturing',
+            subtitle: 'Set up multi-step lead nurturing campaigns to guide prospects from interest to conversion automatically.',
             color: '#1677F7',
         },
         {
             icon: <Bulk />,
-            title: 'Bulk Submissions & Expiry Handling',
-            subtitle: 'Collect information from hundreds of external users at once; set time-bound deadlines to keep things moving.',
+            title: 'Bulk Lead Collection & Management',
+            subtitle: 'Capture and manage large volumes of leads from multiple channels and ensure timely follow-ups with automated workflows.',
             color: '#8338EC',
         },
         {
             icon: <NoCode />,
-            title: 'No-Code Integration',
-            subtitle: 'Connect with tools like Google Sheets, Slack, or Microsoft Teams for real-time collaboration.',
+            title: 'Marketing Automation',
+            subtitle: 'Easily integrate with platforms like Facebook Ads, Google Analytics, and CRM systems without any coding knowledge.',
             color: '#FB5607',
         },
         {
             icon: <Labeling />,
-            title: 'Full White-Labeling',
-            subtitle: 'Customize branding and communication. Make every link, form, and notification truly yours in our premium plan.',
+            title: 'Custom Branding & Personalization',
+            subtitle: 'Customize your lead generation forms, landing pages, and emails to reflect your brand and enhance customer experience.',
             color: '#F72585',
         },
     ];
+    
 
     return (
         <Box sx={{ bgcolor: '#ECF4FF', py: 10 }}>

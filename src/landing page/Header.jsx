@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
-import logo from '../assets/acoflow.png';
+import logo from '../assets/acolead-crm.png';
 
 function Header({ scrollToSection, handleScrollToForm }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -18,11 +18,8 @@ function Header({ scrollToSection, handleScrollToForm }) {
     };
 
     const navLinks = [
-        { label: 'Why AcoFlow?', to: 'why' },
-        { label: 'Industries', to: 'industries' },
+        { label: 'Why AcoLead?', to: 'why' },
         { label: 'Features', to: 'capabilities' },
-        { label: 'Pricing', to: 'plans' },
-        { label: 'Blog', to: 'blog' },
     ];
 
     return (

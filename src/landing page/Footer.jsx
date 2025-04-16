@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography, IconButton, Link, useMediaQuery, useTheme } from '@mui/material';
-import logo from '../assets/acoflow.png';
+import logo from '../assets/acolead-crm.png';
 import Linkdin from './Icons/social media/Linkdin';
 import Insta from './Icons/social media/Insta';
 import Facebook from './Icons/social media/Facebook';
@@ -17,13 +17,14 @@ const Footer = ({ scrollToSection }) => {
                 <Grid container spacing={4}>
 
                     {/* Section 1 - Logo, Tagline, Socials */}
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4}>
                         <Box display="flex" flexDirection="column" alignItems="flex-start">
                             <Box sx={{ mb: 2 }}>
                                 <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
                             </Box>
                             <Typography variant="body2" sx={{ mb: 2, maxWidth: 220 }}>
-                                Automate Your Approvals & Signatures Faster, Smarter, and Completely Paperless
+                            Automate Your Lead Generation & Marketing
+                            Faster, Smarter, and Fully Automated
                             </Typography>
                             <Box>
                                 {/* <IconButton color="inherit" href="#"><Facebook /></IconButton>
@@ -69,14 +70,14 @@ const Footer = ({ scrollToSection }) => {
                     </Grid>
 
                     {/* Section 2 - Company */}
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={4}>
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>Company</Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
-                            <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Why AcoFlow</Link>
-                            <Link onClick={() => scrollToSection('industries')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Industries</Link>
+                            <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Why AcoLead</Link>
+                            {/* <Link onClick={() => scrollToSection('industries')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Industries</Link> */}
                             <Link onClick={() => scrollToSection('capabilities')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Features</Link>
-                            <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
-                            <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Blog</Link>
+                            {/* <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link> */}
+                            {/* <Link onClick={() => scrollToSection('why')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Blog</Link> */}
 
                             {
                                 isMobile && (
@@ -94,7 +95,7 @@ const Footer = ({ scrollToSection }) => {
                     </Grid>
 
                     {/* Section 3 - We Serve */}
-                    <Grid item xs={6} md={3}>
+                    {/* <Grid item xs={6} md={3}>
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>We Serve</Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
                             <Link color="inherit" underline='none'>Clinical Research</Link>
@@ -106,12 +107,12 @@ const Footer = ({ scrollToSection }) => {
                             <Link color="inherit" underline='none'>BFSI</Link>
                             <Link color="inherit" underline='none'>Education</Link>
                         </Box>
-                    </Grid>
+                    </Grid> */}
 
                     {/* Section 4 - Help */}
                     {
                         !isMobile && (
-                            <Grid item xs={12} md={3}>
+                            <Grid item xs={12} md={4}>
                                 <Typography variant="subtitle1" fontWeight="bold" gutterBottom>Help</Typography>
                                 <Box display="flex" flexDirection="column" gap={1}>
                                     <Link onClick={() => {
@@ -129,7 +130,7 @@ const Footer = ({ scrollToSection }) => {
                 {/* Footer Bottom */}
                 <Box sx={{ textAlign: 'center', mt: 4, pt: 2, borderTop: '1px solid #444' }}>
                     <Typography variant="body2">
-                        &copy; {new Date().getFullYear()} ,All Rights Reserved by AcoFlow.
+                        &copy; {new Date().getFullYear()} ,All Rights Reserved by AcoLead.
                     </Typography>
                 </Box>
             </Container>

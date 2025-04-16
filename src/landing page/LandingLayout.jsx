@@ -85,7 +85,7 @@ const LandingLayout = () => {
             <HorizontalBar />
             <div ref={whyRef}><WhyAcoflow /></div>
             <div ref={capabilitiesRef}><Capabilities /></div>
-            <div ref={industriesRef}><Industries /></div>
+            {/* <div ref={industriesRef}><Industries /></div> */}
             {/* <div ref={plansRef}><Plans /></div> */}
 
             <div ref={transformRef}><Transform handleScrollToForm={handleScrollToForm}/></div>

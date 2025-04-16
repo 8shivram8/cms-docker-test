@@ -57,10 +57,10 @@ const Transform = ({handleScrollToForm}) => {
             }}
           />
           <Typography variant="h4" fontWeight={700} color="white" mt={2}>
-            Ready to Transform Your Workflows?
+          Ready to Boost Your Lead Generation?
           </Typography>
           <Typography variant="body1" color="white" maxWidth={600}>
-            Join organizations worldwide that cut paperwork, automate approvals, and secure sign-offs in record time.
+          Join businesses around the globe that are generating high-quality leads, automating their marketing, and converting prospects faster than ever before.
           </Typography>
           <Button
             variant="contained"

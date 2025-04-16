@@ -10,13 +10,13 @@ import { motion } from 'framer-motion';
 
 const HorizontalBar = () => {
     const items = [
-        { icon: <Clinical />, title: 'Clinical Research' },
-        { icon: <RealEstate />, title: 'Real Estate' },
-        { icon: <Staffing />, title: 'Staffing and HR' },
-        { icon: <Manufact />, title: 'Manufacturing and Retail' },
-        { icon: <Logistic />, title: 'Logistics and Transport' },
-        { icon: <Helthcare />, title: 'Healthcare' },
-    ];
+        { icon: <Clinical />, title: 'Home Buyers & Investors' },
+        { icon: <RealEstate />, title: 'Real Estate Agents' },
+        { icon: <Staffing />, title: 'Construction Contractors' },
+        { icon: <Manufact />, title: 'Material Suppliers' },
+        { icon: <Logistic />, title: 'Interior Designers' },
+        { icon: <Helthcare />, title: 'Loan & Mortgage Agents' },
+    ];    
     const allCards = [...items, ...items]; // duplicated for seamless loop
 
     return (
