@@ -9,6 +9,7 @@ import {
     InputAdornment,
     Tooltip,
     Typography,
+    Select,
 } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import WarningIcon from '@mui/icons-material/Warning'
@@ -29,6 +30,13 @@ const ContactForm = ({ contactFormRef }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+    const [countryCode, setCountryCode] = useState('+91'); // default India
+    const countryOptions = [
+        { code: '+91', label: '🇮🇳 +91' },
+        { code: '+1', label: '🇺🇸 +1' },
+        { code: '+44', label: '🇬🇧 +44' },
+        { code: '+61', label: '🇦🇺 +61' },
+    ];
 
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
@@ -36,10 +44,13 @@ const ContactForm = ({ contactFormRef }) => {
             .email('Invalid email address')
             .matches(
                 /^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                'Email must be a company/professional email (no Gmail, Yahoo allowed)'
+                'Email must be a companyName/professional email (no Gmail, Yahoo allowed)'
             )
             .required('Email is required'),
-        company: Yup.string().required('Company name is required'),
+        phoneNumber: Yup.string()
+            .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
+            .required('Phone number is required'),
+        companyName: Yup.string().required('companyName name is required'),
         website: Yup.string(),
         industry: Yup.string().required('Industry is required'),
     })
@@ -48,13 +59,19 @@ const ContactForm = ({ contactFormRef }) => {
         initialValues: {
             name: '',
             email: '',
-            company: '',
+            phoneNumber: '',
+            companyName: '',
             website: '',
             industry: '',
         },
         validationSchema: validationSchema,
         onSubmit: async (values, { resetForm }) => {
             try {
+                const payload = {
+                    ...values,
+                    phoneNumber: `${countryCode}${values.phoneNumber}`,
+                }
+
                 const response = await fetch(
                     'https://api.dev.coalitionify.com/app-builder/api/admin/sheet',
                     {
@@ -62,7 +79,7 @@ const ContactForm = ({ contactFormRef }) => {
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(values),
+                        body: JSON.stringify(payload),
                     }
                 )
 
@@ -75,7 +92,8 @@ const ContactForm = ({ contactFormRef }) => {
             } catch (error) {
                 console.error('Error during API call:', error)
             }
-        },
+        }
+
     })
 
     const fieldStyle = {
@@ -112,7 +130,7 @@ const ContactForm = ({ contactFormRef }) => {
                         background:
                             'linear-gradient(215.51deg, #1677F7 0%, #63A6FF 64.27%, #D9E9FF 107.12%)',
                         borderRadius: 2,
-                       
+
                         // ml: !isMobile ? 40 : 0,
                         p: 3,
                         m: 3,
@@ -214,18 +232,56 @@ const ContactForm = ({ contactFormRef }) => {
                                 }}
                             />
                             <TextField
-                                label="Company Name"
-                                name="company"
+                                label="Phone Number"
+                                name="phoneNumber"
                                 variant="outlined"
                                 fullWidth
-                                value={formik.values.company}
+                                value={formik.values.phoneNumber}
                                 onChange={formik.handleChange}
-                                error={formik.touched.company && Boolean(formik.errors.company)}
+                                error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
+                                sx={{ ...fieldStyle }}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <Select
+                                                value={countryCode}
+                                                onChange={(e) => setCountryCode(e.target.value)}
+                                                sx={{ minWidth: 70, fontSize: '1rem', height: '2.5rem' }}
+                                                variant="standard"
+                                                disableUnderline
+                                            >
+                                                {countryOptions.map((option) => (
+                                                    <MenuItem key={option.code} value={option.code}>
+                                                        {option.label}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </InputAdornment>
+                                    ),
+                                    endAdornment:
+                                        formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                                            <Tooltip title={formik.errors.phoneNumber}>
+                                                <InputAdornment position="end">
+                                                    <WarningIcon sx={{ color: theme.palette.warning.main }} />
+                                                </InputAdornment>
+                                            </Tooltip>
+                                        ),
+                                }}
+                            />
+
+                            <TextField
+                                label="companyName Name"
+                                name="companyName"
+                                variant="outlined"
+                                fullWidth
+                                value={formik.values.companyName}
+                                onChange={formik.handleChange}
+                                error={formik.touched.companyName && Boolean(formik.errors.companyName)}
                                 sx={fieldStyle}
                                 InputProps={{
                                     endAdornment:
-                                        formik.touched.company && formik.errors.company && (
-                                            <Tooltip title={formik.errors.company}>
+                                        formik.touched.companyName && formik.errors.companyName && (
+                                            <Tooltip title={formik.errors.companyName}>
                                                 <InputAdornment position="end">
                                                     <WarningIcon sx={{ color: theme.palette.warning.main }} />
                                                 </InputAdornment>
