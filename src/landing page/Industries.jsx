@@ -1,7 +1,9 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
-import { motion } from 'framer-motion';
-
+import { Box, Grid, Typography, Container } from '@mui/material';
+import AiPowered from './Icons/feature icons/AiPowered';
+import Colaborate from './Icons/feature icons/Colaborate';
+import WorkflowAuto from './Icons/feature icons/WorkflowAuto';
+import RichData from './Icons/feature icons/RichData';
 import Operations from './Icons/Industries icons/Operations';
 import Procurment from './Icons/Industries icons/Procurment';
 import ItIndustries from './Icons/Industries icons/ItIndustries';
@@ -31,83 +33,64 @@ const Industries = () => {
         },
     ];
 
-    // Duplicate cards to create smooth loop
-    const allCards = [...data, ...data];
-
     return (
-        <Box width="100%" mt={10} mb={10} overflow="hidden">
+        <Box width="100%" mt={10} mb={10}>
             <Container maxWidth="xl">
                 <Typography variant="h4" fontWeight={700} textAlign="center" mb={6}>
                     Industries
                 </Typography>
 
-                <Box
-                    component={motion.div}
-                    sx={{
-                        display: 'flex',
-                        gap: 3,
-                        width: 'fit-content',
-                    }}
-                    animate={{ x: ['-50%', '0%'] }}
-                    transition={{
-                        duration: 20,
-                        ease: 'linear',
-                        repeat: Infinity,
-                    }}
-                >
-                    {allCards.map((item, index) => (
-                        <Box
-                        key={index}
-                        className="card-box"
-                        sx={{
-                            minWidth: 300,
-                            maxWidth: 300,
-                            border: '0.5px solid #5B5B5D',
-                            borderRadius: 4,
-                            height: 220,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-start',
-                            justifyContent: 'flex-start',
-                            pt: 3,
-                            px: 3,
-                            bgcolor: 'white',
-                            flexShrink: 0,
-                            transition: 'all 0.3s ease',
-                            '&:hover': {
-                                bgcolor: '#1677F7',
-                                color: 'white',
-                                '& .icon-wrapper svg': {
-                                    color: 'white',
-                                },
-                            },
-                        }}
-                    >
-                    
-                            <Box className="icon-wrapper">{item.icon}</Box>
-                            <Typography variant="h6" fontWeight={600} ml={1}>
-                                {item.title}
-                            </Typography>
-                            <Typography
-                                variant="body2"
+                <Grid container spacing={3} justifyContent="center">
+                    {data.map((item, index) => (
+                        <Grid item xs={12} md={3} key={index}>
+                            <Box
                                 sx={{
-                                    fontSize: 14,
-                                    color: 'text.secondary',
-                                    mt: 1,
-                                    ml: 1,
-                                    transition: 'color 0.3s ease',
-                                    '.card-box:hover &': {
+                                    border: '0.5px solid #5B5B5D',
+                                    borderRadius: 4,
+                                    height: 220,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    justifyContent: 'flex-start',
+                                    pt: 3,
+                                    px: 3,
+                                    bgcolor: 'white',
+                                    transition: 'all 0.3s ease',
+                                    transform: 'scale(1)',
+                                    color: 'black',
+                                    svg: {
+                                        color: 'inherit',
+                                    },
+                                    '&:hover': {
+                                        transform: 'scale(1.02)',
+                                        bgcolor: '#1677F7',
                                         color: 'white',
+                                        '& .subtitle': {
+                                            color: 'white',
+                                        },
+                                        svg: {
+                                            color: 'white',
+                                        },
                                     },
                                 }}
                             >
-                                {item.subtitle}
-                            </Typography>
-
-                        </Box>
-
+                                <Box>{item.icon}</Box>
+                                <Typography variant="h6" fontWeight={600} ml={1}>
+                                    {item.title}
+                                </Typography>
+                                <Typography
+                                    fontSize={14}
+                                    className="subtitle"
+                                    color="text.secondary"
+                                    mt={1}
+                                    ml={1}
+                                >
+                                    {item.subtitle}
+                                </Typography>
+                            </Box>
+                        </Grid>
                     ))}
-                </Box>
+                </Grid>
             </Container>
         </Box>
     );
