@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Typography, Box, Grid } from '@mui/material'
 import ContactForm from './ContactForm'
 
-const Mainscreen = ({ plansRef,contactFormRef }) => {
+const Mainscreen = ({ plansRef,contactFormRef,highlighted}) => {
     function scrollToPlans() {
         plansRef?.current?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -39,7 +39,7 @@ const Mainscreen = ({ plansRef,contactFormRef }) => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <ContactForm contactFormRef={contactFormRef}/>
+                    <ContactForm contactFormRef={contactFormRef} highlighted={highlighted}/>
                 </Grid>
             </Grid>
         </Box>

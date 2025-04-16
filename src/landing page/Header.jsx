@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../assets/acoflow.png';
 
-function Header({ scrollToSection }) {
+function Header({ scrollToSection, handleScrollToForm }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -62,7 +62,13 @@ function Header({ scrollToSection }) {
                                         key={label}
                                         color="inherit"
                                         sx={{ textTransform: 'none', fontSize: '0.9rem', minWidth: 'auto' }}
-                                        onClick={() => scrollToSection(to)}
+                                        onClick={() => {
+                                            if (label == 'Pricing') {
+                                                handleScrollToForm()
+                                            } else {
+                                                scrollToSection(to)
+                                            }
+                                        }}
                                     >
                                         {label}
                                     </Button>
@@ -111,9 +117,14 @@ function Header({ scrollToSection }) {
                         {navLinks.map(({ label, to }) => (
                             <ListItem key={label} disablePadding>
                                 <ListItemButton
-                                    component={RouterLink}
-                                    to={to}
-                                    onClick={toggleDrawer}
+                                    onClick={() => {
+                                        toggleDrawer()
+                                        if (label == 'Pricing') {
+                                            handleScrollToForm()
+                                        } else {
+                                            scrollToSection(to)
+                                        }
+                                    }}
                                 >
                                     <Typography>{label}</Typography>
                                 </ListItemButton>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box } from '@mui/material';
 import Header from './Header';
 import Mainscreen from './Mainscreen';
@@ -17,13 +17,18 @@ const LandingLayout = () => {
     const transformRef = useRef(null);
     const plansRef = useRef(null);
     const contactFormRef = useRef(null)
-
+    const [highlighted, setHighlighted] = useState(false);
     const handleScrollToForm = () => {
         if (contactFormRef.current) {
-            contactFormRef.current.scrollIntoView({ behavior: 'smooth' })
-            contactFormRef.current.focus()  // Focus the entire form
+            contactFormRef.current.scrollIntoView({ behavior: 'smooth' });
+            contactFormRef.current.focus(); // Focus the entire form
+            setHighlighted(true); // Trigger the highlight
+            setTimeout(() => {
+                setHighlighted(false); // Remove highlight after 5 seconds
+            }, 5000);
         }
-    }
+    };
+    
 
 
     useEffect(() => {
@@ -73,8 +78,9 @@ const LandingLayout = () => {
                         };
                         map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
                     }}
+                    handleScrollToForm={handleScrollToForm}
                 />
-                <Mainscreen plansRef={plansRef} contactFormRef={contactFormRef}/>
+                <Mainscreen plansRef={plansRef} contactFormRef={contactFormRef} highlighted={highlighted}/>
             </Box>
             <HorizontalBar />
             <div ref={whyRef}><WhyAcoflow /></div>

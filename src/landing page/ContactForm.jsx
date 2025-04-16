@@ -25,7 +25,7 @@ const industries = [
     'Other',
 ]
 
-const ContactForm = ({ contactFormRef }) => {
+const ContactForm = ({ contactFormRef,highlighted }) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
@@ -44,13 +44,13 @@ const ContactForm = ({ contactFormRef }) => {
             .email('Invalid email address')
             .matches(
                 /^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                'Email must be a companyName/professional email (no Gmail, Yahoo allowed)'
+                'Email must be a company Name/professional email (no Gmail, Yahoo allowed)'
             )
             .required('Email is required'),
         phoneNumber: Yup.string()
             .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
             .required('Phone number is required'),
-        companyName: Yup.string().required('companyName name is required'),
+        companyName: Yup.string().required('company Name name is required'),
         website: Yup.string(),
         industry: Yup.string().required('Industry is required'),
     })
@@ -177,8 +177,10 @@ const ContactForm = ({ contactFormRef }) => {
                         maxWidth: isMobile ? '100%' : 400,
                         mx: 'auto',
                         ml: !isMobile ? 30 : 0,
+                        border: highlighted ? '3px solid #1677F7' : 'none', // Conditionally add border
+                        transition: 'border 0.3s ease', // Smooth transition for the border
                         '&:focus': {
-                            borderColor: theme.palette.primary.main,
+                            borderColor: '#1677F7',
                         },
                     }}
                 >
@@ -270,7 +272,7 @@ const ContactForm = ({ contactFormRef }) => {
                             />
 
                             <TextField
-                                label="companyName Name"
+                                label="company Name"
                                 name="companyName"
                                 variant="outlined"
                                 fullWidth
