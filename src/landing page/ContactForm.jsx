@@ -54,27 +54,27 @@ const ContactForm = ({ contactFormRef }) => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values, { resetForm }) => {
-            // try {
-            //     const response = await fetch(
-            //         'https://api.coalitionify.com/app-builder/api/v1/auth/user-query',
-            //         {
-            //             method: 'POST',
-            //             headers: {
-            //                 'Content-Type': 'application/json',
-            //             },
-            //             body: JSON.stringify(values),
-            //         }
-            //     )
+            try {
+                const response = await fetch(
+                    'https://api.dev.coalitionify.com/app-builder/api/admin/sheet',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(values),
+                    }
+                )
 
-            //     if (response.ok) {
-            //         resetForm()
-            //         setIsFormSubmitted(true)
-            //     } else {
-            //         console.error('API call failed')
-            //     }
-            // } catch (error) {
-            //     console.error('Error during API call:', error)
-            // }
+                if (response.ok) {
+                    resetForm()
+                    setIsFormSubmitted(true)
+                } else {
+                    console.error('API call failed')
+                }
+            } catch (error) {
+                console.error('Error during API call:', error)
+            }
         },
     })
 
