@@ -16,7 +16,16 @@ const LandingLayout = () => {
     const industriesRef = useRef(null);
     const transformRef = useRef(null);
     const plansRef = useRef(null);
-    
+    const contactFormRef = useRef(null)
+
+    const handleScrollToForm = () => {
+        if (contactFormRef.current) {
+            contactFormRef.current.scrollIntoView({ behavior: 'smooth' })
+            contactFormRef.current.focus()  // Focus the entire form
+        }
+    }
+
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -60,20 +69,20 @@ const LandingLayout = () => {
                             capabilities: capabilitiesRef,
                             industries: industriesRef,
                             transform: transformRef,
-                            plans:plansRef
+                            plans: plansRef
                         };
                         map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
                     }}
                 />
-                <Mainscreen plansRef={plansRef}/>
+                <Mainscreen plansRef={plansRef} contactFormRef={contactFormRef}/>
             </Box>
             <HorizontalBar />
             <div ref={whyRef}><WhyAcoflow /></div>
             <div ref={capabilitiesRef}><Capabilities /></div>
             <div ref={industriesRef}><Industries /></div>
-            <div ref={plansRef}><Plans /></div>
-            
-            <div ref={transformRef}><Transform /></div>
+            {/* <div ref={plansRef}><Plans /></div> */}
+
+            <div ref={transformRef}><Transform handleScrollToForm={handleScrollToForm}/></div>
             <Box sx={{ position: 'relative', overflow: 'hidden' }}>
                 <Box
                     sx={{
@@ -103,17 +112,17 @@ const LandingLayout = () => {
                         zIndex: -1,
                     }}
                 />
-                <Footer 
-                scrollToSection={(section) => {
-                    const map = {
-                        why: whyRef,
-                        capabilities: capabilitiesRef,
-                        industries: industriesRef,
-                        transform: transformRef,
-                        plans:plansRef
-                    };
-                    map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                <Footer
+                    scrollToSection={(section) => {
+                        const map = {
+                            why: whyRef,
+                            capabilities: capabilitiesRef,
+                            industries: industriesRef,
+                            transform: transformRef,
+                            plans: plansRef
+                        };
+                        map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                 />
             </Box>
         </Box>
