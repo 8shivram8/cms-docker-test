@@ -272,7 +272,7 @@ const ContactForm = ({ contactFormRef,highlighted }) => {
                             />
 
                             <TextField
-                                label="company Name"
+                                label="Company Name"
                                 name="companyName"
                                 variant="outlined"
                                 fullWidth
