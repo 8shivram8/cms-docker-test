@@ -10,7 +10,7 @@ import {
   ListItemIcon,
   useTheme,
 } from "@mui/material";
-import logo from "../../assets/acoflow.png";
+import logo from "../../assets/acolead-crm.png";
 import { useNavigate } from "react-router-dom";
 import { useMixpanel } from "../../mixpanel/MixpanelContext";
 const Privacy = () => {
