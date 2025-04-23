@@ -29,7 +29,7 @@ const Mainscreen = ({ plansRef,contactFormRef,highlighted}) => {
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                         <Button variant="contained" size="large" sx={{ bgcolor: '#1677F7', color: 'white' }} target="_blank"
-                            href="https://app.coalitionify.com/signIn">Get Started Free</Button>
+                            href="https://app.crm.stage.coalitionify.com/">Get Started Free</Button>
                         {/* <Button variant="outlined" size="large" sx={{
                             color: 'black',
                             borderColor: '#1677F7',

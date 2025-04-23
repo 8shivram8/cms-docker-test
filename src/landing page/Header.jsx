@@ -75,7 +75,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                         <Grid item md={3} display="flex" justifyContent="flex-end" alignItems="center">
                             <Button
                                 target="_blank"
-                                href="https://app.coalitionify.com/signIn"
+                                href="https://app.crm.stage.coalitionify.com/"
                                 sx={{
                                     textTransform: 'none',
                                     color: 'text.primary',
@@ -89,7 +89,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                             <Button
                                 variant="outlined"
                                 target="_blank"
-                                href="https://app.coalitionify.com/signIn"
+                                href="https://app.crm.stage.coalitionify.com/"
                                 sx={{
                                     bgcolor: '#1677F7',
                                     color: 'white',
@@ -131,8 +131,8 @@ function Header({ scrollToSection, handleScrollToForm }) {
                     <Divider sx={{ my: 2 }} />
                     <Box display="flex" flexDirection="column" gap={1}>
                         <Button
-                            component={RouterLink}
-                            to="/login"
+                            component="a"
+                            href="https://app.crm.stage.coalitionify.com/"
                             onClick={toggleDrawer}
                             sx={{
                                 textTransform: 'none',
@@ -145,7 +145,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                         </Button>
                         <Button
                             component="a"
-                            href="https://app.coalitionify.com/signIn"
+                            href="https://app.crm.stage.coalitionify.com/"
                             target="_blank"
                             onClick={toggleDrawer}
                             sx={{
