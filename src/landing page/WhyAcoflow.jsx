@@ -1,45 +1,45 @@
 import React from 'react';
-import { Box, Grid, Typography, Container } from '@mui/material';
+import { Box, Grid, Typography, Container, useTheme, useMediaQuery } from '@mui/material';
 import AiPowered from './Icons/feature icons/AiPowered';
 import Colaborate from './Icons/feature icons/Colaborate';
 import WorkflowAuto from './Icons/feature icons/WorkflowAuto';
 import RichData from './Icons/feature icons/RichData';
 import Enterprice from './Icons/feature icons/Enterprice';
+import SaveTime from './Icons/feature icons/SaveTime';
+import Automates from './Icons/feature icons/Automates';
+import Affordable from './Icons/feature icons/Affordable';
 
 const WhyAcoflow = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const data = [
         {
             icon: <AiPowered />,
-            title: 'AI-Powered Lead Generation',
-            subtitle: 'Automatically capture high-intent leads using AI-driven algorithms that target the right prospects at the right time.'
+            title: 'Built Exclusively for Brokers',
+            subtitle: 'This platform isn’t for everyone—it’s designed specifically for real estate brokers. Every feature is tailored to help you manage leads, communicate better, and close more deals.'
         },
         {
-            icon: <WorkflowAuto />,
-            title: 'Dynamic Website Builder',
-            subtitle: 'Create personalized, dynamic websites for your business in minutes, optimizing for lead conversion and customer engagement.'
+            icon: <SaveTime />,
+            title: 'Saves Time and Increases Conversions',
+            subtitle: 'Say goodbye to spreadsheets and scattered follow-ups. Our tools streamline your workflow so you can focus on what really matters—turning leads into sales.'
         },
         {
-            icon: <Colaborate />,
-            title: 'Seamless Marketing Automation',
-            subtitle: 'Automate your marketing campaigns across multiple platforms. Reach your prospects with personalized messages via email, social media, and SMS.'
+            icon: <Automates />,
+            title: 'Automates 80% of Your Daily Tasks',
+            subtitle: 'From WhatsApp replies to meeting scheduling, we automate repetitive tasks so you can do more in less time—without hiring extra help.'
         },
         {
-            icon: <RichData />,
-            title: 'Meta Marketing & Lead Tracking',
-            subtitle: 'Optimize your ad campaigns with advanced tracking and analytics. Measure ROI across platforms like Facebook, Instagram, and Google Ads.'
-        },
-        {
-            icon: <Enterprice />,
-            title: 'Robust Analytics & Reporting',
-            subtitle: 'Track, analyze, and improve lead generation performance. Gain insights into customer behavior and fine-tune your strategies effortlessly.'
+            icon: <Affordable />,
+            title: 'Affordable and Easy to Use',
+            subtitle: 'Professional tools don’t have to break the bank. Our pricing is built for individual brokers and small teams, and setup takes just minutes.'
         },
     ];
-    
+
     return (
-        <Box width="100%" mt={10} mb={10}>
+        <Box width="100%" mt={5} mb={5}>
             <Container maxWidth="xl">
                 <Typography
-                    variant="h4"
+                    variant="h5"
                     fontWeight={700}
                     textAlign="center"
                     mb={6}
@@ -49,13 +49,13 @@ const WhyAcoflow = () => {
 
                 <Grid container spacing={3} justifyContent="flex-start">
                     {data.map((item, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={index}>
+                        <Grid item xs={12} sm={6} md={3} key={index}>
                             <Box
                                 className="card-box"
                                 sx={{
                                     border: '0.5px solid #5B5B5D',
                                     borderRadius: 4,
-                                    height: 220,
+                                    height: isMobile ? 250 : 240,
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'flex-start',
@@ -76,7 +76,7 @@ const WhyAcoflow = () => {
                                     },
                                 }}
                             >
-                                <Box>{item.icon}</Box>
+                                <Box sx={{ ml: 1 }}>{item.icon}</Box>
                                 <Typography variant="h6" fontWeight={600} ml={1}>
                                     {item.title}
                                 </Typography>

@@ -18,9 +18,13 @@ function Header({ scrollToSection, handleScrollToForm }) {
     };
 
     const navLinks = [
-        { label: 'Why AcoLead?', to: 'why' },
+        { label: 'Home', to: 'home' },
+        { label: 'About Us', to: 'why' },
         { label: 'Features', to: 'capabilities' },
+        // { label: 'Pricing', to: 'pricing' },
+        // { label: 'Blog', to: 'blog' },
     ];
+
 
     return (
         <Box
@@ -30,19 +34,32 @@ function Header({ scrollToSection, handleScrollToForm }) {
             display="flex"
             justifyContent="center"
             width="100%"
-
-            mt={3}
+            // mt={3}
+            bgcolor={'white'}
+            height={isMobile ? 60 :80}
         >
-            <Grid container alignItems="center" justifyContent="space-between" sx={{ px: 1 }} maxWidth="xl" ml={3} mr={3}>
+            <Grid container alignItems="center" justifyContent="space-between" sx={{ px: isMobile ? 1 : 1 }} maxWidth="xl" ml={isMobile ? 0 : 3} mr={3}>
                 {isMobile ? (
                     <>
                         <Grid item xs={6}>
-                            <Box display="flex" alignItems="center">
-                                <img src={logo} alt="Colitionify Logo" height={40} />
+                            <Box display="flex" alignItems="left">
+                                <img src={logo} alt="Coalitionify Logo" height={25} />
                             </Box>
                         </Grid>
                         <Grid item xs={6} display="flex" justifyContent="flex-end">
-                            <IconButton onClick={toggleDrawer}>
+                            <IconButton
+                                onClick={toggleDrawer}
+                                sx={{
+                                    width: 40,
+                                    height: 40,
+                                    borderRadius: 2,
+                                    bgcolor: '#1677F7',
+                                    color: '#ffffff',
+                                    '&:hover': {
+                                        bgcolor: '#125fcc',
+                                    },
+                                }}
+                            >
                                 <MenuIcon />
                             </IconButton>
                         </Grid>
@@ -60,11 +77,8 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                         color="inherit"
                                         sx={{ textTransform: 'none', fontSize: '0.9rem', minWidth: 'auto' }}
                                         onClick={() => {
-                                            if (label == 'Pricing') {
-                                                handleScrollToForm()
-                                            } else {
+                                            
                                                 scrollToSection(to)
-                                            }
                                         }}
                                     >
                                         {label}
@@ -81,11 +95,13 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                     color: 'text.primary',
                                     fontSize: '0.9rem',
                                     mr: 2,
-                                    minWidth: 'auto'
+                                    minWidth: 'auto',
+                                    border: '1px solid black'
                                 }}
                             >
-                                Login
+                                Book a Demo
                             </Button>
+
                             <Button
                                 variant="outlined"
                                 target="_blank"
@@ -97,10 +113,10 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                     fontSize: '0.9rem',
                                     minWidth: 'auto',
                                     px: 2,
-                                    borderRadius: 2
+                                    // borderRadius: 2
                                 }}
                             >
-                                Sign Up
+                                Free Trial
                             </Button>
                         </Grid>
                     </>
@@ -129,33 +145,32 @@ function Header({ scrollToSection, handleScrollToForm }) {
                         ))}
                     </List>
                     <Divider sx={{ my: 2 }} />
-                    <Box display="flex" flexDirection="column" gap={1}>
+                    <Box display="flex" flexDirection="column" gap={1.5} maxWidth={120}>
                         <Button
-                            component="a"
-                            href="https://app.crm.stage.coalitionify.com/"
-                            onClick={toggleDrawer}
-                            sx={{
-                                textTransform: 'none',
-                                fontSize: '0.9rem',
-                                justifyContent: 'flex-start',
-                                color: 'text.primary'
-                            }}
-                        >
-                            Login
-                        </Button>
-                        <Button
-                            component="a"
-                            href="https://app.crm.stage.coalitionify.com/"
                             target="_blank"
-                            onClick={toggleDrawer}
+                            href="https://app.crm.stage.coalitionify.com/"
                             sx={{
                                 textTransform: 'none',
+                                color: 'text.primary',
                                 fontSize: '0.9rem',
-                                justifyContent: 'flex-start',
-                                color: 'text.primary'
+                                border: '1px solid black'
                             }}
                         >
-                            Sign In
+                            Book a Demo
+                        </Button>
+
+                        <Button
+                            variant="outlined"
+                            target="_blank"
+                            href="https://app.crm.stage.coalitionify.com/"
+                            sx={{
+                                bgcolor: '#1677F7',
+                                color: 'white',
+                                textTransform: 'none',
+                                fontSize: '0.9rem',
+                            }}
+                        >
+                            Free Trial
                         </Button>
                     </Box>
                 </Box>
