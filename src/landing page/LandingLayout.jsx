@@ -20,10 +20,11 @@ const LandingLayout = () => {
     const plansRef = useRef(null);
     const contactFormRef = useRef(null)
     const [highlighted, setHighlighted] = useState(false);
+
     const handleScrollToForm = () => {
         if (contactFormRef.current) {
-            contactFormRef.current.scrollIntoView({ behavior: 'smooth' });
-            contactFormRef.current.focus(); // Focus the entire form
+            // contactFormRef.current.scrollIntoView({ behavior: 'smooth' });
+            // contactFormRef.current.focus(); // Focus the entire form
             setHighlighted(true); // Trigger the highlight
             setTimeout(() => {
                 setHighlighted(false); // Remove highlight after 5 seconds

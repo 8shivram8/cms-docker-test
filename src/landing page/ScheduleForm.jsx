@@ -171,7 +171,7 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                         maxWidth: isMobile ? '100%' : 400,
                         py: 2,
                         ml: !isMobile ? 30 : 0,
-                        border: highlighted ? '3px solid #1677F7' : 'none',
+                        border: highlighted ? '3px solid rgb(0, 3, 8)' : 'none',
                         transition: 'border 0.3s ease',
                         '&:focus': { borderColor: '#1677F7' },
                     }}

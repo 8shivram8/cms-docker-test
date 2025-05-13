@@ -36,7 +36,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
             width="100%"
             // mt={3}
             bgcolor={'white'}
-            height={isMobile ? 60 :80}
+            height={isMobile ? 60 : 80}
         >
             <Grid container alignItems="center" justifyContent="space-between" sx={{ px: isMobile ? 1 : 1 }} maxWidth="xl" ml={isMobile ? 0 : 3} mr={3}>
                 {isMobile ? (
@@ -77,8 +77,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                         color="inherit"
                                         sx={{ textTransform: 'none', fontSize: '0.9rem', minWidth: 'auto' }}
                                         onClick={() => {
-                                            
-                                                scrollToSection(to)
+                                            scrollToSection(to)
                                         }}
                                     >
                                         {label}
@@ -88,8 +87,6 @@ function Header({ scrollToSection, handleScrollToForm }) {
                         </Grid>
                         <Grid item md={3} display="flex" justifyContent="flex-end" alignItems="center">
                             <Button
-                                target="_blank"
-                                href="https://app.crm.stage.coalitionify.com/"
                                 sx={{
                                     textTransform: 'none',
                                     color: 'text.primary',
@@ -98,6 +95,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                     minWidth: 'auto',
                                     border: '1px solid black'
                                 }}
+                                onClick={handleScrollToForm}
                             >
                                 Book a Demo
                             </Button>
@@ -132,11 +130,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                 <ListItemButton
                                     onClick={() => {
                                         toggleDrawer()
-                                        if (label == 'Pricing') {
-                                            handleScrollToForm()
-                                        } else {
-                                            scrollToSection(to)
-                                        }
+                                        scrollToSection(to)
                                     }}
                                 >
                                     <Typography>{label}</Typography>
@@ -147,13 +141,15 @@ function Header({ scrollToSection, handleScrollToForm }) {
                     <Divider sx={{ my: 2 }} />
                     <Box display="flex" flexDirection="column" gap={1.5} maxWidth={120}>
                         <Button
-                            target="_blank"
-                            href="https://app.crm.stage.coalitionify.com/"
                             sx={{
                                 textTransform: 'none',
                                 color: 'text.primary',
                                 fontSize: '0.9rem',
                                 border: '1px solid black'
+                            }}
+                            onClick={() => {
+                                toggleDrawer()
+                                handleScrollToForm()
                             }}
                         >
                             Book a Demo
