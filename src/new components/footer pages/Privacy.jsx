@@ -242,6 +242,20 @@ const Privacy = () => {
           </li>
         </ul>
 
+        <h2>Account and Data Deletion</h2>
+        <ul>
+          <li>
+            You may request deletion of your AcoLead account and all associated data at any time.
+          </li>
+          <li>
+            To request deletion, email us at{" "}
+            <a href="mailto:info@coalitionify.com">info@coalitionify.com</a> from your registered email address or mobile number.
+          </li>
+          <li>
+            Upon verification, we will permanently delete your account, including all documents, business data, leads, and profile information, within 7 business days.
+          </li>
+        </ul>
+
         <h2>6. Legal Basis for Processing</h2>
         <p>
           We process your data based on your consent, our contractual
