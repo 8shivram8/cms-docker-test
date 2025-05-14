@@ -74,7 +74,7 @@ const Mainscreen = ({ plansRef, contactFormRef, highlighted }) => {
                                         size="large"
                                         sx={{ bgcolor: 'white', color: 'black' }}
                                         target="_blank"
-                                        href="https://app.crm.stage.coalitionify.com/"
+                                        href="https://app.crm.acolead.com/"
                                     >
                                         Get Started Free
                                     </Button>
