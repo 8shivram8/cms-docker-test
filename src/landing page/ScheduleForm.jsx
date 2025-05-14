@@ -45,12 +45,11 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
             .matches(
                 /^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 'Email must be a company Name/professional email (no Gmail, Yahoo allowed)'
-            )
-            .required('Email is required'),
+            ),
         phoneNumber: Yup.string()
             .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
             .required('Phone number is required'),
-        companyName: Yup.string().required('Company name is required'),
+        companyName: Yup.string(),
     })
 
     const formik = useFormik({
@@ -69,7 +68,7 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                 }
 
                 const response = await fetch(
-                    'https://api.dev.coalitionify.com/app-builder/api/admin/sheet',
+                    'https://api.dev.coalitionify.com/customer-backend/api/v1/document-template/sheet',
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
