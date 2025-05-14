@@ -41,11 +41,7 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         email: Yup.string()
-            .email('Invalid email address')
-            .matches(
-                /^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                'Email must be a company Name/professional email (no Gmail, Yahoo allowed)'
-            ),
+            .email('Invalid email address'),
         phoneNumber: Yup.string()
             .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
             .required('Phone number is required'),
