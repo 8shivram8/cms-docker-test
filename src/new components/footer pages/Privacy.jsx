@@ -255,6 +255,10 @@ const Privacy = () => {
             Upon verification, we will permanently delete your account, including all documents, business data, leads, and profile information, within 7 business days.
           </li>
         </ul>
+        <h2>Selective Data Deletion</h2>
+        <p>
+        Users can delete certain types of data (e.g., leads, uploaded documents, and property listings) directly from the AcoLead platform interface. These actions permanently remove the data from our system without requiring full account deletion.
+        </p>
 
         <h2>6. Legal Basis for Processing</h2>
         <p>
