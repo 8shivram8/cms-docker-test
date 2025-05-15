@@ -228,6 +228,10 @@ const Privacy = () => {
           </li>
           <li>No data is sold or disclosed to unauthorized third parties.</li>
         </ul>
+        <h2>Call Log Access</h2>
+          <p>
+          AcoLead requests access to call logs to identify incoming calls from potential leads and show relevant information, such as lead name and recent activity, on-screen. This helps real estate agents respond effectively. Call log data is not uploaded or shared externally and is only used on-device for this feature.
+          </p>
 
         <h2>5. Your Rights</h2>
         <ul>
