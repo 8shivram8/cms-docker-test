@@ -16,7 +16,7 @@ const KeyFeatures = () => {
         },
         {
             title: 'WhatsApp Chat Automation',
-            subtitle: 'Instantly reply to customers, send property details, schedule messages, and follow-ups through WhatsApp without manual effort.',
+            subtitle: 'Instantly reply to customers, send product details, schedule messages, and follow-ups through WhatsApp without manual effort.',
         },
         {
             title: 'Meeting Scheduler',

@@ -261,7 +261,7 @@ const Privacy = () => {
         </ul>
         <h2 id="selective-deletion">Selective Data Deletion</h2>
         <p>
-        Users can delete certain types of data (e.g., leads, uploaded documents, and property listings) directly from the AcoLead platform interface. These actions permanently remove the data from our system without requiring full account deletion.
+        Users can delete certain types of data (e.g., leads, uploaded documents, and product listings) directly from the AcoLead platform interface. These actions permanently remove the data from our system without requiring full account deletion.
         </p>
 
         <h2>6. Legal Basis for Processing</h2>
