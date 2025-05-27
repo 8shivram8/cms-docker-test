@@ -62,17 +62,24 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                     ...values,
                     phoneNumber: `${countryCode}${values.phoneNumber}`,
                 }
-
-                const response = await fetch(
-                    'https://api.dev.coalitionify.com/customer-backend/api/v1/document-template/sheet',
-                    {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload),
-                    }
+                const result = await window.AcoLead.submitEnquiry("1f029e66-60d4-6d10-b905-d07c604b542e",
+                    payload.name,
+                    payload.phoneNumber,
+                    payload.requirement,
+                    payload.email,
+                    payload.companyName
                 )
-
-                if (response.ok) {
+               
+                // const response = await fetch(
+                //     'https://api.dev.coalitionify.com/customer-backend/api/v1/document-template/sheet',
+                //     {
+                //         method: 'POST',
+                //         headers: { 'Content-Type': 'application/json' },
+                //         body: JSON.stringify(payload),
+                //     }
+                // )
+                console.log("result:",result);
+                if (!result.code) {
                     resetForm()
                     setIsFormSubmitted(true)
                 } else {
