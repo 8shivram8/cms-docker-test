@@ -86,7 +86,7 @@ const Plans = ({ country }) => {
     const [billingCycle, setBillingCycle] = useState('year');
 
     return (
-        <Box sx={{ width: '100%', py: 8, bgcolor: '#F9FBFF' }}>
+        <Box sx={{ width: '100%', overflowX: 'hidden', py: 8, bgcolor: '#F9FBFF' }}>
             <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 2 }}>
                 We have{' '}
                 <Box component="span" sx={{ color: '#1677F7' }}>
@@ -95,7 +95,6 @@ const Plans = ({ country }) => {
                 for everyone!
             </Typography>
 
-            {/* Toggle Billing Cycle */}
             <Box display="flex" justifyContent="center" mb={5}>
                 <ToggleButtonGroup
                     exclusive
@@ -142,63 +141,42 @@ const Plans = ({ country }) => {
 
             <Grid
                 container
-                spacing={4}
-                justifyContent="center"
+                spacing={2}
                 sx={{
-                    maxWidth: { xs: '100%', md: '1200px' },
-                    mx: { xs: 0, md: 'auto' },
+                    width: '100%',
+                    margin: 0,
+                    px: { xs: 1, sm: 2, md: 3 },
+                    overflowX: 'hidden',
+                    position: 'relative',
                 }}
             >
                 {plans.map((plan, index) => (
-                    <Grid item xs={12} sm={6} key={index} sx={{ position: 'relative' }}>
-                        {index === 0 && !isMobile && (
-                            <Box
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: -40,
-                                    left: -100,
-                                    zIndex: 3,
-                                }}
-                            >
-                                <Plain1 />
-                            </Box>
-                        )}
-                        {index === 1 && !isMobile && (
-                            <Box
-                                sx={{
-                                    position: 'absolute',
-                                    top: -50,
-                                    right: -150,
-                                    zIndex: 3,
-                                }}
-                            >
-                                <Plain2 />
-                            </Box>
-                        )}
-
+                    <Grid
+                        item
+                        key={index}
+                        xs={12}
+                        sm={6}
+                        md={3}
+                        sx={{ display: 'flex', flexDirection: 'column', position: 'relative' }}
+                    >
                         <Card
                             sx={{
                                 borderRadius: 3,
                                 boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                                 bgcolor: '#fff',
                                 height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flexGrow: 1,
                                 position: 'relative',
-                                zIndex: 2,
+                                zIndex: 1, // cards below SVGs
                             }}
                         >
-                            <CardContent sx={{ p: 4 }}>
+                            <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
                                     {plan.planName}
                                 </Typography>
 
-                                {/* <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 3 }}>
-                                    <Typography variant="h4" sx={{ fontWeight: 700 }}>
-                                        {plan.price[billingCycle === 'year' ? 'perYear' : 'perMonth'].rs}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: '#777', ml: 1 }}>
-                                        /{billingCycle}
-                                    </Typography>
-                                </Box> */}
                                 <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 3 }}>
                                     <Typography variant="h4" sx={{ fontWeight: 700 }}>
                                         {
@@ -212,47 +190,85 @@ const Plans = ({ country }) => {
                                     </Typography>
                                 </Box>
 
-
                                 <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>
                                     What's Included
                                 </Typography>
 
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2, mb: 3 }}>
                                     {plan.features.map((feature, i) => (
-                                        <Box key={i} sx={{ display: 'flex', alignItems: 'center' }}>
-                                            <Box sx={{ mr: 1 }}>
+                                        <Box
+                                            key={i}
+                                            sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}
+                                        >
+                                            <Box sx={{ mt: '2px' }}>
                                                 <TickIcon />
                                             </Box>
-                                            <Typography variant="body2" sx={{ color: '#555' }}>
+                                            <Typography variant="body2" sx={{ color: '#555', textAlign: 'justify' }}>
                                                 {feature}
                                             </Typography>
                                         </Box>
                                     ))}
                                 </Box>
 
-                                <Button
-                                    variant="outlined"
-                                    fullWidth
-                                    sx={{
-                                        borderRadius: 3,
-                                        fontWeight: 600,
-                                        textTransform: 'none',
-                                        borderColor: '#1677F7',
-                                        color: '#1677F7',
-                                        '&:hover': {
-                                            borderColor: '#115ecf',
-                                            backgroundColor: '#f0f7ff',
-                                        },
-                                    }}
-                                >
-                                    {plan.buttonLabel}
-                                </Button>
+                                <Box sx={{ mt: 'auto' }}>
+                                    <Button
+                                        variant="outlined"
+                                        fullWidth
+                                        sx={{
+                                            borderRadius: 3,
+                                            fontWeight: 600,
+                                            textTransform: 'none',
+                                            borderColor: '#1677F7',
+                                            color: '#1677F7',
+                                            '&:hover': {
+                                                borderColor: '#115ecf',
+                                                backgroundColor: '#f0f7ff',
+                                            },
+                                        }}
+                                    >
+                                        {plan.buttonLabel}
+                                    </Button>
+                                </Box>
                             </CardContent>
                         </Card>
+
+                        {/* Floating SVGs above cards */}
+                        {index === 0 && (
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    bottom: '100%', // above the card bottom
+                                    left: -190,
+                                    zIndex: 10, // above the card
+                                    pointerEvents: 'none',
+                                    display: { xs: 'none', md: 'block' },
+                                    mb: 1,
+                                }}
+                            >
+                                <Plain1 />
+                            </Box>
+                        )}
+
+                        {index === plans.length - 1 && (
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    top: '-100%', // above the card top
+                                    right: -190,
+                                    zIndex: 10, // above the card
+                                    pointerEvents: 'none',
+                                    display: { xs: 'none', md: 'block' },
+                                    mt: 1,
+                                }}
+                            >
+                                <Plain2 />
+                            </Box>
+                        )}
                     </Grid>
                 ))}
             </Grid>
         </Box>
+
     );
 };
 

@@ -74,8 +74,8 @@ const featuresData = [
         icon: <Icon9 />,
         title: 'WHATSAPP BULK MARKETING WITH 1600+ TEMPLATES',
         subtitle:
-            'Easily onboard your channel partners, vendors, and collaborators—send them automated or on-demand updates, marketing content.',
-    },
+            'Access 1600+ proven templates to launch high-impact WhatsApp campaigns at scale and drive better partner engagement.',
+    }    
 ];
 
 const KeyFeatures = () => {
@@ -170,7 +170,8 @@ const KeyFeatures = () => {
                                             borderRadius: 3,
                                             bgcolor: '#fff',
                                             boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                                            height: '100%',
+                                            // height: '100%',
+                                            height:isMobile ? 260 : 220,
                                         }}
                                     >
                                         <CardContent>

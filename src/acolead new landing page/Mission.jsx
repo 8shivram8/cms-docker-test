@@ -42,8 +42,8 @@ const missionPoints = [
     icon: <CommanSvg />,
   },
   {
-    text: 'Nationwide Empowerment',
-    subtext: 'Offer Pan-India reach, multilingual support, and tech for all regions and sizes.',
+    text: 'Widespread Empowerment',
+    subtext: 'Offer broad regional reach, multilingual support, and scalable technology for businesses of all sizes and locations.',
     icon: <EmpowermentIcon />,
   },
   {

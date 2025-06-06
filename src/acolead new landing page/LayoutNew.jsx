@@ -83,8 +83,8 @@ const LayoutNew = () => {
             <Box ref={homeRef}>
                 <HomePage />
             </Box>
-            <Box ref={aboutRef}>
-                <ImgSection />
+            <Box>
+                <ImgSection aboutRef={aboutRef}/>
             </Box>
             <Mission />
             <Box ref={featuesRef}>

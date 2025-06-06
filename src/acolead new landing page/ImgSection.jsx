@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import yourImage from './images/centerimg.png';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-const ImgSection = () => {
+const ImgSection = ({aboutRef}) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [ref, inView] = useInView({ threshold: 0.2 });
@@ -36,7 +36,7 @@ const ImgSection = () => {
                 initial="hidden"
                 animate={inView ? 'visible' : 'hidden'}
             >
-                <Box sx={{ textAlign: 'center', px: 2, mt: 1 }}>
+                <Box sx={{ textAlign: 'center', px: 2, mt: 1 }} ref={aboutRef}>
                     <Typography
                         variant="h5"
                         sx={{ fontWeight: 600, fontSize: isMobile ? '1rem' : '1.8rem', color: '#000' }}

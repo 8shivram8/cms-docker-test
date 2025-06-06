@@ -102,7 +102,7 @@ const HomePage = () => {
                                 mx: isMobile ? 'auto' : 0,
                             }}
                         >
-                            Avalanche 360 is a game changer. Period. You'll get such an unfair competitive advantage, you'll wonder how you ever ran your sales and marketing team without it.
+                            A powerful lead management and sales automation platform designed to help you capture, nurture, and convert leads with ease—so you can focus on what matters most: growth.
                         </Typography>
                     </motion.div>
 
