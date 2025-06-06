@@ -19,12 +19,12 @@ const HomePage = () => {
     const slideInVariant = {
         hidden: { opacity: 0, y: -60 },
         visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 2, ease: 'easeOut' },
+            opacity: 1,
+            y: 0,
+            transition: { duration: 2, ease: 'easeOut' },
         },
-      };
-      
+    };
+
     return (
         <Box
             sx={{
@@ -109,6 +109,8 @@ const HomePage = () => {
                     <Button
                         variant="contained"
                         endIcon={<ArrowForwardIcon />}
+                        target="_blank"
+                        href="https://app.crm.acolead.com/"
                         sx={{
                             alignSelf: isMobile ? 'center' : 'flex-start',
                             bgcolor: '#1677F7',
