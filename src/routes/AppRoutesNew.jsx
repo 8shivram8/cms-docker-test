@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import LayoutNew from '../new components/LayoutNew';
 import Routingflexibility from '../new components/feature components/Routingflexibility';
 
 import DocumentFlexibility from '../new components/feature components/DocumentFlexibility';
@@ -27,7 +26,9 @@ import MainLayout from '../parent components/MainLayout';
 import AcoSign from '../parent components/AcoSign';
 import GoogleDrive from '../new components/Integration pages/GoogleDrive';
 import Onedrive from '../new components/Integration pages/Onedrive';
-import LandingLayout from '../landing page/LandingLayout';
+import LayoutNew from '../acolead new landing page/LayoutNew';
+
+
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -47,7 +48,7 @@ const AppRoutesNew = () => {
                     <Routes location={location}>
                         {/* <Route path="" element={<MainLayout />} /> */}
                         {/* <Route path="" element={<LayoutNew />} /> */}
-                        <Route path="" element={< LandingLayout />} />
+                        <Route path="" element={< LayoutNew />} />
                         <Route path="/acoSign" element={<AcoSign />} />
                         <Route path="/services" element={< AcoSign/>} />
                         <Route path="/privacy" element={<Privacy />} />                      
