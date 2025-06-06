@@ -15,8 +15,9 @@ import Insta from './icons/Insta';
 import FaceBook from './icons/FaceBook';
 import Linkdin from '../landing page/Icons/social media/Linkdin';
 import Github from '../landing page/Icons/social media/Github';
-
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 const Footer = ({ scrollToSection, handleScrollToForm }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -50,17 +51,24 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
 
 
                     {/* Section 2 - Features */}
-                    <Grid item xs={6} md={2}>
+                    {/* <Grid item xs={6} md={4}>
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                             Features
                         </Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
-                            <Link color="inherit" underline="none">Profile</Link>
-                            <Link color="inherit" underline="none">Integrations</Link>
-                            <Link color="inherit" underline="none">Agenda</Link>
-                            <Link color="inherit" underline="none">Your Services</Link>
+                            <Link color="inherit" underline="none">Lead Engagement via META, Whatsapp, and Dialer</Link>
+                            <Link color="inherit" underline="none">Leak-Proof Lead Guarantee</Link>
+                            <Link color="inherit" underline="none">Auto Staff Routing</Link>
+                            <Link color="inherit" underline="none">AI powered Lead Progression</Link>
+                            <Link color="inherit" underline="none">META Campaign analysis and staff performance</Link>
+                            <Link color="inherit" underline="none">Whatsapp Bulk Marketing</Link>
+                            <Link color="inherit" underline="none">Partners Management and Benefit</Link>
+                            <Link color="inherit" underline="none">Mobile application for staff</Link>
+                            <Link color="inherit" underline="none">Caller Id</Link>
+                            <Link color="inherit" underline="none">Website builder and subdomain</Link>
                         </Box>
-                    </Grid>
+
+                    </Grid> */}
 
                     {/* Section 3 - Actions */}
                     <Grid item xs={6} md={2}>
@@ -69,7 +77,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                         </Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
                             <Link onClick={handleScrollToForm} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Book a Demo</Link>
-                            <Link underline="hover" href="https://app.crm.acolead.com/" color="inherit" target="_blank" sx={{ cursor: 'pointer' }}>Login</Link>
+                            <Link underline="hover" href="https://app.crm.acolead.com/" color="inherit" target="_blank" sx={{ cursor: 'pointer' }}>Sign Up</Link>
 
 
                         </Box>
@@ -82,12 +90,12 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                         </Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
                             <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
-                            <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Subscription</Link>
+                            {/* <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Subscription</Link> */}
                         </Box>
                     </Grid>
 
                     {/* Section 5 - Social Media */}
-                    <Grid item xs={6} md={2}>
+                    <Grid item xs={6} md={4}>
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                             Social Media
                         </Typography>
@@ -120,11 +128,38 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://www.npmjs.com/package/coalitionify-sdk"
+                                href="https://github.com/Coalitionify/"
                                 target="_blank"
                             >
                                 <GitHubIcon />
                             </IconButton>
+                            <IconButton
+                                sx={{ color: 'black' }}
+                                component="a"
+                                href="https://www.facebook.com/profile.php?id=61576111686686"
+                                target="_blank"
+                            >
+                                <FacebookIcon />
+                            </IconButton>
+                            <IconButton
+                                sx={{ color: 'black' }}
+                                component="a"
+                                href="https://www.instagram.com/coalitionify_acolead/"
+                                target="_blank"
+                            >
+                                <InstagramIcon />
+                            </IconButton>
+                            <IconButton
+                                sx={{ color: 'black' }}
+                                component="a"
+                                href="https://api.whatsapp.com/send?phone=919158661188&text=I%20want%20to%20know%20more%20about%20your%20CRM%20?"
+                                target="_blank"
+                            >
+                                <WhatsAppIcon />
+                            </IconButton>
+                            
+
+
                         </Box>
                     </Grid>
 

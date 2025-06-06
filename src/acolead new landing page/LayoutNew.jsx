@@ -20,14 +20,34 @@ const LayoutNew = () => {
     const featuesRef = useRef(null);
     const contactFormRef = useRef(null)
     const [highlighted, setHighlighted] = useState(false);
+    const [country, setCountry] = useState('IN');
+    const scrollRef = useRef(null);     // for scrolling
+    const formRef = useRef(null);
+    // const handleScrollToForm = () => {
+    //     if (contactFormRef.current) {
+    //         const topOffset = contactFormRef.current.getBoundingClientRect().top + window.pageYOffset - 80; // adjust offset as per header height
+    //         window.scrollTo({
+    //             top: topOffset,
+    //             behavior: 'smooth',
+    //         });
+    //     }
+    // };
 
     const handleScrollToForm = () => {
-        if (contactFormRef.current) {
-            contactFormRef.current.scrollIntoView({ behavior: 'smooth' });
-            // contactFormRef.current.focus(); 
+        if (scrollRef.current) {
+            const topOffset = scrollRef.current.getBoundingClientRect().top + window.pageYOffset - 80;
+
+            window.scrollTo({
+                top: topOffset,
+                behavior: 'smooth',
+            });
+
+            // Delay focusing to allow smooth scroll to complete
+            setTimeout(() => {
+                formRef.current?.focusFirstField?.();
+            }, 600);
         }
     };
-
 
 
     useEffect(() => {
@@ -45,9 +65,20 @@ const LayoutNew = () => {
                         feature: featuesRef,
                         plans: plansRef,
                     };
-                    map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
+
+                    const element = map[section]?.current;
+                    if (element) {
+                        const topOffset = element.getBoundingClientRect().top + window.pageYOffset - 80; // adjust 80px as per your header height
+                        window.scrollTo({
+                            top: topOffset,
+                            behavior: 'smooth',
+                        });
+                    }
                 }}
+
                 handleScrollToForm={handleScrollToForm}
+                country={country}
+                setCountry={setCountry}
             />
             <Box ref={homeRef}>
                 <HomePage />
@@ -61,21 +92,29 @@ const LayoutNew = () => {
             </Box>
             <HorizontalBar />
             <Box ref={plansRef}>
-                <Plans />
+                <Plans country={country} />
             </Box>
-            <Box ref={contactFormRef}>
-                <BookDemo />
+            <Box ref={scrollRef}>
+                <BookDemo ref={formRef} />
             </Box>
             <Footer handleScrollToForm={handleScrollToForm}
-            scrollToSection={(section) => {
-                const map = {
-                    home: homeRef,
-                    about: aboutRef,
-                    feature: featuesRef,
-                    plans: plansRef,
-                };
-                map[section]?.current?.scrollIntoView({ behavior: 'smooth' });
-            }}
+                scrollToSection={(section) => {
+                    const map = {
+                        home: homeRef,
+                        about: aboutRef,
+                        feature: featuesRef,
+                        plans: plansRef,
+                    };
+
+                    const element = map[section]?.current;
+                    if (element) {
+                        const topOffset = element.getBoundingClientRect().top + window.pageYOffset - 80; // adjust 80px as per your header height
+                        window.scrollTo({
+                            top: topOffset,
+                            behavior: 'smooth',
+                        });
+                    }
+                }}
             />
 
         </Box>

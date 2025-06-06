@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useImperativeHandle, useRef, useState } from 'react'
 import {
     Box,
     TextField,
@@ -18,11 +18,22 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import DemoIcon from './icons/DemoIcon'
 
-const Contact = () => {
+const Contact = ({ref}) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+
+    const firstFieldRef = useRef();
+
+    useImperativeHandle(ref, () => ({
+        focusFirstField: () => {
+          // Try focusing twice to ensure cursor shows up
+          setTimeout(() => {
+            firstFieldRef.current?.focus();
+          }, 0);
+        }
+      }));
     const [countryCode, setCountryCode] = useState('+91')
     const countryOptions = [
         { code: '+91', label: '🇮🇳 +91' },
@@ -193,84 +204,86 @@ const Contact = () => {
                             }}
                         >
                             {[
-                                { name: 'name', label: 'Name', placeholder: 'Enter your name', required: true },
-                                { name: 'email', label: 'Email', placeholder: 'Enter your email' },
-                                { name: 'phoneNumber', label: 'Phone Number', placeholder: 'Enter phone number', required: true },
-                                { name: 'companyName', label: 'Company Name', placeholder: 'Enter your company name' },
-                            ].map(({ name, label, placeholder, required }) => (
-                                <Box key={name} sx={{ display: 'flex', flexDirection: 'column' }}>
-                                    <Typography sx={{ color: 'white', fontWeight: 600, mb: 0.5 }}>{label}</Typography>
+  { name: 'name', label: 'Name', placeholder: 'Enter your name', required: true },
+  { name: 'email', label: 'Email', placeholder: 'Enter your email' },
+  { name: 'phoneNumber', label: 'Phone Number', placeholder: 'Enter phone number', required: true },
+  { name: 'companyName', label: 'Company Name', placeholder: 'Enter your company name' },
+].map(({ name, label, placeholder, required }) => (
+  <Box key={name} sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Typography sx={{ color: 'white', fontWeight: 600, mb: 0.5 }}>{label}</Typography>
 
-                                    {name === 'phoneNumber' ? (
-                                        <TextField
-                                            name={name}
-                                            placeholder={placeholder}
-                                            variant="outlined"
-                                            fullWidth
-                                            value={formik.values[name]}
-                                            onChange={formik.handleChange}
-                                            error={formik.touched[name] && Boolean(formik.errors[name])}
-                                            sx={fieldStyle}
-                                            InputProps={{
-                                                startAdornment: (
-                                                    <InputAdornment position="start">
-                                                        <Select
-                                                            value={countryCode}
-                                                            onChange={(e) => setCountryCode(e.target.value)}
-                                                            sx={{ minWidth: 70, fontSize: '1rem', height: '2.5rem' }}
-                                                            variant="standard"
-                                                            disableUnderline
-                                                        >
-                                                            {countryOptions.map((option) => (
-                                                                <MenuItem key={option.code} value={option.code}>
-                                                                    {option.label}
-                                                                </MenuItem>
-                                                            ))}
-                                                        </Select>
-                                                    </InputAdornment>
-                                                ),
-                                                endAdornment:
-                                                    formik.touched[name] && formik.errors[name] && (
-                                                        <Tooltip
-                                                            title={formik.errors[name]}
-                                                            open={isMobile ? true : undefined}
-                                                            placement="top"
-                                                        >
-                                                            <InputAdornment position="end">
-                                                                <WarningIcon sx={{ color: theme.palette.warning.main }} />
-                                                            </InputAdornment>
-                                                        </Tooltip>
-                                                    ),
-                                            }}
-                                        />
-                                    ) : (
-                                        <TextField
-                                            name={name}
-                                            placeholder={placeholder}
-                                            variant="outlined"
-                                            fullWidth
-                                            value={formik.values[name]}
-                                            onChange={formik.handleChange}
-                                            error={formik.touched[name] && Boolean(formik.errors[name])}
-                                            sx={fieldStyle}
-                                            InputProps={{
-                                                endAdornment:
-                                                    formik.touched[name] && formik.errors[name] && (
-                                                        <Tooltip
-                                                            title={formik.errors[name]}
-                                                            open={isMobile ? true : undefined}
-                                                            placement="top"
-                                                        >
-                                                            <InputAdornment position="end">
-                                                                <WarningIcon sx={{ color: theme.palette.warning.main }} />
-                                                            </InputAdornment>
-                                                        </Tooltip>
-                                                    ),
-                                            }}
-                                        />
-                                    )}
-                                </Box>
-                            ))}
+    {name === 'phoneNumber' ? (
+      <TextField
+        name={name}
+        placeholder={placeholder}
+        variant="outlined"
+        fullWidth
+        value={formik.values[name]}
+        onChange={formik.handleChange}
+        error={formik.touched[name] && Boolean(formik.errors[name])}
+        sx={fieldStyle}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Select
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+                sx={{ minWidth: 70, fontSize: '1rem', height: '2.5rem' }}
+                variant="standard"
+                disableUnderline
+              >
+                {countryOptions.map((option) => (
+                  <MenuItem key={option.code} value={option.code}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </InputAdornment>
+          ),
+          endAdornment:
+            formik.touched[name] && formik.errors[name] && (
+              <Tooltip
+                title={formik.errors[name]}
+                open={isMobile ? true : undefined}
+                placement="top"
+              >
+                <InputAdornment position="end">
+                  <WarningIcon sx={{ color: theme.palette.warning.main }} />
+                </InputAdornment>
+              </Tooltip>
+            ),
+        }}
+      />
+    ) : (
+      <TextField
+        name={name}
+        placeholder={placeholder}
+        variant="outlined"
+        fullWidth
+        inputRef={name === 'name' ? firstFieldRef : undefined} // ✅ only for first field
+        value={formik.values[name]}
+        onChange={formik.handleChange}
+        error={formik.touched[name] && Boolean(formik.errors[name])}
+        sx={fieldStyle}
+        InputProps={{
+          endAdornment:
+            formik.touched[name] && formik.errors[name] && (
+              <Tooltip
+                title={formik.errors[name]}
+                open={isMobile ? true : undefined}
+                placement="top"
+              >
+                <InputAdornment position="end">
+                  <WarningIcon sx={{ color: theme.palette.warning.main }} />
+                </InputAdornment>
+              </Tooltip>
+            ),
+        }}
+      />
+    )}
+  </Box>
+))}
+
 
                             <Box sx={{ mt: 3 }}>
                                 <Button

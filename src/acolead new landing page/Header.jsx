@@ -1,6 +1,8 @@
 import {
     Box, Grid, Stack, Button, IconButton, Drawer,
-    useMediaQuery, Typography, List, ListItem, ListItemButton, Divider
+    useMediaQuery, Typography, List, ListItem, ListItemButton, Divider,
+    MenuItem,
+    Select
 } from '@mui/material';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -9,7 +11,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import logo from '../assets/acolead-crm.png';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-function Header({ scrollToSection, handleScrollToForm }) {
+function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -17,7 +19,10 @@ function Header({ scrollToSection, handleScrollToForm }) {
     const toggleDrawer = () => {
         setDrawerOpen(!drawerOpen);
     };
-
+    const countries = [
+        { code: 'IN', label: 'India', icon: '🇮🇳' },
+        { code: 'US', label: 'United States', icon: '🇺🇸' },
+    ];
     const navLinks = [
         { label: 'Home', to: 'home' },
         { label: 'About Us', to: 'about' },
@@ -45,7 +50,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                         <Grid item xs={6}>
                             <Box display="flex" alignItems="left">
                                 <img src={logo} alt="Coalitionify Logo" height={25} />
-                            </Box>  
+                            </Box>
                         </Grid>
                         <Grid item xs={6} display="flex" justifyContent="flex-end">
                             <IconButton
@@ -67,7 +72,7 @@ function Header({ scrollToSection, handleScrollToForm }) {
                     </>
                 ) : (
                     <>
-                        <Grid item md={3} display="flex" alignItems="center">
+                        <Grid item md={2} display="flex" alignItems="center">
                             <img src={logo} alt="Colitionify Logo" height={40} />
                         </Grid>
                         <Grid item md={6} display="flex" justifyContent="center">
@@ -86,7 +91,11 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                 ))}
                             </Stack>
                         </Grid>
-                        <Grid item md={3} display="flex" justifyContent="flex-end" alignItems="center">
+                        <Grid item md={4} display="flex" justifyContent="flex-end" alignItems="center">
+
+
+
+                            {/* Book a Demo Button */}
                             <Button
                                 sx={{
                                     textTransform: 'none',
@@ -94,13 +103,14 @@ function Header({ scrollToSection, handleScrollToForm }) {
                                     fontSize: '0.9rem',
                                     mr: 2,
                                     minWidth: 'auto',
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
                                 }}
                                 onClick={handleScrollToForm}
                             >
                                 Book a Demo
                             </Button>
 
+                            {/* Free Trial Button */}
                             <Button
                                 variant="outlined"
                                 target="_blank"
@@ -118,6 +128,42 @@ function Header({ scrollToSection, handleScrollToForm }) {
                             >
                                 Free Trial
                             </Button>
+
+                            <Select
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                variant="outlined"
+                                size="small"
+                                sx={{
+                                    ml: 2,
+                                    fontWeight: 'bold',
+                                    bgcolor: '#fff',
+                                    borderRadius: 2,
+                                    minWidth: 100,
+                                    px: 1.5,
+                                }}
+                                displayEmpty
+                                renderValue={(selected) => {
+                                    const selectedCountry = countries.find((c) => c.code === selected);
+                                    return (
+                                        <Box display="flex" alignItems="center">
+                                            <Typography sx={{ mr: 1 }}>{selectedCountry?.icon}</Typography>
+                                            <Typography>{selectedCountry?.code}</Typography>
+                                        </Box>
+                                    );
+                                }}
+                            >
+                                {countries.map((c) => (
+                                    <MenuItem key={c.code} value={c.code}>
+                                        <Box display="flex" alignItems="center">
+                                            <Typography sx={{ mr: 1 }}>{c.icon}</Typography>
+                                            {c.label}
+                                        </Box>
+                                    </MenuItem>
+                                ))}
+                            </Select>
+
+
                         </Grid>
                     </>
                 )}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import { Grid, Box, Typography, useMediaQuery } from '@mui/material';
 import { useTheme, keyframes } from '@mui/material/styles';
 import Contact from './Contact';
@@ -14,9 +14,11 @@ const slideInLeft = keyframes`
   }
 `;
 
-const BookDemo = () => {
+const BookDemo = ({ref}) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+   
+    
 
     return (
         <Box
@@ -64,7 +66,7 @@ const BookDemo = () => {
                 </Grid>
 
                 <Grid item xs={12} md={6}>
-                    <Contact />
+                    <Contact ref={ref}/>
                 </Grid>
             </Grid>
         </Box>
