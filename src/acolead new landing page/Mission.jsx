@@ -70,10 +70,10 @@ const Mission = () => {
           {/* Left Section */}
           <Grid item xs={12} md={6}>
             <Box sx={{ ml: { xs: 0, sm: 2 } }} p={isMobile ? 2 : 0}>
-              <Typography variant={isMobile ? "h6" : "h5"} sx={{ fontWeight: 600, mb: 4 }}>
+              <Typography variant={isMobile ? "h6" : "h4"} sx={{ fontWeight: 700, mb: 4 }}>
                 Mission
               </Typography>
-
+            
               {/* <Stack spacing={3}>
                 {missionPoints.map(({ text, subtext, icon }, index) => (
                   <Box

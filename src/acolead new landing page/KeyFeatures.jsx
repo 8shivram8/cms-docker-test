@@ -50,7 +50,7 @@ const featuresData = [
         icon: <Icon5 />,
         title: 'COLLECT LEADS FROM ALL SOURCES',
         subtitle:
-            'Seamlessly capture leads from your Website, Meta (Facebook, Instagram), WhatsApp, CRM forms, and third-party portals like 99acres, Housing, etc.',
+            'Effortlessly capture leads from your website, social platforms, messaging apps, CRM forms, and third-party portals.',
     },
     {
         icon: <Icon6 />,
@@ -66,9 +66,9 @@ const featuresData = [
     },
     {
         icon: <Icon8 />,
-        title: 'PARTNER MANAGEMENT & COMMUNICATION',
+        title: 'Unified Partner Communication',
         subtitle:
-            'Easily onboard your channel partners, vendors, and collaborators—send them automated or on-demand updates, marketing content.',
+            'Streamline onboarding and keep your network informed with timely updates and marketing materials—automated or on demand.',
     },
     {
         icon: <Icon9 />,
