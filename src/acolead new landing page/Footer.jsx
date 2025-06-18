@@ -7,6 +7,7 @@ import {
     Link,
     useMediaQuery,
     useTheme,
+    Divider,
 } from '@mui/material';
 import logo from '../assets/acolead-crm.png';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -50,25 +51,6 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                     </Grid>
 
 
-                    {/* Section 2 - Features */}
-                    {/* <Grid item xs={6} md={4}>
-                        <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                            Features
-                        </Typography>
-                        <Box display="flex" flexDirection="column" gap={1}>
-                            <Link color="inherit" underline="none">Lead Engagement via META, Whatsapp, and Dialer</Link>
-                            <Link color="inherit" underline="none">Leak-Proof Lead Guarantee</Link>
-                            <Link color="inherit" underline="none">Auto Staff Routing</Link>
-                            <Link color="inherit" underline="none">AI powered Lead Progression</Link>
-                            <Link color="inherit" underline="none">META Campaign analysis and staff performance</Link>
-                            <Link color="inherit" underline="none">Whatsapp Bulk Marketing</Link>
-                            <Link color="inherit" underline="none">Partners Management and Benefit</Link>
-                            <Link color="inherit" underline="none">Mobile application for staff</Link>
-                            <Link color="inherit" underline="none">Caller Id</Link>
-                            <Link color="inherit" underline="none">Website builder and subdomain</Link>
-                        </Box>
-
-                    </Grid> */}
 
                     {/* Section 3 - Actions */}
                     <Grid item xs={6} md={2}>
@@ -100,23 +82,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             Social Media
                         </Typography>
                         <Box display="flex" flexDirection="row" gap={1}>
-                            {/* <Box
-                                component="a"
-                                href="#"
-                                target="_blank"
-                                sx={{ color: 'black', width: 'fit-content', display: 'inline-flex' }}
-                            >
-                                <Insta />
-                            </Box>
 
-                            <Box
-                                component="a"
-                                href="#"
-                                target="_blank"
-                                sx={{ color: 'black', width: 'fit-content', display: 'inline-flex' }}
-                            >
-                                <FaceBook />
-                            </Box> */}
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
@@ -157,13 +123,24 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             >
                                 <WhatsAppIcon />
                             </IconButton>
-                            
+
 
 
                         </Box>
                     </Grid>
 
                 </Grid>
+                <Divider sx={{ my: 2, mx: 2 }} />
+
+                {/* Bottom Right Links */}
+                <Box display="flex" justifyContent="flex-end" gap={3} px={2}>
+                    <Link href="/privacy-policy" underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>
+                        Privacy Policy
+                    </Link>
+                    <Link href="/terms-of-use" underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>
+                        Terms of Use
+                    </Link>
+                </Box>
             </Container>
         </Box>
     );

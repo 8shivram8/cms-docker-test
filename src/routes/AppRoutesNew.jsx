@@ -27,6 +27,8 @@ import AcoSign from '../parent components/AcoSign';
 import GoogleDrive from '../new components/Integration pages/GoogleDrive';
 import Onedrive from '../new components/Integration pages/Onedrive';
 import LayoutNew from '../acolead new landing page/LayoutNew';
+import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';
+import TermsofUse from '../acolead new landing page/footer pages/TermsofUse';
 
 
 
@@ -50,9 +52,13 @@ const AppRoutesNew = () => {
                         {/* <Route path="" element={<LayoutNew />} /> */}
                         <Route path="" element={< LayoutNew />} />
                         <Route path="/acoSign" element={<AcoSign />} />
-                        <Route path="/services" element={< AcoSign/>} />
-                        <Route path="/privacy" element={<Privacy />} />                      
+                        <Route path="/services" element={< AcoSign />} />
+                        <Route path="/privacy" element={<Privacy />} />
                         <Route path="/terms-conditions" element={<Terms />} />
+
+                        <Route path="/privacy-policy" element={<PrivacyAcolead />} />
+                        <Route path="/terms-of-use" element={<TermsofUse />} />
+
                         <Route path="/refund-policy" element={<Refund />} />
                         <Route path="/retail-real-estate" element={<RealEstate />} />
                         <Route path="/manufacturing-supply-chain" element={<SupplyChain />} />
@@ -68,7 +74,7 @@ const AppRoutesNew = () => {
                         <Route path="/stripe-integration" element={<Stripe />} />
                         <Route path="/googleDrive-integration" element={<GoogleDrive />} />
                         <Route path="/onedrive-integration" element={<Onedrive />} />
-                        
+
 
                     </Routes>
                 </CSSTransition>
