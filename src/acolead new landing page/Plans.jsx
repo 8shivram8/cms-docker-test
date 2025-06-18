@@ -210,7 +210,7 @@ const Plans = ({ country }) => {
                                     ))}
                                 </Box>
 
-                                <Box sx={{ mt: 'auto' }}>
+                                {/* <Box sx={{ mt: 'auto' }}>
                                     <Button
                                         variant="outlined"
                                         fullWidth
@@ -228,7 +228,7 @@ const Plans = ({ country }) => {
                                     >
                                         {plan.buttonLabel}
                                     </Button>
-                                </Box>
+                                </Box> */}
                             </CardContent>
                         </Card>
 

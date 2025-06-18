@@ -60,7 +60,7 @@ const HomePage = () => {
                     }}
                     ref={ref}
                 >
-                    <motion.div
+                    {/* <motion.div
                         variants={slideInVariant}
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
@@ -83,7 +83,7 @@ const HomePage = () => {
                             </Box>
                             , Grow Your Business Faster.
                         </Typography>
-                    </motion.div>
+                    </motion.div> */}
 
                     <motion.div
                         variants={slideInVariant}
