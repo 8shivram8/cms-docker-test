@@ -239,7 +239,7 @@ const TermsofUse = () => {
                         </Typography>
 
                         <Typography variant="body2" paragraph>
-                            Refunds, if approved, will be processed within 10 business days to the original payment method.
+                            Refunds, if approved, will be credited within 10 business days to the original payment method.
                         </Typography>
                     </Box>
                 </Box>
