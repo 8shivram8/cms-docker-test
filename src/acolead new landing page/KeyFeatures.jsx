@@ -46,12 +46,12 @@ const featuresData = [
         subtitle:
             'Engage instantly on WhatsApp, Facebook, Instagram, and calls—personalized and timely, without manual effort.',
     },
-    // {
-    //     icon: <Icon5 />,
-    //     title: 'COLLECT LEADS FROM ALL SOURCES',
-    //     subtitle:
-    //         'Effortlessly capture leads from your website, social platforms, messaging apps, CRM forms, and third-party portals.',
-    // },
+    {
+        icon: <Icon5 />,
+        title: 'COLLECT LEADS FROM ALL SOURCES',
+        subtitle:
+            'Effortlessly capture leads from your website, social platforms, messaging apps, CRM forms, and third-party portals.',
+    },
     {
         icon: <Icon6 />,
         title: 'MOBILE APP FOR ANDROID & IOS',
@@ -70,12 +70,12 @@ const featuresData = [
         subtitle:
             'Streamline onboarding and keep your network informed with timely updates and marketing materials—automated or on demand.',
     },
-    // {
-    //     icon: <Icon9 />,
-    //     title: 'WHATSAPP BULK MARKETING WITH 1600+ TEMPLATES',
-    //     subtitle:
-    //         'Access 1600+ proven templates to launch high-impact WhatsApp campaigns at scale and drive better partner engagement.',
-    // }    
+    {
+        icon: <Icon9 />,
+        title: 'WHATSAPP BULK MARKETING WITH 1600+ TEMPLATES',
+        subtitle:
+            'Access 1600+ proven templates to launch high-impact WhatsApp campaigns at scale and drive better partner engagement.',
+    }    
 ];
 
 const KeyFeatures = () => {

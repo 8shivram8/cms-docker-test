@@ -19,12 +19,16 @@ import Github from '../landing page/Icons/social media/Github';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { useNavigate } from 'react-router-dom';
 const Footer = ({ scrollToSection, handleScrollToForm }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
+    const navigate = useNavigate();
     const handleLinkClick = (url) => {
         window.open(url, '_blank');
+    };
+    const handleNavigate = () => {
+        navigate("/");
     };
 
     return (
@@ -42,7 +46,9 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                                     width: 230,
                                     height: 'auto',
                                     mb: 2,
+                                    cursor:'pointer'
                                 }}
+                                onClick={handleNavigate}
                             />
                             <Typography variant="body2" sx={{ mt: 0, ml: 2 }}>
                                 &copy; {new Date().getFullYear()} , All Rights Reserved by AcoLead.

@@ -7,7 +7,7 @@ import {
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/acolead-crm.png';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -15,7 +15,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const navigate = useNavigate();
     const toggleDrawer = () => {
         setDrawerOpen(!drawerOpen);
     };
@@ -30,6 +30,9 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
         { label: 'Pricing', to: 'plans' },
 
     ];
+    const handleNavigate = () => {
+        navigate("/");
+    };
 
 
     return (
@@ -49,7 +52,10 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                     <>
                         <Grid item xs={6}>
                             <Box display="flex" alignItems="left">
-                                <img src={logo} alt="Coalitionify Logo" height={25} />
+                                <img src={logo} alt="Coalitionify Logo" height={25}
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={handleNavigate}
+                                />
                             </Box>
                         </Grid>
                         <Grid item xs={6} display="flex" justifyContent="flex-end">
@@ -73,7 +79,10 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                 ) : (
                     <>
                         <Grid item md={2} display="flex" alignItems="center">
-                            <img src={logo} alt="Colitionify Logo" height={40} />
+                            <img src={logo} alt="Colitionify Logo" height={40}
+                                style={{ cursor: 'pointer' }}
+                                onClick={handleNavigate}
+                            />
                         </Grid>
                         <Grid item md={6} display="flex" justifyContent="center">
                             <Stack direction="row" gap={3}>
@@ -171,7 +180,9 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
 
             <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
                 <Box sx={{ width: 250, p: 2 }}>
-                    <img src={logo} alt="Colitionify Logo" height={40} />
+                    <img src={logo} alt="Colitionify Logo" height={40} onClick={handleNavigate}
+                        style={{ cursor: 'pointer' }}
+                    />
                     <List sx={{ mt: 2 }}>
                         {navLinks.map(({ label, to }) => (
                             <ListItem key={label} disablePadding>
