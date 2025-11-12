@@ -27,7 +27,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
         { label: 'Home', to: 'home' },
         { label: 'About Us', to: 'about' },
         { label: 'Features', to: 'feature' },
-        { label: 'Pricing', to: 'plans' },
+        // { label: 'Pricing', to: 'plans' },
 
     ];
     const handleNavigate = () => {

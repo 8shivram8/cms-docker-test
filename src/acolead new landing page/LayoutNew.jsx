@@ -91,9 +91,9 @@ const LayoutNew = () => {
                 <KeyFeatures />
             </Box>
             <HorizontalBar />
-            <Box ref={plansRef}>
+            {/* <Box ref={plansRef}>
                 <Plans country={country} />
-            </Box>
+            </Box> */}
             <Box ref={scrollRef}>
                 <BookDemo ref={formRef} />
             </Box>

@@ -72,15 +72,14 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                     </Grid>
 
                     {/* Section 4 - Sections */}
-                    <Grid item xs={6} md={2}>
+                    {/* <Grid item xs={6} md={2}>
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                             Sections
                         </Typography>
                         <Box display="flex" flexDirection="column" gap={1}>
                             <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
-                            {/* <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Subscription</Link> */}
                         </Box>
-                    </Grid>
+                    </Grid> */}
 
                     {/* Section 5 - Social Media */}
                     <Grid item xs={6} md={4}>
