@@ -46,7 +46,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                                     width: 230,
                                     height: 'auto',
                                     mb: 2,
-                                    cursor:'pointer'
+                                    cursor: 'pointer'
                                 }}
                                 onClick={handleNavigate}
                             />
@@ -139,10 +139,25 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
 
                 {/* Bottom Right Links */}
                 <Box display="flex" justifyContent="flex-end" gap={3} px={2}>
-                    <Link href="/privacy-policy" underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>
+                    <Link
+                        href="/privacy-policy"
+                        underline="hover"
+                        color="inherit"
+                        sx={{ cursor: 'pointer' }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Privacy Policy
                     </Link>
-                    <Link href="/terms-of-use" underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>
+
+                    <Link
+                        href="/terms-of-use"
+                        underline="hover"
+                        color="inherit"
+                        sx={{ cursor: 'pointer' }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Terms of Use
                     </Link>
                 </Box>
