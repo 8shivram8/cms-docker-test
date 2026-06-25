@@ -59,35 +59,53 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
 
 
                     {/* Section 3 - Actions */}
-                    <Grid item xs={6} md={2}>
+                    <Grid
+                        item
+                        xs={12}
+                        md={2}
+                        sx={{
+                            textAlign: { xs: 'center', md: 'left' },
+                        }}
+                    >
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                             Actions
                         </Typography>
-                        <Box display="flex" flexDirection="column" gap={1}>
-                            <Link onClick={handleScrollToForm} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Book a Demo</Link>
-                            <Link underline="hover" href="https://app.crm.acolead.com/" color="inherit" target="_blank" sx={{ cursor: 'pointer' }}>Sign Up</Link>
 
-
+                        <Box
+                            display="flex"
+                            flexDirection="column"
+                            gap={1}
+                            alignItems={{ xs: 'center', md: 'flex-start' }}
+                        >
+                            <Link
+                                onClick={handleScrollToForm}
+                                underline="hover"
+                                color="inherit"
+                                sx={{ cursor: 'pointer' }}
+                            >
+                                Book a Demo
+                            </Link>
                         </Box>
                     </Grid>
 
-                    {/* Section 4 - Sections */}
-                    {/* <Grid item xs={6} md={2}>
-                        <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                            Sections
-                        </Typography>
-                        <Box display="flex" flexDirection="column" gap={1}>
-                            <Link onClick={() => scrollToSection('plans')} underline="hover" color="inherit" sx={{ cursor: 'pointer' }}>Pricing</Link>
-                        </Box>
-                    </Grid> */}
-
-                    {/* Section 5 - Social Media */}
-                    <Grid item xs={6} md={4}>
+                    <Grid
+                        item
+                        xs={12}
+                        md={4}
+                        sx={{
+                            textAlign: { xs: 'center', md: 'left' },
+                        }}
+                    >
                         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                             Social Media
                         </Typography>
-                        <Box display="flex" flexDirection="row" gap={1}>
 
+                        <Box
+                            display="flex"
+                            flexDirection="row"
+                            gap={1}
+                            justifyContent={{ xs: 'center', md: 'flex-start' }}
+                        >
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
@@ -96,14 +114,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             >
                                 <LinkedInIcon />
                             </IconButton>
-                            <IconButton
-                                sx={{ color: 'black' }}
-                                component="a"
-                                href="https://github.com/Coalitionify/"
-                                target="_blank"
-                            >
-                                <GitHubIcon />
-                            </IconButton>
+
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
@@ -112,14 +123,16 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             >
                                 <FacebookIcon />
                             </IconButton>
+
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://www.instagram.com/coalitionify_acolead/"
+                                href="https://www.instagram.com/acolead_crm/"
                                 target="_blank"
                             >
                                 <InstagramIcon />
                             </IconButton>
+
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
@@ -128,9 +141,6 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             >
                                 <WhatsAppIcon />
                             </IconButton>
-
-
-
                         </Box>
                     </Grid>
 

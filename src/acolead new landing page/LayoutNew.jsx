@@ -81,7 +81,7 @@ const LayoutNew = () => {
                 setCountry={setCountry}
             />
             <Box ref={homeRef}>
-                <HomePage />
+                <HomePage handleScrollToForm={handleScrollToForm}/>
             </Box>
             <Box>
                 <ImgSection aboutRef={aboutRef}/>

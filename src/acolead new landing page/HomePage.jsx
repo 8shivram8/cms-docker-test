@@ -8,7 +8,7 @@ import card from './images/card.png';
 import sales from './images/sales.png';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const HomePage = () => {
+const HomePage = ({ handleScrollToForm }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [ref, inView] = useInView({
@@ -109,8 +109,6 @@ const HomePage = () => {
                     <Button
                         variant="contained"
                         endIcon={<ArrowForwardIcon />}
-                        target="_blank"
-                        href="https://app.crm.acolead.com/"
                         sx={{
                             alignSelf: isMobile ? 'center' : 'flex-start',
                             bgcolor: '#1677F7',
@@ -125,6 +123,7 @@ const HomePage = () => {
                                 bgcolor: '#145ed6',
                             },
                         }}
+                        onClick={handleScrollToForm}
                     >
                         Get Started
                     </Button>

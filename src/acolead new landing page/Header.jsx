@@ -106,12 +106,15 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
 
                             {/* Book a Demo Button */}
                             <Button
+                                variant="outlined"
+                                endIcon={<ArrowForwardIcon />}
                                 sx={{
+                                    bgcolor: '#1677F7',
+                                    color: 'white',
                                     textTransform: 'none',
-                                    color: 'text.primary',
                                     fontSize: '0.9rem',
-                                    mr: 2,
                                     minWidth: 'auto',
+                                    px: 2,
                                     fontWeight: 'bold',
                                 }}
                                 onClick={handleScrollToForm}
@@ -120,7 +123,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                             </Button>
 
                             {/* Free Trial Button */}
-                            <Button
+                            {/* <Button
                                 variant="outlined"
                                 target="_blank"
                                 href="https://app.crm.acolead.com/"
@@ -136,7 +139,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                                 }}
                             >
                                 Free Trial
-                            </Button>
+                            </Button> */}
 
                             <Select
                                 value={country}
@@ -200,11 +203,16 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                     <Divider sx={{ my: 2 }} />
                     <Box display="flex" flexDirection="column" gap={1.5} maxWidth={120}>
                         <Button
+                            variant="outlined"
+                            endIcon={<ArrowForwardIcon />}
                             sx={{
+                                bgcolor: '#1677F7',
+                                color: 'white',
                                 textTransform: 'none',
-                                color: 'text.primary',
                                 fontSize: '0.9rem',
-                                border: '1px solid black'
+                                minWidth: 'auto',
+                                px: 2,
+                                fontWeight: 'bold',
                             }}
                             onClick={() => {
                                 toggleDrawer()
@@ -214,7 +222,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                             Book a Demo
                         </Button>
 
-                        <Button
+                        {/* <Button
                             variant="outlined"
                             target="_blank"
                             href="https://app.crm.acolead.com/"
@@ -230,7 +238,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                             }}
                         >
                             Free Trial
-                        </Button>
+                        </Button> */}
 
                     </Box>
                 </Box>
