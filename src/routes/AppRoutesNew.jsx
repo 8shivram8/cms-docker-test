@@ -30,17 +30,32 @@ import LayoutNew from '../acolead new landing page/LayoutNew';
 import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';
 import TermsofUse from '../acolead new landing page/footer pages/TermsofUse';
 import PaymentResponseDialog from '../new components/payment/index';
+import PayHomePage from '../pay/PayHomePage';
+import CheckoutPage from '../pay/CheckoutPage';
+import PaymentResultPage from '../pay/PaymentResultPage';
 
 
 const AppRoutesNew = () => {
     const location = useLocation();
     const topRef = useRef(null);
+    const isPayRoute = location.pathname.startsWith('/pay');
 
     useEffect(() => {
         if (topRef.current) {
             topRef.current.focus();
         }
     }, [location]);
+
+    // PhonePe checkout host pages (acolead.com/pay) — no marketing transition chrome
+    if (isPayRoute) {
+        return (
+            <Routes location={location}>
+                <Route path="/pay" element={<PayHomePage />} />
+                <Route path="/pay/checkout/:sessionId" element={<CheckoutPage />} />
+                <Route path="/pay/payment-result/:sessionId" element={<PaymentResultPage />} />
+            </Routes>
+        );
+    }
 
     return (
         <>

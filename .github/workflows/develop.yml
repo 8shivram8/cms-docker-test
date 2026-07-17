@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
+      matrix: 
         node-version: [20]
 
     steps:
@@ -28,21 +28,22 @@ jobs:
         npm run build
       env:
         CI: false
+        REACT_APP_CRM_BACKEND_URL: https://api.acolead.com/crm-backend/api
   
     - name: Deploy to Production
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --delete
       env:
-        AWS_S3_BUCKET: forms.dev.bloqcube.com
-        AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_BUCKET: coalitionafy.com
+        AWS_ACCESS_KEY_ID: ${{ secrets.COL_DEV_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.COL_DEV_AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ap-south-1
         SOURCE_DIR: "build"
     - name: Invalidate Cloudfront Cache
       uses: awact/cloudfront-action@master
       env:
         AWS_REGION: 'ap-south-1'
-        AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-        DISTRIBUTION_ID: EYSAQKFL5M9UY
+        AWS_ACCESS_KEY_ID: ${{ secrets.COL_DEV_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.COL_DEV_AWS_SECRET_ACCESS_KEY }}
+        DISTRIBUTION_ID: E3E661K3JME83O
