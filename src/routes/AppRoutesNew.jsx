@@ -29,7 +29,7 @@ import Onedrive from '../new components/Integration pages/Onedrive';
 import LayoutNew from '../acolead new landing page/LayoutNew';
 import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';
 import TermsofUse from '../acolead new landing page/footer pages/TermsofUse';
-
+import PaymentResponseDialog from '../new components/payment/index';
 
 
 const AppRoutesNew = () => {
@@ -44,6 +44,7 @@ const AppRoutesNew = () => {
 
     return (
         <>
+            <PaymentResponseDialog />
             <div ref={topRef} tabIndex="-1" style={{ position: "absolute", top: 0 }} />
             <TransitionGroup>
                 <CSSTransition key={location.key} classNames="slide-fade" timeout={600}>
