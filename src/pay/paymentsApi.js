@@ -73,6 +73,36 @@ export async function fetchCheckoutStatus(sessionId) {
   return parseJson(res);
 }
 
+export async function fetchPaymentLink(token) {
+  const res = await fetch(
+    `${getApiBase()}/v1/license-billing/payment-links/${encodeURIComponent(token)}`,
+    {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      credentials: 'omit',
+    },
+  );
+  return parseJson(res);
+}
+
+export async function checkoutFromPaymentLink(token) {
+  const res = await fetch(
+    `${getApiBase()}/v1/license-billing/payment-links/${encodeURIComponent(token)}/checkout`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+      credentials: 'omit',
+      body: '{}',
+    },
+  );
+  return parseJson(res);
+}
+
 export function formatInrFromPaise(amountPaise) {
   const rupees = (Number(amountPaise) || 0) / 100;
   return new Intl.NumberFormat('en-IN', {

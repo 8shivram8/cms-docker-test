@@ -10,6 +10,7 @@
   --pay-danger-bg: #fde8e8;
   --pay-ok: #1f6b4a;
   --pay-ok-bg: #e3f2eb;
+  --pay-alert-ok-border: #9dceb8;
   --pay-pending: #8a6d1d;
   --pay-pending-bg: #faf3d9;
   --pay-radius: 18px;
@@ -141,6 +142,11 @@
 .pay-alert-error {
   background: var(--pay-danger-bg);
   color: var(--pay-danger);
+}
+
+.pay-alert-ok {
+  background: var(--pay-ok-bg);
+  color: var(--pay-ok);
 }
 
 .pay-badge {

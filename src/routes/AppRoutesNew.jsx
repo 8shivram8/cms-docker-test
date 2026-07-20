@@ -33,6 +33,7 @@ import PaymentResponseDialog from '../new components/payment/index';
 import PayHomePage from '../pay/PayHomePage';
 import CheckoutPage from '../pay/CheckoutPage';
 import PaymentResultPage from '../pay/PaymentResultPage';
+import RenewalPage from '../pay/RenewalPage';
 
 
 const AppRoutesNew = () => {
@@ -51,6 +52,7 @@ const AppRoutesNew = () => {
         return (
             <Routes location={location}>
                 <Route path="/pay" element={<PayHomePage />} />
+                <Route path="/pay/renewal/:token" element={<RenewalPage />} />
                 <Route path="/pay/checkout/:sessionId" element={<CheckoutPage />} />
                 <Route path="/pay/payment-result/:sessionId" element={<PaymentResultPage />} />
             </Routes>
