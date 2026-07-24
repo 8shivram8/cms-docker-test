@@ -34,6 +34,7 @@ import PayHomePage from '../pay/PayHomePage';
 import CheckoutPage from '../pay/CheckoutPage';
 import PaymentResultPage from '../pay/PaymentResultPage';
 import RenewalPage from '../pay/RenewalPage';
+import Signup from '../new components/acolead-modules/SignUp';
 
 
 const AppRoutesNew = () => {
@@ -92,7 +93,7 @@ const AppRoutesNew = () => {
                         <Route path="/stripe-integration" element={<Stripe />} />
                         <Route path="/googleDrive-integration" element={<GoogleDrive />} />
                         <Route path="/onedrive-integration" element={<Onedrive />} />
-
+                        <Route path="/product/signup" element={<Signup />} />
 
                     </Routes>
                 </CSSTransition>

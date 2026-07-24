@@ -64,6 +64,11 @@ const useCheckLicensePaymentStatusQuery = ({ cpId, merchantOrderId, open }) => {
     };
 };
 
+const useCreateGuestAddonLicenseMutation = () => {
+    return [() => { }];
+};
+
 export const cpcrmApiSlice = {
     useCheckLicensePaymentStatusQuery,
+    useCreateGuestAddonLicenseMutation,
 };
