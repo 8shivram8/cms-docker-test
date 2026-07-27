@@ -12,64 +12,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { MuiTelInput } from 'mui-tel-input';
+import { PRODUCT_OPTIONS } from './constants';
 
 const ACOLEAD_CONTACT_NUMBER = '+919112614174';
 
 const ACOLEAD_SUPPORT_EMAIL = 'info@coalitionify.com';
 
 const acoleadcrmWebAppName = 'AcoLead';
-
-export const PRODUCT_OPTIONS = [
-    {
-        id: leadCaputureAddon.INSTAGRAM,
-        label: 'Instagram',
-        tagline: 'Social lead capture',
-        description: 'Capture DMs & comments as leads and reply from one unified inbox.',
-        accent: '#E1306C',
-        selectable: true,
-        startingPriceLabel: 'From ₹2,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.WHATSAPP,
-        label: 'WhatsApp',
-        tagline: 'Business messaging',
-        description: 'Connect WhatsApp Business API and automate follow-ups at scale.',
-        accent: '#25D366',
-        selectable: true,
-        startingPriceLabel: 'From ₹4,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.AI_CALLING,
-        label: 'AI Calling',
-        tagline: 'Smart outbound calls',
-        description: 'AI-assisted calls with summaries and automatic call logging.',
-        accent: '#5C6BC0',
-        comingSoon: false,
-        selectable: true,
-        startingPriceLabel: 'From ₹4,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.YOUTUBE,
-        label: 'YouTube',
-        tagline: 'Video channel leads',
-        description: 'Turn YouTube comments and enquiries into structured leads.',
-        accent: '#FF0000',
-        comingSoon: true,
-        selectable: false,
-    },
-    {
-        id: leadCaputureAddon.WEBSITE,
-        label: 'Website',
-        tagline: 'AI-powered microsite',
-        description: 'Launch a branded property site and capture enquiries in minutes.',
-        accent: '#1976d2',
-        comingSoon: true,
-        selectable: false,
-    },
-];
 
 export default function Signup() {
     const theme = useTheme();
@@ -855,7 +804,7 @@ function ProductCard({
 
                     <Typography
                         variant="body2"
-                        color="text.secondary"
+                        fontWeight={500}
                         sx={{
                             display: '-webkit-box',
                             WebkitLineClamp: 1,
