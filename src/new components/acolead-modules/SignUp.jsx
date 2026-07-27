@@ -700,45 +700,16 @@ function HelpLinks() {
     );
 }
 
-function ProductLogo({ option, size = 28 }) {
+function ProductLogo({ option }) {
     if (option.logoSrc) return (
         <Box
             component="img"
-            src={instaLogo}
+            src={option.logoSrc}
             alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
+            sx={{ width: option.iconSize?.registerPageCard, height: option.iconSize?.registerPageCard, objectFit: 'contain' }}
         />
     );
-    if (option.id === leadCaputureAddon.INSTAGRAM) return (
-        <Box
-            component="img"
-            src={instaLogo}
-            alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
-        />
-    );
-    if (option.id === leadCaputureAddon.WHATSAPP) return (
-        <WhatsAppIcon
-            color="success"
-            sx={{ fontSize: size }}
-        />
-    );
-    if (option.id === leadCaputureAddon.YOUTUBE) return (
-        <Box
-            component="img"
-            src={youtubeLogo}
-            alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
-        />
-    );
-    if (option.id === leadCaputureAddon.AI_CALLING) return (
-        <PhoneInTalkOutlinedIcon sx={{ fontSize: size, color: option.accent }} />
-    );
-    if (option.id === leadCaputureAddon.WEBSITE) return (
-        <LanguageOutlinedIcon
-            sx={{ fontSize: size, color: option.accent }} />
-    );
-    return null;
+    return option?.logo({ size: option.iconSize?.registerPageCard }) || null;
 }
 
 function ProductCard({
@@ -789,7 +760,7 @@ function ProductCard({
                         transition: 'all 0.2s ease',
                     }}
                 >
-                    <ProductLogo option={option} size={40} />
+                    <ProductLogo option={option} />
                 </Box>
 
                 <Stack sx={{ flex: 1, minWidth: 0 }}>

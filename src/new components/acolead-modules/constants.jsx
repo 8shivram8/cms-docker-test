@@ -1,10 +1,26 @@
 import { Box } from "@mui/material";
 import { leadCaputureAddon } from "./license.types";
+import { instaLogo, youtubeLogo } from "../../assets";
+import { LanguageOutlined as LanguageOutlinedIcon, PhoneInTalkOutlined as PhoneInTalkOutlinedIcon, WhatsApp as WhatsAppIcon } from "@mui/icons-material";
+
+const ICON_SIZE = 28;
 
 export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.INSTAGRAM,
         label: 'Instagram',
+        logo: ({ size = ICON_SIZE }) => (
+            <Box
+                component="img"
+                src={instaLogo}
+                alt=""
+                sx={{ width: size, height: size, objectFit: 'contain' }}
+            />
+        ),
+        iconSize: {
+            mainPageCard: 40,
+            registerPageCard: 40,
+        },
         tagline: 'Social lead capture',
         description: 'Capture DMs & comments as leads and reply from one unified inbox.',
         accent: '#E1306C',
@@ -25,6 +41,18 @@ export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.WHATSAPP,
         label: 'WhatsApp',
+        logo: ({ color, size = ICON_SIZE }) => (
+            <WhatsAppIcon
+                sx={{
+                    fontSize: size,
+                    color: color ?? "#25D366",
+                }}
+            />
+        ),
+        iconSize: {
+            mainPageCard: 45,
+            registerPageCard: 45,
+        },
         tagline: 'Business messaging',
         description: 'Connect WhatsApp Business API and automate follow-ups at scale.',
         accent: '#25D366',
@@ -45,6 +73,18 @@ export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.AI_CALLING,
         label: 'AI Calling',
+        logo: ({ color, size = ICON_SIZE }) => (
+            <PhoneInTalkOutlinedIcon
+                sx={{
+                    fontSize: size,
+                    color: color ?? "#5C6BC0",
+                }}
+            />
+        ),
+        iconSize: {
+            mainPageCard: 36,
+            registerPageCard: 36,
+        },
         tagline: 'Smart outbound calls',
         description: 'AI-assisted calls with summaries and automatic call logging.',
         accent: '#5C6BC0',
@@ -65,6 +105,18 @@ export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.YOUTUBE,
         label: 'YouTube',
+        logo: ({ size = ICON_SIZE }) => (
+            <Box
+                component="img"
+                src={youtubeLogo}
+                alt=""
+                sx={{ width: size, height: size, objectFit: 'contain' }}
+            />
+        ),
+        iconSize: {
+            mainPageCard: 40,
+            registerPageCard: 40,
+        },
         tagline: 'Video channel leads',
         description: 'Turn YouTube comments and enquiries into structured leads.',
         accent: '#FF0000',
@@ -74,6 +126,18 @@ export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.WEBSITE,
         label: 'Website',
+        logo: ({ color, size = ICON_SIZE }) => (
+            <LanguageOutlinedIcon
+                sx={{
+                    fontSize: size,
+                    color: color ?? "#1976d2",
+                }}
+            />
+        ),
+        iconSize: {
+            mainPageCard: 40,
+            registerPageCard: 40,
+        },
         tagline: 'AI-powered microsite',
         description: 'Launch a branded property site and capture enquiries in minutes.',
         accent: '#1976d2',
