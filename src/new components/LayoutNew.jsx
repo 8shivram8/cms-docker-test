@@ -10,10 +10,8 @@ import Footer from "./Footer";
 import KeyFeaturesNew from "./KeyFeaturesNew";
 import IntegrationPage from "./IntegrationPage";
 import { Element } from "react-scroll";
-import Security123 from "./Security";
-import { useGetAdminCpsQuery } from "../payment/cpcrm.api";
+import Security from "./Security";
 const LayoutNew = () => {
-  alert("LayoutNew is running");
   const [selectedCountry, setSelectedCountry] = useState("IN");
   const [anchorEl, setAnchorEl] = useState(null);
   const handleCountryChange = (value) => {
@@ -31,23 +29,7 @@ const LayoutNew = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoicmFtZXNod2FyQGdtYWlsLmNvbSIsImNvbnRhY3QiOiI5NjczNTQ0MTA2IiwiaXNWZXJpZmllZCI6dHJ1ZSwiaXNBZG1pblRva2VuIjp0cnVlLCJpYXQiOjE3ODUxNTA0MjcsImV4cCI6MTc4NTE5MDAyN30.W6Q7-Tvi2q8R5clEFaoJuL9dtVCctn95yxPgjtbfZlk";
 
-  const { data, isLoading, error } = useGetAdminCpsQuery(
-    {
-      page: 1,
-      limit: 10,
-      token,
-    },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
-
-  console.log("Data:", data);
-  console.log("Loading:", isLoading);
-  console.log("Error:", error);
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <MainScreen
