@@ -294,7 +294,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
         };
     }, [timer]);
 
-    const handleSendOtp = useCallback(async () => {
+    const handleSendOtp = async () => {
         setIsSendingOtp(true);
         setApiError(null);
         setApiSuccess(null);
@@ -338,9 +338,9 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
             setIsSendingOtp(false);
             formik.setFieldValue("otp", "");
         }
-    }, [formik.values, formik.setFieldError, formik.setFieldValue]);
+    };
 
-    const handleResendOtp = useCallback(async () => {
+    const handleResendOtp = async () => {
         if (!canResend || !accessToken) return;
 
         setIsSendingOtp(true);
@@ -379,9 +379,9 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
         } finally {
             setIsSendingOtp(false);
         }
-    }, [formik.values, formik.setFieldError, accessToken, canResend]);
+    };
 
-    const handleVerifyOtp = useCallback(async () => {
+    const handleVerifyOtp = async () => {
         setIsVerifying(true);
         setApiError(null);
         setApiSuccess(null);
@@ -394,7 +394,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                 otp: formik.values.otp,
                 features,
             };
-            if (isWebsiteExist) body.website = formik.values.website;
+            if (isWebsiteExist) body.website = baseDomain;
             const result = await verifyOtp({ body }).unwrap();
             // setIsMobileVerified(true);
             // setIsVerifying(false);
@@ -430,7 +430,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
         } finally {
             setIsVerifying(false);
         }
-    }, [formik.values, formik.setFieldError]);
+    };
 
     const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60);
@@ -544,7 +544,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                         <Button
                                             variant="outlined"
                                             onClick={handleSendOtp}
-                                            disabled={!!formik.errors.mobileNumber}
+                                            disabled={isSendingOtp || !!formik.errors.mobileNumber}
                                             loading={isSendingOtp}
                                             sx={{
                                                 borderRadius: 1.5,
@@ -566,7 +566,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                         <Button
                                             variant="text"
                                             onClick={handleResendOtp}
-                                            disabled={!canResend}
+                                            disabled={isSendingOtp || !canResend}
                                             loading={isSendingOtp}
                                             sx={{
                                                 borderRadius: 1.5,
@@ -672,7 +672,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                     size="large"
                                     variant="contained"
                                     onClick={handleVerifyOtp}
-                                    disabled={!formik.isValid || !features.length || formik.values.otp?.length < 6}
+                                    disabled={isVerifying || !formik.isValid || !features.length || formik.values.otp?.length < 6}
                                     loading={isVerifying}
                                     sx={{
                                         borderRadius: 1.5,
