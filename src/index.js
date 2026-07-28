@@ -3,27 +3,21 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
 import { MixpanelProvider } from "./mixpanel/MixpanelContext";
 
-import { Provider } from "react-redux"; // <-- Add this
-import { store } from "./Redux store/store";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <MixpanelProvider>
-          <App />
-        </MixpanelProvider>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <MixpanelProvider>
+        <App />
+      </MixpanelProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 );
 

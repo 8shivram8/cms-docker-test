@@ -3,7 +3,7 @@ import { Box, CircularProgress, Dialog, DialogContent } from "@mui/material";
 import { phonePeHelpers } from "./phonepe.constants";
 import PaymentFailed, { PaymentPending } from "./PaymentFailed";
 import PaymentSuccess from "./PaymentSuccess";
-import { BACKEND_URL, useCheckLicensePaymentStatusQuery } from "./cpcrm.api";
+import { BACKEND_URL, cpcrmApi } from "../../redux/cpcrm.api";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function PaymentResponseDialog() {
@@ -30,23 +30,14 @@ export default function PaymentResponseDialog() {
     setPaymentResponseDialog(null);
   };
 
-  const {
-    data: statusData,
-    isUninitialized,
-    isLoading,
-    isFetching,
-  } = useCheckLicensePaymentStatusQuery(
-    {
-      cpId: paymentResponseDialog?.cpId,
-      merchantOrderId: paymentResponseDialog?.merchantOrderId,
-    },
-    {
-      skip:
-        !paymentResponseDialog?.cpId ||
-        !paymentResponseDialog?.merchantOrderId ||
-        !paymentResponseDialog,
-    },
-  );
+  const { data: statusData, isUninitialized, isLoading, isFetching } = cpcrmApi.useCheckLicensePaymentStatusQuery({
+    cpId: paymentResponseDialog?.cpId,
+    merchantOrderId: paymentResponseDialog?.merchantOrderId,
+  }, {
+    skip: !paymentResponseDialog?.cpId || !paymentResponseDialog?.merchantOrderId || !paymentResponseDialog,
+    refetchOnMountOrArgChange: true,
+  });
+
   const loading = isUninitialized || isLoading || isFetching;
 
   const { isSuccess, isFailed } = useMemo(

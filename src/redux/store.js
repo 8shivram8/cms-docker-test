@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { cpcrmApi } from "../new components/payment/cpcrm.api";
+import { cpcrmApi } from "./cpcrm.api";
 
 export const store = configureStore({
   reducer: {
