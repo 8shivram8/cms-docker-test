@@ -1,74 +1,48 @@
-import { useEffect, useState } from "react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const BACKEND_URL = "https://api.acolead.com/crm-backend/api";
+export const BACKEND_URL = "https://api.stage.acolead.com/crm-backend/api";
 // export const BACKEND_URL = "http://localhost:4104/crm-backend/api";
 
-const useCheckLicensePaymentStatusQuery = ({ cpId, merchantOrderId, open }) => {
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isFetching, setIsFetching] = useState(false);
-    const [isUninitialized, setIsUninitialized] = useState(true);
+export const cpcrmApi = createApi({
+  reducerPath: "cpcrmApi",
 
-    useEffect(() => {
-        if (!cpId || !merchantOrderId || !open) return;
+  baseQuery: fetchBaseQuery({
+    baseUrl: BACKEND_URL,
+  }),
 
-        const controller = new AbortController();
+  endpoints: (builder) => ({
+    checkLicensePaymentStatus: builder.query({
+      query: ({ cpId, merchantOrderId }) => ({
+        url: "/v1/auth/status",
+        params: {
+          cpId,
+          merchantOrderId,
+        },
+      }),
+    }),
 
-        const fetchStatus = async () => {
-            try {
-                setIsUninitialized(false);
+    createGuestAddonLicense: builder.mutation({
+      query: (body) => ({
+        url: "/v1/auth/create-license",
+        method: "POST",
+        body,
+      }),
+    }),
 
-                if (!data) {
-                    setIsLoading(true);
-                } else {
-                    setIsFetching(true);
-                }
+    // 👇 Add this HERE
+    getAdminCps: builder.query({
+      query: ({ page, limit, token }) => ({
+        url: `/v2/admin/cps?page=${page}&limit=${limit}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
+  }),
+});
 
-                const response = await fetch(
-                    `${BACKEND_URL}/v1/auth/status?cpId${cpId}&merchantOrderId=${merchantOrderId}`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        signal: controller.signal,
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
-                }
-
-                const responseData = await response.json();
-                setData(responseData);
-            } catch (error) {
-                if (error.name !== "AbortError") {
-                    console.error(error);
-                }
-            } finally {
-                setIsLoading(false);
-                setIsFetching(false);
-            }
-        };
-
-        fetchStatus();
-
-        return () => controller.abort();
-    }, [merchantOrderId, open]);
-
-    return {
-        data,
-        isUninitialized,
-        isLoading,
-        isFetching,
-    };
-};
-
-const useCreateGuestAddonLicenseMutation = () => {
-    return [() => { }];
-};
-
-export const cpcrmApiSlice = {
-    useCheckLicensePaymentStatusQuery,
-    useCreateGuestAddonLicenseMutation,
-};
+export const {
+  useCheckLicensePaymentStatusQuery,
+  useCreateGuestAddonLicenseMutation,
+  useGetAdminCpsQuery,
+} = cpcrmApi;
