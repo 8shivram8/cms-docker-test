@@ -203,6 +203,9 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
     const [timer, setTimer] = useState(0);
     const [canResend, setCanResend] = useState(true);
 
+    const errorRef = useRef(null);
+    const successRef = useRef(null);
+
     const [sendOtp] = cpcrmApi.useSendOtpMutation();
     const [resendOtp] = cpcrmApi.useResendOtpMutation();
     const [verifyOtp] = cpcrmApi.useVerifyOtpMutation();
@@ -324,6 +327,12 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                 });
             } else if (err?.data?.message) {
                 setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
             }
         } finally {
             setIsSendingOtp(false);
@@ -360,6 +369,12 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                 });
             } else if (err?.data?.message) {
                 setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
             }
         } finally {
             setIsSendingOtp(false);
@@ -405,6 +420,12 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                 });
             } else if (err?.data?.message) {
                 setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
             }
         } finally {
             setIsVerifying(false);
@@ -673,6 +694,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                         '& .MuiAlert-message': { fontSize: '0.875rem' },
                                     }}
                                     onClose={() => setApiError(null)}
+                                    ref={errorRef}
                                 >
                                     {apiError}
                                 </Alert>
@@ -686,6 +708,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                         '& .MuiAlert-message': { fontSize: '0.875rem' },
                                     }}
                                     onClose={() => setApiSuccess(null)}
+                                    ref={successRef}
                                 >
                                     {apiSuccess}
                                 </Alert>

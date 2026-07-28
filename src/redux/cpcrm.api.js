@@ -16,24 +16,24 @@ export const cpcrmApi = createApi({
       }),
     }),
     sendOtp: builder.mutation({
-      query: (props) => ({
+      query: ({ body }) => ({
         url: "/v1/auth/website/send-otp",
         method: "POST",
-        ...props,
+        body
       }),
     }),
     resendOtp: builder.mutation({
-      query: (props) => ({
+      query: ({ body }) => ({
         url: "/v1/auth/website/resend-otp",
         method: "POST",
-        ...props,
+        body
       }),
     }),
     verifyOtp: builder.mutation({
-      query: (props) => ({
+      query: ({ body }) => ({
         url: "/v1/auth/website/verify-otp",
         method: "POST",
-        ...props,
+        body
       }),
     }),
   }),
