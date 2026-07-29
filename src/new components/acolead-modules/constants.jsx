@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { leadCaputureAddon } from "./license.types";
-import { instaLogo, youtubeLogo } from "../../assets";
+import { instagramAndFacebookIcon, youtubeLogo } from "../../assets";
 import { LanguageOutlined as LanguageOutlinedIcon, PhoneInTalkOutlined as PhoneInTalkOutlinedIcon, WhatsApp as WhatsAppIcon } from "@mui/icons-material";
 
 const ICON_SIZE = 28;
@@ -8,11 +8,11 @@ const ICON_SIZE = 28;
 export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.INSTAGRAM,
-        label: 'Instagram',
+        label: 'Instagram & Facebook',
         logo: ({ size = ICON_SIZE }) => (
             <Box
                 component="img"
-                src={instaLogo}
+                src={instagramAndFacebookIcon}
                 alt=""
                 sx={{ width: size, height: size, objectFit: 'contain' }}
             />
@@ -31,7 +31,7 @@ export const PRODUCT_OPTIONS = [
             <>
                 Grow Your{' '}
                 <Box component="span" sx={{ color: '#E1306C' }}>
-                    Instagram
+                    Instagram & Facebook
                 </Box>{' '}
                 Leads on Autopilot
             </>
