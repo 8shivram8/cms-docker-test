@@ -31,7 +31,7 @@ export const PRODUCT_OPTIONS = [
             <>
                 Grow Your{' '}
                 <Box component="span" sx={{ color: '#E1306C' }}>
-                    IInstagram & Facebook
+                    Instagram & Facebook
                 </Box>{' '}
                 Leads on Autopilot
             </>

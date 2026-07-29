@@ -19,7 +19,7 @@ const InstagramPage = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Instagram', path: '/modules/instagram' },
+    { label: 'Instagram & Facebook', path: '/modules/instagram&facebook' },
     { label: 'WhatsApp', path: '/modules/whatsapp' },
     { label: 'AI Calling', path: '/modules/ai-calling' },
   ];
@@ -63,7 +63,7 @@ const InstagramPage = () => {
   ];
 
   const benefits = [
-    'Never miss a hot lead from Instagram DMs or comments',
+    'Never miss a hot lead from Instagram & Facebook DMs, comments, or messages',
     'Reply faster with a shared inbox and smart reminders',
     'Turn social engagement into measurable sales opportunities',
     'Track campaign performance with real-time CRM insights',
@@ -163,7 +163,7 @@ const InstagramPage = () => {
                   color: '#111827',
                 }}
               >
-                Turn every Instagram interaction into a{' '}
+                Turn every Instagram & Facebook  interaction into a{' '}
                 <Box component="span" sx={{ color: '#E1306C' }}>
                   ready-to-convert lead
                 </Box>
@@ -363,7 +363,7 @@ const InstagramPage = () => {
             >
               <img
                 src={instagramLeadImage}
-                alt="Instagram campaign engagement"
+                alt="Instagram & Facebook campaign engagement"
                 style={{
                   width: '100%',
                   height: '360px',
@@ -391,7 +391,7 @@ const InstagramPage = () => {
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} justifyContent="space-between" alignItems={{ xs: 'flex-start', md: 'center' }}>
             <Box>
               <Typography sx={{ color: '#fff', fontSize: { xs: 24, md: 32 }, fontWeight: 800, mb: 1 }}>
-                Make every Instagram and Facebook conversation count
+                Make every Instagram & Facebook conversation count
               </Typography>
               <Typography sx={{ color: 'rgba(255,255,255,0.9)', maxWidth: 620, lineHeight: 1.7 }}>
                 Bring your social conversations into one CRM and let your team respond faster, qualify leads sooner, and close more business.

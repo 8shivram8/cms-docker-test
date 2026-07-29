@@ -97,7 +97,10 @@ const AppRoutesNew = () => {
                         <Route path="/onedrive-integration" element={<Onedrive />} />
                         <Route path="/product/signup" element={<Signup />} />
                         <Route path="/modules/whatsapp" element={<WhatsAppPage />} />
-                        <Route path="/modules/instagram" element={<InstagramPage />} />
+                        <Route
+  path="/modules/instagram&facebook"
+  element={<InstagramPage />}
+/>
                         <Route path="/modules/ai-calling" element={<AICallingPage />} />
                     </Routes>
                 </CSSTransition>
