@@ -8,7 +8,7 @@ const ICON_SIZE = 28;
 export const PRODUCT_OPTIONS = [
     {
         id: leadCaputureAddon.INSTAGRAM,
-        label: 'Instagram',
+        label: 'Instagram & Facebook',
         logo: ({ size = ICON_SIZE }) => (
             <Box
                 component="img"
@@ -31,7 +31,7 @@ export const PRODUCT_OPTIONS = [
             <>
                 Grow Your{' '}
                 <Box component="span" sx={{ color: '#E1306C' }}>
-                    Instagram
+                    IInstagram & Facebook
                 </Box>{' '}
                 Leads on Autopilot
             </>
