@@ -107,8 +107,8 @@ const ProductModules = () => {
     }
 
     if (productId === leadCaputureAddon.INSTAGRAM) {
-  navigate('/modules/instagram&facebook');
-}
+      navigate('/modules/instagram');
+    }
 
     if (productId === leadCaputureAddon.AI_CALLING) {
       navigate('/modules/ai-calling');

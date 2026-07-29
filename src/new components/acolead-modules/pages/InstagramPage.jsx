@@ -19,7 +19,7 @@ const InstagramPage = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Instagram & Facebook', path: '/modules/instagram&facebook' },
+    { label: 'Instagram & Facebook', path: '/modules/instagram' },
     { label: 'WhatsApp', path: '/modules/whatsapp' },
     { label: 'AI Calling', path: '/modules/ai-calling' },
   ];
