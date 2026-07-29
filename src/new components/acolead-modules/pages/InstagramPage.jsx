@@ -12,6 +12,7 @@ import acoleadLogo from '../../../assets/acolead-crm.png';
 import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import instagramLeadImage from '../../../assets/marketing1.jpeg';
+import { instagramAndFacebookIcon } from '../../../assets';
 
 const InstagramPage = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const InstagramPage = () => {
     });
   };
 
-  const handleScrollToForm = () => {};
+  const handleScrollToForm = () => { };
 
   const howItWorks = [
     {
@@ -200,7 +201,7 @@ const InstagramPage = () => {
                 >
                   Start with Instagram and Facebook
                 </Button>
-                
+
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ pt: 1 }}>
@@ -257,8 +258,12 @@ const InstagramPage = () => {
                 }}
               >
                 <Stack direction="row" spacing={1.5} alignItems="center">
-                  <InstagramIcon sx={{ color: '#E1306C', fontSize: 28 }} />
-                  <FacebookIcon sx={{ color: '#1877F2', fontSize: 28 }} />
+                  <Box
+                    component="img"
+                    src={instagramAndFacebookIcon}
+                    alt=""
+                    sx={{ width: 28, height: 28, objectFit: 'contain' }}
+                  />
                   <Typography fontWeight={700} color="#111827">
                     Capture leads from Instagram and Facebook ads together
                   </Typography>
@@ -398,27 +403,27 @@ const InstagramPage = () => {
               </Typography>
             </Box>
             <Button
-  variant="contained"
-  endIcon={<ArrowForwardIcon />}
-  onClick={() => navigate('/?demo=true')}
-  sx={{
-    bgcolor: '#fff',
-    color: '#1677F7',
-    px: 5,
-    py: 1.5,
-    minWidth: 220,
-    whiteSpace: 'nowrap',
-    borderRadius: '999px',
-    textTransform: 'none',
-    fontWeight: 700,
-    fontSize: 16,
-    '&:hover': {
-      bgcolor: '#f8fbff',
-    },
-  }}
->
-  Book a Demo
-</Button>
+              variant="contained"
+              endIcon={<ArrowForwardIcon />}
+              onClick={() => navigate('/?demo=true')}
+              sx={{
+                bgcolor: '#fff',
+                color: '#1677F7',
+                px: 5,
+                py: 1.5,
+                minWidth: 220,
+                whiteSpace: 'nowrap',
+                borderRadius: '999px',
+                textTransform: 'none',
+                fontWeight: 700,
+                fontSize: 16,
+                '&:hover': {
+                  bgcolor: '#f8fbff',
+                },
+              }}
+            >
+              Book a Demo
+            </Button>
           </Stack>
         </Box>
       </Box>

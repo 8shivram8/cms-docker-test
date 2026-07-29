@@ -4,7 +4,7 @@ import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
-import { acoLeadCrmShortLogo, instaLogo, youtubeLogo } from '../../assets';
+import { acoLeadCrmShortLogo } from '../../assets';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { leadCaputureAddon, PlanType } from './license.types';
 import { useLocation, useNavigate } from 'react-router-dom';
