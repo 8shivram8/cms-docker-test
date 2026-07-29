@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import { PRODUCT_OPTIONS } from './constants';
-
+import { leadCaputureAddon } from './license.types';
 const ProductModules = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -102,8 +102,18 @@ const ProductModules = () => {
     };
 
     const handleGetStarted = (productId) => {
-        navigate(`/product/signup?product=${productId}`);
-    };
+    if (productId === leadCaputureAddon.WHATSAPP) {
+      navigate('/modules/whatsapp');
+    }
+
+    if (productId === leadCaputureAddon.INSTAGRAM) {
+      navigate('/modules/instagram');
+    }
+
+    if (productId === leadCaputureAddon.AI_CALLING) {
+      navigate('/modules/ai-calling');
+    }
+  };
 
     // Card animation variants
     const cardVariants = {

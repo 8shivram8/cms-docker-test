@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Header from './Header';
 import HomePage from './HomePage';
@@ -33,7 +34,16 @@ const LayoutNew = () => {
     //         });
     //     }
     // };
+    const location = useLocation();
+    useEffect(() => {
+    const params = new URLSearchParams(location.search);
 
+    if (params.get('demo') === 'true') {
+        setTimeout(() => {
+            handleScrollToForm();
+        }, 300);
+    }
+}, [location.search]);
     const handleScrollToForm = () => {
         if (scrollRef.current) {
             const topOffset = scrollRef.current.getBoundingClientRect().top + window.pageYOffset - 80;
