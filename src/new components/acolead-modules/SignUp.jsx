@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { Alert, Box, Button, Chip, Container, FormControl, FormHelperText, FormLabel, Grid2, InputBase, Paper, Stack, TextField, Typography, alpha, inputBaseClasses, styled, useTheme } from '@mui/material';
+import { Alert, Backdrop, Box, Button, Chip, CircularProgress, Container, FormControl, FormHelperText, FormLabel, Grid2, InputBase, Paper, Stack, TextField, Typography, alpha, inputBaseClasses, styled, useTheme } from '@mui/material';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
@@ -406,6 +406,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
             //     window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
             //     setApiSuccess(null);
             // }, 2000);
+            formik.resetForm();
             const params = new URLSearchParams(result.tokens);
             window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
         } catch (err) {
@@ -427,7 +428,6 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                     });
                 });
             }
-        } finally {
             setIsVerifying(false);
         }
     };
@@ -467,6 +467,16 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                 },
             }}
         >
+            <Backdrop
+                sx={{
+                    zIndex: theme.zIndex.drawer + 1,
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)',
+                }}
+                open={isVerifying}
+            >
+                <CircularProgress size={60} sx={{ color: "white" }} />
+            </Backdrop>
             <Box
                 sx={{
                     flex: 1,
