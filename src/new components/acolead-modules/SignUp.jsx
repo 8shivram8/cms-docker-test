@@ -4,14 +4,15 @@ import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
-import { acoLeadCrmShortLogo, instaLogo, youtubeLogo } from '../../assets';
+import { acoLeadCrmShortLogo } from '../../assets';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { leadCaputureAddon, PlanType } from './license.types';
-import { cpcrmApiSlice } from '../payment/cpcrm.api';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { MuiTelInput } from 'mui-tel-input';
+import { PRODUCT_OPTIONS } from './constants';
+import { cpcrmApi } from '../../redux/cpcrm.api';
 
 const ACOLEAD_CONTACT_NUMBER = '+919112614174';
 
@@ -19,61 +20,8 @@ const ACOLEAD_SUPPORT_EMAIL = 'info@coalitionify.com';
 
 const acoleadcrmWebAppName = 'AcoLead';
 
-export const PRODUCT_OPTIONS = [
-    {
-        id: leadCaputureAddon.INSTAGRAM,
-        label: 'Instagram',
-        tagline: 'Social lead capture',
-        description: 'Capture DMs & comments as leads and reply from one unified inbox.',
-        accent: '#E1306C',
-        selectable: true,
-        startingPriceLabel: 'From ₹2,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.WHATSAPP,
-        label: 'WhatsApp',
-        tagline: 'Business messaging',
-        description: 'Connect WhatsApp Business API and automate follow-ups at scale.',
-        accent: '#25D366',
-        selectable: true,
-        startingPriceLabel: 'From ₹4,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.AI_CALLING,
-        label: 'AI Calling',
-        tagline: 'Smart outbound calls',
-        description: 'AI-assisted calls with summaries and automatic call logging.',
-        accent: '#5C6BC0',
-        comingSoon: false,
-        selectable: true,
-        startingPriceLabel: 'From ₹4,999/mo',
-        trialLabel: '7-day free trial',
-    },
-    {
-        id: leadCaputureAddon.YOUTUBE,
-        label: 'YouTube',
-        tagline: 'Video channel leads',
-        description: 'Turn YouTube comments and enquiries into structured leads.',
-        accent: '#FF0000',
-        comingSoon: true,
-        selectable: false,
-    },
-    {
-        id: leadCaputureAddon.WEBSITE,
-        label: 'Website',
-        tagline: 'AI-powered microsite',
-        description: 'Launch a branded property site and capture enquiries in minutes.',
-        accent: '#1976d2',
-        comingSoon: true,
-        selectable: false,
-    },
-];
-
 export default function Signup() {
     const theme = useTheme();
-    const navigate = useNavigate();
     const location = useLocation();
 
     const { initialProduct } = useMemo(() => {
@@ -84,10 +32,7 @@ export default function Signup() {
     }, [location.search]);
 
     const [selectedModules, setSelectedModules] = useState(() => initialProduct ? [initialProduct] : []);
-    const [pendingAction, setPendingAction] = useState(null);
     const [feedback, setFeedback] = useState(null);
-    const [isMobileVerified, setIsMobileVerified] = useState(false);
-    const [createGuestAddonLicense] = cpcrmApiSlice.useCreateGuestAddonLicenseMutation();
 
     const selectableProducts = useMemo(() => PRODUCT_OPTIONS.filter((p) => p.selectable), []);
 
@@ -96,56 +41,7 @@ export default function Signup() {
             prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id],
         );
         setFeedback(null);
-    }, []);
-
-    const handleLicenseAction = useCallback(
-        async (planType) => {
-            if (selectedModules.length === 0) {
-                setFeedback({ type: 'error', message: 'Select at least one product to continue.' });
-                return;
-            }
-            if (!isMobileVerified) {
-                setFeedback({ type: 'error', message: 'Please verify your mobile number first.' });
-                return;
-            }
-
-            setPendingAction(planType);
-            setFeedback(null);
-            try {
-                // const result = await createGuestAddonLicense({
-                //     guestId,
-                //     body: { features: selectedModules, planType },
-                // }).unwrap();
-
-                // if (planType === PlanType.FREE_TRIAL) {
-                //     const loginResult = normalizeGuestAddonLicenseLogin(result);
-                //     if (loginResult?.tokens?.accessToken) {
-                //         completeAuthLogin(dispatch, navigate, loginResult.tokens, {
-                //             site: loginResult.site,
-                //             siteId: loginResult.siteId,
-                //         });
-                //         return;
-                //     }
-                // }
-
-                setFeedback({
-                    type: 'success',
-                    message:
-                        planType === PlanType.FREE_TRIAL
-                            ? 'Your trial has been started. Redirecting…'
-                            : 'License request submitted. Our team will contact you.',
-                });
-            } catch (error) {
-                const message =
-                    error?.data?.message ??
-                    'Something went wrong. Please try again or contact support.';
-                setFeedback({ type: 'error', message });
-            } finally {
-                setPendingAction(null);
-            }
-        },
-        [createGuestAddonLicense, navigate, selectedModules, isMobileVerified],
-    );
+    }, [setSelectedModules]);
 
     return (
         <Box
@@ -278,7 +174,7 @@ export default function Signup() {
                                 minHeight: { xs: undefined, md: 0 },
                             }}
                         >
-                            <RegistrationForm onVerificationChange={setIsMobileVerified} />
+                            <RegistrationForm features={selectedModules} />
                         </Grid2>
                     </Grid2>
                 </Box>
@@ -290,300 +186,365 @@ export default function Signup() {
     );
 }
 
-const validationSchema = yup.object({
-    firmName: yup.string().trim().required('Firm name is required'),
-    fullName: yup.string().trim().required('Full name is required'),
-    mobile: yup.string().trim()
-        .required('Mobile number is required')
-        .matches(
-            /^\+91[6-9]\d{9}$/,
-            `Enter a valid mobile number`
-        ),
-});
+const RegistrationForm = forwardRef(({ features }, ref) => {
+    const theme = useTheme();
+    const primary = theme.palette.primary.main;
 
-const RegistrationForm = forwardRef(
-    ({ onVerificationChange, onValidityChange }, ref) => {
-        const theme = useTheme();
-        const primary = theme.palette.primary.main;
+    const [otpSent, setOtpSent] = useState(false);
+    const [isMobileVerified, setIsMobileVerified] = useState(false);
+    const [isSendingOtp, setIsSendingOtp] = useState(false);
+    const [isVerifying, setIsVerifying] = useState(false);
+    const [apiError, setApiError] = useState(null);
+    const [apiSuccess, setApiSuccess] = useState(null);
+    const [isGuestUser, setIsGuestUser] = useState(true);
+    const [accessToken, setAccessToken] = useState(null);
+    const [isWebsiteExist, setIsWebsiteExist] = useState(false);
 
-        const [otpSent, setOtpSent] = useState(false);
-        const [isMobileVerified, setIsMobileVerified] = useState(false);
-        const [isSendingOtp, setIsSendingOtp] = useState(false);
-        const [isVerifying, setIsVerifying] = useState(false);
-        const [apiError, setApiError] = useState(null);
-        const [apiSuccess, setApiSuccess] = useState(null);
+    const [timer, setTimer] = useState(0);
+    const [canResend, setCanResend] = useState(true);
 
-        const [timer, setTimer] = useState(0);
-        const [canResend, setCanResend] = useState(true);
+    const errorRef = useRef(null);
+    const successRef = useRef(null);
 
-        const formik = useFormik({
-            initialValues: {
-                firmName: '',
-                fullName: '',
-                mobile: '',
-                otp: '',
-            },
-            validationSchema,
-            validateOnMount: true,
-            onSubmit: () => { },
-        });
+    const [sendOtp] = cpcrmApi.useSendOtpMutation();
+    const [resendOtp] = cpcrmApi.useResendOtpMutation();
+    const [verifyOtp] = cpcrmApi.useVerifyOtpMutation();
 
-        const { values, isValid, setFieldValue } = formik;
+    const formik = useFormik({
+        enableReinitialize: true,
+        validateOnChange: true,
+        initialValues: {
+            mobileNumber: '',
+            fullName: '',
+            firmName: '',
+            otp: '',
+        },
+        validationSchema: yup.object().shape({
+            mobileNumber: yup.string().trim()
+                .required('Mobile number is required')
+                .matches(/^\+91[6-9]\d{9}$/, `Enter a valid mobile number`),
+            firmName: yup.string().trim().when({
+                is: () => !otpSent,
+                then: (schema) => schema.required('Firm name is required'),
+            }),
+            fullName: yup.string().trim().when({
+                is: () => !otpSent,
+                then: (schema) => schema.required('Full name is required'),
+            }),
+            // otp: yup.string().trim().when({
+            //     is: () => otpSent,
+            //     then: (schema) =>
+            //         schema
+            //             .required('OTP is required')
+            //             .length(6, 'OTP must be exactly 6 digits')
+            //             .matches(/^\d+$/, 'OTP must contain only digits'),
+            // }),
+            website: yup.string().trim().when({
+                is: () => isWebsiteExist,
+                then: (schema) => schema.test(
+                    'valid-website',
+                    'Website can only contain letters, numbers, spaces and hyphens',
+                    (value) => {
+                        if (!value) return true;
+                        const trimmed = value.trim();
 
-        const generatedUrl = useMemo(() => {
-            const firm = values.firmName.trim();
-            if (!firm) return '';
-            const slug = firm.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            return `${slug}.acolead.com`;
-        }, [values.firmName]);
+                        const normalized = trimmed
+                            .toLowerCase()
+                            .replace(/[^a-z0-9]/g, '-')
+                            .replace(/-+/g, '-')
+                            .replace(/^-|-$/g, '');
 
-        useEffect(() => {
-            let interval = null;
+                        // Ignore casing, but ensure no other characters need normalization
+                        return trimmed.toLowerCase() === normalized;
+                    }
+                ),
+            }),
+        }),
+        onSubmit: () => { },
+    });
 
-            if (timer > 0) {
-                interval = setInterval(() => {
-                    setTimer((prev) => {
-                        if (prev <= 1) {
-                            setCanResend(true);
-                            return 0;
-                        }
-                        return prev - 1;
-                    });
-                }, 1000);
-            }
+    const { values } = formik;
 
-            return () => {
-                if (interval) clearInterval(interval);
-            };
-        }, [timer]);
+    const { baseDomain, websiteUrl } = useMemo(() => {
+        const siteName = (isWebsiteExist ? values.website : values.firmName).trim();
+        if (!siteName) return '';
+        const baseDomain = siteName
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+        return { baseDomain, websiteUrl: `${baseDomain}.acolead.com` };
+    }, [isWebsiteExist, values.website, values.firmName]);
 
-        useEffect(() => {
-            if (isMobileVerified) {
-                setIsMobileVerified(false);
-                onVerificationChange(false);
-                setOtpSent(false);
-                setFieldValue('otp', '');
-                setApiSuccess(null);
-                setTimer(0);
-                setCanResend(false);
-            }
-        }, [values.mobile]);
+    useEffect(() => {
+        let interval = null;
 
-        useEffect(() => {
-            const formValid = isValid && isMobileVerified;
-            onValidityChange?.(formValid);
-        }, [isValid, isMobileVerified, onValidityChange]);
-
-        useImperativeHandle(ref, () => ({
-            getFormData: () => {
-                if (isValid && isMobileVerified) {
-                    return {
-                        firmName: values.firmName,
-                        fullName: values.fullName,
-                        mobile: values.mobile,
-                    };
+        if (timer > 0) interval = setInterval(() => {
+            setTimer((prev) => {
+                if (prev <= 1) {
+                    setCanResend(true);
+                    return 0;
                 }
-                return null;
-            },
-            isValid: isValid && isMobileVerified,
-        }), [isValid, isMobileVerified, values]);
+                return prev - 1;
+            });
+        }, 1000);
 
-        const handleSendOtp = useCallback(() => {
-            const mobile = values.mobile;
-            if (!mobile || mobile.length < 10) {
-                setApiError('Please enter a valid 10-digit mobile number.');
-                return;
-            }
-
-            setIsSendingOtp(true);
-            setApiError(null);
-            setApiSuccess(null);
-
-            setTimeout(() => {
-                setOtpSent(true);
-                setIsSendingOtp(false);
-                setTimer(30);
-                setCanResend(false);
-                setApiSuccess('OTP sent to your mobile number.');
-            }, 1000);
-        }, [values.mobile]);
-
-        const handleResendOtp = useCallback(() => {
-            if (!canResend) return;
-
-            setIsSendingOtp(true);
-            setApiError(null);
-            setApiSuccess(null);
-
-            setTimeout(() => {
-                setIsSendingOtp(false);
-                setTimer(30);
-                setCanResend(false);
-                setApiSuccess('OTP resent successfully.');
-            }, 1000);
-        }, [canResend]);
-
-        const handleVerifyOtp = useCallback(() => {
-            if (!values.otp || values.otp.length < 6) {
-                setApiError('Please enter the 6-digit OTP.');
-                return;
-            }
-
-            setIsVerifying(true);
-            setApiError(null);
-
-            setTimeout(() => {
-                if (values.otp.length === 6) {
-                    setIsMobileVerified(true);
-                    setIsVerifying(false);
-                    setApiSuccess('Mobile number verified successfully.');
-                    onVerificationChange(true);
-                    setTimer(0);
-                    setCanResend(false);
-                } else {
-                    setApiError('Invalid OTP. Please try again.');
-                    setIsVerifying(false);
-                }
-            }, 1000);
-        }, [values.otp, onVerificationChange]);
-
-        const formatTime = (seconds) => {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return mins > 0
-                ? `${mins}:${secs.toString().padStart(2, '0')}`
-                : `${secs}s`;
+        return () => {
+            if (interval) clearInterval(interval);
         };
+    }, [timer]);
 
-        return (
-            <Paper
-                elevation={0}
+    const handleSendOtp = async () => {
+        setIsSendingOtp(true);
+        setApiError(null);
+        setApiSuccess(null);
+
+        try {
+            const body = {
+                mobileNumber: formik.values.mobileNumber,
+                fullName: formik.values.fullName,
+                firmName: formik.values.firmName,
+            };
+            const result = await sendOtp({ body }).unwrap();
+            if (result?.otp) {
+                try {
+                    await navigator.clipboard.writeText(String(result.otp));
+                } catch (err) {
+                    console.error('Failed to copy OTP:', err);
+                }
+            }
+            setIsGuestUser(result.guestUser);
+            setAccessToken(result.accessToken);
+            setOtpSent(true);
+            setTimer(30);
+            setCanResend(false);
+            setApiSuccess('OTP sent to your mobile number.');
+            setTimeout(() => setApiSuccess(null), 2000);
+        } catch (err) {
+            if (!!err?.data?.errors?.length) {
+                err.data.errors.forEach((error) => {
+                    if (error?.property in formik.values) formik.setFieldError(error?.property, error?.message);
+                });
+            } else if (err?.data?.message) {
+                setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
+            }
+        } finally {
+            setIsSendingOtp(false);
+            formik.setFieldValue("otp", "");
+        }
+    };
+
+    const handleResendOtp = async () => {
+        if (!canResend || !accessToken) return;
+
+        setIsSendingOtp(true);
+        setApiError(null);
+        setApiSuccess(null);
+
+        try {
+            const body = { accessToken };
+            const result = await resendOtp({ body }).unwrap();
+            if (result?.otp) {
+                try {
+                    await navigator.clipboard.writeText(String(result.otp));
+                } catch (err) {
+                    console.error('Failed to copy OTP:', err);
+                }
+            }
+            setOtpSent(true);
+            setTimer(30);
+            setCanResend(false);
+            setApiSuccess('OTP resent successfully.');
+            setTimeout(() => setApiSuccess(null), 2000);
+        } catch (err) {
+            if (!!err?.data?.errors?.length) {
+                err.data.errors.forEach((error) => {
+                    if (error?.property in formik.values) formik.setFieldError(error?.property, error?.message);
+                });
+            } else if (err?.data?.message) {
+                setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
+            }
+        } finally {
+            setIsSendingOtp(false);
+        }
+    };
+
+    const handleVerifyOtp = async () => {
+        setIsVerifying(true);
+        setApiError(null);
+        setApiSuccess(null);
+
+        try {
+            const body = {
+                fullName: formik.values.fullName,
+                firmName: formik.values.firmName,
+                accessToken,
+                otp: formik.values.otp,
+                features,
+            };
+            if (isWebsiteExist) body.website = baseDomain;
+            const result = await verifyOtp({ body }).unwrap();
+            // setIsMobileVerified(true);
+            // setIsVerifying(false);
+            // setTimer(0);
+            // setCanResend(false);
+            // // setApiSuccess('Mobile number verified successfully.');
+            // setTimeout(() => {
+            //     const params = new URLSearchParams(result.tokens);
+            //     window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
+            //     setApiSuccess(null);
+            // }, 2000);
+            const params = new URLSearchParams(result.tokens);
+            window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
+        } catch (err) {
+            if (err?.data?.code === "SITE_ALREADY_EXIST") {
+                setIsWebsiteExist(true);
+                formik.setFieldValue("website", baseDomain);
+                // formik.setFieldTouched("website", true);
+                // formik.setFieldError("website", "Website already exist create with new prefix");
+            } else if (!!err?.data?.errors?.length) {
+                err.data.errors.forEach((error) => {
+                    if (error?.property in formik.values) formik.setFieldError(error?.property, error?.message);
+                });
+            } else if (err?.data?.message) {
+                setApiError(err.data.message);
+                window.requestAnimationFrame(() => {
+                    if (errorRef.current) errorRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                });
+            }
+        } finally {
+            setIsVerifying(false);
+        }
+    };
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return mins > 0
+            ? `${mins}:${secs.toString().padStart(2, '0')}`
+            : `${secs}s`;
+    };
+
+    return (
+        <Paper
+            elevation={0}
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                minHeight: 0,
+                overflow: 'hidden',
+                borderRadius: 2.5,
+                border: '1px solid',
+                borderColor: alpha(primary, 0.2),
+                background: `linear-gradient(160deg, ${alpha(primary, 0.12)} 0%, ${alpha('#fff', 0.92)} 38%, ${alpha(primary, 0.04)} 100%)`,
+                boxShadow: `0 8px 32px ${alpha(primary, 0.1)}`,
+                position: 'relative',
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 3,
+                    background: `linear-gradient(90deg, ${primary}, ${alpha(primary, 0.45)})`,
+                    borderRadius: '10px 10px 0 0',
+                },
+            }}
+        >
+            <Box
                 sx={{
+                    flex: 1,
+                    minHeight: 0,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '100%',
-                    minHeight: 0,
                     overflow: 'hidden',
-                    borderRadius: 2.5,
-                    border: '1px solid',
-                    borderColor: alpha(primary, 0.2),
-                    background: `linear-gradient(160deg, ${alpha(primary, 0.12)} 0%, ${alpha('#fff', 0.92)} 38%, ${alpha(primary, 0.04)} 100%)`,
-                    boxShadow: `0 8px 32px ${alpha(primary, 0.1)}`,
-                    position: 'relative',
-                    '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: 3,
-                        background: `linear-gradient(90deg, ${primary}, ${alpha(primary, 0.45)})`,
-                        borderRadius: '10px 10px 0 0',
-                    },
+                    p: 2,
+                    pt: 2.25,
                 }}
             >
-                <Box
+                <Stack spacing={1.5} sx={{ flexShrink: 0 }}>
+                    <Chip
+                        icon={<AutoAwesomeOutlinedIcon sx={{ fontSize: '14px !important' }} />}
+                        label="Registration"
+                        size="small"
+                        sx={{
+                            alignSelf: 'flex-start',
+                            height: 24,
+                            fontWeight: 700,
+                            fontSize: '0.65rem',
+                            bgcolor: alpha(primary, 0.12),
+                            color: 'primary.main',
+                            border: '1px solid',
+                            borderColor: alpha(primary, 0.2),
+                            '& .MuiChip-icon': { color: 'primary.main' },
+                        }}
+                    />
+
+                    <Box>
+                        <Typography variant="h6" fontWeight={800} lineHeight={1.2} letterSpacing="-0.01em">
+                            Complete Your Profile
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" fontWeight={500} lineHeight={1.4} mt={0.5}>
+                            Verify your mobile number to start your free trial.
+                        </Typography>
+                    </Box>
+                </Stack>
+
+                <Stack
+                    spacing={2}
                     sx={{
                         flex: 1,
                         minHeight: 0,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        overflow: 'hidden',
-                        p: 2,
-                        pt: 2.25,
+                        mt: 2,
+                        mb: 1.5,
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                        pr: 0.5,
+                        '&::-webkit-scrollbar': { width: 4 },
+                        '&::-webkit-scrollbar-thumb': { bgcolor: alpha(primary, 0.2), borderRadius: 2 },
                     }}
                 >
-                    <Stack spacing={1.5} sx={{ flexShrink: 0 }}>
-                        <Chip
-                            icon={<AutoAwesomeOutlinedIcon sx={{ fontSize: '14px !important' }} />}
-                            label="Registration"
-                            size="small"
-                            sx={{
-                                alignSelf: 'flex-start',
-                                height: 24,
-                                fontWeight: 700,
-                                fontSize: '0.65rem',
-                                bgcolor: alpha(primary, 0.12),
-                                color: 'primary.main',
-                                border: '1px solid',
-                                borderColor: alpha(primary, 0.2),
-                                '& .MuiChip-icon': { color: 'primary.main' },
-                            }}
-                        />
-
-                        <Box>
-                            <Typography variant="h6" fontWeight={800} lineHeight={1.2} letterSpacing="-0.01em">
-                                Complete Your Profile
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary" fontWeight={500} lineHeight={1.4} mt={0.5}>
-                                Verify your mobile number to start your free trial.
-                            </Typography>
-                        </Box>
-                    </Stack>
-
-                    <Stack
-                        spacing={2}
-                        sx={{
-                            flex: 1,
-                            minHeight: 0,
-                            mt: 2,
-                            mb: 1.5,
-                            overflowY: 'auto',
-                            overflowX: 'hidden',
-                            pr: 0.5,
-                            '&::-webkit-scrollbar': { width: 4 },
-                            '&::-webkit-scrollbar-thumb': { bgcolor: alpha(primary, 0.2), borderRadius: 2 },
-                        }}
-                    >
-                        <FormField
-                            fieldLabel="Firm Name"
-                            fullWidth
-                            theme={theme}
-                            formikProps={formik}
-                            fieldName="firmName"
-                            fieldConfig={{
-                                required: true,
-                                placeholder: "What is your firm name ?",
-                                helperText: generatedUrl ? `Your site URL: ${generatedUrl}` : 'Enter firm name to generate URL',
-                                autoFocus: true,
-                            }}
-                        />
-
-                        <FormField
-                            fieldLabel="Full Name"
-                            fullWidth
-                            theme={theme}
-                            formikProps={formik}
-                            fieldName="fullName"
-                            fieldConfig={{
-                                required: true,
-                                placeholder: "What is your full name ?",
-                            }}
-                        />
-
-                        <Box>
-                            <Stack direction="row" spacing={1} alignItems="flex-start">
-                                <Box sx={{ flex: 1 }}>
-                                    <FormField
-                                        fieldLabel="Mobile Number"
-                                        fullWidth
-                                        theme={theme}
-                                        formikProps={formik}
-                                        fieldName="mobile"
-                                        fieldConfig={{
-                                            type: "tel",
-                                            required: true,
-                                            placeholder: "10-digit mobile",
-                                            disabled: isMobileVerified,
-                                        }}
-                                    />
-                                </Box>
+                    <Stack>
+                        <Stack direction="row" spacing={1} alignItems="flex-start">
+                            <Box sx={{ flex: 1 }}>
+                                <FormField
+                                    fieldLabel="Mobile Number"
+                                    fullWidth
+                                    theme={theme}
+                                    formikProps={formik}
+                                    fieldName="mobileNumber"
+                                    fieldConfig={{
+                                        type: "tel",
+                                        required: true,
+                                        placeholder: "10-digit mobile",
+                                        disabled: isMobileVerified || otpSent,
+                                        autoFocus: true,
+                                    }}
+                                />
+                            </Box>
+                            {!isMobileVerified && (
                                 <Box sx={{ pt: 3.3 }}>
                                     {!otpSent ? (
                                         <Button
                                             variant="outlined"
                                             onClick={handleSendOtp}
-                                            disabled={isMobileVerified || !!formik.errors.mobile}
+                                            disabled={isSendingOtp || !!formik.errors.mobileNumber}
                                             loading={isSendingOtp}
                                             sx={{
                                                 borderRadius: 1.5,
@@ -605,16 +566,17 @@ const RegistrationForm = forwardRef(
                                         <Button
                                             variant="text"
                                             onClick={handleResendOtp}
-                                            disabled={!canResend}
+                                            disabled={isSendingOtp || !canResend}
                                             loading={isSendingOtp}
                                             sx={{
                                                 borderRadius: 1.5,
-                                                fontWeight: 600,
+                                                fontWeight: canResend ? 600 : 500,
                                                 color: canResend ? primary : 'text.disabled',
                                                 px: 2,
                                                 py: 1.35,
                                                 whiteSpace: 'nowrap',
                                                 minWidth: '100px',
+                                                textTransform: "none",
                                             }}
                                         >
                                             {canResend ? (
@@ -625,51 +587,103 @@ const RegistrationForm = forwardRef(
                                         </Button>
                                     )}
                                 </Box>
-                            </Stack>
+                            )}
+                        </Stack>
+                        {isMobileVerified && (
+                            <Box sx={{ display: 'flex', alignItems: 'center', mt: 1.5 }}>
+                                <CheckCircleIcon sx={{ color: "success.main", fontSize: 20, mr: 0.5 }} />
+                                <Typography variant="body2" color="success.main" fontWeight={600}>
+                                    Mobile number verified successfully
+                                </Typography>
+                            </Box>
+                        )}
+                    </Stack>
 
-                            {otpSent && !isMobileVerified && (
-                                <Stack spacing={1.5} sx={{ mt: 1.5 }}>
+                    {accessToken && (
+                        <>
+                            {isGuestUser && (
+                                <>
                                     <FormField
-                                        fieldLabel="Enter OTP"
+                                        fieldLabel="Firm Name"
                                         fullWidth
                                         theme={theme}
                                         formikProps={formik}
-                                        fieldName="otp"
+                                        fieldName="firmName"
                                         fieldConfig={{
-                                            type: "otp",
+                                            disabled: isWebsiteExist,
                                             required: true,
-                                            placeholder: "6-digit OTP",
-                                            length: 6,
-                                            autoFocus: false,
+                                            placeholder: "What is your firm name ?",
+                                            helperText: isWebsiteExist ? undefined : websiteUrl ? `Your site URL: ${websiteUrl}` : 'Enter firm name to generate URL',
                                         }}
                                     />
-                                    <Button
+
+                                    {isWebsiteExist && (
+                                        <Stack>
+                                            <FormField
+                                                fieldLabel="Website URL"
+                                                fullWidth
+                                                theme={theme}
+                                                formikProps={formik}
+                                                fieldName="website"
+                                                fieldConfig={{
+                                                    required: true,
+                                                    placeholder: "What should be your website prefix ?",
+                                                    helperText: `Your site URL: ${websiteUrl}`,
+                                                }}
+                                            />
+                                            <FormHelperText
+                                                children="Website already exist create with new prefix"
+                                                error={true}
+                                            />
+                                        </Stack>
+                                    )}
+
+                                    <FormField
+                                        fieldLabel="Full Name"
                                         fullWidth
-                                        size="large"
-                                        variant="contained"
-                                        onClick={handleVerifyOtp}
-                                        disabled={values.otp.length < 6}
-                                        loading={isVerifying}
-                                        sx={{
-                                            borderRadius: 1.5,
-                                            textTransform: 'none',
-                                            fontWeight: 600,
-                                            py: 1.25,
+                                        theme={theme}
+                                        formikProps={formik}
+                                        fieldName="fullName"
+                                        fieldConfig={{
+                                            required: true,
+                                            placeholder: "What is your full name ?",
                                         }}
-                                    >
-                                        Verify OTP
-                                    </Button>
-                                </Stack>
+                                    />
+                                </>
                             )}
 
-                            {isMobileVerified && (
-                                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1.5 }}>
-                                    <CheckCircleIcon sx={{ color: "success.main", fontSize: 20, mr: 0.5 }} />
-                                    <Typography variant="body2" color="success.main" fontWeight={600}>
-                                        Mobile number verified successfully
-                                    </Typography>
-                                </Box>
-                            )}
+                            <Stack spacing={1.5} sx={{ mt: 1.5 }}>
+                                <FormField
+                                    fieldLabel="Enter OTP"
+                                    fullWidth
+                                    theme={theme}
+                                    formikProps={formik}
+                                    fieldName="otp"
+                                    fieldConfig={{
+                                        type: "otp",
+                                        required: true,
+                                        placeholder: "6-digit OTP",
+                                        length: 6,
+                                        autoFocus: false,
+                                    }}
+                                />
+                                <Button
+                                    fullWidth
+                                    size="large"
+                                    variant="contained"
+                                    onClick={handleVerifyOtp}
+                                    disabled={isVerifying || !formik.isValid || !features.length || formik.values.otp?.length < 6}
+                                    loading={isVerifying}
+                                    sx={{
+                                        borderRadius: 1.5,
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        py: 1.25,
+                                    }}
+                                >
+                                    Verify OTP
+                                </Button>
+                            </Stack>
 
                             {apiError && (
                                 <Alert
@@ -680,6 +694,7 @@ const RegistrationForm = forwardRef(
                                         '& .MuiAlert-message': { fontSize: '0.875rem' },
                                     }}
                                     onClose={() => setApiError(null)}
+                                    ref={errorRef}
                                 >
                                     {apiError}
                                 </Alert>
@@ -693,15 +708,17 @@ const RegistrationForm = forwardRef(
                                         '& .MuiAlert-message': { fontSize: '0.875rem' },
                                     }}
                                     onClose={() => setApiSuccess(null)}
+                                    ref={successRef}
                                 >
                                     {apiSuccess}
                                 </Alert>
                             )}
-                        </Box>
-                    </Stack>
-                </Box>
+                        </>
+                    )}
+                </Stack>
+            </Box>
 
-                {/* <Box
+            {/* <Box
                     sx={{
                         flexShrink: 0,
                         p: 2,
@@ -723,10 +740,9 @@ const RegistrationForm = forwardRef(
                             : 'Please fill all required fields and verify your mobile.'}
                     </Typography>
                 </Box> */}
-            </Paper>
-        );
-    }
-);
+        </Paper>
+    );
+});
 
 function HelpLinks() {
     return (
@@ -751,45 +767,16 @@ function HelpLinks() {
     );
 }
 
-function ProductLogo({ option, size = 28 }) {
+function ProductLogo({ option }) {
     if (option.logoSrc) return (
         <Box
             component="img"
-            src={instaLogo}
+            src={option.logoSrc}
             alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
+            sx={{ width: option.iconSize?.registerPageCard, height: option.iconSize?.registerPageCard, objectFit: 'contain' }}
         />
     );
-    if (option.id === leadCaputureAddon.INSTAGRAM) return (
-        <Box
-            component="img"
-            src={instaLogo}
-            alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
-        />
-    );
-    if (option.id === leadCaputureAddon.WHATSAPP) return (
-        <WhatsAppIcon
-            color="success"
-            sx={{ fontSize: size }}
-        />
-    );
-    if (option.id === leadCaputureAddon.YOUTUBE) return (
-        <Box
-            component="img"
-            src={youtubeLogo}
-            alt=""
-            sx={{ width: size, height: size, objectFit: 'contain' }}
-        />
-    );
-    if (option.id === leadCaputureAddon.AI_CALLING) return (
-        <PhoneInTalkOutlinedIcon sx={{ fontSize: size, color: option.accent }} />
-    );
-    if (option.id === leadCaputureAddon.WEBSITE) return (
-        <LanguageOutlinedIcon
-            sx={{ fontSize: size, color: option.accent }} />
-    );
-    return null;
+    return option?.logo({ size: option.iconSize?.registerPageCard }) || null;
 }
 
 function ProductCard({
@@ -840,7 +827,7 @@ function ProductCard({
                         transition: 'all 0.2s ease',
                     }}
                 >
-                    <ProductLogo option={option} size={40} />
+                    <ProductLogo option={option} />
                 </Box>
 
                 <Stack sx={{ flex: 1, minWidth: 0 }}>
@@ -855,7 +842,7 @@ function ProductCard({
 
                     <Typography
                         variant="body2"
-                        color="text.secondary"
+                        fontWeight={500}
                         sx={{
                             display: '-webkit-box',
                             WebkitLineClamp: 1,
@@ -957,6 +944,27 @@ const FormField = ({
 }) => {
     const { value, touched, error } = formikProps.getFieldMeta(fieldName);
 
+    if (fieldConfig?.type === "otp") return (
+        <Stack>
+            {!hideLabel && <FormLabel children={fieldLabel} required={fieldConfig?.required} sx={{ typography: "body2", marginBottom: 0.5 }} />}
+            <CustomOTPInput
+                fullWidth
+                {...formikProps.getFieldProps(fieldName)}
+                onBlur={() => formikProps.setFieldTouched(fieldName, true)}
+                value={value ?? ""}
+                error={touched && !!error}
+                length={Number(fieldConfig?.length ?? 6)}
+                borderRadius={2}
+                backgroundColor={"background.paper"}
+                autoFocus={fieldConfig?.autoFocus}
+            />
+            <FormHelperText
+                error={touched && !!error}
+                children={touched && !!error ? error : fieldConfig?.helperText}
+            />
+        </Stack>
+    );
+
     return (
         <FormControl fullWidth={fullWidth}>
             {!hideLabel && <FormLabel children={fieldLabel} required={fieldConfig?.required} sx={{ typography: "body2", marginBottom: 0.5 }} />}
@@ -992,23 +1000,6 @@ const FormField = ({
                     borderRadius={8}
                     backgroundColor={"background.paper"}
                 />
-            ) : fieldConfig?.type === "otp" ? (
-                <>
-                    <CustomOTPInput
-                        fullWidth
-                        {...formikProps.getFieldProps(fieldName)}
-                        value={value ?? ""}
-                        error={touched && !!error}
-                        length={Number(fieldConfig?.length ?? 6)}
-                        borderRadius={2}
-                        backgroundColor={"background.paper"}
-                        autoFocus={fieldConfig?.autoFocus}
-                    />
-                    <FormHelperText
-                        error={touched && !!error}
-                        children={touched && !!error ? error : fieldConfig?.helperText}
-                    />
-                </>
             ) : (
                 <OutlinedTextField
                     fullWidth
@@ -1155,7 +1146,8 @@ const CustomOTPInput = forwardRef(
                 updateValue(newValue);
                 focusInput(Math.min(index + pastedData.length, length - 1));
             }
-        }, [updateValue, focusInput, value, length]);
+            onBlur?.(event);
+        }, [updateValue, focusInput, value, length, onBlur]);
 
         const handleKeyDown = useCallback((event, index) => {
             switch (event.key) {

@@ -1,9 +1,9 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
 import AppRoutesNew from "./routes/AppRoutesNew";
-
-
+import { store } from "./redux/store";
 
 function App() {
   const theme = useTheme();
@@ -11,9 +11,11 @@ function App() {
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   return (
-    <Router>
-      <AppRoutesNew/>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <AppRoutesNew />
+      </Router>
+    </Provider>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Header from './Header';
 import HomePage from './HomePage';
@@ -9,6 +10,7 @@ import HorizontalBar from './HorizontalBar';
 import Plans from './Plans';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
+import ProductModules from '../new components/acolead-modules/ProductModules';
 
 
 
@@ -32,7 +34,16 @@ const LayoutNew = () => {
     //         });
     //     }
     // };
+    const location = useLocation();
+    useEffect(() => {
+    const params = new URLSearchParams(location.search);
 
+    if (params.get('demo') === 'true') {
+        setTimeout(() => {
+            handleScrollToForm();
+        }, 300);
+    }
+}, [location.search]);
     const handleScrollToForm = () => {
         if (scrollRef.current) {
             const topOffset = scrollRef.current.getBoundingClientRect().top + window.pageYOffset - 80;
@@ -81,10 +92,11 @@ const LayoutNew = () => {
                 setCountry={setCountry}
             />
             <Box ref={homeRef}>
-                <HomePage handleScrollToForm={handleScrollToForm}/>
+                <HomePage handleScrollToForm={handleScrollToForm} />
             </Box>
+            <ProductModules />
             <Box>
-                <ImgSection aboutRef={aboutRef}/>
+                <ImgSection aboutRef={aboutRef} />
             </Box>
             <Mission />
             <Box ref={featuesRef}>
