@@ -145,3 +145,10 @@ export const PRODUCT_OPTIONS = [
         selectable: false,
     },
 ];
+
+export const LICENSE_NAV_ITEMS = [
+    { label: 'Home', path: '/' },
+    { label: 'Instagram & Facebook', path: '/modules/instagram' },
+    { label: 'WhatsApp', path: '/modules/whatsapp' },
+    { label: 'AI Calling', path: '/modules/ai-calling' },
+];

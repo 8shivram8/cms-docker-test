@@ -12,6 +12,7 @@ import acoleadLogo from '../../../assets/acolead-crm.png';
 import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import marketingImage from "../../../assets/marketing1.jpeg";
+import { LICENSE_NAV_ITEMS } from '../constants';
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -27,22 +28,15 @@ const WhatsAppPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Instagram', path: '/modules/instagram' },
-    { label: 'WhatsApp', path: '/modules/whatsapp' },
-    { label: 'AI Calling', path: '/modules/ai-calling' },
-  ];
-
   const handleBookDemoClick = () => {
-  navigate("/?demo=true");
-};
+    navigate("/?demo=true");
+  };
 
-const productName = "WHATSAPP";
+  const productName = "WHATSAPP";
 
-const handleStartClick = () => {
-  navigate(`/product/signup?product=${productName}`);
-};
+  const handleStartClick = () => {
+    navigate(`/product/signup?product=${productName}`);
+  };
   const workflow = [
     {
       title: 'Capture incoming WhatsApp conversations',
@@ -93,7 +87,7 @@ const handleStartClick = () => {
           </Box>
 
           <Stack direction="row" spacing={1} sx={{ flexGrow: 1, justifyContent: 'center', display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((item) => (
+            {LICENSE_NAV_ITEMS.map((item) => (
               <Button
                 key={item.label}
                 onClick={() => navigate(item.path)}
@@ -251,7 +245,7 @@ const handleStartClick = () => {
               <Typography sx={{ color: 'rgba(255,255,255,0.9)', maxWidth: 620, lineHeight: 1.7 }}>Bring messaging into one system so your team can engage faster, qualify leads sooner, and close more business.</Typography>
             </Box>
             <Button variant="contained" onClick={handleBookDemoClick} sx={{ bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: 16, '&:hover': { bgcolor: '#f8fbff' } }}>
-             Book a Demo
+              Book a Demo
             </Button>
           </Stack>
         </Box>

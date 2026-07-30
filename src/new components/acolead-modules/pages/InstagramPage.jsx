@@ -13,17 +13,11 @@ import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import instagramLeadImage from '../../../assets/marketing1.jpeg';
 import { instagramAndFacebookIcon } from '../../../assets';
+import { LICENSE_NAV_ITEMS } from '../constants';
 
 const InstagramPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Instagram & Facebook', path: '/modules/instagram' },
-    { label: 'WhatsApp', path: '/modules/whatsapp' },
-    { label: 'AI Calling', path: '/modules/ai-calling' },
-  ];
 
   const productName = 'INSTAGRAM';
 
@@ -104,7 +98,7 @@ const InstagramPage = () => {
           </Box>
 
           <Stack direction="row" spacing={1} sx={{ flexGrow: 1, justifyContent: 'center', display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((item) => (
+            {LICENSE_NAV_ITEMS.map((item) => (
               <Button
                 key={item.label}
                 onClick={() => navigate(item.path)}
