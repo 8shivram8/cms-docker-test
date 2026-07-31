@@ -1,23 +1,34 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Box, Typography, Grid, Button, Stack, Chip } from '@mui/material';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box, Typography, Grid, Button, Stack, Chip, IconButton, Drawer, List, ListItem, ListItemButton, Divider, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import ChecklistRoundedIcon from '@mui/icons-material/ChecklistRounded';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import acoleadLogo from '../../../assets/acolead-crm.png';
 import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import instagramLeadImage from '../../../assets/marketing1.jpeg';
 import { instagramAndFacebookIcon } from '../../../assets';
-import { LICENSE_NAV_ITEMS } from '../constants';
-
 const InstagramPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Instagram & Facebook', path: '/modules/instagram' },
+    { label: 'WhatsApp', path: '/modules/whatsapp' },
+    { label: 'AI Calling', path: '/modules/ai-calling' },
+  ];
+
+  const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
   const productName = 'INSTAGRAM';
 
@@ -36,7 +47,7 @@ const InstagramPage = () => {
     });
   };
 
-  const handleScrollToForm = () => { };
+  const handleScrollToForm = () => {};
 
   const howItWorks = [
     {
@@ -94,38 +105,102 @@ const InstagramPage = () => {
           }}
         >
           <Box onClick={goToHome} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: '40px' }} />
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: '40px', maxWidth: '100%' }} />
           </Box>
 
-          <Stack direction="row" spacing={1} sx={{ flexGrow: 1, justifyContent: 'center', display: { xs: 'none', md: 'flex' } }}>
-            {LICENSE_NAV_ITEMS.map((item) => (
-              <Button
-                key={item.label}
-                onClick={() => navigate(item.path)}
-                sx={{
-                  minWidth: 'auto',
-                  px: 1.5,
-                  color: location.pathname === item.path ? '#1677F7' : '#334155',
-                  fontWeight: location.pathname === item.path ? 700 : 600,
-                  textTransform: 'none',
-                  borderRadius: '999px',
-                  '&:hover': { bgcolor: '#f7fbff' },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </Stack>
+          {isMobile ? (
+            <IconButton
+              onClick={toggleDrawer}
+              sx={{
+                width: 42,
+                height: 42,
+                borderRadius: 2,
+                bgcolor: '#1677F7',
+                color: '#fff',
+                '&:hover': { bgcolor: '#125fcc' },
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <Stack direction="row" spacing={1} sx={{ flexGrow: 1, justifyContent: 'center' }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item.label}
+                  onClick={() => navigate(item.path)}
+                  sx={{
+                    minWidth: 'auto',
+                    px: 1.5,
+                    color: item.path === '/modules/instagram' ? '#1677F7' : '#334155',
+                    fontWeight: item.path === '/modules/instagram' ? 700 : 600,
+                    textTransform: 'none',
+                    borderRadius: '999px',
+                    '&:hover': { bgcolor: '#f7fbff' },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Stack>
+          )}
 
-          <Box sx={{ width: 40 }} />
+          {!isMobile && <Box sx={{ width: 40 }} />}
         </Box>
       </Box>
+
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
+        <Box sx={{ width: 280, p: 2 }}>
+          <Box onClick={() => { setDrawerOpen(false); goToHome(); }} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mb: 2 }}>
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: '36px', maxWidth: '100%' }} />
+          </Box>
+
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.label} disablePadding>
+                <ListItemButton
+                  onClick={() => {
+                    setDrawerOpen(false);
+                    navigate(item.path);
+                  }}
+                  sx={{ borderRadius: 2, px: 1.5, py: 1 }}
+                >
+                  <Typography sx={{ fontWeight: item.path === '/modules/instagram' ? 700 : 500, color: '#0f172a' }}>
+                    {item.label}
+                  </Typography>
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Button
+            variant="contained"
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => {
+              setDrawerOpen(false);
+              navigate('/?demo=true');
+            }}
+            sx={{
+              bgcolor: '#1677F7',
+              color: '#fff',
+              textTransform: 'none',
+              borderRadius: '999px',
+              fontWeight: 700,
+              width: '100%',
+              '&:hover': { bgcolor: '#125fcc' },
+            }}
+          >
+            Book a Demo
+          </Button>
+        </Box>
+      </Drawer>
 
       <Box
         sx={{
           flex: 1,
-          px: { xs: 3, md: 10 },
-          py: { xs: 6, md: 8 },
+          px: { xs: 2.5, sm: 3, md: 10 },
+          py: { xs: 5, md: 8 },
           backgroundImage: `url(${bgImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -133,7 +208,7 @@ const InstagramPage = () => {
           backgroundColor: '#f8fbff',
         }}
       >
-        <Grid container spacing={6} alignItems="center" sx={{ maxWidth: 1400, mx: 'auto' }}>
+        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center" sx={{ maxWidth: 1400, mx: 'auto' }}>
           <Grid item xs={12} md={7}>
             <Stack spacing={2.5}>
               <Chip
@@ -152,13 +227,13 @@ const InstagramPage = () => {
 
               <Typography
                 sx={{
-                  fontSize: { xs: 34, md: 52 },
+                  fontSize: { xs: 24, sm: 30, md: 40 },
                   fontWeight: 800,
                   lineHeight: 1.15,
                   color: '#111827',
                 }}
               >
-                Turn every Instagram & Facebook  interaction into a{' '}
+                Turn every Instagram & Facebook interaction into a{' '}
                 <Box component="span" sx={{ color: '#E1306C' }}>
                   ready-to-convert lead
                 </Box>
@@ -166,7 +241,7 @@ const InstagramPage = () => {
 
               <Typography
                 sx={{
-                  fontSize: { xs: 16, md: 18 },
+                  fontSize: { xs: 15, sm: 16, md: 18 },
                   color: '#4b5563',
                   lineHeight: 1.8,
                   maxWidth: 650,
@@ -182,12 +257,15 @@ const InstagramPage = () => {
                   onClick={handleStartClick}
                   sx={{
                     bgcolor: '#1677F7',
-                    px: 4,
-                    py: 1.4,
+                    px: 3,
+                    py: 1.2,
                     borderRadius: '999px',
                     textTransform: 'none',
                     fontWeight: 700,
-                    fontSize: 16,
+                    fontSize: { xs: 14, sm: 15, md: 16 },
+                    lineHeight: 1.2,
+                    whiteSpace: 'nowrap',
+                    width: { xs: '100%', sm: 'fit-content' },
                     '&:hover': {
                       bgcolor: '#0E63D4',
                     },
@@ -195,7 +273,6 @@ const InstagramPage = () => {
                 >
                   Start with Instagram and Facebook
                 </Button>
-
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ pt: 1 }}>
@@ -226,7 +303,7 @@ const InstagramPage = () => {
                 alt="Instagram and Facebook lead capture dashboard"
                 style={{
                   width: '100%',
-                  height: '420px',
+                  height: 'clamp(260px, 42vw, 420px)',
                   objectFit: 'cover',
                   display: 'block',
                 }}
@@ -241,24 +318,34 @@ const InstagramPage = () => {
               <Box
                 sx={{
                   position: 'absolute',
-                  left: 20,
-                  right: 20,
-                  bottom: 20,
-                  borderRadius: '20px',
+                  left: 16,
+                  right: 16,
+                  bottom: 16,
+                  mx: 'auto',
+                  maxWidth: 520,
+                  width: 'calc(100% - 32px)',
+                  borderRadius: '18px',
                   bgcolor: 'rgba(255,255,255,0.95)',
-                  px: 2.5,
-                  py: 2,
+                  px: { xs: 1.5, sm: 2 },
+                  py: { xs: 1.25, sm: 1.5 },
                   boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
                 }}
               >
-                <Stack direction="row" spacing={1.5} alignItems="center">
+                <Stack direction="column" spacing={1} alignItems="center" justifyContent="center" sx={{ textAlign: 'center' }}>
                   <Box
                     component="img"
                     src={instagramAndFacebookIcon}
                     alt=""
-                    sx={{ width: 28, height: 28, objectFit: 'contain' }}
+                    sx={{ width: 32, height: 32, objectFit: 'contain' }}
                   />
-                  <Typography fontWeight={700} color="#111827">
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      color: '#111827',
+                      fontSize: { xs: 13, sm: 15, md: 17 },
+                      lineHeight: 1.3,
+                    }}
+                  >
                     Capture leads from Instagram and Facebook ads together
                   </Typography>
                 </Stack>
@@ -268,24 +355,24 @@ const InstagramPage = () => {
         </Grid>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 10 }, px: { xs: 3, md: 10 }, bgcolor: '#fff' }}>
-        <Typography align="center" sx={{ fontSize: { xs: 28, md: 36 }, fontWeight: 800, color: '#111827', mb: 2 }}>
+      <Box sx={{ py: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 3, md: 10 }, bgcolor: '#fff' }}>
+        <Typography align="center" sx={{ fontSize: { xs: 26, md: 36 }, fontWeight: 800, color: '#111827', mb: 2 }}>
           How Instagram and Facebook lead capture works
         </Typography>
-        <Typography align="center" sx={{ color: '#64748b', fontSize: 18, maxWidth: 760, mx: 'auto', mb: 6 }}>
+        <Typography align="center" sx={{ color: '#64748b', fontSize: { xs: 15, md: 18 }, maxWidth: 760, mx: 'auto', mb: { xs: 4, md: 6 } }}>
           From first message to follow-up, AcoLead gives your team a simple path to turn social engagement into real pipeline.
         </Typography>
 
-        <Grid container spacing={3} alignItems="stretch">
+        <Grid container spacing={{ xs: 2.5, md: 3 }} alignItems="stretch">
           {howItWorks.map((item, index) => (
-            <Grid item xs={12} md={3} key={item.title}>
+            <Grid item xs={12} sm={6} md={3} key={item.title}>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'flex-start',
                   height: '100%',
-                  p: 4,
+                  p: { xs: 2.5, md: 4 },
                   borderRadius: 4,
                   bgcolor: '#f8fbff',
                   border: '1px solid #e6f0ff',
@@ -309,7 +396,7 @@ const InstagramPage = () => {
                 >
                   {index + 1}
                 </Box>
-                <Typography sx={{ fontWeight: 700, fontSize: 20, mb: 1, color: '#111827' }}>
+                <Typography sx={{ fontWeight: 700, fontSize: { xs: 18, md: 20 }, mb: 1, color: '#111827' }}>
                   {item.title}
                 </Typography>
                 <Typography sx={{ color: '#64748b', lineHeight: 1.7 }}>
@@ -321,8 +408,8 @@ const InstagramPage = () => {
         </Grid>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 10 }, px: { xs: 3, md: 10 }, bgcolor: '#f8fbff' }}>
-        <Grid container spacing={6} alignItems="center" sx={{ maxWidth: 1400, mx: 'auto' }}>
+      <Box sx={{ py: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 3, md: 10 }, bgcolor: '#f8fbff' }}>
+        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center" sx={{ maxWidth: 1400, mx: 'auto' }}>
           <Grid item xs={12} md={6}>
             <Box
               sx={{
@@ -333,11 +420,11 @@ const InstagramPage = () => {
                 border: '1px solid #eaf2ff',
               }}
             >
-              <Typography sx={{ fontSize: 30, fontWeight: 800, color: '#111827', mb: 2 }}>
+              <Typography sx={{ fontSize: { xs: 24, md: 30 }, fontWeight: 800, color: '#111827', mb: 2 }}>
                 Why teams love this workflow
               </Typography>
-              <Typography sx={{ color: '#64748b', fontSize: 17, lineHeight: 1.8, mb: 3 }}>
-                AcoLead makes Instagram and Facebook  engagement more valuable by turning conversations into organized opportunities your sales team can act on instantly.
+              <Typography sx={{ color: '#64748b', fontSize: { xs: 15, md: 17 }, lineHeight: 1.8, mb: 3 }}>
+                AcoLead makes Instagram and Facebook engagement more valuable by turning conversations into organized opportunities your sales team can act on instantly.
               </Typography>
 
               <Stack spacing={1.8}>
@@ -365,7 +452,7 @@ const InstagramPage = () => {
                 alt="Instagram & Facebook campaign engagement"
                 style={{
                   width: '100%',
-                  height: '360px',
+                  height: 'clamp(240px, 30vw, 360px)',
                   objectFit: 'cover',
                   display: 'block',
                 }}
@@ -375,7 +462,7 @@ const InstagramPage = () => {
         </Grid>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 10 }, px: { xs: 3, md: 10 }, bgcolor: '#111827' }}>
+      <Box sx={{ py: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 3, md: 10 }, bgcolor: '#111827' }}>
         <Box
           sx={{
             maxWidth: 1100,
@@ -389,7 +476,7 @@ const InstagramPage = () => {
         >
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} justifyContent="space-between" alignItems={{ xs: 'flex-start', md: 'center' }}>
             <Box>
-              <Typography sx={{ color: '#fff', fontSize: { xs: 24, md: 32 }, fontWeight: 800, mb: 1 }}>
+              <Typography sx={{ color: '#fff', fontSize: { xs: 22, md: 32 }, fontWeight: 800, mb: 1 }}>
                 Make every Instagram & Facebook conversation count
               </Typography>
               <Typography sx={{ color: 'rgba(255,255,255,0.9)', maxWidth: 620, lineHeight: 1.7 }}>
@@ -405,12 +492,11 @@ const InstagramPage = () => {
                 color: '#1677F7',
                 px: 5,
                 py: 1.5,
-                minWidth: 220,
-                whiteSpace: 'nowrap',
                 borderRadius: '999px',
                 textTransform: 'none',
                 fontWeight: 700,
-                fontSize: 16,
+                fontSize: { xs: 14, md: 16 },
+                width: { xs: '100%', md: 'auto' },
                 '&:hover': {
                   bgcolor: '#f8fbff',
                 },
