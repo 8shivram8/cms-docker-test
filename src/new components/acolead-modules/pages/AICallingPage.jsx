@@ -13,7 +13,7 @@ import acoleadLogo from '../../../assets/acolead-crm.png';
 import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import aiCallingImage from "../../../assets/images/ai calling.jpg";
-
+import { LICENSE_NAV_ITEMS } from "../constants";
 
 const AICallingPage = () => {
   const navigate = useNavigate();
@@ -33,12 +33,7 @@ const scrollToSection = (id) => {
 const handleScrollToForm = () => {
   navigate("/?demo=true");
 };
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Instagram', path: '/modules/instagram' },
-    { label: 'WhatsApp', path: '/modules/whatsapp' },
-    { label: 'AI Calling', path: '/modules/ai-calling' },
-  ];
+  
 
   const productName = "AI_CALLING";
 
@@ -77,7 +72,7 @@ const handleBookDemoClick = () => {
       <Box sx={{ borderBottom: '1px solid #eef4ff', bgcolor: '#fff', position: 'sticky', top: 0, zIndex: 1000 }}>
         <Box sx={{ maxWidth: 1400, mx: 'auto', px: { xs: 2, md: 4 }, py: 1.4, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
           <Box onClick={() => navigate('/')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: '40px', maxWidth: '100%' }} />
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: isMobile ? '25px' : '40px', maxWidth: '100%', width: 'auto' }} />
           </Box>
 
           {isMobile ? (
@@ -96,7 +91,7 @@ const handleBookDemoClick = () => {
             </IconButton>
           ) : (
             <Stack direction="row" spacing={1} sx={{ flexGrow: 1, justifyContent: 'center' }}>
-              {navItems.map((item) => (
+              {LICENSE_NAV_ITEMS.map((item) => (
                 <Button
                   key={item.label}
                   onClick={() => navigate(item.path)}
@@ -123,11 +118,11 @@ const handleBookDemoClick = () => {
       <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <Box sx={{ width: 280, p: 2 }}>
           <Box onClick={() => { setDrawerOpen(false); navigate('/'); }} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mb: 2 }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: '36px', maxWidth: '100%' }} />
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: '25px', maxWidth: '100%', width: 'auto' }} />
           </Box>
 
           <List>
-            {navItems.map((item) => (
+            {LICENSE_NAV_ITEMS.map((item) => (
               <ListItem key={item.label} disablePadding>
                 <ListItemButton
                   onClick={() => {

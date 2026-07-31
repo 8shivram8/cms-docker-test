@@ -206,14 +206,19 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                             variant="outlined"
                             endIcon={<ArrowForwardIcon />}
                             sx={{
-                                bgcolor: '#1677F7',
-                                color: 'white',
-                                textTransform: 'none',
-                                fontSize: '0.9rem',
-                                minWidth: 'auto',
-                                px: 2,
-                                fontWeight: 'bold',
-                            }}
+              bgcolor: '#1677F7',
+              color: '#fff',
+              textTransform: 'none',
+              borderRadius: '999px',
+              fontWeight: 700,
+              px: 4,
+               py: 1.4,
+               fontSize: '16px',
+               whiteSpace: 'nowrap',
+              width: '100%',
+              minWidth: '170px',
+              '&:hover': { bgcolor: '#125fcc' },
+            }}
                             onClick={() => {
                                 toggleDrawer()
                                 handleScrollToForm()
