@@ -216,7 +216,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                fontSize: '16px',
                whiteSpace: 'nowrap',
               width: '100%',
-              minWidth: '170px',
+              minWidth: '220px',
               '&:hover': { bgcolor: '#125fcc' },
             }}
                             onClick={() => {
