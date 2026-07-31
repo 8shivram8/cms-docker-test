@@ -8,15 +8,19 @@ import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import { PRODUCT_OPTIONS } from './constants';
 import { leadCaputureAddon } from './license.types';
+
 const ProductModules = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
     const navigate = useNavigate();
+
     const [showAll, setShowAll] = useState(false);
     const [startIndex, setStartIndex] = useState(0);
     const [direction, setDirection] = useState(0);
+
     const autoPlayTimer = useRef(null);
+
     const [ref, inView] = useInView({
         threshold: 0.1,
         triggerOnce: false,
@@ -102,18 +106,18 @@ const ProductModules = () => {
     };
 
     const handleGetStarted = (productId) => {
-    if (productId === leadCaputureAddon.WHATSAPP) {
-      navigate('/modules/whatsapp');
-    }
+        if (productId === leadCaputureAddon.WHATSAPP) {
+            navigate('/modules/whatsapp');
+        }
 
-    if (productId === leadCaputureAddon.INSTAGRAM) {
-      navigate('/modules/instagram');
-    }
+        if (productId === leadCaputureAddon.INSTAGRAM) {
+            navigate('/modules/instagram');
+        }
 
-    if (productId === leadCaputureAddon.AI_CALLING) {
-      navigate('/modules/ai-calling');
-    }
-  };
+        if (productId === leadCaputureAddon.AI_CALLING) {
+            navigate('/modules/ai-calling');
+        }
+    };
 
     // Card animation variants
     const cardVariants = {
@@ -392,14 +396,15 @@ const ProductModules = () => {
         <Box
             ref={ref}
             sx={{
-                py: 8,
+                pt: { xs: 2, sm: 4, md: 8 },
+                pb: { xs: 1.5, sm: 3.5, md: 5 },
                 px: 2,
                 backgroundColor: '#f8faff',
                 position: 'relative',
                 overflow: 'hidden',
             }}
-            // onMouseEnter={handleMouseEnter}
-            // onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
         >
             {/* Background decoration */}
             {/* <Box
@@ -518,16 +523,13 @@ const ProductModules = () => {
                     <Box sx={{ position: 'relative', overflow: 'hidden' }}>
                         <Box
                             sx={{
-                                display: 'grid',
-                                gridTemplateColumns: isMobile
-                                    ? '1fr'
-                                    : isTablet
-                                        ? '1fr 1fr'
-                                        : '1fr 1fr 1fr',
-                                gap: 3,
                                 position: 'relative',
-                                mt: 2,
-                                mb: 12,
+                                display: 'grid',
+                                gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1fr' : '1fr 1fr 1fr',
+                                // gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
+                                mt: { xs: 0, sm: 1, md: 2 },
+                                mb: { xs: 2, sm: 4, md: 6 },
+                                gap: 3,
                             }}
                         >
                             {currentItems.map((item, index) => {
@@ -557,14 +559,11 @@ const ProductModules = () => {
                     <Box
                         sx={{
                             display: 'grid',
-                            gridTemplateColumns: isMobile
-                                ? '1fr'
-                                : isTablet
-                                    ? '1fr 1fr'
-                                    : '1fr 1fr 1fr',
+                            // gridTemplateColumns: isMobile? '1fr': isTablet? '1fr 1fr'   : '1fr 1fr 1fr',
+                            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
+                            mt: { xs: 1, sm: 2 },
+                            mb: { xs: 2, sm: 8, md: 12 },
                             gap: 3,
-                            mt: 2,
-                            mb: 12,
                         }}
                     >
                         {selectableProducts.map((product) => (
@@ -583,7 +582,6 @@ const ProductModules = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: 2,
-                            mt: 2,
                         }}
                     >
                         <Box

@@ -531,7 +531,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                     }}
                 >
                     <Stack>
-                        <Stack direction="row" spacing={1} alignItems="flex-start">
+                        <Stack direction={{ xs: "column", sm: "row" }} spacing={1} alignItems={{ xs: undefined, sm: "flex-start" }}>
                             <Box sx={{ flex: 1 }}>
                                 <FormField
                                     fieldLabel="Mobile Number"
@@ -549,9 +549,10 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                 />
                             </Box>
                             {!isMobileVerified && (
-                                <Box sx={{ pt: 3.3 }}>
+                                <Box sx={{ pt: { xs: 0, sm: 3.3 } }}>
                                     {!otpSent ? (
                                         <Button
+                                            fullWidth
                                             variant="outlined"
                                             onClick={handleSendOtp}
                                             disabled={isSendingOtp || !!formik.errors.mobileNumber}
@@ -574,6 +575,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
                                         </Button>
                                     ) : (
                                         <Button
+                                            fullWidth
                                             variant="text"
                                             onClick={handleResendOtp}
                                             disabled={isSendingOtp || !canResend}
