@@ -148,7 +148,7 @@ const InstagramPage = () => {
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
         <Box sx={{ width: 280, p: 2 }}>
           <Box onClick={() => { setDrawerOpen(false); goToHome(); }} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mb: 2 }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: '25px', maxWidth: '100%', width: 'auto' }} />
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: '40px', maxWidth: '100%', width: 'auto' }} />
           </Box>
 
           <List>
@@ -484,21 +484,12 @@ const InstagramPage = () => {
               variant="contained"
               endIcon={<ArrowForwardIcon />}
               onClick={() => navigate('/?demo=true')}
-              sx={{
-                bgcolor: '#fff',
-                color: '#1677F7',
-                px: 5,
-                py: 1.5,
-                borderRadius: '999px',
-                textTransform: 'none',
-                fontWeight: 700,
-                fontSize: { xs: 14, md: 16 },
-                width: { xs: '100%', md: 'auto' },
-                '&:hover': {
-                  bgcolor: '#f8fbff',
-                },
-              }}
-            >
+              sx={{ bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: { xs: 14, md: 16 },
+                whiteSpace: 'nowrap',
+                 width: { xs: '100%', md: 'auto' },
+               minWidth: '210px',
+               '&:hover': { bgcolor: '#f8fbff' } }}>
+            
               Book a Demo
             </Button>
           </Stack>

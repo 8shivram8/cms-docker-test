@@ -137,7 +137,7 @@ const handleStartClick = () => {
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
         <Box sx={{ width: 280, p: 2 }}>
           <Box onClick={() => { setDrawerOpen(false); navigate('/'); }} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', mb: 2 }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: '25px', maxWidth: '100%', width: 'auto' }} />
+            <img src={acoleadLogo} alt="AcoLead" style={{ height: '40px', maxWidth: '100%', width: 'auto' }} />
           </Box>
 
           <List>
