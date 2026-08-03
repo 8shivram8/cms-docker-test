@@ -37,7 +37,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                 <Grid container spacing={4}>
                     {/* Section 1 - Logo and Copyright */}
                     <Grid item xs={12} md={4}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', px: 0 }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
                             <Box
                                 component="img"
                                 src={logo}
@@ -148,7 +148,21 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                 <Divider sx={{ my: 2, mx: 2 }} />
 
                 {/* Bottom Right Links */}
-                <Box display="flex" justifyContent="flex-end" gap={3} px={2}>
+                 <Box
+  sx={{
+    display: 'flex',
+    justifyContent: {
+      xs: 'space-between',
+      md: 'flex-end',
+    },
+    alignItems: 'center',
+    px: 2,
+    gap: {
+      xs: 0,
+      md: 3,
+    },
+  }}
+>
                     <Link
                         href="/privacy-policy"
                         underline="hover"

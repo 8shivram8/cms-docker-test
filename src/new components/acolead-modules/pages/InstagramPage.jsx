@@ -44,7 +44,9 @@ const InstagramPage = () => {
     });
   };
 
-  const handleScrollToForm = () => {};
+  const handleScrollToForm = () => {
+  navigate("/?demo=true");
+};
 
   const howItWorks = [
     {

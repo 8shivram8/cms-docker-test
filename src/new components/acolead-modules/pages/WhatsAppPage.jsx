@@ -23,15 +23,15 @@ const scrollToSection = (sectionId) => {
   }
 };
 
-const handleScrollToForm = () => {
-  scrollToSection("contactForm");
-};
+
 const WhatsAppPage = () => {
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
+  const handleScrollToForm = () => {
+  navigate("/?demo=true");
+  };
   
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
