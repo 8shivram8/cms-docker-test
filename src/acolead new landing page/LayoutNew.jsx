@@ -44,21 +44,24 @@ const LayoutNew = () => {
         }, 300);
     }
 }, [location.search]);
-    const handleScrollToForm = () => {
-        if (scrollRef.current) {
-            const topOffset = scrollRef.current.getBoundingClientRect().top + window.pageYOffset - 80;
+const formSectionRef = useRef(null);
+const handleScrollToForm = () => {
+    if (formSectionRef.current) {
+        const top =
+            formSectionRef.current.getBoundingClientRect().top +
+            window.pageYOffset -
+            80;
 
-            window.scrollTo({
-                top: topOffset,
-                behavior: 'smooth',
-            });
+        window.scrollTo({
+            top,
+            behavior: "smooth",
+        });
 
-            // Delay focusing to allow smooth scroll to complete
-            setTimeout(() => {
-                formRef.current?.focusFirstField?.();
-            }, 600);
-        }
-    };
+        setTimeout(() => {
+            formRef.current?.focusFirstField?.();
+        }, 600);
+    }
+};
 
 
     useEffect(() => {
@@ -106,9 +109,10 @@ const LayoutNew = () => {
             {/* <Box ref={plansRef}>
                 <Plans country={country} />
             </Box> */}
-            <Box ref={scrollRef}>
-                <BookDemo ref={formRef} />
-            </Box>
+            <BookDemo
+    ref={formRef}
+    formSectionRef={formSectionRef}
+/>
             <Footer handleScrollToForm={handleScrollToForm}
                 scrollToSection={(section) => {
                     const map = {
