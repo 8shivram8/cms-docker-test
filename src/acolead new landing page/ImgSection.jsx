@@ -71,9 +71,7 @@ const ImgSection = ({aboutRef}) => {
                         fontSize: isMobile ? '0.8rem' : '1rem'
                     }}
                 >
-                    AcoLead is a proprietary solution developed by Coalitionify Innovate Pvt. Ltd., as part of our
-                    mission to deliver cutting-edge, affordable technologies that solve real operational
-                    challenges in sales and marketing.
+                    AcoLead CRM is a customer relationship management platform developed and operated by Coalitionify Innovate Private Limited. It helps businesses manage leads, customer conversations, follow-ups, and sales.
                 </Typography>
             </motion.div>
         </Box>

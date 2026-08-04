@@ -10,64 +10,105 @@ import {
     Divider,
 } from '@mui/material';
 import logo from '../assets/acolead-crm.png';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Insta from './icons/Insta';
-import FaceBook from './icons/FaceBook';
-import Linkdin from '../landing page/Icons/social media/Linkdin';
-import Github from '../landing page/Icons/social media/Github';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useNavigate } from 'react-router-dom';
+
 const Footer = ({ scrollToSection, handleScrollToForm }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const navigate = useNavigate();
-    const handleLinkClick = (url) => {
-        window.open(url, '_blank');
-    };
+
     const handleNavigate = () => {
-        navigate("/");
+        navigate('/');
     };
 
     return (
-        <Box sx={{ bgcolor: '#fff', color: '#000', py: 5, width: '100%', mt: 3 }}>
+        <Box
+            sx={{
+                bgcolor: '#fff',
+                color: '#000',
+                py: 5,
+                width: '100%',
+                mt: 3,
+            }}
+        >
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
-                    {/* Section 1 - Logo and Copyright */}
+                    {/* Logo */}
                     <Grid item xs={12} md={4}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: {
+                                    xs: 'center',
+                                    md: 'flex-start',
+                                },
+                            }}
+                        >
                             <Box
                                 component="img"
                                 src={logo}
                                 alt="Logo"
+                                onClick={handleNavigate}
                                 sx={{
                                     width: 230,
                                     height: 'auto',
-                                    mb: 2,
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
                                 }}
-                                onClick={handleNavigate}
                             />
-                            <Typography variant="body2" sx={{ mt: 0, ml: 2 }}>
-                                &copy; {new Date().getFullYear()} , All Rights Reserved by AcoLead.
+
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    mt: 0.5,
+                                    ml: { xs: 0, md: 2.5 },
+                                    color: '#555',
+                                    fontSize: '0.95rem',
+                                    fontFamily: 'Times New Roman", serif',
+                                    textAlign: {
+                                        xs: 'center',
+                                        md: 'left',
+                                    },
+                                }}
+                            >
+                                Product by{' '}
+                                <Link
+                                    href="https://www.coalitionify.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    underline="hover"
+                                    color="inherit"
+                                    sx={{
+                                        fontWeight: 500,
+                                    }}
+                                >
+                                    Coalitionify Innovate
+                                </Link>
                             </Typography>
                         </Box>
                     </Grid>
 
-
-
-                    {/* Section 3 - Actions */}
+                    {/* Actions */}
                     <Grid
                         item
                         xs={12}
                         md={2}
                         sx={{
-                            textAlign: { xs: 'center', md: 'left' },
+                            textAlign: {
+                                xs: 'center',
+                                md: 'left',
+                            },
                         }}
                     >
-                        <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                        <Typography
+                            variant="subtitle1"
+                            fontWeight="bold"
+                            gutterBottom
+                        >
                             Actions
                         </Typography>
 
@@ -75,7 +116,10 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             display="flex"
                             flexDirection="column"
                             gap={1}
-                            alignItems={{ xs: 'center', md: 'flex-start' }}
+                            alignItems={{
+                                xs: 'center',
+                                md: 'flex-start',
+                            }}
                         >
                             <Link
                                 onClick={handleScrollToForm}
@@ -88,15 +132,23 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                         </Box>
                     </Grid>
 
+                    {/* Social Media */}
                     <Grid
                         item
                         xs={12}
                         md={4}
                         sx={{
-                            textAlign: { xs: 'center', md: 'left' },
+                            textAlign: {
+                                xs: 'center',
+                                md: 'left',
+                            },
                         }}
                     >
-                        <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                        <Typography
+                            variant="subtitle1"
+                            fontWeight="bold"
+                            gutterBottom
+                        >
                             Social Media
                         </Typography>
 
@@ -104,7 +156,10 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             display="flex"
                             flexDirection="row"
                             gap={1}
-                            justifyContent={{ xs: 'center', md: 'flex-start' }}
+                            justifyContent={{
+                                xs: 'center',
+                                md: 'flex-start',
+                            }}
                         >
                             <IconButton
                                 sx={{ color: 'black' }}
@@ -143,47 +198,74 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             </IconButton>
                         </Box>
                     </Grid>
-
                 </Grid>
+
                 <Divider sx={{ my: 2, mx: 2 }} />
 
-                {/* Bottom Right Links */}
-                 <Box
-  sx={{
-    display: 'flex',
-    justifyContent: {
-      xs: 'space-between',
-      md: 'flex-end',
-    },
-    alignItems: 'center',
-    px: 2,
-    gap: {
-      xs: 0,
-      md: 3,
-    },
-  }}
->
-                    <Link
-                        href="/privacy-policy"
-                        underline="hover"
-                        color="inherit"
-                        sx={{ cursor: 'pointer' }}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                {/* Bottom Section */}
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        gap: 2,
+                        px: 2,
+                    }}
+                >
+                    {/* Copyright */}
+                    <Typography
+                        variant="body2"
+                        sx={{
+                            textAlign: {
+                                xs: 'center',
+                                md: 'left',
+                            },
+                            width: {
+                                xs: '100%',
+                                md: 'auto',
+                            },
+                        }}
                     >
-                        Privacy Policy
-                    </Link>
+                        &copy; {new Date().getFullYear()} All Rights Reserved by
+                        AcoLead.
+                    </Typography>
 
-                    <Link
-                        href="/terms-of-use"
-                        underline="hover"
-                        color="inherit"
-                        sx={{ cursor: 'pointer' }}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    {/* Footer Links */}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            gap: 3,
+                            justifyContent: {
+                                xs: 'center',
+                                md: 'flex-end',
+                            },
+                            width: {
+                                xs: '100%',
+                                md: 'auto',
+                            },
+                        }}
                     >
-                        Terms of Use
-                    </Link>
+                        <Link
+                            href="/privacy-policy"
+                            underline="hover"
+                            color="inherit"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Privacy Policy
+                        </Link>
+
+                        <Link
+                            href="/terms-of-use"
+                            underline="hover"
+                            color="inherit"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Terms of Use
+                        </Link>
+                    </Box>
                 </Box>
             </Container>
         </Box>
