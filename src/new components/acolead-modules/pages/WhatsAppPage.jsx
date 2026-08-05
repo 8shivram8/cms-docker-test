@@ -90,9 +90,79 @@ const handleStartClick = () => {
             gap: 2,
           }}
         >
-          <Box onClick={() => navigate('/')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src={acoleadLogo} alt="AcoLead" style={{ height: isMobile ? '25px' : '40px', maxWidth: '100%', width: 'auto' }} />
-          </Box>
+          <Box
+  display="flex"
+  flexDirection="column"
+  alignItems="flex-start"
+>
+  <Box
+    onClick={() => navigate("/")}
+    sx={{ cursor: "pointer" }}
+  >
+    <img
+      src={acoleadLogo}
+      alt="AcoLead"
+      style={{
+        height: isMobile ? "25px" : "40px",
+        maxWidth: "100%",
+        width: "auto",
+      }}
+    />
+  </Box>
+
+  <Box
+  component="a"
+  href="https://www.coalitionify.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    ml: isMobile ? 2 : 4,
+    mt: -0.4,
+    textDecoration: "none",
+    whiteSpace: "nowrap",
+    "&:hover .brand-name": {
+      textDecoration: "underline",
+    },
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: isMobile ? "10px" : "14px",
+      color: "#94A3B8",
+      fontStyle: "italic",
+      fontWeight: 400,
+      lineHeight: 1,
+    }}
+  >
+    By
+  </Typography>
+
+  <Typography
+    sx={{
+      color: "#64748B",
+      fontSize: isMobile ? "10px" : "14px",
+      lineHeight: 1,
+    }}
+  >
+    •
+  </Typography>
+
+  <Typography
+    className="brand-name"
+    sx={{
+      fontSize: isMobile ? "10px" : "13px",
+      color: "#334155",
+      fontWeight: 700,
+      lineHeight: 1,
+    }}
+  >
+    Coalitionify Innovate
+  </Typography>
+</Box>
+</Box>
 
           {isMobile ? (
             <IconButton
