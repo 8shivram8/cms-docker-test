@@ -81,27 +81,60 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                   style={{ cursor: "pointer" }}
                 />
 
-                <Typography
-                  component="a"
-                  href="https://www.coalitionify.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  sx={{
-                    mt: 0.2,
-                    ml: 2,
-                    fontSize: "8px",
-                    color: "#6B7280",
-                    textDecoration: "none",
-                    lineHeight: 1.2,
-                    "&:hover": {
-                      color: "#1677F7",
-                      textDecoration: "underline",
-                    },
-                  }}
-                >
-                  Product by Coalitionify Innovate
-                </Typography>
+                <Box
+  component="a"
+  href="https://www.coalitionify.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => e.stopPropagation()}
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    ml: isMobile ? 2 : 4,
+    mt: 0.5,
+    textDecoration: "none",
+    whiteSpace: "nowrap",
+    "&:hover .brand-name": {
+      textDecoration: "underline",
+    },
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: isMobile ? "11px" : "14px",
+      color: "#94A3B8",
+      fontStyle: "italic",
+      
+      fontWeight: 400,
+      lineHeight: 1,
+    }}
+  >
+    By
+  </Typography>
+
+  <Typography
+    sx={{
+      color: "#64748B",
+      fontSize: isMobile ? "11px" : "14px",
+      lineHeight: 1,
+    }}
+  >
+    •
+  </Typography>
+
+  <Typography
+    className="brand-name"
+    sx={{
+      fontSize: isMobile ? "12px" : "13px",
+      color: "#334155",
+      fontWeight: 700,
+      lineHeight: 1,
+    }}
+  >
+    Coalitionify Innovate
+  </Typography>
+</Box>
               </Box>
             </Grid>
             <Grid item xs={6} display="flex" justifyContent="flex-end">
@@ -139,28 +172,59 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                   style={{ cursor: "pointer" }}
                   onClick={handleNavigate}
                 />
-                <Typography
-                  component="a"
-                  href="https://www.coalitionify.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  sx={{
-                    mt: 0.1,
-                    ml: 2.5,
-                    fontSize: "16px",
-                    color: "#6B7280",
-                    textDecoration: "none",
-                    fontFamily: '"Times New Roman", serif',
-                    fontWeight: 500,
-                    "&:hover": {
-                      color: "#1677F7",
-                      textDecoration: "underline",
-                    },
-                  }}
-                >
-                  Product by Coalitionify Innovate
-                </Typography>
+                <Box
+  component="a"
+  href="https://www.coalitionify.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => e.stopPropagation()}
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: isMobile ? "4px" : "8px",
+    ml: isMobile ? 2 : 4,
+    mt: isMobile ? 0.5 : 0.5,
+    textDecoration: "none",
+    whiteSpace: "nowrap",
+    "&:hover .brand-name": {
+      textDecoration: "underline",
+    },
+  }}
+>
+  <Typography
+    sx={{
+      fontSize: isMobile ? "10px" : "14px",
+      color: "#94A3B8",
+      fontStyle: "italic",
+      fontWeight: 400,
+      lineHeight: 1,
+    }}
+  >
+    By
+  </Typography>
+
+  <Typography
+    sx={{
+      color: "#64748B",
+      fontSize: isMobile ? "10px" : "14px",
+      lineHeight: 1,
+    }}
+  >
+    •
+  </Typography>
+
+  <Typography
+    className="brand-name"
+    sx={{
+      fontSize: isMobile ? "10px" : "13px",
+      color: "#334155",
+      fontWeight: 700,
+      lineHeight: 1,
+    }}
+  >
+    Coalitionify Innovate
+  </Typography>
+</Box>
               </Box>
             </Grid>
             <Grid item md={6} display="flex" justifyContent="center">
