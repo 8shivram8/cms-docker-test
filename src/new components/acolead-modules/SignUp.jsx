@@ -381,6 +381,63 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
         }
     };
 
+    const handleDeepLink = (result, resetForm) => {
+        const params = new URLSearchParams(result.tokens);
+        const deepLinkUrl = `acolead://auth?${params.toString()}`;
+        const fallbackUrl = `${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`;
+
+        // Track if app was opened
+        let appOpened = false;
+
+        // Try to open the app
+        window.location.href = deepLinkUrl;
+
+        // If app doesn't open, redirect to fallback after timeout
+        setTimeout(() => {
+            if (!appOpened) {
+                window.location.replace(fallbackUrl);
+            }
+        }, 3000);
+
+        // Handle visibility change (app opened successfully)
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                appOpened = true;
+                document.removeEventListener('visibilitychange', handleVisibilityChange);
+                // Clear all timeouts
+                clearTimeout(timeout1);
+                clearTimeout(timeout2);
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Also handle page visibility for iOS
+        const handlePageHide = () => {
+            appOpened = true;
+            window.removeEventListener('pagehide', handlePageHide);
+            clearTimeout(timeout1);
+            clearTimeout(timeout2);
+        };
+
+        window.addEventListener('pagehide', handlePageHide);
+
+        // Reset form after 10 seconds (only if app wasn't opened)
+        const timeout2 = setTimeout(() => {
+            if (!appOpened) {
+                window.location.replace('/');
+                resetForm();
+            }
+        }, 10000);
+
+        // Cleanup timeouts
+        const timeout1 = setTimeout(() => {
+            if (!appOpened) {
+                window.location.replace(fallbackUrl);
+            }
+        }, 3000);
+    };
+
     const handleVerifyOtp = async () => {
         setIsVerifying(true);
         setApiError(null);
@@ -396,19 +453,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
             };
             if (isWebsiteExist) body.website = baseDomain;
             const result = await verifyOtp({ body }).unwrap();
-            // setIsMobileVerified(true);
-            // setIsVerifying(false);
-            // setTimer(0);
-            // setCanResend(false);
-            // // setApiSuccess('Mobile number verified successfully.');
-            // setTimeout(() => {
-            //     const params = new URLSearchParams(result.tokens);
-            //     window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
-            //     setApiSuccess(null);
-            // }, 2000);
-            formik.resetForm();
-            const params = new URLSearchParams(result.tokens);
-            window.location.replace(`${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`);
+            handleDeepLink(result, formik.resetForm);
         } catch (err) {
             if (err?.data?.code === "SITE_ALREADY_EXIST") {
                 setIsWebsiteExist(true);
