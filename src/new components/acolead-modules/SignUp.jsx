@@ -13,6 +13,8 @@ import { useFormik } from 'formik';
 import { MuiTelInput } from 'mui-tel-input';
 import { PRODUCT_OPTIONS } from './constants';
 import { cpcrmApi } from '../../redux/cpcrm.api';
+import { APP_STORE_LINK, PLAY_STORE_LINK } from '../../components/StoreButtons';
+import { checkIsAndroid, checkIsIOS } from '../../utils';
 
 const ACOLEAD_CONTACT_NUMBER = '+919112614174';
 
@@ -384,58 +386,58 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
     const handleDeepLink = (result, resetForm) => {
         const params = new URLSearchParams(result.tokens);
         const deepLinkUrl = `acolead://auth?${params.toString()}`;
-        const fallbackUrl = `${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`;
+        const crmUrl = `${process.env.NODE_ENV === "development" ? `http://localhost:4600` : `https://${result.crmDomain}`}?${params.toString()}`;
 
-        // Track if app was opened
-        let appOpened = false;
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isIOS = checkIsIOS(userAgent);
+        const isAndroid = checkIsAndroid(userAgent);
+        const isMobile = isIOS || isAndroid;
 
-        // Try to open the app
-        window.location.href = deepLinkUrl;
+        // Give user option to choose
+        if (isMobile) {
+            // Show a small modal/banner asking user what they want to do
+            const userChoice = window.confirm(
+                'Open in App or continue on web?',
+                'Open App', 'Continue on Web'
+            );
 
-        // If app doesn't open, redirect to fallback after timeout
-        setTimeout(() => {
-            if (!appOpened) {
-                window.location.replace(fallbackUrl);
+            if (userChoice) {
+                // User wants to open app
+                let appOpened = false;
+                window.location.href = deepLinkUrl;
+
+                const timeout = setTimeout(() => {
+                    if (!appOpened) {
+                        // App not installed - go to store
+                        // storeUrl = `market://details?id=com.acolead`;
+                        const storeUrl = isIOS ? APP_STORE_LINK : PLAY_STORE_LINK;
+                        window.location.replace(storeUrl);
+                    }
+                }, 2500);
+
+                const handleVisibilityChange = () => {
+                    if (document.hidden) {
+                        appOpened = true;
+                        clearTimeout(timeout);
+                        document.removeEventListener('visibilitychange', handleVisibilityChange);
+                    }
+                };
+                document.addEventListener('visibilitychange', handleVisibilityChange);
+
+                const handlePageHide = () => {
+                    appOpened = true;
+                    clearTimeout(timeout);
+                    window.removeEventListener('pagehide', handlePageHide);
+                };
+                window.addEventListener('pagehide', handlePageHide);
+            } else {
+                // User wants web version
+                window.location.replace(crmUrl);
             }
-        }, 3000);
-
-        // Handle visibility change (app opened successfully)
-        const handleVisibilityChange = () => {
-            if (document.hidden) {
-                appOpened = true;
-                document.removeEventListener('visibilitychange', handleVisibilityChange);
-                // Clear all timeouts
-                clearTimeout(timeout1);
-                clearTimeout(timeout2);
-            }
-        };
-
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // Also handle page visibility for iOS
-        const handlePageHide = () => {
-            appOpened = true;
-            window.removeEventListener('pagehide', handlePageHide);
-            clearTimeout(timeout1);
-            clearTimeout(timeout2);
-        };
-
-        window.addEventListener('pagehide', handlePageHide);
-
-        // Reset form after 10 seconds (only if app wasn't opened)
-        const timeout2 = setTimeout(() => {
-            if (!appOpened) {
-                window.location.replace('/');
-                resetForm();
-            }
-        }, 10000);
-
-        // Cleanup timeouts
-        const timeout1 = setTimeout(() => {
-            if (!appOpened) {
-                window.location.replace(fallbackUrl);
-            }
-        }, 3000);
+        } else {
+            // Desktop
+            window.location.replace(crmUrl);
+        }
     };
 
     const handleVerifyOtp = async () => {

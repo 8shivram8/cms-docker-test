@@ -15,6 +15,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useNavigate } from 'react-router-dom';
+import { AppStoreButton, PlayStoreButton } from '../components/StoreButtons';
 
 const Footer = ({ scrollToSection, handleScrollToForm }) => {
     const theme = useTheme();
@@ -38,7 +39,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     {/* Logo */}
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={3.5}>
                         <Box
                             sx={{
                                 display: 'flex',
@@ -136,7 +137,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                     <Grid
                         item
                         xs={12}
-                        md={4}
+                        md={3}
                         sx={{
                             textAlign: {
                                 xs: 'center',
@@ -197,6 +198,20 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                                 <WhatsAppIcon />
                             </IconButton>
                         </Box>
+                    </Grid>
+
+                    <Grid
+                        item
+                        xs={12}
+                        md={3.5}
+                        container
+                        direction={'row'}
+                        spacing={2}
+                        alignItems={"center"}
+                        justifyContent={"space-evenly"}
+                    >
+                        <PlayStoreButton />
+                        <AppStoreButton />
                     </Grid>
                 </Grid>
 
