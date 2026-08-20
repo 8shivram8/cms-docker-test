@@ -20,6 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import logo from "../assets/acolead-crm.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { APP_URLS } from "../utils";
 
 function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -82,59 +83,59 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                 />
 
                 <Box
-  component="a"
-  href="https://www.coalitionify.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={(e) => e.stopPropagation()}
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    ml: isMobile ? 2 : 4,
-    mt: 0.5,
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    "&:hover .brand-name": {
-      textDecoration: "underline",
-    },
-  }}
->
-  <Typography
-    sx={{
-      fontSize: isMobile ? "11px" : "14px",
-      color: "#94A3B8",
-      fontStyle: "italic",
-      
-      fontWeight: 400,
-      lineHeight: 1,
-    }}
-  >
-    By
-  </Typography>
+                  component="a"
+                  href={APP_URLS.coalitionifyWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    ml: isMobile ? 2 : 4,
+                    mt: 0.5,
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                    "&:hover .brand-name": {
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: isMobile ? "11px" : "14px",
+                      color: "#94A3B8",
+                      fontStyle: "italic",
 
-  <Typography
-    sx={{
-      color: "#64748B",
-      fontSize: isMobile ? "11px" : "14px",
-      lineHeight: 1,
-    }}
-  >
-    •
-  </Typography>
+                      fontWeight: 400,
+                      lineHeight: 1,
+                    }}
+                  >
+                    By
+                  </Typography>
 
-  <Typography
-    className="brand-name"
-    sx={{
-      fontSize: isMobile ? "12px" : "13px",
-      color: "#334155",
-      fontWeight: 700,
-      lineHeight: 1,
-    }}
-  >
-    Coalitionify Innovate
-  </Typography>
-</Box>
+                  <Typography
+                    sx={{
+                      color: "#64748B",
+                      fontSize: isMobile ? "11px" : "14px",
+                      lineHeight: 1,
+                    }}
+                  >
+                    •
+                  </Typography>
+
+                  <Typography
+                    className="brand-name"
+                    sx={{
+                      fontSize: isMobile ? "12px" : "13px",
+                      color: "#334155",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    Coalitionify Innovate
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
             <Grid item xs={6} display="flex" justifyContent="flex-end">
@@ -173,58 +174,58 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
                   onClick={handleNavigate}
                 />
                 <Box
-  component="a"
-  href="https://www.coalitionify.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={(e) => e.stopPropagation()}
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: isMobile ? "4px" : "8px",
-    ml: isMobile ? 2 : 4,
-    mt: isMobile ? 0.5 : 0.5,
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    "&:hover .brand-name": {
-      textDecoration: "underline",
-    },
-  }}
->
-  <Typography
-    sx={{
-      fontSize: isMobile ? "10px" : "14px",
-      color: "#94A3B8",
-      fontStyle: "italic",
-      fontWeight: 400,
-      lineHeight: 1,
-    }}
-  >
-    By
-  </Typography>
+                  component="a"
+                  href={APP_URLS.coalitionifyWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: isMobile ? "4px" : "8px",
+                    ml: isMobile ? 2 : 4,
+                    mt: isMobile ? 0.5 : 0.5,
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                    "&:hover .brand-name": {
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: isMobile ? "10px" : "14px",
+                      color: "#94A3B8",
+                      fontStyle: "italic",
+                      fontWeight: 400,
+                      lineHeight: 1,
+                    }}
+                  >
+                    By
+                  </Typography>
 
-  <Typography
-    sx={{
-      color: "#64748B",
-      fontSize: isMobile ? "10px" : "14px",
-      lineHeight: 1,
-    }}
-  >
-    •
-  </Typography>
+                  <Typography
+                    sx={{
+                      color: "#64748B",
+                      fontSize: isMobile ? "10px" : "14px",
+                      lineHeight: 1,
+                    }}
+                  >
+                    •
+                  </Typography>
 
-  <Typography
-    className="brand-name"
-    sx={{
-      fontSize: isMobile ? "10px" : "13px",
-      color: "#334155",
-      fontWeight: 700,
-      lineHeight: 1,
-    }}
-  >
-    Coalitionify Innovate
-  </Typography>
-</Box>
+                  <Typography
+                    className="brand-name"
+                    sx={{
+                      fontSize: isMobile ? "10px" : "13px",
+                      color: "#334155",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                    }}
+                  >
+                    Coalitionify Innovate
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
             <Grid item md={6} display="flex" justifyContent="center">

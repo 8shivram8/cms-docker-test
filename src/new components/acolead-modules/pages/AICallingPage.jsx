@@ -14,36 +14,37 @@ import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import aiCallingImage from "../../../assets/images/ai calling.jpg";
 import { LICENSE_NAV_ITEMS } from "../constants";
+import { APP_URLS } from '../../../utils';
 
 const AICallingPage = () => {
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-const scrollToSection = (id) => {
-  const element = document.getElementById(id);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
 
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
-};
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 
-const handleScrollToForm = () => {
-  navigate("/?demo=true");
-};
-  
+  const handleScrollToForm = () => {
+    navigate("/?demo=true");
+  };
+
 
   const productName = "AI_CALLING";
 
-const handleStartClick = () => {
-  navigate(`/product/signup?product=${productName}`);
-};
+  const handleStartClick = () => {
+    navigate(`/product/signup?product=${productName}`);
+  };
 
-const handleBookDemoClick = () => {
-  navigate("/?demo=true");
-};
+  const handleBookDemoClick = () => {
+    navigate("/?demo=true");
+  };
 
   const workflow = [
     {
@@ -72,79 +73,79 @@ const handleBookDemoClick = () => {
       <Box sx={{ borderBottom: '1px solid #eef4ff', bgcolor: '#fff', position: 'sticky', top: 0, zIndex: 1000 }}>
         <Box sx={{ maxWidth: 1400, mx: 'auto', px: { xs: 2, md: 4 }, py: 1.4, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
           <Box
-  display="flex"
-  flexDirection="column"
-  alignItems="flex-start"
->
-  <Box
-  onClick={() => navigate("/")}
-  sx={{ cursor: "pointer" }}
->
-  <img
-    src={acoleadLogo}
-    alt="AcoLead"
-    style={{
-      height: isMobile ? "25px" : "40px",
-      maxWidth: "100%",
-      width: "auto",
-    }}
-  />
-</Box>
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+          >
+            <Box
+              onClick={() => navigate("/")}
+              sx={{ cursor: "pointer" }}
+            >
+              <img
+                src={acoleadLogo}
+                alt="AcoLead"
+                style={{
+                  height: isMobile ? "25px" : "40px",
+                  maxWidth: "100%",
+                  width: "auto",
+                }}
+              />
+            </Box>
 
-<Box
-  component="a"
-  href="https://www.coalitionify.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    ml: isMobile ? 2 : 4,
-    mt: -0.4,
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    "&:hover .brand-name": {
-      textDecoration: "underline",
-    },
-  }}
->
-  <Typography
-    sx={{
-      fontSize: isMobile ? "10px" : "14px",
-      color: "#94A3B8",
-      fontStyle: "italic",
-      fontWeight: 400,
-      lineHeight: 1,
-    }}
-  >
-    By
-  </Typography>
+            <Box
+              component="a"
+              href={APP_URLS.coalitionifyWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                ml: isMobile ? 2 : 4,
+                mt: -0.4,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                "&:hover .brand-name": {
+                  textDecoration: "underline",
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: isMobile ? "10px" : "14px",
+                  color: "#94A3B8",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  lineHeight: 1,
+                }}
+              >
+                By
+              </Typography>
 
-  <Typography
-    sx={{
-      color: "#64748B",
-      fontSize: isMobile ? "10px" : "14px",
-      lineHeight: 1,
-    }}
-  >
-    •
-  </Typography>
+              <Typography
+                sx={{
+                  color: "#64748B",
+                  fontSize: isMobile ? "10px" : "14px",
+                  lineHeight: 1,
+                }}
+              >
+                •
+              </Typography>
 
-  <Typography
-    className="brand-name"
-    sx={{
-      fontSize: isMobile ? "10px" : "13px",
-      color: "#334155",
-      fontWeight: 700,
-      lineHeight: 1,
-    }}
-  >
-    Coalitionify Innovate
-  </Typography>
-</Box>
-</Box> 
- 
+              <Typography
+                className="brand-name"
+                sx={{
+                  fontSize: isMobile ? "10px" : "13px",
+                  color: "#334155",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                Coalitionify Innovate
+              </Typography>
+            </Box>
+          </Box>
+
 
           {isMobile ? (
             <IconButton

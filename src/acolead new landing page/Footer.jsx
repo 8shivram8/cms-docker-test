@@ -16,6 +16,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useNavigate } from 'react-router-dom';
 import { AppStoreButton, PlayStoreButton } from '../components/StoreButtons';
+import { APP_URLS } from '../utils';
 
 const Footer = ({ scrollToSection, handleScrollToForm }) => {
     const theme = useTheme();
@@ -78,7 +79,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             >
                                 Product by{' '}
                                 <Link
-                                    href="https://www.coalitionify.com/"
+                                    href={APP_URLS.coalitionifyWebsite}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     underline="hover"
@@ -165,7 +166,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://www.linkedin.com/company/coalitionify-innovate"
+                                href={APP_URLS.coalitionifyLinkedin}
                                 target="_blank"
                             >
                                 <LinkedInIcon />
@@ -174,7 +175,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://www.facebook.com/profile.php?id=61576111686686"
+                                href={APP_URLS.coalitionifyFacebook}
                                 target="_blank"
                             >
                                 <FacebookIcon />
@@ -183,7 +184,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://www.instagram.com/acolead_crm/"
+                                href={APP_URLS.coalitionifyInstagram}
                                 target="_blank"
                             >
                                 <InstagramIcon />
@@ -192,7 +193,7 @@ const Footer = ({ scrollToSection, handleScrollToForm }) => {
                             <IconButton
                                 sx={{ color: 'black' }}
                                 component="a"
-                                href="https://api.whatsapp.com/send?phone=919158661188&text=I%20want%20to%20know%20more%20about%20your%20CRM%20?"
+                                href={APP_URLS.coalitionifyWhatsApp}
                                 target="_blank"
                             >
                                 <WhatsAppIcon />

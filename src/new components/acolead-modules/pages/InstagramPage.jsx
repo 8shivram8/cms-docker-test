@@ -16,6 +16,7 @@ import bgImage from '../../../acolead new landing page/images/bg.png';
 import instagramLeadImage from '../../../assets/marketing1.jpeg';
 import { instagramAndFacebookIcon } from '../../../assets';
 import { LICENSE_NAV_ITEMS } from "../constants";
+import { APP_URLS } from '../../../utils';
 
 const InstagramPage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const InstagramPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  
+
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
@@ -45,8 +46,8 @@ const InstagramPage = () => {
   };
 
   const handleScrollToForm = () => {
-  navigate("/?demo=true");
-};
+    navigate("/?demo=true");
+  };
 
   const howItWorks = [
     {
@@ -104,79 +105,79 @@ const InstagramPage = () => {
           }}
         >
           <Box
-  display="flex"
-  flexDirection="column"
-  alignItems="flex-start"
->
-  <Box
-    onClick={goToHome}
-    sx={{ cursor: "pointer" }}
-  >
-    <img
-      src={acoleadLogo}
-      alt="AcoLead"
-      style={{
-        height: isMobile ? "25px" : "40px",
-        maxWidth: "100%",
-        width: "auto",
-      }}
-    />
-  </Box>
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+          >
+            <Box
+              onClick={goToHome}
+              sx={{ cursor: "pointer" }}
+            >
+              <img
+                src={acoleadLogo}
+                alt="AcoLead"
+                style={{
+                  height: isMobile ? "25px" : "40px",
+                  maxWidth: "100%",
+                  width: "auto",
+                }}
+              />
+            </Box>
 
-  <Box
-  component="a"
-  href="https://www.coalitionify.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    ml: isMobile ? 2 : 4,
-    mt: -0.4,
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    "&:hover .brand-name": {
-      textDecoration: "underline",
-    },
-  }}
->
-  <Typography
-    sx={{
-      fontSize: isMobile ? "10px" : "14px",
-      color: "#94A3B8",
-      fontStyle: "italic",
-      fontWeight: 400,
-      lineHeight: 1,
-    }}
-  >
-    By
-  </Typography>
+            <Box
+              component="a"
+              href={APP_URLS.coalitionifyWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                ml: isMobile ? 2 : 4,
+                mt: -0.4,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                "&:hover .brand-name": {
+                  textDecoration: "underline",
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: isMobile ? "10px" : "14px",
+                  color: "#94A3B8",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  lineHeight: 1,
+                }}
+              >
+                By
+              </Typography>
 
-  <Typography
-    sx={{
-      color: "#64748B",
-      fontSize: isMobile ? "10px" : "14px",
-      lineHeight: 1,
-    }}
-  >
-    •
-  </Typography>
+              <Typography
+                sx={{
+                  color: "#64748B",
+                  fontSize: isMobile ? "10px" : "14px",
+                  lineHeight: 1,
+                }}
+              >
+                •
+              </Typography>
 
-  <Typography
-    className="brand-name"
-    sx={{
-      fontSize: isMobile ? "10px" : "13px",
-      color: "#334155",
-      fontWeight: 700,
-      lineHeight: 1,
-    }}
-  >
-    Coalitionify Innovate
-  </Typography>
-</Box>
-      </Box>
-          
+              <Typography
+                className="brand-name"
+                sx={{
+                  fontSize: isMobile ? "10px" : "13px",
+                  color: "#334155",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                Coalitionify Innovate
+              </Typography>
+            </Box>
+          </Box>
+
           {isMobile ? (
             <IconButton
               onClick={toggleDrawer}
@@ -556,12 +557,14 @@ const InstagramPage = () => {
               variant="contained"
               endIcon={<ArrowForwardIcon />}
               onClick={() => navigate('/?demo=true')}
-              sx={{ bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: { xs: 14, md: 16 },
+              sx={{
+                bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: { xs: 14, md: 16 },
                 whiteSpace: 'nowrap',
-                 width: { xs: '100%', md: 'auto' },
-               minWidth: '210px',
-               '&:hover': { bgcolor: '#f8fbff' } }}>
-            
+                width: { xs: '100%', md: 'auto' },
+                minWidth: '210px',
+                '&:hover': { bgcolor: '#f8fbff' }
+              }}>
+
               Book a Demo
             </Button>
           </Stack>

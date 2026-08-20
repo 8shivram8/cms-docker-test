@@ -15,6 +15,7 @@ import Footer from '../../../acolead new landing page/Footer';
 import bgImage from '../../../acolead new landing page/images/bg.png';
 import marketingImage from "../../../assets/marketing1.jpeg";
 import { LICENSE_NAV_ITEMS } from "../constants";
+import { APP_URLS } from '../../../utils';
 
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -30,21 +31,21 @@ const WhatsAppPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const handleScrollToForm = () => {
-  navigate("/?demo=true");
+    navigate("/?demo=true");
   };
-  
+
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
   const handleBookDemoClick = () => {
-  navigate("/?demo=true");
-};
+    navigate("/?demo=true");
+  };
 
-const productName = "WHATSAPP";
+  const productName = "WHATSAPP";
 
-const handleStartClick = () => {
-  navigate(`/product/signup?product=${productName}`);
-};
+  const handleStartClick = () => {
+    navigate(`/product/signup?product=${productName}`);
+  };
   const workflow = [
     {
       title: 'Capture incoming WhatsApp conversations',
@@ -91,78 +92,78 @@ const handleStartClick = () => {
           }}
         >
           <Box
-  display="flex"
-  flexDirection="column"
-  alignItems="flex-start"
->
-  <Box
-    onClick={() => navigate("/")}
-    sx={{ cursor: "pointer" }}
-  >
-    <img
-      src={acoleadLogo}
-      alt="AcoLead"
-      style={{
-        height: isMobile ? "25px" : "40px",
-        maxWidth: "100%",
-        width: "auto",
-      }}
-    />
-  </Box>
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+          >
+            <Box
+              onClick={() => navigate("/")}
+              sx={{ cursor: "pointer" }}
+            >
+              <img
+                src={acoleadLogo}
+                alt="AcoLead"
+                style={{
+                  height: isMobile ? "25px" : "40px",
+                  maxWidth: "100%",
+                  width: "auto",
+                }}
+              />
+            </Box>
 
-  <Box
-  component="a"
-  href="https://www.coalitionify.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    ml: isMobile ? 2 : 4,
-    mt: -0.4,
-    textDecoration: "none",
-    whiteSpace: "nowrap",
-    "&:hover .brand-name": {
-      textDecoration: "underline",
-    },
-  }}
->
-  <Typography
-    sx={{
-      fontSize: isMobile ? "10px" : "14px",
-      color: "#94A3B8",
-      fontStyle: "italic",
-      fontWeight: 400,
-      lineHeight: 1,
-    }}
-  >
-    By
-  </Typography>
+            <Box
+              component="a"
+              href={APP_URLS.coalitionifyWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                ml: isMobile ? 2 : 4,
+                mt: -0.4,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                "&:hover .brand-name": {
+                  textDecoration: "underline",
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: isMobile ? "10px" : "14px",
+                  color: "#94A3B8",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  lineHeight: 1,
+                }}
+              >
+                By
+              </Typography>
 
-  <Typography
-    sx={{
-      color: "#64748B",
-      fontSize: isMobile ? "10px" : "14px",
-      lineHeight: 1,
-    }}
-  >
-    •
-  </Typography>
+              <Typography
+                sx={{
+                  color: "#64748B",
+                  fontSize: isMobile ? "10px" : "14px",
+                  lineHeight: 1,
+                }}
+              >
+                •
+              </Typography>
 
-  <Typography
-    className="brand-name"
-    sx={{
-      fontSize: isMobile ? "10px" : "13px",
-      color: "#334155",
-      fontWeight: 700,
-      lineHeight: 1,
-    }}
-  >
-    Coalitionify Innovate
-  </Typography>
-</Box>
-</Box>
+              <Typography
+                className="brand-name"
+                sx={{
+                  fontSize: isMobile ? "10px" : "13px",
+                  color: "#334155",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                Coalitionify Innovate
+              </Typography>
+            </Box>
+          </Box>
 
           {isMobile ? (
             <IconButton
@@ -411,7 +412,7 @@ const handleStartClick = () => {
               <Typography sx={{ color: 'rgba(255,255,255,0.9)', maxWidth: 620, lineHeight: 1.7 }}>Bring messaging into one system so your team can engage faster, qualify leads sooner, and close more business.</Typography>
             </Box>
             <Button variant="contained" onClick={handleBookDemoClick} sx={{ bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: 16, width: { xs: '100%', md: 'auto' }, '&:hover': { bgcolor: '#f8fbff' } }}>
-             Book a Demo
+              Book a Demo
             </Button>
           </Stack>
         </Box>
