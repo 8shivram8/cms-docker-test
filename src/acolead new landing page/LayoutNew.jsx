@@ -7,6 +7,7 @@ import ImgSection from './ImgSection';
 import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
 import HorizontalBar from './HorizontalBar';
+import BlogSection from './BlogSection';
 import Plans from './Plans';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
@@ -20,6 +21,7 @@ const LayoutNew = () => {
     const homeRef = useRef(null);
     const plansRef = useRef(null);
     const featuesRef = useRef(null);
+    const insightsRef = useRef(null);
     const contactFormRef = useRef(null)
     const [highlighted, setHighlighted] = useState(false);
     const [country, setCountry] = useState('IN');
@@ -65,8 +67,30 @@ const handleScrollToForm = () => {
 
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+        const params = new URLSearchParams(location.search);
+        const section = params.get('section');
+        if (section) {
+            setTimeout(() => {
+                const map = {
+                    home: homeRef,
+                    about: aboutRef,
+                    feature: featuesRef,
+                    insights: insightsRef,
+                    plans: plansRef,
+                };
+                const element = map[section]?.current;
+                if (element) {
+                    const topOffset = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({
+                        top: topOffset,
+                        behavior: 'smooth',
+                    });
+                }
+            }, 300);
+        } else if (!params.get('demo')) {
+            window.scrollTo(0, 0);
+        }
+    }, [location.search]);
 
     return (
         <Box display="flex" flexDirection="column" minHeight="100vh">
@@ -77,6 +101,7 @@ const handleScrollToForm = () => {
                         home: homeRef,
                         about: aboutRef,
                         feature: featuesRef,
+                        insights: insightsRef,
                         plans: plansRef,
                     };
 
@@ -106,6 +131,9 @@ const handleScrollToForm = () => {
                 <KeyFeatures />
             </Box>
             <HorizontalBar />
+            <Box ref={insightsRef}>
+                <BlogSection />
+            </Box>
             {/* <Box ref={plansRef}>
                 <Plans country={country} />
             </Box> */}
@@ -119,6 +147,7 @@ const handleScrollToForm = () => {
                         home: homeRef,
                         about: aboutRef,
                         feature: featuesRef,
+                        insights: insightsRef,
                         plans: plansRef,
                     };
 

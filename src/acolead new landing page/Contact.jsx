@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useRef, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import {
     Box,
     TextField,
@@ -18,7 +18,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import DemoIcon from './icons/DemoIcon'
 
-const Contact = ({ref}) => {
+const Contact = forwardRef((props, ref) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
@@ -308,6 +308,8 @@ const Contact = ({ref}) => {
             )}
         </Box>
     )
-}
+})
+
+Contact.displayName = 'Contact'
 
 export default Contact

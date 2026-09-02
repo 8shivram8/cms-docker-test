@@ -27,6 +27,7 @@ import AcoSign from '../parent components/AcoSign';
 import GoogleDrive from '../new components/Integration pages/GoogleDrive';
 import Onedrive from '../new components/Integration pages/Onedrive';
 import LayoutNew from '../acolead new landing page/LayoutNew';
+import ArticleDetail from '../acolead new landing page/ArticleDetail';
 import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';
 import TermsofUse from '../acolead new landing page/footer pages/TermsofUse';
 import PaymentResponseDialog from '../new components/payment/index';
@@ -72,6 +73,7 @@ const AppRoutesNew = () => {
                         {/* <Route path="" element={<MainLayout />} /> */}
                         {/* <Route path="" element={<LayoutNew />} /> */}
                         <Route path="" element={< LayoutNew />} />
+                        <Route path="/insights/:slug" element={<ArticleDetail />} />
                         <Route path="/acoSign" element={<AcoSign />} />
                         <Route path="/services" element={< AcoSign />} />
                         <Route path="/privacy" element={<Privacy />} />
