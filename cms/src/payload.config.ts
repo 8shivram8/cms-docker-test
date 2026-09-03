@@ -65,6 +65,7 @@ export default buildConfig({
     'http://localhost:3000',
     'http://localhost:3001', // React dev server
     getServerSideURL(),
+    'https://acolead.com',
   ].filter(Boolean),
   globals: [Header, Footer],
   plugins,
