@@ -16,9 +16,6 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -485,81 +482,43 @@ const RelatedInsights = ({ currentPostId, limit = 3 }) => {
 // NEWSLETTER SIGNUP COMPONENT
 // ============================================================================
 
-const NewsletterSignup = () => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = () => {
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 3000);
-    }
-  };
 
-  return (
-    <Box
-      sx={{
-        bg: 'linear-gradient(135deg, #1677F7 0%, #125fcc 100%)',
-        background: 'linear-gradient(135deg, #1677F7 0%, #125fcc 100%)',
-        borderRadius: 2,
-        p: 2.5,
-        color: 'white',
-        textAlign: 'center',
-      }}
-    >
-      <Typography sx={{ fontWeight: 700, fontSize: '1rem', mb: 1 }}>
-        Subscribe to Our Newsletter
-      </Typography>
-      <Typography sx={{ fontSize: '0.85rem', mb: 2, opacity: 0.9 }}>
-        Get the latest insights and updates straight to your inbox.
-      </Typography>
-
-      {subscribed ? (
-        <Typography sx={{ color: '#fff', fontSize: '0.9rem', fontWeight: 600 }}>
-          ✓ Thanks for subscribing!
-        </Typography>
-      ) : (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <TextField
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSubscribe()}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                '& fieldset': { borderColor: 'transparent' },
-                '&:hover fieldset': { borderColor: 'transparent' },
-                '&.Mui-focused fieldset': { borderColor: '#1677F7' },
-              },
-              '& .MuiOutlinedInput-input::placeholder': { opacity: 0.6 },
-            }}
-            size="small"
-          />
-          <Button
-            onClick={handleSubscribe}
-            variant="contained"
-            sx={{
-              backgroundColor: '#fff',
-              color: '#1677F7',
-              fontWeight: 600,
-              textTransform: 'none',
-              '&:hover': { backgroundColor: '#f0f0f0' },
-            }}
-          >
-            Subscribe
-          </Button>
-        </Box>
-      )}
-    </Box>
-  );
-};
+ 
 
 // ============================================================================
 // MAIN ARTICLE DETAIL COMPONENT
 // ============================================================================
+// Helper function
+const getRelativeDate = (date) => {
+  const now = new Date();
+  const postDate = new Date(date);
+
+  const nowStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  const postStart = new Date(
+    postDate.getFullYear(),
+    postDate.getMonth(),
+    postDate.getDate()
+  );
+
+  const diffDays = Math.floor(
+    (nowStart - postStart) / (1000 * 60 * 60 * 24)
+  );
+
+  if (diffDays === 0) return 'Today';
+  if (diffDays === 1) return '1 day ago';
+  if (diffDays > 1) return `${diffDays} days ago`;
+
+  return 'Today';
+};
+
+
+// MAIN ARTICLE DETAIL COMPONENT
 
 const ArticleDetail = () => {
   const { slug } = useParams();
@@ -627,26 +586,10 @@ const ArticleDetail = () => {
         : `${(process.env.REACT_APP_PAYLOAD_API_URL || 'http://localhost:3000/api').replace('/api', '')}${post.heroImage.url}`)
     : null;
 
-  const handleShare = (platform) => {
-    const url = window.location.href;
-    const title = post.title;
+  
+    
 
-    const shareUrls = {
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-      copy: () => {
-        navigator.clipboard.writeText(url);
-        alert('Link copied to clipboard!');
-      },
-    };
-
-    if (platform === 'copy') {
-      shareUrls.copy();
-    } else {
-      window.open(shareUrls[platform], '_blank', 'width=600,height=400');
-    }
-  };
+  
 
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
@@ -680,7 +623,7 @@ const ArticleDetail = () => {
        
 
         {/* ARTICLE HEADER */}
-        <Box sx={{ mb: 3 }}>
+        
           <Typography
             sx={{
               display: 'inline-block',
@@ -722,50 +665,11 @@ const ArticleDetail = () => {
               {formatDate(post.createdAt)}
             </Typography>
             <Typography sx={{ color: '#6B7280', fontSize: '0.95rem' }}>
-              {estimateReadTime(post.content)}
+              {getRelativeDate(post.createdAt)}
             </Typography>
           </Box>
 
-          {/* SHARE BUTTONS */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography sx={{ color: '#4B5563', fontSize: '0.9rem', fontWeight: 600 }}>
-              Share:
-            </Typography>
-            <IconButton
-              size="small"
-              onClick={() => handleShare('linkedin')}
-              sx={{
-                color: '#1677F7',
-                backgroundColor: 'rgba(22, 119, 247, 0.1)',
-                '&:hover': { backgroundColor: 'rgba(22, 119, 247, 0.2)' },
-              }}
-            >
-              <LinkedInIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              onClick={() => handleShare('facebook')}
-              sx={{
-                color: '#1677F7',
-                backgroundColor: 'rgba(22, 119, 247, 0.1)',
-                '&:hover': { backgroundColor: 'rgba(22, 119, 247, 0.2)' },
-              }}
-            >
-              <FacebookIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              onClick={() => handleShare('copy')}
-              sx={{
-                color: '#1677F7',
-                backgroundColor: 'rgba(22, 119, 247, 0.1)',
-                '&:hover': { backgroundColor: 'rgba(22, 119, 247, 0.2)' },
-              }}
-            >
-              <ContentCopyIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        </Box>
+          
 
         {/* HERO IMAGE */}
         {heroImage && (
@@ -803,7 +707,7 @@ const ArticleDetail = () => {
           <Grid item xs={12} md={4}>
             <TableOfContents content={post.content} />
             <RelatedInsights currentPostId={post.id} />
-            <NewsletterSignup />
+            
           </Grid>
         </Grid>
       </Container>

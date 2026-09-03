@@ -48,10 +48,32 @@ const getTagColor = (tag) => {
 // Function to format date
 const formatDate = (dateString) => {
   if (!dateString) return 'Recently';
+
   const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
   return date.toLocaleDateString('en-US', options);
 };
+
+const getDaysAgo = (dateString) => {
+  if (!dateString) return 'Recently';
+
+  const postDate = new Date(dateString);
+  const now = new Date();
+
+  const diffMs = now - postDate;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffDays <= 0) return 'Today';
+  if (diffDays === 1) return '1 day ago';
+
+  return `${diffDays} days ago`;
+};
+
 
 // Function to estimate reading time (approximately 200 words per minute)
 const estimateReadTime = (content) => {
@@ -101,7 +123,7 @@ const transformPostData = (apiPost, index) => {
     title: apiPost.title,
     excerpt: apiPost.meta?.description || apiPost.title,
     date: formatDate(apiPost.createdAt),
-    readTime: estimateReadTime(apiPost.content),
+    daysAgo: getDaysAgo(apiPost.createdAt),
     image: imageUrl,
     accent: generateGradient(index),
   };
@@ -396,7 +418,7 @@ const BlogSection = () => {
                         color: '#6B7280',
                       }}
                     >
-                      {post.readTime}
+                      {post.daysAgo}
                     </Typography>
                   </Box>
 
