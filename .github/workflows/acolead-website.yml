@@ -28,7 +28,8 @@ jobs:
         npm run build
       env:
         CI: false
-  
+        REACT_APP_CRM_BACKEND_URL: https://api.acolead.com/crm-backend/api
+        REACT_APP_PAYLOAD_API_URL: https://165.22.253.215.sslip.io/api
     - name: Deploy to Production
       uses: jakejarvis/s3-sync-action@master
       with:
