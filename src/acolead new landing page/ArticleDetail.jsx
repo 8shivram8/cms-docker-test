@@ -7,7 +7,6 @@ import {
   Button,
   CircularProgress,
   Grid,
-  Breadcrumbs,
   Link as MuiLink,
   TextField,
   IconButton,
@@ -98,7 +97,7 @@ const LexicalRenderer = ({ content }) => {
             mt: 3,
             mb: 2,
             color: '#111827',
-            scrollMarginTop: '100px',
+            
             '&:first-of-type': { mt: 0 },
           }}
           id={`heading-${index}`}
@@ -238,7 +237,7 @@ const TableOfContents = ({ content }) => {
   const handleScroll = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
   };
 
@@ -251,8 +250,7 @@ const TableOfContents = ({ content }) => {
         borderRadius: 2,
         p: 2.5,
         mb: 3,
-        position: 'sticky',
-        top: 100,
+        
         maxHeight: '400px',
         overflowY: 'auto',
       }}
@@ -281,7 +279,7 @@ const TableOfContents = ({ content }) => {
         {headings.map((heading, index) => (
           <li key={index}>
             <Button
-              onClick={() => handleScroll(heading.id)}
+              
               sx={{
                 textAlign: 'left',
                 justifyContent: 'flex-start',
@@ -601,27 +599,6 @@ const ArticleDetail = () => {
       />
       <Box sx={{ backgroundColor: '#f8f9fa', flexGrow: 1, py: 4 }}>
         <Container maxWidth="lg">
-        {/* BREADCRUMB */}
-        <Breadcrumbs sx={{ mb: 3 }}>
-          <MuiLink
-            component="button"
-            onClick={() => navigate('/')}
-            sx={{ color: '#1677F7', textDecoration: 'none', cursor: 'pointer' }}
-          >
-            Home
-          </MuiLink>
-          <MuiLink
-            component="button"
-            onClick={() => navigate('/#insights')}
-            sx={{ color: '#1677F7', textDecoration: 'none', cursor: 'pointer' }}
-          >
-            Insights
-          </MuiLink>
-          <Typography sx={{ color: '#4B5563' }}>{post.title}</Typography>
-        </Breadcrumbs>
-
-       
-
         {/* ARTICLE HEADER */}
         
           <Typography
@@ -703,12 +680,12 @@ const ArticleDetail = () => {
             </Box>
           </Grid>
 
-          {/* RIGHT COLUMN - SIDEBAR */}
-          <Grid item xs={12} md={4}>
-            <TableOfContents content={post.content} />
-            <RelatedInsights currentPostId={post.id} />
-            
-          </Grid>
+        {/* RIGHT COLUMN - SIDEBAR */}
+<Grid item xs={12} md={4}>
+  <TableOfContents content={post.content} />
+
+  <RelatedInsights currentPostId={post.id} />
+</Grid>
         </Grid>
       </Container>
       </Box>

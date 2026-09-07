@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   Box,
   Button,
+  IconButton,
   Typography,
   useMediaQuery,
   useTheme,
@@ -9,6 +10,8 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 // Default fallback posts in case API fails
 const defaultPosts = [
@@ -31,18 +34,6 @@ const generateGradient = (index) => {
     'linear-gradient(135deg, #e9edf5 0%, #bbc6d9 32%, #7d8698 100%)',
   ];
   return gradients[index % gradients.length];
-};
-
-// Helper function to get tag colors based on category
-const getTagColor = (tag) => {
-  const colorMap = {
-    'AI & SALES': { bg: 'rgba(15, 32, 96, 0.12)', text: '#0F2060' },
-    'SALES STRATEGY': { bg: 'rgba(34, 139, 34, 0.12)', text: '#228B22' },
-    'DATA & INSIGHTS': { bg: 'rgba(75, 0, 130, 0.12)', text: '#4B0082' },
-    'CUSTOMER EXPERIENCE': { bg: 'rgba(255, 140, 0, 0.12)', text: '#FF8C00' },
-    'INSIGHTS': { bg: 'rgba(22, 119, 247, 0.08)', text: '#1677F7' },
-  };
-  return colorMap[tag] || { bg: 'rgba(22, 119, 247, 0.08)', text: '#1677F7' };
 };
 
 // Function to format date
@@ -76,35 +67,6 @@ const getDaysAgo = (dateString) => {
 
 
 // Function to estimate reading time (approximately 200 words per minute)
-const estimateReadTime = (content) => {
-  if (!content) return '5 min read';
-  
-  // Handle Lexical rich text (JSON object) from Payload
-  let text = '';
-  if (typeof content === 'string') {
-    text = content;
-  } else if (content.root && content.root.children) {
-    // Payload Lexical format: extract text from nested structure
-    const extractText = (nodes) => {
-      return nodes
-        .map((node) => {
-          if (node.text) return node.text;
-          if (node.children) return extractText(node.children);
-          return '';
-        })
-        .join(' ');
-    };
-    text = extractText(content.root.children);
-  } else if (typeof content === 'object') {
-    // Fallback for other object formats
-    text = JSON.stringify(content);
-  }
-  
-  const wordCount = text.split(/\s+/).length;
-  const minutes = Math.ceil(wordCount / 200);
-  return `${minutes} min read`;
-};
-
 // Function to transform Payload API response to component data
 const transformPostData = (apiPost, index) => {
   let imageUrl = apiPost.heroImage?.url || apiPost.meta?.image?.url || '';
@@ -129,67 +91,6 @@ const transformPostData = (apiPost, index) => {
   };
 };
 
-const PostImage = ({ accent, image }) => (
-  <Box
-    sx={{
-      height: 200,
-      background: accent,
-      position: 'relative',
-      overflow: 'hidden',
-      borderRadius: '0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
-  >
-    {/* Display actual image if available */}
-    {image && (
-      <Box
-        component="img"
-        src={image}
-        alt="Post cover"
-        sx={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }}
-        onError={(e) => {
-          // Hide image if it fails to load, show gradient instead
-          e.currentTarget.style.display = 'none';
-        }}
-      />
-    )}
-    
-    {/* Overlay gradient for visual effects */}
-    <Box
-      sx={{
-        position: 'absolute',
-        inset: 0,
-        background:
-          'radial-gradient(circle at 25% 30%, rgba(255,255,255,0.35), transparent 18%), radial-gradient(circle at 70% 20%, rgba(255,255,255,0.2), transparent 22%), linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02))',
-        pointerEvents: 'none',
-      }}
-    />
-    
-    {/* Decorative circle */}
-    <Box
-      sx={{
-        position: 'absolute',
-        width: 130,
-        height: 130,
-        borderRadius: '50%',
-        border: '1px solid rgba(255,255,255,0.35)',
-        right: -20,
-        bottom: -16,
-        pointerEvents: 'none',
-      }}
-    />
-  </Box>
-);
-
 const BlogSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -197,6 +98,139 @@ const BlogSection = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [visibleCards, setVisibleCards] = useState(4);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+  const positionRef = useRef(0);
+  const setWidthRef = useRef(0);
+  const targetPositionRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  const lastFrameRef = useRef(null);
+  const resumeTimerRef = useRef(null);
+  const hoverRef = useRef(false);
+  const interactionPausedRef = useRef(false);
+  const dragRef = useRef({ startX: null, startY: null, startPosition: 0, active: false });
+  const suppressClickRef = useRef(false);
+
+  const applyPosition = () => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
+    }
+  };
+
+  const normalizePosition = () => {
+    const setWidth = setWidthRef.current;
+    if (!setWidth) return;
+
+    while (positionRef.current >= setWidth * 2) {
+      positionRef.current -= setWidth;
+      if (targetPositionRef.current !== null) targetPositionRef.current -= setWidth;
+    }
+    while (positionRef.current < setWidth) {
+      positionRef.current += setWidth;
+      if (targetPositionRef.current !== null) targetPositionRef.current += setWidth;
+    }
+  };
+
+  const scheduleResume = () => {
+    window.clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = window.setTimeout(() => {
+      if (!hoverRef.current && !dragRef.current.active) {
+        interactionPausedRef.current = false;
+      }
+    }, 700);
+  };
+
+  const handlePointerDown = (event) => {
+    dragRef.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      startPosition: positionRef.current,
+      active: false,
+    };
+    interactionPausedRef.current = true;
+  };
+
+  const handlePointerMove = (event) => {
+    const drag = dragRef.current;
+    if (drag.startX === null || drag.startY === null) return;
+
+    const deltaX = event.clientX - drag.startX;
+    const deltaY = event.clientY - drag.startY;
+    if (!drag.active) {
+      if (Math.abs(deltaY) > Math.abs(deltaX) || Math.abs(deltaX) < 8) return;
+      drag.active = true;
+      suppressClickRef.current = true;
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+      targetPositionRef.current = null;
+    }
+
+    event.preventDefault();
+    positionRef.current = drag.startPosition - deltaX;
+    normalizePosition();
+    applyPosition();
+  };
+
+  const handlePointerUp = (event) => {
+    if (dragRef.current.startX === null || dragRef.current.startY === null) return;
+    const wasDragging = dragRef.current.active;
+    dragRef.current = { startX: null, startY: null, startPosition: positionRef.current, active: false };
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+    if (wasDragging) scheduleResume();
+    else {
+      interactionPausedRef.current = false;
+      scheduleResume();
+    }
+  };
+
+  const handleArrowClick = (direction) => {
+    const step = setWidthRef.current / posts.length;
+    if (!step) return;
+    interactionPausedRef.current = true;
+    targetPositionRef.current = positionRef.current + step * direction;
+    scheduleResume();
+  };
+
+  const handleWheel = (event) => {
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+      ? event.deltaX
+      : event.shiftKey
+        ? event.deltaY
+        : 0;
+    if (!delta) return;
+
+    event.preventDefault();
+    interactionPausedRef.current = true;
+    targetPositionRef.current = null;
+    positionRef.current += delta;
+    normalizePosition();
+    applyPosition();
+    scheduleResume();
+  };
+
+  const handleMouseEnter = () => {
+    hoverRef.current = true;
+    interactionPausedRef.current = true;
+  };
+
+  const handleMouseLeave = () => {
+    hoverRef.current = false;
+    scheduleResume();
+  };
+
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth < 768) setVisibleCards(1);
+      else if (window.innerWidth < 1100) setVisibleCards(2);
+      else setVisibleCards(4);
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
+  
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -209,12 +243,15 @@ const BlogSection = () => {
         const apiUrl = process.env.REACT_APP_PAYLOAD_API_URL || 'http://localhost:3000/api';
         
         // Fetch published posts, ordered by creation date (newest first)
-        const response = await fetch(`${apiUrl}/posts?limit=4&sort=-createdAt&where[_status][equals]=published`, {
+        const response = await fetch(
+          `${apiUrl}/posts?limit=20&sort=-createdAt&where[_status][equals]=published`,
+          {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
-        });
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`Failed to fetch posts: ${response.statusText}`);
@@ -241,6 +278,66 @@ const BlogSection = () => {
 
     fetchPosts();
   }, []);
+
+  const carouselPosts = useMemo(
+    () => (posts.length ? [...posts, ...posts, ...posts] : []),
+    [posts]
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
+    updateMotionPreference();
+    mediaQuery.addEventListener?.('change', updateMotionPreference);
+    return () => mediaQuery.removeEventListener?.('change', updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    const measureCarousel = () => {
+      if (!trackRef.current || !posts.length) return;
+      setWidthRef.current = trackRef.current.scrollWidth / 3;
+      if (!positionRef.current) positionRef.current = setWidthRef.current;
+      normalizePosition();
+      applyPosition();
+    };
+
+    measureCarousel();
+    window.addEventListener('resize', measureCarousel);
+    return () => window.removeEventListener('resize', measureCarousel);
+  }, [posts.length, visibleCards, carouselPosts.length]);
+
+  useEffect(() => {
+    if (!posts.length) return undefined;
+
+    const animate = (timestamp) => {
+      const lastFrame = lastFrameRef.current || timestamp;
+      const deltaTime = Math.min(timestamp - lastFrame, 50);
+      lastFrameRef.current = timestamp;
+
+      if (targetPositionRef.current !== null) {
+        const difference = targetPositionRef.current - positionRef.current;
+        const movement = difference * Math.min(1, deltaTime / 240);
+        positionRef.current += movement;
+        if (Math.abs(difference) < 0.5) {
+          positionRef.current = targetPositionRef.current;
+          targetPositionRef.current = null;
+        }
+      } else if (!reducedMotion && !hoverRef.current && !interactionPausedRef.current && !dragRef.current.active) {
+        positionRef.current += (28 * deltaTime) / 1000;
+      }
+
+      normalizePosition();
+      applyPosition();
+      animationFrameRef.current = window.requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = window.requestAnimationFrame(animate);
+    return () => {
+      window.cancelAnimationFrame(animationFrameRef.current);
+      window.clearTimeout(resumeTimerRef.current);
+      lastFrameRef.current = null;
+    };
+  }, [posts.length, reducedMotion]);
 
   return (
     <Box
@@ -352,20 +449,83 @@ const BlogSection = () => {
           </Box>
         )}
 
-        {/* Posts grid */}
+        {/* Posts carousel */}
         {!loading && (
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-              gap: 2.5,
-              pb: isMobile ? 1 : 0,
+              position: 'relative',
+              px: { xs: 5, md: 7 },
             }}
           >
-            {posts.map((post, index) => (
+            <IconButton
+              aria-label="Newer insights"
+              onClick={() => handleArrowClick(-1)}
+              onPointerDown={(event) => event.stopPropagation()}
+              sx={{
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                zIndex: 2,
+                transform: 'translateY(-50%)',
+                backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                boxShadow: '0 4px 14px rgba(16, 24, 40, 0.14)',
+                '&:hover': { backgroundColor: '#fff' },
+              }}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+            <IconButton
+              aria-label="Older insights"
+              onClick={() => handleArrowClick(1)}
+              onPointerDown={(event) => event.stopPropagation()}
+              sx={{
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                zIndex: 2,
+                transform: 'translateY(-50%)',
+                backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                boxShadow: '0 4px 14px rgba(16, 24, 40, 0.14)',
+                '&:hover': { backgroundColor: '#fff' },
+              }}
+            >
+              <ChevronRightIcon />
+            </IconButton>
+            <Box
+              ref={viewportRef}
+              sx={{
+                overflow: 'hidden',
+                cursor: 'grab',
+                touchAction: 'pan-y',
+                '--card-gap': '20px',
+                '--card-width': `calc((100% - ${(visibleCards - 1) * 20}px) / ${visibleCards})`,
+              }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onWheel={handleWheel}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+            >
               <Box
-                key={post.id || post.title}
-                onClick={() => navigate(`/insights/${post.slug}`)}
+                ref={trackRef}
+                sx={{
+                  display: 'flex',
+                  gap: 'var(--card-gap)',
+                  willChange: 'transform',
+                }}
+              >
+              {carouselPosts.map((post, index) => (
+              <Box
+                key={`${post.id || post.title}-${index}`}
+                onClick={() => {
+                  if (suppressClickRef.current) {
+                    suppressClickRef.current = false;
+                    return;
+                  }
+                  navigate(`/insights/${post.slug}`);
+                }}
                 sx={{
                   background: '#fff',
                   borderRadius: 0, // from first image, edges might be sharper or just 4px
@@ -374,6 +534,7 @@ const BlogSection = () => {
                   flexDirection: 'column',
                   cursor: 'pointer',
                   minHeight: 400,
+                  flex: '0 0 var(--card-width)',
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-4px)',
@@ -483,7 +644,9 @@ const BlogSection = () => {
                   </Box>
                 </Box>
               </Box>
-          ))}
+              ))}
+            </Box>
+            </Box>
         </Box>
         )}
       </Box>
